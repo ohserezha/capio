@@ -1,6 +1,6 @@
 //
 //  FirstViewController.swift
-//  camTest1
+//  capio
 //
 //  Created by Roman on 7/10/16.
 //  Copyright © 2016 theroman. All rights reserved.
@@ -23,7 +23,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var exposureDuration: CMTime!
     var focusDistance: Float = 0
     var isoValue: Float = 100
-//    var whiteBalance: Float = 100
+    var currentColorTemperature: AVCaptureWhiteBalanceTemperatureAndTintValues!
     
     var flashLightMode: String!
 //    var lightValue?
@@ -49,6 +49,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         focusDistance = focusSlider.value
         isoValue = isoSlider.value
         isoLabel.text = String(isoValue)
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Sound, .Badge], categories: nil))
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
     
     @IBAction func onFocusSlideDrag(sender: UISlider) {
@@ -151,11 +153,23 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         isoLabel.text = String(isoValue)
         configureCamera()
     }
+    
+    // photo success/fail save
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
         if error == nil {
-            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            presentViewController(ac, animated: true, completion: nil)
+            
+            print("SUCCESSS0000")
+            
+            let notification = UILocalNotification()
+            
+            notification.alertBody = "Photo Saved!"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.fireDate = NSDate(timeIntervalSinceNow: 0)
+            notification.timeZone = NSTimeZone.defaultTimeZone()
+            notification.userInfo = ["title": "capioPhoto", "UUID": "capioPhotoUUID"]
+            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+            
+            print("SUCCESSS111")
         } else {
             let ac = UIAlertController(title: "Save error", message: error?.localizedDescription, preferredStyle: .Alert)
             ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))

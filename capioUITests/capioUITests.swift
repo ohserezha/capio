@@ -1,6 +1,6 @@
 //
-//  camTest1UITests.swift
-//  camTest1UITests
+//  capio1UITests.swift
+//  capioUITests
 //
 //  Created by Roman on 7/10/16.
 //  Copyright © 2016 theroman. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class camTest1UITests: XCTestCase {
+class capioUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

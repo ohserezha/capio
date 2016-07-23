@@ -12,8 +12,8 @@
 		37E260001D32DB6D00644207 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E25FFE1D32DB6D00644207 /* Main.storyboard */; };
 		37E260021D32DB6D00644207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37E260011D32DB6D00644207 /* Assets.xcassets */; };
 		37E260051D32DB6D00644207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E260031D32DB6D00644207 /* LaunchScreen.storyboard */; };
-		37E260101D32DB6D00644207 /* camTest1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2600F1D32DB6D00644207 /* camTest1Tests.swift */; };
-		37E2601B1D32DB6D00644207 /* camTest1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2601A1D32DB6D00644207 /* camTest1UITests.swift */; };
+		37E260101D32DB6D00644207 /* capioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2600F1D32DB6D00644207 /* capioTests.swift */; };
+		37E2601B1D32DB6D00644207 /* capioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2601A1D32DB6D00644207 /* capioUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,18 +34,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		37E25FF51D32DB6D00644207 /* camTest1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = camTest1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37E25FF51D32DB6D00644207 /* capio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = capio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E25FF81D32DB6D00644207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37E25FFA1D32DB6D00644207 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		37E25FFF1D32DB6D00644207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37E260011D32DB6D00644207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37E260041D32DB6D00644207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37E260061D32DB6D00644207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37E2600B1D32DB6D00644207 /* camTest1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = camTest1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		37E2600F1D32DB6D00644207 /* camTest1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = camTest1Tests.swift; sourceTree = "<group>"; };
+		37E2600B1D32DB6D00644207 /* capioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37E2600F1D32DB6D00644207 /* capioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capioTests.swift; sourceTree = "<group>"; };
 		37E260111D32DB6D00644207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37E260161D32DB6D00644207 /* camTest1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = camTest1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		37E2601A1D32DB6D00644207 /* camTest1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = camTest1UITests.swift; sourceTree = "<group>"; };
+		37E260161D32DB6D00644207 /* capioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37E2601A1D32DB6D00644207 /* capioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capioUITests.swift; sourceTree = "<group>"; };
 		37E2601C1D32DB6D00644207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,9 +77,9 @@
 		37E25FEC1D32DB6D00644207 = {
 			isa = PBXGroup;
 			children = (
-				37E25FF71D32DB6D00644207 /* camTest1 */,
-				37E2600E1D32DB6D00644207 /* camTest1Tests */,
-				37E260191D32DB6D00644207 /* camTest1UITests */,
+				37E25FF71D32DB6D00644207 /* capio */,
+				37E2600E1D32DB6D00644207 /* capioTests */,
+				37E260191D32DB6D00644207 /* capioUITests */,
 				37E25FF61D32DB6D00644207 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,14 +87,14 @@
 		37E25FF61D32DB6D00644207 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				37E25FF51D32DB6D00644207 /* camTest1.app */,
-				37E2600B1D32DB6D00644207 /* camTest1Tests.xctest */,
-				37E260161D32DB6D00644207 /* camTest1UITests.xctest */,
+				37E25FF51D32DB6D00644207 /* capio.app */,
+				37E2600B1D32DB6D00644207 /* capioTests.xctest */,
+				37E260161D32DB6D00644207 /* capioUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		37E25FF71D32DB6D00644207 /* camTest1 */ = {
+		37E25FF71D32DB6D00644207 /* capio */ = {
 			isa = PBXGroup;
 			children = (
 				37E25FF81D32DB6D00644207 /* AppDelegate.swift */,
@@ -104,33 +104,33 @@
 				37E260031D32DB6D00644207 /* LaunchScreen.storyboard */,
 				37E260061D32DB6D00644207 /* Info.plist */,
 			);
-			path = camTest1;
+			path = capio;
 			sourceTree = "<group>";
 		};
-		37E2600E1D32DB6D00644207 /* camTest1Tests */ = {
+		37E2600E1D32DB6D00644207 /* capioTests */ = {
 			isa = PBXGroup;
 			children = (
-				37E2600F1D32DB6D00644207 /* camTest1Tests.swift */,
+				37E2600F1D32DB6D00644207 /* capioTests.swift */,
 				37E260111D32DB6D00644207 /* Info.plist */,
 			);
-			path = camTest1Tests;
+			path = capioTests;
 			sourceTree = "<group>";
 		};
-		37E260191D32DB6D00644207 /* camTest1UITests */ = {
+		37E260191D32DB6D00644207 /* capioUITests */ = {
 			isa = PBXGroup;
 			children = (
-				37E2601A1D32DB6D00644207 /* camTest1UITests.swift */,
+				37E2601A1D32DB6D00644207 /* capioUITests.swift */,
 				37E2601C1D32DB6D00644207 /* Info.plist */,
 			);
-			path = camTest1UITests;
+			path = capioUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		37E25FF41D32DB6D00644207 /* camTest1 */ = {
+		37E25FF41D32DB6D00644207 /* capio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37E2601F1D32DB6D00644207 /* Build configuration list for PBXNativeTarget "camTest1" */;
+			buildConfigurationList = 37E2601F1D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capio" */;
 			buildPhases = (
 				37E25FF11D32DB6D00644207 /* Sources */,
 				37E25FF21D32DB6D00644207 /* Frameworks */,
@@ -140,14 +140,14 @@
 			);
 			dependencies = (
 			);
-			name = camTest1;
+			name = capio;
 			productName = camTest1;
-			productReference = 37E25FF51D32DB6D00644207 /* camTest1.app */;
+			productReference = 37E25FF51D32DB6D00644207 /* capio.app */;
 			productType = "com.apple.product-type.application";
 		};
-		37E2600A1D32DB6D00644207 /* camTest1Tests */ = {
+		37E2600A1D32DB6D00644207 /* capioTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37E260221D32DB6D00644207 /* Build configuration list for PBXNativeTarget "camTest1Tests" */;
+			buildConfigurationList = 37E260221D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capioTests" */;
 			buildPhases = (
 				37E260071D32DB6D00644207 /* Sources */,
 				37E260081D32DB6D00644207 /* Frameworks */,
@@ -158,14 +158,14 @@
 			dependencies = (
 				37E2600D1D32DB6D00644207 /* PBXTargetDependency */,
 			);
-			name = camTest1Tests;
+			name = capioTests;
 			productName = camTest1Tests;
-			productReference = 37E2600B1D32DB6D00644207 /* camTest1Tests.xctest */;
+			productReference = 37E2600B1D32DB6D00644207 /* capioTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		37E260151D32DB6D00644207 /* camTest1UITests */ = {
+		37E260151D32DB6D00644207 /* capioUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37E260251D32DB6D00644207 /* Build configuration list for PBXNativeTarget "camTest1UITests" */;
+			buildConfigurationList = 37E260251D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capioUITests" */;
 			buildPhases = (
 				37E260121D32DB6D00644207 /* Sources */,
 				37E260131D32DB6D00644207 /* Frameworks */,
@@ -176,9 +176,9 @@
 			dependencies = (
 				37E260181D32DB6D00644207 /* PBXTargetDependency */,
 			);
-			name = camTest1UITests;
+			name = capioUITests;
 			productName = camTest1UITests;
-			productReference = 37E260161D32DB6D00644207 /* camTest1UITests.xctest */;
+			productReference = 37E260161D32DB6D00644207 /* capioUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -205,7 +205,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 37E25FF01D32DB6D00644207 /* Build configuration list for PBXProject "camTest1" */;
+			buildConfigurationList = 37E25FF01D32DB6D00644207 /* Build configuration list for PBXProject "capio" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -218,9 +218,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				37E25FF41D32DB6D00644207 /* camTest1 */,
-				37E2600A1D32DB6D00644207 /* camTest1Tests */,
-				37E260151D32DB6D00644207 /* camTest1UITests */,
+				37E25FF41D32DB6D00644207 /* capio */,
+				37E2600A1D32DB6D00644207 /* capioTests */,
+				37E260151D32DB6D00644207 /* capioUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -266,7 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37E260101D32DB6D00644207 /* camTest1Tests.swift in Sources */,
+				37E260101D32DB6D00644207 /* capioTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37E2601B1D32DB6D00644207 /* camTest1UITests.swift in Sources */,
+				37E2601B1D32DB6D00644207 /* capioUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,12 +283,12 @@
 /* Begin PBXTargetDependency section */
 		37E2600D1D32DB6D00644207 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 37E25FF41D32DB6D00644207 /* camTest1 */;
+			target = 37E25FF41D32DB6D00644207 /* capio */;
 			targetProxy = 37E2600C1D32DB6D00644207 /* PBXContainerItemProxy */;
 		};
 		37E260181D32DB6D00644207 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 37E25FF41D32DB6D00644207 /* camTest1 */;
+			target = 37E25FF41D32DB6D00644207 /* capio */;
 			targetProxy = 37E260171D32DB6D00644207 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -404,10 +404,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = camTest1/Info.plist;
+				INFOPLIST_FILE = capio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.camTest1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.capio;
+				PRODUCT_NAME = capio;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -418,10 +418,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = camTest1/Info.plist;
+				INFOPLIST_FILE = capio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.camTest1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.capio;
+				PRODUCT_NAME = capio;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -430,11 +430,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = camTest1Tests/Info.plist;
+				INFOPLIST_FILE = capioTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.camTest1Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.capioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/camTest1.app/camTest1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/capio.app/capio";
 			};
 			name = Debug;
 		};
@@ -442,40 +442,40 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = camTest1Tests/Info.plist;
+				INFOPLIST_FILE = capioTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.camTest1Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.capioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/camTest1.app/camTest1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/capio.app/capio";
 			};
 			name = Release;
 		};
 		37E260261D32DB6D00644207 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = camTest1UITests/Info.plist;
+				INFOPLIST_FILE = capioUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.camTest1UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.capioUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = camTest1;
+				TEST_TARGET_NAME = capio;
 			};
 			name = Debug;
 		};
 		37E260271D32DB6D00644207 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = camTest1UITests/Info.plist;
+				INFOPLIST_FILE = capioUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.camTest1UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.capioUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = camTest1;
+				TEST_TARGET_NAME = capio;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		37E25FF01D32DB6D00644207 /* Build configuration list for PBXProject "camTest1" */ = {
+		37E25FF01D32DB6D00644207 /* Build configuration list for PBXProject "capio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37E2601D1D32DB6D00644207 /* Debug */,
@@ -484,29 +484,32 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		37E2601F1D32DB6D00644207 /* Build configuration list for PBXNativeTarget "camTest1" */ = {
+		37E2601F1D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37E260201D32DB6D00644207 /* Debug */,
 				37E260211D32DB6D00644207 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		37E260221D32DB6D00644207 /* Build configuration list for PBXNativeTarget "camTest1Tests" */ = {
+		37E260221D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capioTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37E260231D32DB6D00644207 /* Debug */,
 				37E260241D32DB6D00644207 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		37E260251D32DB6D00644207 /* Build configuration list for PBXNativeTarget "camTest1UITests" */ = {
+		37E260251D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capioUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37E260261D32DB6D00644207 /* Debug */,
 				37E260271D32DB6D00644207 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

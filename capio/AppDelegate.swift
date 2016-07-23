@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  camTest1
+//  capio
 //
 //  Created by Roman on 7/10/16.
 //  Copyright © 2016 theroman. All rights reserved.

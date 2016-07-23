@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "37E25FF41D32DB6D00644207"
-               BuildableName = "camTest1.app"
-               BlueprintName = "camTest1"
-               ReferencedContainer = "container:camTest1.xcodeproj">
+               BuildableName = "capio.app"
+               BlueprintName = "capio"
+               ReferencedContainer = "container:capio.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,34 +28,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "37E2600A1D32DB6D00644207"
-               BuildableName = "camTest1Tests.xctest"
-               BlueprintName = "camTest1Tests"
-               ReferencedContainer = "container:camTest1.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "37E260151D32DB6D00644207"
-               BuildableName = "camTest1UITests.xctest"
-               BlueprintName = "camTest1UITests"
-               ReferencedContainer = "container:camTest1.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "37E25FF41D32DB6D00644207"
-            BuildableName = "camTest1.app"
-            BlueprintName = "camTest1"
-            ReferencedContainer = "container:camTest1.xcodeproj">
+            BuildableName = "capio.app"
+            BlueprintName = "capio"
+            ReferencedContainer = "container:capio.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "37E25FF41D32DB6D00644207"
-            BuildableName = "camTest1.app"
-            BlueprintName = "camTest1"
-            ReferencedContainer = "container:camTest1.xcodeproj">
+            BuildableName = "capio.app"
+            BlueprintName = "capio"
+            ReferencedContainer = "container:capio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "37E25FF41D32DB6D00644207"
-            BuildableName = "camTest1.app"
-            BlueprintName = "camTest1"
-            ReferencedContainer = "container:camTest1.xcodeproj">
+            BuildableName = "capio.app"
+            BlueprintName = "capio"
+            ReferencedContainer = "container:capio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

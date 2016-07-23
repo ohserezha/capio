@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:camTest1.xcodeproj">
+      location = "self:/Users/Fromrome/Desktop/ios/t1/camtest/capio/capio.xcodeproj">
    </FileRef>
 </Workspace>
