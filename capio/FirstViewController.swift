@@ -23,38 +23,43 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var exposureDuration: CMTime!
     var focusDistance: Float = 0
     var isoValue: Float = 100
+    
+    var temperatureValue: Float!
+    
     var currentColorTemperature: AVCaptureWhiteBalanceTemperatureAndTintValues!
+    var currentColorGains: AVCaptureWhiteBalanceGains!
     
     var flashLightMode: String!
-//    var lightValue?
     
     // Some default settings
     let EXPOSURE_DURATION_POWER:Float = 4.0 //the exposure slider gain
     let EXPOSURE_MINIMUM_DURATION:Float64 = 1.0/2000.0
     
-    
-    @IBOutlet var makePhotoButton: UIButton!
-    @IBOutlet var focusSlider: UISlider!
     @IBOutlet var myCamView: UIView!
+    @IBOutlet var makePhotoButton: UIButton!
+
+    @IBOutlet var focusSlider: UISlider!
     
     @IBOutlet var shutterValueLabel: UILabel!
-    @IBOutlet var isoLabel: UILabel!
+    @IBOutlet var shutterSlider: UISlider!
 
+    @IBOutlet var isoLabel: UILabel!
     @IBOutlet var isoSlider: UISlider!
     
-    @IBOutlet var shutterSlider: UISlider!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet var temperatureSlider: UISlider!
+    @IBOutlet var temperatureValueLabel: UILabel!
+    
+    @IBAction func onTemperatureSliderChange(sender: UISlider) {
+        temperatureValue = sender.value
+        temperatureValueLabel.text = String(temperatureValue)
         
-        focusDistance = focusSlider.value
-        isoValue = isoSlider.value
-        isoLabel.text = String(isoValue)
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Sound, .Badge], categories: nil))
-        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        changeTemperatureRaw(sender.value)
+        configureCamera()
     }
     
-    @IBAction func onFocusSlideDrag(sender: UISlider) {
-        focusDistance = sender.value
+    @IBAction func onIsoSliderChange(sender: UISlider) {
+        isoValue = sender.value
+        isoLabel.text = String(isoValue)
         configureCamera()
     }
     
@@ -63,8 +68,24 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         configureCamera()
     }
     
+    @IBAction func onFocusSlideDrag(sender: UISlider) {
+        focusDistance = sender.value
+        configureCamera()
+    }
+    
     @IBAction func onDoPhotoTrigger(sender: AnyObject) {
         captureImage()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        focusDistance = focusSlider.value
+        isoValue = isoSlider.value
+        isoLabel.text = String(isoValue)
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Sound, .Badge], categories: nil))
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,7 +103,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.viewWillDisappear(animated)
         captureSession?.stopRunning()
         do {
-            try audioSession?.removeObserver(self, forKeyPath: "outputVolume")
+            audioSession?.removeObserver(self, forKeyPath: "outputVolume")
             try audioSession?.setActive(false)
         } catch {
             print(error)
@@ -103,6 +124,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
         var input: AVCaptureInput!
+        
+        currentColorGains = captureDevice?.deviceWhiteBalanceGains
         
         setExposureDuration()
         listenVolumeButton()
@@ -148,12 +171,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    @IBAction func onIsoSliderChange(sender: UISlider) {
-        isoValue = sender.value
-        isoLabel.text = String(isoValue)
-        configureCamera()
-    }
-    
     // photo success/fail save
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
         if error == nil {
@@ -187,6 +204,26 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         shutterValueLabel.text = "1/\(Int(1.0 / newSecondsAmount))"
     }
     
+    //Take the actual temperature value
+    func changeTemperatureRaw(temperature: Float) {
+        self.currentColorTemperature = AVCaptureWhiteBalanceTemperatureAndTintValues(temperature: temperature, tint: 0.0)
+            currentColorGains = captureDevice!.deviceWhiteBalanceGainsForTemperatureAndTintValues(self.currentColorTemperature)
+    }
+    
+    // Normalize the gain so it does not exceed
+    func normalizedGains(gains: AVCaptureWhiteBalanceGains) -> AVCaptureWhiteBalanceGains {
+        var g = gains;
+        g.redGain = max(1.0, g.redGain);
+        g.greenGain = max(1.0, g.greenGain);
+        g.blueGain = max(1.0, g.blueGain);
+        
+        g.redGain = min(captureDevice!.maxWhiteBalanceGain, g.redGain);
+        g.greenGain = min(captureDevice!.maxWhiteBalanceGain, g.greenGain);
+        g.blueGain = min(captureDevice!.maxWhiteBalanceGain, g.blueGain);
+        
+        return g;
+    }
+    
     func configureCamera() {
         
         if let device = captureDevice {
@@ -195,7 +232,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 device.focusMode = .Locked
                 device.setFocusModeLockedWithLensPosition(focusDistance, completionHandler: { (time) -> Void in })
                 device.setExposureModeCustomWithDuration(exposureDuration, ISO: isoValue, completionHandler: { (time) -> Void in })
-//                device.setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains(AVCaptureWhiteBalanceGains(redGain: 1,greenGain: 1,blueGain: 1), completionHandler: <#T##((CMTime) -> Void)!##((CMTime) -> Void)!##(CMTime) -> Void#>)
+                device.setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains(normalizedGains(currentColorGains), completionHandler: { (time) -> Void in })
                 device.unlockForConfiguration()
             } catch {
                 print(error)
