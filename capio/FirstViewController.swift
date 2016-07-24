@@ -12,42 +12,42 @@ import Foundation
 
 class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var captureSession: AVCaptureSession?
-    var captureStillImageOut: AVCaptureStillImageOutput?
-    var previewLayer: AVCaptureVideoPreviewLayer?
-    
-    var audioSession: AVAudioSession?
-    
-    var captureDevice : AVCaptureDevice?
-    
-    var exposureDuration: CMTime!
-    var focusDistance: Float = 0
-    var isoValue: Float = 100
-    
-    var temperatureValue: Float!
-    
-    var currentColorTemperature: AVCaptureWhiteBalanceTemperatureAndTintValues!
-    var currentColorGains: AVCaptureWhiteBalanceGains!
-    
-    var flashLightMode: String!
-    
     // Some default settings
-    let EXPOSURE_DURATION_POWER:Float = 4.0 //the exposure slider gain
-    let EXPOSURE_MINIMUM_DURATION:Float64 = 1.0/2000.0
+    let EXPOSURE_DURATION_POWER:            Float       = 4.0 //the exposure slider gain
+    let EXPOSURE_MINIMUM_DURATION:          Float64     = 1.0/2000.0
     
-    @IBOutlet var myCamView: UIView!
-    @IBOutlet var makePhotoButton: UIButton!
+    var captureSession:                     AVCaptureSession?
+    var captureStillImageOut:               AVCaptureStillImageOutput?
+    var previewLayer:                       AVCaptureVideoPreviewLayer?
+    
+    var audioSession:                       AVAudioSession?
+    
+    var captureDevice :                     AVCaptureDevice?
+    
+    var exposureDuration:                   CMTime!
+    var focusDistance:                      Float       = 0
+    var isoValue:                           Float       = 100
+    
+    var temperatureValue:                   Float!
+    
+    var currentColorTemperature:            AVCaptureWhiteBalanceTemperatureAndTintValues!
+    var currentColorGains:                  AVCaptureWhiteBalanceGains!
+    
+    var flashLightMode:                     String!
+    
+    @IBOutlet var myCamView:                UIView!
+    @IBOutlet var makePhotoButton:          UIButton!
 
-    @IBOutlet var focusSlider: UISlider!
+    @IBOutlet var focusSlider:              UISlider!
     
-    @IBOutlet var shutterValueLabel: UILabel!
-    @IBOutlet var shutterSlider: UISlider!
+    @IBOutlet var shutterValueLabel:        UILabel!
+    @IBOutlet var shutterSlider:            UISlider!
 
-    @IBOutlet var isoLabel: UILabel!
-    @IBOutlet var isoSlider: UISlider!
+    @IBOutlet var isoLabel:                 UILabel!
+    @IBOutlet var isoSlider:                UISlider!
     
-    @IBOutlet var temperatureSlider: UISlider!
-    @IBOutlet var temperatureValueLabel: UILabel!
+    @IBOutlet var temperatureSlider:        UISlider!
+    @IBOutlet var temperatureValueLabel:    UILabel!
     
     @IBAction func onTemperatureSliderChange(sender: UISlider) {
         temperatureValue = sender.value
@@ -90,7 +90,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        onDispose()
+        exit(0)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -101,39 +102,44 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewWillDisappear(animated: Bool) {
         // I hope i'm releasing it right...        
         super.viewWillDisappear(animated)
-        captureSession?.stopRunning()
-        do {
-            audioSession?.removeObserver(self, forKeyPath: "outputVolume")
-            try audioSession?.setActive(false)
-        } catch {
-            print(error)
-        }
+        onDispose()
     }
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        shutterValueLabel.text = String(shutterSlider.value)
         
         captureSession = AVCaptureSession()
         // in case you have music plaing in your phone
         // it will not get muted thanks to that
         captureSession?.automaticallyConfiguresApplicationAudioSession = false
+        // todo -> write getter for Preset (device based)
         captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
         
         captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
-        var input: AVCaptureInput!
-        
         currentColorGains = captureDevice?.deviceWhiteBalanceGains
+        
+        setCurrentDefaultCameraSettings()
+        configureCamera()
+        startCaptureSession()
+    }
+    
+    private func setCurrentDefaultCameraSettings() {
+        shutterValueLabel.text = String(shutterSlider.value)
+        isoValue = isoSlider.value
+        temperatureValueLabel.text = String(temperatureSlider.value)
+        changeTemperatureRaw(temperatureSlider.value)
         
         setExposureDuration()
         listenVolumeButton()
-        configureCamera()
+    }
+    
+    private func startCaptureSession() {
+        var input: AVCaptureInput!
         
         do {
             try input = AVCaptureDeviceInput(device: captureDevice!)
-            
         } catch {
             print(error)
         }
@@ -164,15 +170,24 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
                 UIImageWriteToSavedPhotosAlbum(UIImage(data: imageData)!,
                                                self,
-                                               #selector(FirstViewController.image(_:didFinishSavingWithError:contextInfo:)),
-                                               nil
-                )
+                                               #selector(FirstViewController.onImageSaved(_:didFinishSavingWithError:contextInfo:)),
+                                               nil)
             }
         }
     }
     
+    func onDispose() {
+        captureSession?.stopRunning()
+        do {
+            try audioSession?.setActive(false)
+            audioSession?.removeObserver(self, forKeyPath: "outputVolume")
+        } catch {
+            print(error)
+        }
+    }
+    
     // photo success/fail save
-    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+    func onImageSaved(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
         if error == nil {
             
             print("SUCCESSS0000")
@@ -241,7 +256,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func listenVolumeButton(){
-        
         do {
             audioSession = AVAudioSession.sharedInstance()
             // in case you have music plaing in your phone
@@ -250,8 +264,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
             try audioSession!.setActive(true)
             audioSession!.addObserver(self, forKeyPath: "outputVolume",
                                      options: NSKeyValueObservingOptions.New, context: nil)
-            
-
         } catch {
             print(error)
         }
