@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B494BC1E74356A672F0C38E /* Pods_capioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E700FAE66DD075380AB694 /* Pods_capioTests.framework */; };
+		3571FA3147F413E95928F1CE /* Pods_capioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE02DE45CE8EB6D4AEF93DD /* Pods_capioUITests.framework */; };
+		3779378E1D45A33E004C86A4 /* Pods_capio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377937891D45A335004C86A4 /* Pods_capio.framework */; };
+		37D63F791D45A608009CD6D9 /* CameraOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */; };
 		37E25FF91D32DB6D00644207 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E25FF81D32DB6D00644207 /* AppDelegate.swift */; };
 		37E25FFB1D32DB6D00644207 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E25FFA1D32DB6D00644207 /* FirstViewController.swift */; };
 		37E260001D32DB6D00644207 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E25FFE1D32DB6D00644207 /* Main.storyboard */; };
@@ -17,6 +21,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		377937841D45A335004C86A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA0A31724D2F6A10619A5586C3D4AABD;
+			remoteInfo = ElasticTransition;
+		};
+		377937861D45A335004C86A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7EE7BB32BCD415F358934B13C47A8B36;
+			remoteInfo = MotionAnimation;
+		};
+		377937881D45A335004C86A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FE81F189174037C97AA77F6029389E96;
+			remoteInfo = "Pods-capio";
+		};
+		3779378A1D45A335004C86A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53673B60E38DB23435DA83EB9A7B05DD;
+			remoteInfo = "Pods-capioTests";
+		};
+		3779378C1D45A335004C86A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5F5E7A666EFE2B7E38AE07E0A5163D2C;
+			remoteInfo = "Pods-capioUITests";
+		};
 		37E2600C1D32DB6D00644207 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 37E25FED1D32DB6D00644207 /* Project object */;
@@ -34,6 +73,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AE02DE45CE8EB6D4AEF93DD /* Pods_capioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		211DA7C77B9A00C1F55E778B /* Pods-capio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capio/Pods-capio.debug.xcconfig"; sourceTree = "<group>"; };
+		367359E6A01C5AE98BA957BA /* Pods-capioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capioUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capioUITests/Pods-capioUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3779377C1D45A334004C86A4 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraOptionsViewController.swift; sourceTree = "<group>"; };
 		37E25FF51D32DB6D00644207 /* capio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = capio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E25FF81D32DB6D00644207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37E25FFA1D32DB6D00644207 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +91,12 @@
 		37E260161D32DB6D00644207 /* capioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E2601A1D32DB6D00644207 /* capioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capioUITests.swift; sourceTree = "<group>"; };
 		37E2601C1D32DB6D00644207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41E700FAE66DD075380AB694 /* Pods_capioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B345EA4769864ACC8156A6A /* Pods-capio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capio.release.xcconfig"; path = "Pods/Target Support Files/Pods-capio/Pods-capio.release.xcconfig"; sourceTree = "<group>"; };
+		85D4F59939712C5CE0A9A413 /* Pods-capioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capioTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-capioTests/Pods-capioTests.release.xcconfig"; sourceTree = "<group>"; };
+		B46F4BDF0C66ED3CD55E08D9 /* Pods-capioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capioUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-capioUITests/Pods-capioUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CA5D0FBD82BC2D1AA560F09C /* Pods-capioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capioTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capioTests/Pods-capioTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D4DF1F28D4BC41D0A2EA22AC /* Pods_capio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3779378E1D45A33E004C86A4 /* Pods_capio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B494BC1E74356A672F0C38E /* Pods_capioTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +120,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3571FA3147F413E95928F1CE /* Pods_capioUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E59078E814FD0B1965A07B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				211DA7C77B9A00C1F55E778B /* Pods-capio.debug.xcconfig */,
+				5B345EA4769864ACC8156A6A /* Pods-capio.release.xcconfig */,
+				CA5D0FBD82BC2D1AA560F09C /* Pods-capioTests.debug.xcconfig */,
+				85D4F59939712C5CE0A9A413 /* Pods-capioTests.release.xcconfig */,
+				367359E6A01C5AE98BA957BA /* Pods-capioUITests.debug.xcconfig */,
+				B46F4BDF0C66ED3CD55E08D9 /* Pods-capioUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3779377D1D45A334004C86A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				377937851D45A335004C86A4 /* ElasticTransition.framework */,
+				377937871D45A335004C86A4 /* MotionAnimation.framework */,
+				377937891D45A335004C86A4 /* Pods_capio.framework */,
+				3779378B1D45A335004C86A4 /* Pods_capioTests.framework */,
+				3779378D1D45A335004C86A4 /* Pods_capioUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		37E25FEC1D32DB6D00644207 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +159,8 @@
 				37E2600E1D32DB6D00644207 /* capioTests */,
 				37E260191D32DB6D00644207 /* capioUITests */,
 				37E25FF61D32DB6D00644207 /* Products */,
+				1E59078E814FD0B1965A07B6 /* Pods */,
+				A4C148EFB8ACB14FCE448170 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +183,7 @@
 				37E260011D32DB6D00644207 /* Assets.xcassets */,
 				37E260031D32DB6D00644207 /* LaunchScreen.storyboard */,
 				37E260061D32DB6D00644207 /* Info.plist */,
+				37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */,
 			);
 			path = capio;
 			sourceTree = "<group>";
@@ -125,6 +206,17 @@
 			path = capioUITests;
 			sourceTree = "<group>";
 		};
+		A4C148EFB8ACB14FCE448170 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3779377C1D45A334004C86A4 /* Pods.xcodeproj */,
+				D4DF1F28D4BC41D0A2EA22AC /* Pods_capio.framework */,
+				41E700FAE66DD075380AB694 /* Pods_capioTests.framework */,
+				0AE02DE45CE8EB6D4AEF93DD /* Pods_capioUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37E2601F1D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capio" */;
 			buildPhases = (
+				37839832AD65999DAA469420 /* [CP] Check Pods Manifest.lock */,
 				37E25FF11D32DB6D00644207 /* Sources */,
 				37E25FF21D32DB6D00644207 /* Frameworks */,
 				37E25FF31D32DB6D00644207 /* Resources */,
+				9A219E4D1515A70968F6852D /* [CP] Embed Pods Frameworks */,
+				17495108D0021D718618D135 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +244,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37E260221D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capioTests" */;
 			buildPhases = (
+				5BBD286AC817BF2690CCB340 /* [CP] Check Pods Manifest.lock */,
 				37E260071D32DB6D00644207 /* Sources */,
 				37E260081D32DB6D00644207 /* Frameworks */,
 				37E260091D32DB6D00644207 /* Resources */,
+				5B93830BF9FAD84497C56FA7 /* [CP] Embed Pods Frameworks */,
+				C7E44A153E5FDB7F711506C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +265,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37E260251D32DB6D00644207 /* Build configuration list for PBXNativeTarget "capioUITests" */;
 			buildPhases = (
+				C0446B3B61D9FAE86F2D4746 /* [CP] Check Pods Manifest.lock */,
 				37E260121D32DB6D00644207 /* Sources */,
 				37E260131D32DB6D00644207 /* Frameworks */,
 				37E260141D32DB6D00644207 /* Resources */,
+				D0C62B961C7BE9C2BE08EC5C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -216,6 +316,12 @@
 			mainGroup = 37E25FEC1D32DB6D00644207;
 			productRefGroup = 37E25FF61D32DB6D00644207 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3779377D1D45A334004C86A4 /* Products */;
+					ProjectRef = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				37E25FF41D32DB6D00644207 /* capio */,
@@ -224,6 +330,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		377937851D45A335004C86A4 /* ElasticTransition.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ElasticTransition.framework;
+			remoteRef = 377937841D45A335004C86A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		377937871D45A335004C86A4 /* MotionAnimation.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MotionAnimation.framework;
+			remoteRef = 377937861D45A335004C86A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		377937891D45A335004C86A4 /* Pods_capio.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_capio.framework;
+			remoteRef = 377937881D45A335004C86A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3779378B1D45A335004C86A4 /* Pods_capioTests.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_capioTests.framework;
+			remoteRef = 3779378A1D45A335004C86A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3779378D1D45A335004C86A4 /* Pods_capioUITests.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_capioUITests.framework;
+			remoteRef = 3779378C1D45A335004C86A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		37E25FF31D32DB6D00644207 /* Resources */ = {
@@ -252,11 +396,135 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		17495108D0021D718618D135 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-capio/Pods-capio-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37839832AD65999DAA469420 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5B93830BF9FAD84497C56FA7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-capioTests/Pods-capioTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BBD286AC817BF2690CCB340 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9A219E4D1515A70968F6852D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-capio/Pods-capio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0446B3B61D9FAE86F2D4746 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C7E44A153E5FDB7F711506C1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-capioTests/Pods-capioTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0C62B961C7BE9C2BE08EC5C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-capioUITests/Pods-capioUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		37E25FF11D32DB6D00644207 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D63F791D45A608009CD6D9 /* CameraOptionsViewController.swift in Sources */,
 				37E25FF91D32DB6D00644207 /* AppDelegate.swift in Sources */,
 				37E25FFB1D32DB6D00644207 /* FirstViewController.swift in Sources */,
 			);
@@ -400,6 +668,7 @@
 		};
 		37E260201D32DB6D00644207 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 211DA7C77B9A00C1F55E778B /* Pods-capio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -414,6 +683,7 @@
 		};
 		37E260211D32DB6D00644207 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B345EA4769864ACC8156A6A /* Pods-capio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -428,6 +698,7 @@
 		};
 		37E260231D32DB6D00644207 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA5D0FBD82BC2D1AA560F09C /* Pods-capioTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = capioTests/Info.plist;
@@ -440,6 +711,7 @@
 		};
 		37E260241D32DB6D00644207 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85D4F59939712C5CE0A9A413 /* Pods-capioTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = capioTests/Info.plist;
@@ -452,6 +724,7 @@
 		};
 		37E260261D32DB6D00644207 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 367359E6A01C5AE98BA957BA /* Pods-capioUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = capioUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -463,6 +736,7 @@
 		};
 		37E260271D32DB6D00644207 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B46F4BDF0C66ED3CD55E08D9 /* Pods-capioUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = capioUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

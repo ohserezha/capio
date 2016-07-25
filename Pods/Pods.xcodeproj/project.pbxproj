@@ -1,0 +1,1047 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09AF5AEA04C654A8EC2929B20A1D27AF /* MotionAnimation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 46C4D632680946C03E0CF6E2D7D4C8CC /* MotionAnimation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0EA02590912E35039204E45A2F2C3535 /* Pods-capioUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC48C6B572BD4004F5C0CE9A9FA4B358 /* Pods-capioUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1557B55B5B4DE1DCC3BD030629CC4499 /* NSObject+MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C51C8A39CBBF9E51D4BAF6778504E /* NSObject+MotionAnimation.swift */; };
+		1B4E20CBCF50DEF66582CC2B8E466304 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654CF96DEAF7A6271D5BBD622ACAD2C /* Types.swift */; };
+		2A38DB81E4A77682118B887294648C89 /* ElasticTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA732CE2AB69262D04853868374819 /* ElasticTransitionPresentationController.swift */; };
+		3718469DFA52368BDA20B798C4EF4060 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993FC950E66FF60B510C412131742C32 /* UIKit.framework */; };
+		43BD2E8DD622E707B11370A1A0ED2D52 /* ValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F285E1F4F5F726ED66ACD2366078F /* ValueAnimation.swift */; };
+		469D5D060C8C0EED1D7EA190A6570DFD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2482A7AA88A7134EFE3ED9C2A7D1 /* Util.swift */; };
+		644B559048221C3BFFD1EED7008D8F11 /* SpringValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC027F6A929246CE752229CDF019D3B9 /* SpringValueAnimation.swift */; };
+		66940CEBB0914DE9865A6C7677B71FD4 /* EdgePanTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D0DAA4581C62F6383B23BA2341512A /* EdgePanTransition.swift */; };
+		6C872C4B28D30BFA28F1644797D6EDA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993FC950E66FF60B510C412131742C32 /* UIKit.framework */; };
+		744504D05A13334DA916000358575C29 /* MotionAnimationPropertyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F45BA5AD36551EC5ECFC94B6D7C003 /* MotionAnimationPropertyState.swift */; };
+		7A55B81A49C5937F103A604FF1F1C964 /* ElasticTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4360486E33DCBEAB86E183A79A1BBD55 /* ElasticTransition.swift */; };
+		7CFA2690286EAABBDD2B2B0B8AE73BF2 /* Pods-capio-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 281609938500D51853AC640CD6859BFF /* Pods-capio-dummy.m */; };
+		7FD20AF108864E9FF774CF834B067710 /* ElasticShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687C33D7B94BEA0D2E07909693ED9020 /* ElasticShapeLayer.swift */; };
+		920A52DACB0AA8F4EEF1FBCA237D65B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
+		922D3AD0FC8FF5F4DDC1A8D6DC387BBC /* Pods-capioUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A7BEEDB6F182B4126C55669974C46 /* Pods-capioUITests-dummy.m */; };
+		9D38ED01E1BE16627EC42CD9186ADD74 /* MotionAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32399A8D44DBED056F34A76533E4645 /* MotionAnimation.framework */; };
+		A9413AA9146105E2FBC18DB7AA077C4B /* Pods-capio-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EF16B2845FB56DB14C405A66CA77C336 /* Pods-capio-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE0A5A06F3BF442C7C7C3689FE4B0629 /* Pods-capioTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8897D7BF591FC3CFE92164AA99874501 /* Pods-capioTests-dummy.m */; };
+		B0A8D5CCA62DC77128E6B7236A8323CB /* Pods-capioTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA3AE8CE8EB7ABCDA9E951619E8559F0 /* Pods-capioTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3884B9F08789D46EAF72458B4F6F906 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
+		C5CEB3ABC02F82C6084D1334E32F8BF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
+		E10ABADBF3FFEAA35EE2FA5EA6D570F4 /* MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F2E4372B3D9C0C7A3F8579334CF49 /* MotionAnimation.swift */; };
+		E1CA1C91B03CB049A040DAB794CA01DD /* ElasticTransition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21927FDBC04D6FE922058EB2F4ED9361 /* ElasticTransition-dummy.m */; };
+		E661BB90B1697EE072617C2B2064EDCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
+		EDFD39046E3B6B39D995C32812B7F966 /* MotionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99662A4BAF096864B15E0B638941B92E /* MotionAnimator.swift */; };
+		F28EEB61C5CBC389B687A49B8B988BBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
+		F43C8D8C7E459B86B3C563C1A2BDC160 /* MotionAnimation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C0609CF3918775BB241A4A318485251D /* MotionAnimation-dummy.m */; };
+		FF547FC4ECE554ECC17CFDDCE824E230 /* ElasticTransition-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FB60CA2238381A3DB503C10D9665333 /* ElasticTransition-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		194702CCD1B3A769353EFABF1BD7ED6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F28D60B0CC50AC866DDCE4811140455A;
+			remoteInfo = MotionAnimation;
+		};
+		3B1C9B7BD7850F2BCC22DC4ADF7C3460 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F28D60B0CC50AC866DDCE4811140455A;
+			remoteInfo = MotionAnimation;
+		};
+		AB94EC70EE9D7B7D008D42AA7DC57F86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CAAB4AEB098D0E3D8522D5B093FB6E3;
+			remoteInfo = ElasticTransition;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D20E6F969D1AF5598B095BEF24712D3 /* Pods-capioTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-capioTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0F57FD2404DB4AA3664E16A5180603BD /* Pods-capioTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-capioTests.modulemap"; sourceTree = "<group>"; };
+		12AC293644F859F18464DB93592F58B9 /* Pods-capioTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capioTests-frameworks.sh"; sourceTree = "<group>"; };
+		12B8B8C7957131012FCD4F866451B16C /* Pods-capioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capioUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		12F45BA5AD36551EC5ECFC94B6D7C003 /* MotionAnimationPropertyState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimationPropertyState.swift; path = MotionAnimation/MotionAnimationPropertyState.swift; sourceTree = "<group>"; };
+		13FC0FAA0FCEB705F2785C2D196E7318 /* Pods-capio-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capio-frameworks.sh"; sourceTree = "<group>"; };
+		197F2E4372B3D9C0C7A3F8579334CF49 /* MotionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimation.swift; path = MotionAnimation/MotionAnimation.swift; sourceTree = "<group>"; };
+		1F6A2482A7AA88A7134EFE3ED9C2A7D1 /* Util.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Util.swift; path = ElasticTransition/Util.swift; sourceTree = "<group>"; };
+		1F934409B9AFF74CE5A2A06806779998 /* Pods-capioTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capioTests-resources.sh"; sourceTree = "<group>"; };
+		21927FDBC04D6FE922058EB2F4ED9361 /* ElasticTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ElasticTransition-dummy.m"; sourceTree = "<group>"; };
+		2277A073489BC1DC7A22497114D97B67 /* Pods-capioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capioUITests.release.xcconfig"; sourceTree = "<group>"; };
+		27A50ADC6981E1CC283E31F631DE55F3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		281609938500D51853AC640CD6859BFF /* Pods-capio-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-capio-dummy.m"; sourceTree = "<group>"; };
+		298EE7E417A8A0B3D7F4DB8544CCD858 /* ElasticTransition.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ElasticTransition.xcconfig; sourceTree = "<group>"; };
+		4334020B61E16DA8C751BCF283E30EE9 /* ElasticTransition.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ElasticTransition.modulemap; sourceTree = "<group>"; };
+		4360486E33DCBEAB86E183A79A1BBD55 /* ElasticTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticTransition.swift; path = ElasticTransition/ElasticTransition.swift; sourceTree = "<group>"; };
+		458B828BA63A9B1CD73F2A04A5719A64 /* Pods-capioUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capioUITests-resources.sh"; sourceTree = "<group>"; };
+		46C4D632680946C03E0CF6E2D7D4C8CC /* MotionAnimation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MotionAnimation-umbrella.h"; sourceTree = "<group>"; };
+		4C3A7BEEDB6F182B4126C55669974C46 /* Pods-capioUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-capioUITests-dummy.m"; sourceTree = "<group>"; };
+		4D66203D5C59837121CADDF1D1E701E9 /* Pods-capioUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-capioUITests.modulemap"; sourceTree = "<group>"; };
+		4D7E51BA4BC60B3DEC683614260411D8 /* Pods-capioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capioTests.release.xcconfig"; sourceTree = "<group>"; };
+		4FB60CA2238381A3DB503C10D9665333 /* ElasticTransition-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ElasticTransition-umbrella.h"; sourceTree = "<group>"; };
+		53673B60E38DB23435DA83EB9A7B05DD /* Pods_capioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56CF152E88882936BD4BCDD2E56FC02C /* MotionAnimation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MotionAnimation.modulemap; sourceTree = "<group>"; };
+		58CD9CB3914068CC7E39EF49B05D3F5B /* Pods-capio-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-capio-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5F5E7A666EFE2B7E38AE07E0A5163D2C /* Pods_capioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6043CDBA0AAE48A453D9B0FA1A885A3A /* Pods-capioUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capioUITests-frameworks.sh"; sourceTree = "<group>"; };
+		687C33D7B94BEA0D2E07909693ED9020 /* ElasticShapeLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticShapeLayer.swift; path = ElasticTransition/ElasticShapeLayer.swift; sourceTree = "<group>"; };
+		68F7E1E4E4D6334985B1BC2D2AA3186F /* Pods-capio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capio.debug.xcconfig"; sourceTree = "<group>"; };
+		7205AD88358B05DEFF43EFB3B99E82B7 /* Pods-capio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capio.release.xcconfig"; sourceTree = "<group>"; };
+		75D0DAA4581C62F6383B23BA2341512A /* EdgePanTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EdgePanTransition.swift; path = ElasticTransition/EdgePanTransition.swift; sourceTree = "<group>"; };
+		7654CF96DEAF7A6271D5BBD622ACAD2C /* Types.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Types.swift; path = MotionAnimation/Types.swift; sourceTree = "<group>"; };
+		76718552C76DDEC44016610BD8F56F1A /* Pods-capio.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-capio.modulemap"; sourceTree = "<group>"; };
+		77FECCA98DB668D48E586993A51C7366 /* MotionAnimation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MotionAnimation.xcconfig; sourceTree = "<group>"; };
+		7EE7BB32BCD415F358934B13C47A8B36 /* MotionAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81F356CFB7619908215967ECE851E184 /* Pods-capio-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capio-resources.sh"; sourceTree = "<group>"; };
+		861CCDDCB33FD327C0B0B91F9EFA5096 /* Pods-capioUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-capioUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8897D7BF591FC3CFE92164AA99874501 /* Pods-capioTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-capioTests-dummy.m"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		993FC950E66FF60B510C412131742C32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		99662A4BAF096864B15E0B638941B92E /* MotionAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimator.swift; path = MotionAnimation/MotionAnimator.swift; sourceTree = "<group>"; };
+		A491DD753887844C12D008696D018024 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC027F6A929246CE752229CDF019D3B9 /* SpringValueAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringValueAnimation.swift; path = MotionAnimation/SpringValueAnimation.swift; sourceTree = "<group>"; };
+		B32399A8D44DBED056F34A76533E4645 /* MotionAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B53F285E1F4F5F726ED66ACD2366078F /* ValueAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValueAnimation.swift; path = MotionAnimation/ValueAnimation.swift; sourceTree = "<group>"; };
+		C0609CF3918775BB241A4A318485251D /* MotionAnimation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MotionAnimation-dummy.m"; sourceTree = "<group>"; };
+		C0E9C4C8192D902DAC286737A3BB4B0C /* Pods-capioTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-capioTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		C70C413E0AE249CAA8C2ECD43400B0DE /* ElasticTransition-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ElasticTransition-prefix.pch"; sourceTree = "<group>"; };
+		CA3AE8CE8EB7ABCDA9E951619E8559F0 /* Pods-capioTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-capioTests-umbrella.h"; sourceTree = "<group>"; };
+		CBA371EAE61D2CFBDD030F36D42A3DBD /* MotionAnimation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MotionAnimation-prefix.pch"; sourceTree = "<group>"; };
+		D1BC5CE01985DCB4A946E16E187CD4B4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D95585113974AC0C533601B2745F577C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA0A31724D2F6A10619A5586C3D4AABD /* ElasticTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ElasticTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E11C51C8A39CBBF9E51D4BAF6778504E /* NSObject+MotionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+MotionAnimation.swift"; path = "MotionAnimation/NSObject+MotionAnimation.swift"; sourceTree = "<group>"; };
+		EAA3D9EC7D71E7B5EB725BE3609275F7 /* Pods-capioUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-capioUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		EF16B2845FB56DB14C405A66CA77C336 /* Pods-capio-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-capio-umbrella.h"; sourceTree = "<group>"; };
+		F076DAEF485983581058108C95A7A0DC /* Pods-capioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capioTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F48796041906E8967B50C8FB3D75D90B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5AA732CE2AB69262D04853868374819 /* ElasticTransitionPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticTransitionPresentationController.swift; path = ElasticTransition/ElasticTransitionPresentationController.swift; sourceTree = "<group>"; };
+		FA19B8CDBE59B60CA45AE0FF582D6FDC /* Pods-capio-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-capio-acknowledgements.plist"; sourceTree = "<group>"; };
+		FC48C6B572BD4004F5C0CE9A9FA4B358 /* Pods-capioUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-capioUITests-umbrella.h"; sourceTree = "<group>"; };
+		FE81F189174037C97AA77F6029389E96 /* Pods_capio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18FA0B3120409F0DB43EE2B91E393612 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3884B9F08789D46EAF72458B4F6F906 /* Foundation.framework in Frameworks */,
+				6C872C4B28D30BFA28F1644797D6EDA1 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4221A80F0439CE2C54E12B563672741B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28EEB61C5CBC389B687A49B8B988BBD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DFAC989B3CABFD8DBD9ABB27E9C8D89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				920A52DACB0AA8F4EEF1FBCA237D65B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F9C9F6651AD9E47C6953F5BEDC70FF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5CEB3ABC02F82C6084D1334E32F8BF3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8FFCF0275FD8E0D926E56427E17B4A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E661BB90B1697EE072617C2B2064EDCF /* Foundation.framework in Frameworks */,
+				9D38ED01E1BE16627EC42CD9186ADD74 /* MotionAnimation.framework in Frameworks */,
+				3718469DFA52368BDA20B798C4EF4060 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0CC4866F03BD8CEDBAF93FF70BDB32DB /* ElasticTransition */ = {
+			isa = PBXGroup;
+			children = (
+				75D0DAA4581C62F6383B23BA2341512A /* EdgePanTransition.swift */,
+				687C33D7B94BEA0D2E07909693ED9020 /* ElasticShapeLayer.swift */,
+				4360486E33DCBEAB86E183A79A1BBD55 /* ElasticTransition.swift */,
+				F5AA732CE2AB69262D04853868374819 /* ElasticTransitionPresentationController.swift */,
+				1F6A2482A7AA88A7134EFE3ED9C2A7D1 /* Util.swift */,
+				7B1DF619CFAE3BA6C40BE541FE8D93B4 /* Support Files */,
+			);
+			path = ElasticTransition;
+			sourceTree = "<group>";
+		};
+		23772473873676E00A9CCF7B87DF4C7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0CC4866F03BD8CEDBAF93FF70BDB32DB /* ElasticTransition */,
+				6230FD6ED8D5D597842E02AFE9CF06E7 /* MotionAnimation */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		35659F012A08E67C7EE5B005ACB13A8F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F48796041906E8967B50C8FB3D75D90B /* Info.plist */,
+				56CF152E88882936BD4BCDD2E56FC02C /* MotionAnimation.modulemap */,
+				77FECCA98DB668D48E586993A51C7366 /* MotionAnimation.xcconfig */,
+				C0609CF3918775BB241A4A318485251D /* MotionAnimation-dummy.m */,
+				CBA371EAE61D2CFBDD030F36D42A3DBD /* MotionAnimation-prefix.pch */,
+				46C4D632680946C03E0CF6E2D7D4C8CC /* MotionAnimation-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MotionAnimation";
+			sourceTree = "<group>";
+		};
+		523C65F6083E1060C84205073AF362DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA0A31724D2F6A10619A5586C3D4AABD /* ElasticTransition.framework */,
+				7EE7BB32BCD415F358934B13C47A8B36 /* MotionAnimation.framework */,
+				FE81F189174037C97AA77F6029389E96 /* Pods_capio.framework */,
+				53673B60E38DB23435DA83EB9A7B05DD /* Pods_capioTests.framework */,
+				5F5E7A666EFE2B7E38AE07E0A5163D2C /* Pods_capioUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6230FD6ED8D5D597842E02AFE9CF06E7 /* MotionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				197F2E4372B3D9C0C7A3F8579334CF49 /* MotionAnimation.swift */,
+				12F45BA5AD36551EC5ECFC94B6D7C003 /* MotionAnimationPropertyState.swift */,
+				99662A4BAF096864B15E0B638941B92E /* MotionAnimator.swift */,
+				E11C51C8A39CBBF9E51D4BAF6778504E /* NSObject+MotionAnimation.swift */,
+				AC027F6A929246CE752229CDF019D3B9 /* SpringValueAnimation.swift */,
+				7654CF96DEAF7A6271D5BBD622ACAD2C /* Types.swift */,
+				B53F285E1F4F5F726ED66ACD2366078F /* ValueAnimation.swift */,
+				35659F012A08E67C7EE5B005ACB13A8F /* Support Files */,
+			);
+			path = MotionAnimation;
+			sourceTree = "<group>";
+		};
+		7A7B088A771787914A2FA372A5AAAD99 /* Pods-capio */ = {
+			isa = PBXGroup;
+			children = (
+				D1BC5CE01985DCB4A946E16E187CD4B4 /* Info.plist */,
+				76718552C76DDEC44016610BD8F56F1A /* Pods-capio.modulemap */,
+				58CD9CB3914068CC7E39EF49B05D3F5B /* Pods-capio-acknowledgements.markdown */,
+				FA19B8CDBE59B60CA45AE0FF582D6FDC /* Pods-capio-acknowledgements.plist */,
+				281609938500D51853AC640CD6859BFF /* Pods-capio-dummy.m */,
+				13FC0FAA0FCEB705F2785C2D196E7318 /* Pods-capio-frameworks.sh */,
+				81F356CFB7619908215967ECE851E184 /* Pods-capio-resources.sh */,
+				EF16B2845FB56DB14C405A66CA77C336 /* Pods-capio-umbrella.h */,
+				68F7E1E4E4D6334985B1BC2D2AA3186F /* Pods-capio.debug.xcconfig */,
+				7205AD88358B05DEFF43EFB3B99E82B7 /* Pods-capio.release.xcconfig */,
+			);
+			name = "Pods-capio";
+			path = "Target Support Files/Pods-capio";
+			sourceTree = "<group>";
+		};
+		7B1DF619CFAE3BA6C40BE541FE8D93B4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4334020B61E16DA8C751BCF283E30EE9 /* ElasticTransition.modulemap */,
+				298EE7E417A8A0B3D7F4DB8544CCD858 /* ElasticTransition.xcconfig */,
+				21927FDBC04D6FE922058EB2F4ED9361 /* ElasticTransition-dummy.m */,
+				C70C413E0AE249CAA8C2ECD43400B0DE /* ElasticTransition-prefix.pch */,
+				4FB60CA2238381A3DB503C10D9665333 /* ElasticTransition-umbrella.h */,
+				D95585113974AC0C533601B2745F577C /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ElasticTransition";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				CB7AE1D83928E889E062A217743ABE6E /* Frameworks */,
+				23772473873676E00A9CCF7B87DF4C7A /* Pods */,
+				523C65F6083E1060C84205073AF362DC /* Products */,
+				DDFD7BA5FF05B386D7912186F8420D93 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		CB7AE1D83928E889E062A217743ABE6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B32399A8D44DBED056F34A76533E4645 /* MotionAnimation.framework */,
+				F42D5A737AD37AAAB3BD875922A3F6CB /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDFD7BA5FF05B386D7912186F8420D93 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A7B088A771787914A2FA372A5AAAD99 /* Pods-capio */,
+				F12F6CD291E282C4E61897282E8DCBB3 /* Pods-capioTests */,
+				E846878B9936A9962CF4B514C1F28466 /* Pods-capioUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E846878B9936A9962CF4B514C1F28466 /* Pods-capioUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A491DD753887844C12D008696D018024 /* Info.plist */,
+				4D66203D5C59837121CADDF1D1E701E9 /* Pods-capioUITests.modulemap */,
+				861CCDDCB33FD327C0B0B91F9EFA5096 /* Pods-capioUITests-acknowledgements.markdown */,
+				EAA3D9EC7D71E7B5EB725BE3609275F7 /* Pods-capioUITests-acknowledgements.plist */,
+				4C3A7BEEDB6F182B4126C55669974C46 /* Pods-capioUITests-dummy.m */,
+				6043CDBA0AAE48A453D9B0FA1A885A3A /* Pods-capioUITests-frameworks.sh */,
+				458B828BA63A9B1CD73F2A04A5719A64 /* Pods-capioUITests-resources.sh */,
+				FC48C6B572BD4004F5C0CE9A9FA4B358 /* Pods-capioUITests-umbrella.h */,
+				12B8B8C7957131012FCD4F866451B16C /* Pods-capioUITests.debug.xcconfig */,
+				2277A073489BC1DC7A22497114D97B67 /* Pods-capioUITests.release.xcconfig */,
+			);
+			name = "Pods-capioUITests";
+			path = "Target Support Files/Pods-capioUITests";
+			sourceTree = "<group>";
+		};
+		F12F6CD291E282C4E61897282E8DCBB3 /* Pods-capioTests */ = {
+			isa = PBXGroup;
+			children = (
+				27A50ADC6981E1CC283E31F631DE55F3 /* Info.plist */,
+				0F57FD2404DB4AA3664E16A5180603BD /* Pods-capioTests.modulemap */,
+				0D20E6F969D1AF5598B095BEF24712D3 /* Pods-capioTests-acknowledgements.markdown */,
+				C0E9C4C8192D902DAC286737A3BB4B0C /* Pods-capioTests-acknowledgements.plist */,
+				8897D7BF591FC3CFE92164AA99874501 /* Pods-capioTests-dummy.m */,
+				12AC293644F859F18464DB93592F58B9 /* Pods-capioTests-frameworks.sh */,
+				1F934409B9AFF74CE5A2A06806779998 /* Pods-capioTests-resources.sh */,
+				CA3AE8CE8EB7ABCDA9E951619E8559F0 /* Pods-capioTests-umbrella.h */,
+				F076DAEF485983581058108C95A7A0DC /* Pods-capioTests.debug.xcconfig */,
+				4D7E51BA4BC60B3DEC683614260411D8 /* Pods-capioTests.release.xcconfig */,
+			);
+			name = "Pods-capioTests";
+			path = "Target Support Files/Pods-capioTests";
+			sourceTree = "<group>";
+		};
+		F42D5A737AD37AAAB3BD875922A3F6CB /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */,
+				993FC950E66FF60B510C412131742C32 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8AF0C1DE2923F4B67556D88B0DD8569F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF547FC4ECE554ECC17CFDDCE824E230 /* ElasticTransition-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A89878C7AEFE84E27331FDCBB7EAE4E6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EA02590912E35039204E45A2F2C3535 /* Pods-capioUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF30FDA350E75B7076F48746C67DC89C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9413AA9146105E2FBC18DB7AA077C4B /* Pods-capio-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A42EDD8FF8A63E42991BBCCA4441F7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09AF5AEA04C654A8EC2929B20A1D27AF /* MotionAnimation-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1D99815FBDD2907B13D9BE0236BD32F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0A8D5CCA62DC77128E6B7236A8323CB /* Pods-capioTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1DE2619A1A9D72AFD08DF32464CA306B /* Pods-capio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E63D9B4E487EC29CD40BB96CBEADFBA /* Build configuration list for PBXNativeTarget "Pods-capio" */;
+			buildPhases = (
+				9E839E576F98A70E7C74A6D7D616F89A /* Sources */,
+				9F9C9F6651AD9E47C6953F5BEDC70FF3 /* Frameworks */,
+				EF30FDA350E75B7076F48746C67DC89C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D15709D7E6C3D6C64A152061AD3FA3FD /* PBXTargetDependency */,
+				D1A80AAC8F189597F2600369AC33EA58 /* PBXTargetDependency */,
+			);
+			name = "Pods-capio";
+			productName = "Pods-capio";
+			productReference = FE81F189174037C97AA77F6029389E96 /* Pods_capio.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7CAAB4AEB098D0E3D8522D5B093FB6E3 /* ElasticTransition */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 350D8F83058C7F68C4A2A0E27AE72276 /* Build configuration list for PBXNativeTarget "ElasticTransition" */;
+			buildPhases = (
+				DEA1E3CE750D12CFF360DF98279C224B /* Sources */,
+				F8FFCF0275FD8E0D926E56427E17B4A3 /* Frameworks */,
+				8AF0C1DE2923F4B67556D88B0DD8569F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BB9418876426761F11F50DD8AD004E8 /* PBXTargetDependency */,
+			);
+			name = ElasticTransition;
+			productName = ElasticTransition;
+			productReference = DA0A31724D2F6A10619A5586C3D4AABD /* ElasticTransition.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AEC7CBCA47744C4DF5F94B412834136D /* Pods-capioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 310B9FD226970938885D10751F2677D1 /* Build configuration list for PBXNativeTarget "Pods-capioUITests" */;
+			buildPhases = (
+				F922CAF37AEB19AD138910731E80FB89 /* Sources */,
+				7DFAC989B3CABFD8DBD9ABB27E9C8D89 /* Frameworks */,
+				A89878C7AEFE84E27331FDCBB7EAE4E6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-capioUITests";
+			productName = "Pods-capioUITests";
+			productReference = 5F5E7A666EFE2B7E38AE07E0A5163D2C /* Pods_capioUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D2D8648D30ACCE62039F35CDFAAFDD85 /* Pods-capioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD912D46E2EB8935BE407F6D43B806F1 /* Build configuration list for PBXNativeTarget "Pods-capioTests" */;
+			buildPhases = (
+				7E4E8192C764DF77428E4C93A70E9128 /* Sources */,
+				4221A80F0439CE2C54E12B563672741B /* Frameworks */,
+				F1D99815FBDD2907B13D9BE0236BD32F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-capioTests";
+			productName = "Pods-capioTests";
+			productReference = 53673B60E38DB23435DA83EB9A7B05DD /* Pods_capioTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F28D60B0CC50AC866DDCE4811140455A /* MotionAnimation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 218DB0376886824C90AC73FBEA0FD3D9 /* Build configuration list for PBXNativeTarget "MotionAnimation" */;
+			buildPhases = (
+				B7C779B750F239FD00BFEFCE91A03AF3 /* Sources */,
+				18FA0B3120409F0DB43EE2B91E393612 /* Frameworks */,
+				F1A42EDD8FF8A63E42991BBCCA4441F7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MotionAnimation;
+			productName = MotionAnimation;
+			productReference = 7EE7BB32BCD415F358934B13C47A8B36 /* MotionAnimation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 523C65F6083E1060C84205073AF362DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CAAB4AEB098D0E3D8522D5B093FB6E3 /* ElasticTransition */,
+				F28D60B0CC50AC866DDCE4811140455A /* MotionAnimation */,
+				1DE2619A1A9D72AFD08DF32464CA306B /* Pods-capio */,
+				D2D8648D30ACCE62039F35CDFAAFDD85 /* Pods-capioTests */,
+				AEC7CBCA47744C4DF5F94B412834136D /* Pods-capioUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7E4E8192C764DF77428E4C93A70E9128 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE0A5A06F3BF442C7C7C3689FE4B0629 /* Pods-capioTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E839E576F98A70E7C74A6D7D616F89A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CFA2690286EAABBDD2B2B0B8AE73BF2 /* Pods-capio-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7C779B750F239FD00BFEFCE91A03AF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F43C8D8C7E459B86B3C563C1A2BDC160 /* MotionAnimation-dummy.m in Sources */,
+				E10ABADBF3FFEAA35EE2FA5EA6D570F4 /* MotionAnimation.swift in Sources */,
+				744504D05A13334DA916000358575C29 /* MotionAnimationPropertyState.swift in Sources */,
+				EDFD39046E3B6B39D995C32812B7F966 /* MotionAnimator.swift in Sources */,
+				1557B55B5B4DE1DCC3BD030629CC4499 /* NSObject+MotionAnimation.swift in Sources */,
+				644B559048221C3BFFD1EED7008D8F11 /* SpringValueAnimation.swift in Sources */,
+				1B4E20CBCF50DEF66582CC2B8E466304 /* Types.swift in Sources */,
+				43BD2E8DD622E707B11370A1A0ED2D52 /* ValueAnimation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEA1E3CE750D12CFF360DF98279C224B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66940CEBB0914DE9865A6C7677B71FD4 /* EdgePanTransition.swift in Sources */,
+				7FD20AF108864E9FF774CF834B067710 /* ElasticShapeLayer.swift in Sources */,
+				E1CA1C91B03CB049A040DAB794CA01DD /* ElasticTransition-dummy.m in Sources */,
+				7A55B81A49C5937F103A604FF1F1C964 /* ElasticTransition.swift in Sources */,
+				2A38DB81E4A77682118B887294648C89 /* ElasticTransitionPresentationController.swift in Sources */,
+				469D5D060C8C0EED1D7EA190A6570DFD /* Util.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F922CAF37AEB19AD138910731E80FB89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				922D3AD0FC8FF5F4DDC1A8D6DC387BBC /* Pods-capioUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BB9418876426761F11F50DD8AD004E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MotionAnimation;
+			target = F28D60B0CC50AC866DDCE4811140455A /* MotionAnimation */;
+			targetProxy = 194702CCD1B3A769353EFABF1BD7ED6C /* PBXContainerItemProxy */;
+		};
+		D15709D7E6C3D6C64A152061AD3FA3FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ElasticTransition;
+			target = 7CAAB4AEB098D0E3D8522D5B093FB6E3 /* ElasticTransition */;
+			targetProxy = AB94EC70EE9D7B7D008D42AA7DC57F86 /* PBXContainerItemProxy */;
+		};
+		D1A80AAC8F189597F2600369AC33EA58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MotionAnimation;
+			target = F28D60B0CC50AC866DDCE4811140455A /* MotionAnimation */;
+			targetProxy = 3B1C9B7BD7850F2BCC22DC4ADF7C3460 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3FA451D268613890FA8A5A03801E11D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		455885422D9814A2FC9C53B7B3075904 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77FECCA98DB668D48E586993A51C7366 /* MotionAnimation.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MotionAnimation/MotionAnimation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MotionAnimation/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MotionAnimation/MotionAnimation.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = MotionAnimation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		55143ED4E7742CADA65AB7FDC1EE4980 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F076DAEF485983581058108C95A7A0DC /* Pods-capioTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-capioTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-capioTests/Pods-capioTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_capioTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		790BD891D9CDEC3A03A2151697FC6962 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77FECCA98DB668D48E586993A51C7366 /* MotionAnimation.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MotionAnimation/MotionAnimation-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MotionAnimation/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MotionAnimation/MotionAnimation.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = MotionAnimation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8F156668C0C211C339A11E3870535B3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 298EE7E417A8A0B3D7F4DB8544CCD858 /* ElasticTransition.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ElasticTransition/ElasticTransition-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ElasticTransition/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ElasticTransition/ElasticTransition.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ElasticTransition;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9C6BA259F94A4338BC1141F7550B0985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 298EE7E417A8A0B3D7F4DB8544CCD858 /* ElasticTransition.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ElasticTransition/ElasticTransition-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ElasticTransition/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ElasticTransition/ElasticTransition.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ElasticTransition;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A2349F4072E3373594D0BCE90C606E4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12B8B8C7957131012FCD4F866451B16C /* Pods-capioUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-capioUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-capioUITests/Pods-capioUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_capioUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A5F782988BBB3B1A5AFBDA0F4BF6D9B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68F7E1E4E4D6334985B1BC2D2AA3186F /* Pods-capio.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-capio/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-capio/Pods-capio.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_capio;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B3755343E616FB5EF51C8FF453AF9CF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7205AD88358B05DEFF43EFB3B99E82B7 /* Pods-capio.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-capio/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-capio/Pods-capio.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_capio;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E930C9960D3C247DED81D5747A902D13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2277A073489BC1DC7A22497114D97B67 /* Pods-capioUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-capioUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-capioUITests/Pods-capioUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_capioUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F05FF72D3408565784A19FD08ECB1799 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D7E51BA4BC60B3DEC683614260411D8 /* Pods-capioTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-capioTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-capioTests/Pods-capioTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_capioTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		218DB0376886824C90AC73FBEA0FD3D9 /* Build configuration list for PBXNativeTarget "MotionAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				790BD891D9CDEC3A03A2151697FC6962 /* Debug */,
+				455885422D9814A2FC9C53B7B3075904 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */,
+				3FA451D268613890FA8A5A03801E11D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		310B9FD226970938885D10751F2677D1 /* Build configuration list for PBXNativeTarget "Pods-capioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2349F4072E3373594D0BCE90C606E4B /* Debug */,
+				E930C9960D3C247DED81D5747A902D13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		350D8F83058C7F68C4A2A0E27AE72276 /* Build configuration list for PBXNativeTarget "ElasticTransition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C6BA259F94A4338BC1141F7550B0985 /* Debug */,
+				8F156668C0C211C339A11E3870535B3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E63D9B4E487EC29CD40BB96CBEADFBA /* Build configuration list for PBXNativeTarget "Pods-capio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5F782988BBB3B1A5AFBDA0F4BF6D9B3 /* Debug */,
+				B3755343E616FB5EF51C8FF453AF9CF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD912D46E2EB8935BE407F6D43B806F1 /* Build configuration list for PBXNativeTarget "Pods-capioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55143ED4E7742CADA65AB7FDC1EE4980 /* Debug */,
+				F05FF72D3408565784A19FD08ECB1799 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

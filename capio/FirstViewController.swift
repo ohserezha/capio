@@ -9,12 +9,9 @@
 import UIKit
 import AVFoundation
 import Foundation
+import ElasticTransition
 
 class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // Some default settings
-    let EXPOSURE_DURATION_POWER:            Float       = 4.0 //the exposure slider gain
-    let EXPOSURE_MINIMUM_DURATION:          Float64     = 1.0/2000.0
     
     var captureSession:                     AVCaptureSession?
     var captureStillImageOut:               AVCaptureStillImageOutput?
@@ -23,69 +20,53 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var audioSession:                       AVAudioSession?
     
     var captureDevice :                     AVCaptureDevice?
-    
-    var exposureDuration:                   CMTime!
-    var focusDistance:                      Float       = 0
-    var isoValue:                           Float       = 100
-    
-    var temperatureValue:                   Float!
-    
-    var currentColorTemperature:            AVCaptureWhiteBalanceTemperatureAndTintValues!
-    var currentColorGains:                  AVCaptureWhiteBalanceGains!
-    
+        
     var flashLightMode:                     String!
     
     @IBOutlet var myCamView:                UIView!
-    @IBOutlet var makePhotoButton:          UIButton!
-
-    @IBOutlet var focusSlider:              UISlider!
+    @IBOutlet var makePhotoButton:          UIButton!    
     
-    @IBOutlet var shutterValueLabel:        UILabel!
-    @IBOutlet var shutterSlider:            UISlider!
-
-    @IBOutlet var isoLabel:                 UILabel!
-    @IBOutlet var isoSlider:                UISlider!
-    
-    @IBOutlet var temperatureSlider:        UISlider!
-    @IBOutlet var temperatureValueLabel:    UILabel!
-    
-    @IBAction func onTemperatureSliderChange(sender: UISlider) {
-        temperatureValue = sender.value
-        temperatureValueLabel.text = String(temperatureValue)
-        
-        changeTemperatureRaw(sender.value)
-        configureCamera()
-    }
-    
-    @IBAction func onIsoSliderChange(sender: UISlider) {
-        isoValue = sender.value
-        isoLabel.text = String(isoValue)
-        configureCamera()
-    }
-    
-    @IBAction func onShutterSliderChange(sender: UISlider) {
-        setExposureDuration()
-        configureCamera()
-    }
-    
-    @IBAction func onFocusSlideDrag(sender: UISlider) {
-        focusDistance = sender.value
-        configureCamera()
-    }
+    var transition = ElasticTransition()    
     
     @IBAction func onDoPhotoTrigger(sender: AnyObject) {
         captureImage()
+    }    
+    
+    @IBAction func onShowOptionsPress(sender: UIButton) {
+        transition.edge = .Bottom
+        transition.startingPoint = sender.center
+        performSegueWithIdentifier("CameraOptionsView", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController
+        vc.transitioningDelegate = transition
+        vc.modalPresentationStyle = .Custom
+        
+        if (segue.identifier == "CameraOptionsView") {
+            let cmvc = segue.destinationViewController as! CameraOptionsViewController;
+            cmvc.captureDevice = captureDevice
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // customization
+        transition.sticky = true
+        transition.showShadow = true
+        transition.panThreshold = 0.3
+        transition.transformType = .TranslateMid
+        transition.containerColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        transition.overlayColor = UIColor(white: 0, alpha: 0)
+        transition.shadowColor = UIColor(white: 0, alpha: 0)
+        transition.frontViewBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        transition.transformType = ElasticTransitionBackgroundTransform.Subtle
         
-        focusDistance = focusSlider.value
-        isoValue = isoSlider.value
-        isoLabel.text = String(isoValue)
-        
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Sound, .Badge], categories: nil))
-        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+
+//        
+//        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Sound, .Badge], categories: nil))
+//        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,7 +83,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewWillDisappear(animated: Bool) {
         // I hope i'm releasing it right...        
         super.viewWillDisappear(animated)
-        onDispose()
     }
     
     
@@ -115,25 +95,12 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         captureSession?.automaticallyConfiguresApplicationAudioSession = false
         // todo -> write getter for Preset (device based)
         captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
-        
+
         captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
-        currentColorGains = captureDevice?.deviceWhiteBalanceGains
-        
-        setCurrentDefaultCameraSettings()
-        configureCamera()
-        startCaptureSession()
-    }
-    
-    private func setCurrentDefaultCameraSettings() {
-        shutterValueLabel.text = String(shutterSlider.value)
-        isoValue = isoSlider.value
-        temperatureValueLabel.text = String(temperatureSlider.value)
-        changeTemperatureRaw(temperatureSlider.value)
-        
-        setExposureDuration()
         listenVolumeButton()
-    }
+        startCaptureSession()
+    }    
     
     private func startCaptureSession() {
         var input: AVCaptureInput!
@@ -163,7 +130,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    func captureImage() {
+    private func captureImage() {
         if let videoConnection = captureStillImageOut!.connectionWithMediaType(AVMediaTypeVideo) {
             captureStillImageOut!.captureStillImageAsynchronouslyFromConnection(videoConnection) {
                 (imageDataSampleBuffer, error) -> Void in
@@ -176,7 +143,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    func onDispose() {
+    private func onDispose() {
         captureSession?.stopRunning()
         do {
             try audioSession?.setActive(false)
@@ -207,53 +174,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
             ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             presentViewController(ac, animated: true, completion: nil)
         }
-    }
-    
-    func setExposureDuration() {
-        let p: Double = Double(pow( shutterSlider.value, EXPOSURE_DURATION_POWER )); // Apply power function to expand slider's low-end range
-        let minDurationSeconds: Double  = max(CMTimeGetSeconds(captureDevice!.activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
-        let maxDurationSeconds: Double = CMTimeGetSeconds(captureDevice!.activeFormat.maxExposureDuration);
-        let newSecondsAmount = p * ( maxDurationSeconds - minDurationSeconds ) + minDurationSeconds
-        exposureDuration = CMTimeMakeWithSeconds(Float64(newSecondsAmount), 1000*1000*1000); // Scale from 0-1 slider range to actual duration
-        
-        shutterValueLabel.text = "1/\(Int(1.0 / newSecondsAmount))"
-    }
-    
-    //Take the actual temperature value
-    func changeTemperatureRaw(temperature: Float) {
-        self.currentColorTemperature = AVCaptureWhiteBalanceTemperatureAndTintValues(temperature: temperature, tint: 0.0)
-            currentColorGains = captureDevice!.deviceWhiteBalanceGainsForTemperatureAndTintValues(self.currentColorTemperature)
-    }
-    
-    // Normalize the gain so it does not exceed
-    func normalizedGains(gains: AVCaptureWhiteBalanceGains) -> AVCaptureWhiteBalanceGains {
-        var g = gains;
-        g.redGain = max(1.0, g.redGain);
-        g.greenGain = max(1.0, g.greenGain);
-        g.blueGain = max(1.0, g.blueGain);
-        
-        g.redGain = min(captureDevice!.maxWhiteBalanceGain, g.redGain);
-        g.greenGain = min(captureDevice!.maxWhiteBalanceGain, g.greenGain);
-        g.blueGain = min(captureDevice!.maxWhiteBalanceGain, g.blueGain);
-        
-        return g;
-    }
-    
-    func configureCamera() {
-        
-        if let device = captureDevice {
-            do {
-                try device.lockForConfiguration()
-                device.focusMode = .Locked
-                device.setFocusModeLockedWithLensPosition(focusDistance, completionHandler: { (time) -> Void in })
-                device.setExposureModeCustomWithDuration(exposureDuration, ISO: isoValue, completionHandler: { (time) -> Void in })
-                device.setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains(normalizedGains(currentColorGains), completionHandler: { (time) -> Void in })
-                device.unlockForConfiguration()
-            } catch {
-                print(error)
-            }
-        }
-    }
+    }       
     
     func listenVolumeButton(){
         do {

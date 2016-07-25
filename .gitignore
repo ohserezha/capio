@@ -1,0 +1,5 @@
+Pods
+Pods/
+Pods/*.xcodeproj/
+*.xcuserstate
+*.xcbkptlist
