@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1B494BC1E74356A672F0C38E /* Pods_capioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E700FAE66DD075380AB694 /* Pods_capioTests.framework */; };
 		3571FA3147F413E95928F1CE /* Pods_capioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE02DE45CE8EB6D4AEF93DD /* Pods_capioUITests.framework */; };
+		3742D8351D5809B3000E1964 /* JQSwiftIcon in Resources */ = {isa = PBXBuildFile; fileRef = 3742D8341D5809B3000E1964 /* JQSwiftIcon */; };
+		3742D8371D5809D6000E1964 /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742D8361D5809D6000E1964 /* FontLoader.swift */; };
+		3742D8391D5809E8000E1964 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742D8381D5809E8000E1964 /* Icons.swift */; };
+		3742D83B1D5809F2000E1964 /* JQIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742D83A1D5809F2000E1964 /* JQIconButton.swift */; };
+		3742D8401D580A0D000E1964 /* JQIconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742D83F1D580A0D000E1964 /* JQIconTextField.swift */; };
+		3742D8421D580A10000E1964 /* JQSwiftIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3742D8411D580A10000E1964 /* JQSwiftIcon.swift */; };
 		3779378E1D45A33E004C86A4 /* Pods_capio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377937891D45A335004C86A4 /* Pods_capio.framework */; };
 		37D63F791D45A608009CD6D9 /* CameraOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */; };
 		37E25FF91D32DB6D00644207 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E25FF81D32DB6D00644207 /* AppDelegate.swift */; };
@@ -76,6 +82,13 @@
 		0AE02DE45CE8EB6D4AEF93DD /* Pods_capioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		211DA7C77B9A00C1F55E778B /* Pods-capio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capio/Pods-capio.debug.xcconfig"; sourceTree = "<group>"; };
 		367359E6A01C5AE98BA957BA /* Pods-capioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capioUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capioUITests/Pods-capioUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3742D8341D5809B3000E1964 /* JQSwiftIcon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JQSwiftIcon; sourceTree = "<group>"; };
+		3742D8361D5809D6000E1964 /* FontLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FontLoader.swift; path = capio/JQSwiftIcon/Classes/FontLoader.swift; sourceTree = "<group>"; };
+		3742D8381D5809E8000E1964 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Icons.swift; path = capio/JQSwiftIcon/Classes/Icons.swift; sourceTree = "<group>"; };
+		3742D83A1D5809F2000E1964 /* JQIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JQIconButton.swift; path = capio/JQSwiftIcon/Classes/JQIconButton.swift; sourceTree = "<group>"; };
+		3742D83E1D580A08000E1964 /* JQIconLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JQIconLabel.swift; path = capio/JQSwiftIcon/Classes/JQIconLabel.swift; sourceTree = "<group>"; };
+		3742D83F1D580A0D000E1964 /* JQIconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JQIconTextField.swift; path = capio/JQSwiftIcon/Classes/JQIconTextField.swift; sourceTree = "<group>"; };
+		3742D8411D580A10000E1964 /* JQSwiftIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JQSwiftIcon.swift; path = capio/JQSwiftIcon/Classes/JQSwiftIcon.swift; sourceTree = "<group>"; };
 		3779377C1D45A334004C86A4 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraOptionsViewController.swift; sourceTree = "<group>"; };
 		37E25FF51D32DB6D00644207 /* capio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = capio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +168,12 @@
 		37E25FEC1D32DB6D00644207 = {
 			isa = PBXGroup;
 			children = (
+				3742D8411D580A10000E1964 /* JQSwiftIcon.swift */,
+				3742D83F1D580A0D000E1964 /* JQIconTextField.swift */,
+				3742D83E1D580A08000E1964 /* JQIconLabel.swift */,
+				3742D83A1D5809F2000E1964 /* JQIconButton.swift */,
+				3742D8381D5809E8000E1964 /* Icons.swift */,
+				3742D8361D5809D6000E1964 /* FontLoader.swift */,
 				37E25FF71D32DB6D00644207 /* capio */,
 				37E2600E1D32DB6D00644207 /* capioTests */,
 				37E260191D32DB6D00644207 /* capioUITests */,
@@ -177,6 +196,7 @@
 		37E25FF71D32DB6D00644207 /* capio */ = {
 			isa = PBXGroup;
 			children = (
+				3742D8341D5809B3000E1964 /* JQSwiftIcon */,
 				37E25FF81D32DB6D00644207 /* AppDelegate.swift */,
 				37E25FFA1D32DB6D00644207 /* FirstViewController.swift */,
 				37E25FFE1D32DB6D00644207 /* Main.storyboard */,
@@ -374,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3742D8351D5809B3000E1964 /* JQSwiftIcon in Resources */,
 				37E260051D32DB6D00644207 /* LaunchScreen.storyboard in Resources */,
 				37E260021D32DB6D00644207 /* Assets.xcassets in Resources */,
 				37E260001D32DB6D00644207 /* Main.storyboard in Resources */,
@@ -527,6 +548,11 @@
 				37D63F791D45A608009CD6D9 /* CameraOptionsViewController.swift in Sources */,
 				37E25FF91D32DB6D00644207 /* AppDelegate.swift in Sources */,
 				37E25FFB1D32DB6D00644207 /* FirstViewController.swift in Sources */,
+				3742D8371D5809D6000E1964 /* FontLoader.swift in Sources */,
+				3742D8391D5809E8000E1964 /* Icons.swift in Sources */,
+				3742D83B1D5809F2000E1964 /* JQIconButton.swift in Sources */,
+				3742D8421D580A10000E1964 /* JQSwiftIcon.swift in Sources */,
+				3742D8401D580A0D000E1964 /* JQIconTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

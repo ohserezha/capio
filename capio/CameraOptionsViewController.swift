@@ -45,6 +45,10 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     @IBOutlet var temperatureSlider:        UISlider!
     @IBOutlet var temperatureValueLabel:    UILabel!
     
+    @IBOutlet var focusIconLabel:           UILabel!
+    @IBOutlet var shutterIconLabel:         UILabel!
+    @IBOutlet var isoIconLabel:             UILabel!
+    @IBOutlet var tempIconLabel:            UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +68,11 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+        focusIconLabel.processIcons();
+        shutterIconLabel.processIcons();
+        isoIconLabel.processIcons();
+        tempIconLabel.processIcons();
 
         currentColorGains = captureDevice?.deviceWhiteBalanceGains
         

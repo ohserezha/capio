@@ -24,7 +24,8 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var flashLightMode:                     String!
     
     @IBOutlet var myCamView:                UIView!
-    @IBOutlet var makePhotoButton:          UIButton!    
+    @IBOutlet var settingsBtn:              UIButton!
+    @IBOutlet var doPhotoBtn:               UIButton!
     
     var transition = ElasticTransition()    
     
@@ -52,6 +53,9 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        settingsBtn.processIcons();
+        doPhotoBtn.processIcons();
+        
         // customization
         transition.sticky = true
         transition.showShadow = true
@@ -100,7 +104,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         listenVolumeButton()
         startCaptureSession()
-    }    
+    }
     
     private func startCaptureSession() {
         var input: AVCaptureInput!
