@@ -35,6 +35,7 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     
     
     @IBOutlet var focusSlider:              UISlider!
+    @IBOutlet var focusValueLabel:          UILabel!
     
     @IBOutlet var shutterValueLabel:        UILabel!
     @IBOutlet var shutterSlider:            UISlider!
@@ -86,6 +87,8 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     
     @IBAction func onFocusSlideDrag(sender: UISlider) {
         focusDistance = sender.value
+        focusValueLabel.text = String(focusDistance)
+        
         configureCamera()
     }
     
@@ -111,11 +114,12 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     private func setCurrentDefaultCameraSettings() {
         
         focusDistance = captureDevice!.lensPosition
+        focusValueLabel.text = String(focusDistance)
+        
         isoValue = captureDevice!.ISO
-        
         isoLabel.text = String(isoValue)
-        isoSlider.value = isoValue
         
+        isoSlider.value = isoValue
         focusSlider.value = focusDistance
 
         currentColorGains = captureDevice!.deviceWhiteBalanceGains
