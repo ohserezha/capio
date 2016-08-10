@@ -7,39 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09AF5AEA04C654A8EC2929B20A1D27AF /* MotionAnimation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 46C4D632680946C03E0CF6E2D7D4C8CC /* MotionAnimation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09AF5AEA04C654A8EC2929B20A1D27AF /* MotionAnimation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BD0A0325258C0B5A401DE9319A10DECD /* MotionAnimation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0EA02590912E35039204E45A2F2C3535 /* Pods-capioUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC48C6B572BD4004F5C0CE9A9FA4B358 /* Pods-capioUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1557B55B5B4DE1DCC3BD030629CC4499 /* NSObject+MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11C51C8A39CBBF9E51D4BAF6778504E /* NSObject+MotionAnimation.swift */; };
-		1B4E20CBCF50DEF66582CC2B8E466304 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654CF96DEAF7A6271D5BBD622ACAD2C /* Types.swift */; };
-		2A38DB81E4A77682118B887294648C89 /* ElasticTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA732CE2AB69262D04853868374819 /* ElasticTransitionPresentationController.swift */; };
+		1557B55B5B4DE1DCC3BD030629CC4499 /* NSObject+MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F810F82AA907D240D820028A514D8D /* NSObject+MotionAnimation.swift */; };
+		1835A4714F3F5DEE9F9F882458A647F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
+		1ADE805E1717362B99AC87E07F572E65 /* Pods-capio-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 281609938500D51853AC640CD6859BFF /* Pods-capio-dummy.m */; };
+		1B4E20CBCF50DEF66582CC2B8E466304 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBFF700E982CAEFBA58A6C88AA35356 /* Types.swift */; };
+		2A38DB81E4A77682118B887294648C89 /* ElasticTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408EE054000F795F67CD0DC67CF4503D /* ElasticTransitionPresentationController.swift */; };
+		2E48324FC76C43C08D8C16EAC9680C95 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5CD9CA5D42DE506EFD4CF838147BC /* Banner.swift */; };
+		2E999F8ECA6EA51FC320EFAF81BA3F8A /* Pods-capio-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EF16B2845FB56DB14C405A66CA77C336 /* Pods-capio-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3718469DFA52368BDA20B798C4EF4060 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993FC950E66FF60B510C412131742C32 /* UIKit.framework */; };
-		43BD2E8DD622E707B11370A1A0ED2D52 /* ValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F285E1F4F5F726ED66ACD2366078F /* ValueAnimation.swift */; };
-		469D5D060C8C0EED1D7EA190A6570DFD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A2482A7AA88A7134EFE3ED9C2A7D1 /* Util.swift */; };
-		644B559048221C3BFFD1EED7008D8F11 /* SpringValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC027F6A929246CE752229CDF019D3B9 /* SpringValueAnimation.swift */; };
-		66940CEBB0914DE9865A6C7677B71FD4 /* EdgePanTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D0DAA4581C62F6383B23BA2341512A /* EdgePanTransition.swift */; };
+		43BD2E8DD622E707B11370A1A0ED2D52 /* ValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442569210086595AC942BD6B8634174 /* ValueAnimation.swift */; };
+		469D5D060C8C0EED1D7EA190A6570DFD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144ADA65DDD8C043A9103D9534B0B537 /* Util.swift */; };
+		644B559048221C3BFFD1EED7008D8F11 /* SpringValueAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479CCFF02E1E0E7EE77974A46280163 /* SpringValueAnimation.swift */; };
+		66940CEBB0914DE9865A6C7677B71FD4 /* EdgePanTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE650E1E13FC099E3DB81B02893C50 /* EdgePanTransition.swift */; };
 		6C872C4B28D30BFA28F1644797D6EDA1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993FC950E66FF60B510C412131742C32 /* UIKit.framework */; };
-		744504D05A13334DA916000358575C29 /* MotionAnimationPropertyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F45BA5AD36551EC5ECFC94B6D7C003 /* MotionAnimationPropertyState.swift */; };
-		7A55B81A49C5937F103A604FF1F1C964 /* ElasticTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4360486E33DCBEAB86E183A79A1BBD55 /* ElasticTransition.swift */; };
-		7CFA2690286EAABBDD2B2B0B8AE73BF2 /* Pods-capio-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 281609938500D51853AC640CD6859BFF /* Pods-capio-dummy.m */; };
-		7FD20AF108864E9FF774CF834B067710 /* ElasticShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687C33D7B94BEA0D2E07909693ED9020 /* ElasticShapeLayer.swift */; };
+		6D54348591FFF58E70D239A9602CA6AF /* BRYXBanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58E6BA3B801775D9031C3B9ED0F71920 /* BRYXBanner.bundle */; };
+		6FDCBC9D6E29131C638CA708B1997D30 /* BRYXBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14838014ECFA44C7D8CA55713D8025EC /* BRYXBanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		744504D05A13334DA916000358575C29 /* MotionAnimationPropertyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F45F318428FEC6FCDE40A48EED974EE /* MotionAnimationPropertyState.swift */; };
+		7A55B81A49C5937F103A604FF1F1C964 /* ElasticTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA58A8CFADDECFA0E331B0822B753EF /* ElasticTransition.swift */; };
+		7FD20AF108864E9FF774CF834B067710 /* ElasticShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DF64C850A325C62A011D748819A594 /* ElasticShapeLayer.swift */; };
 		920A52DACB0AA8F4EEF1FBCA237D65B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
 		922D3AD0FC8FF5F4DDC1A8D6DC387BBC /* Pods-capioUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A7BEEDB6F182B4126C55669974C46 /* Pods-capioUITests-dummy.m */; };
+		9CFDF70EA0F7A8B0AD06F2EAF29D9C11 /* BRYXBanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475CA67E1548080CCD7F763E7F0EE81 /* BRYXBanner-dummy.m */; };
 		9D38ED01E1BE16627EC42CD9186ADD74 /* MotionAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B32399A8D44DBED056F34A76533E4645 /* MotionAnimation.framework */; };
-		A9413AA9146105E2FBC18DB7AA077C4B /* Pods-capio-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EF16B2845FB56DB14C405A66CA77C336 /* Pods-capio-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE0A5A06F3BF442C7C7C3689FE4B0629 /* Pods-capioTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8897D7BF591FC3CFE92164AA99874501 /* Pods-capioTests-dummy.m */; };
 		B0A8D5CCA62DC77128E6B7236A8323CB /* Pods-capioTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA3AE8CE8EB7ABCDA9E951619E8559F0 /* Pods-capioTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3884B9F08789D46EAF72458B4F6F906 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
-		C5CEB3ABC02F82C6084D1334E32F8BF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
-		E10ABADBF3FFEAA35EE2FA5EA6D570F4 /* MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197F2E4372B3D9C0C7A3F8579334CF49 /* MotionAnimation.swift */; };
-		E1CA1C91B03CB049A040DAB794CA01DD /* ElasticTransition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21927FDBC04D6FE922058EB2F4ED9361 /* ElasticTransition-dummy.m */; };
+		E10ABADBF3FFEAA35EE2FA5EA6D570F4 /* MotionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D451EF92C46A15E0020663EDB5E409 /* MotionAnimation.swift */; };
+		E1CA1C91B03CB049A040DAB794CA01DD /* ElasticTransition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3446E7BB5C444465D893886ADCB53F9F /* ElasticTransition-dummy.m */; };
+		E400B989EFC52488CDE753BE414B3A4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
 		E661BB90B1697EE072617C2B2064EDCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
-		EDFD39046E3B6B39D995C32812B7F966 /* MotionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99662A4BAF096864B15E0B638941B92E /* MotionAnimator.swift */; };
+		EDFD39046E3B6B39D995C32812B7F966 /* MotionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03D8E626A63C234223479816813BA3D /* MotionAnimator.swift */; };
 		F28EEB61C5CBC389B687A49B8B988BBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */; };
-		F43C8D8C7E459B86B3C563C1A2BDC160 /* MotionAnimation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C0609CF3918775BB241A4A318485251D /* MotionAnimation-dummy.m */; };
-		FF547FC4ECE554ECC17CFDDCE824E230 /* ElasticTransition-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FB60CA2238381A3DB503C10D9665333 /* ElasticTransition-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F43C8D8C7E459B86B3C563C1A2BDC160 /* MotionAnimation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E79A8DC6803E0A2A50D366E4B2E360BD /* MotionAnimation-dummy.m */; };
+		FF547FC4ECE554ECC17CFDDCE824E230 /* ElasticTransition-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FF01E3EC45865C9E72F4717FAD7A352F /* ElasticTransition-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0C59A6604ED9BB0FA8A97A9A9661F9A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CAAB4AEB098D0E3D8522D5B093FB6E3;
+			remoteInfo = ElasticTransition;
+		};
 		194702CCD1B3A769353EFABF1BD7ED6C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -47,86 +59,103 @@
 			remoteGlobalIDString = F28D60B0CC50AC866DDCE4811140455A;
 			remoteInfo = MotionAnimation;
 		};
-		3B1C9B7BD7850F2BCC22DC4ADF7C3460 /* PBXContainerItemProxy */ = {
+		87B23605C601C567A139CF762410BEC5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75AEEEFD7E431013E8E60009251D5797;
+			remoteInfo = BRYXBanner;
+		};
+		96354DFD3D88F64BCA23A5F0D0EE1069 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E45C60E65DC7B25E659C0A735F907FC7;
+			remoteInfo = "BRYXBanner-BRYXBanner";
+		};
+		D568B6BFA0EAA28242BE098ADF0C5AEB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F28D60B0CC50AC866DDCE4811140455A;
 			remoteInfo = MotionAnimation;
 		};
-		AB94EC70EE9D7B7D008D42AA7DC57F86 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7CAAB4AEB098D0E3D8522D5B093FB6E3;
-			remoteInfo = ElasticTransition;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BBFF700E982CAEFBA58A6C88AA35356 /* Types.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Types.swift; path = MotionAnimation/Types.swift; sourceTree = "<group>"; };
 		0D20E6F969D1AF5598B095BEF24712D3 /* Pods-capioTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-capioTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0DD1B698A4329564AB1E2784D1FEE4CE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F57FD2404DB4AA3664E16A5180603BD /* Pods-capioTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-capioTests.modulemap"; sourceTree = "<group>"; };
 		12AC293644F859F18464DB93592F58B9 /* Pods-capioTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capioTests-frameworks.sh"; sourceTree = "<group>"; };
 		12B8B8C7957131012FCD4F866451B16C /* Pods-capioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capioUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		12F45BA5AD36551EC5ECFC94B6D7C003 /* MotionAnimationPropertyState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimationPropertyState.swift; path = MotionAnimation/MotionAnimationPropertyState.swift; sourceTree = "<group>"; };
 		13FC0FAA0FCEB705F2785C2D196E7318 /* Pods-capio-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capio-frameworks.sh"; sourceTree = "<group>"; };
-		197F2E4372B3D9C0C7A3F8579334CF49 /* MotionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimation.swift; path = MotionAnimation/MotionAnimation.swift; sourceTree = "<group>"; };
-		1F6A2482A7AA88A7134EFE3ED9C2A7D1 /* Util.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Util.swift; path = ElasticTransition/Util.swift; sourceTree = "<group>"; };
+		144ADA65DDD8C043A9103D9534B0B537 /* Util.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Util.swift; path = ElasticTransition/Util.swift; sourceTree = "<group>"; };
+		14838014ECFA44C7D8CA55713D8025EC /* BRYXBanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-umbrella.h"; sourceTree = "<group>"; };
+		16591CCF9FAD860C46396E794B1CDFCC /* Pods_capioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACB4FD20E78E145904157E21536679D /* BRYXBanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BRYXBanner.modulemap; sourceTree = "<group>"; };
+		1C9698033036BD5C464AE1EB71C1817D /* BRYXBanner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-prefix.pch"; sourceTree = "<group>"; };
 		1F934409B9AFF74CE5A2A06806779998 /* Pods-capioTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capioTests-resources.sh"; sourceTree = "<group>"; };
-		21927FDBC04D6FE922058EB2F4ED9361 /* ElasticTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ElasticTransition-dummy.m"; sourceTree = "<group>"; };
 		2277A073489BC1DC7A22497114D97B67 /* Pods-capioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capioUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2442569210086595AC942BD6B8634174 /* ValueAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValueAnimation.swift; path = MotionAnimation/ValueAnimation.swift; sourceTree = "<group>"; };
 		27A50ADC6981E1CC283E31F631DE55F3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		281609938500D51853AC640CD6859BFF /* Pods-capio-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-capio-dummy.m"; sourceTree = "<group>"; };
-		298EE7E417A8A0B3D7F4DB8544CCD858 /* ElasticTransition.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ElasticTransition.xcconfig; sourceTree = "<group>"; };
-		4334020B61E16DA8C751BCF283E30EE9 /* ElasticTransition.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ElasticTransition.modulemap; sourceTree = "<group>"; };
-		4360486E33DCBEAB86E183A79A1BBD55 /* ElasticTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticTransition.swift; path = ElasticTransition/ElasticTransition.swift; sourceTree = "<group>"; };
+		2F45F318428FEC6FCDE40A48EED974EE /* MotionAnimationPropertyState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimationPropertyState.swift; path = MotionAnimation/MotionAnimationPropertyState.swift; sourceTree = "<group>"; };
+		3446E7BB5C444465D893886ADCB53F9F /* ElasticTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ElasticTransition-dummy.m"; sourceTree = "<group>"; };
+		35CE650E1E13FC099E3DB81B02893C50 /* EdgePanTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EdgePanTransition.swift; path = ElasticTransition/EdgePanTransition.swift; sourceTree = "<group>"; };
+		408EE054000F795F67CD0DC67CF4503D /* ElasticTransitionPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticTransitionPresentationController.swift; path = ElasticTransition/ElasticTransitionPresentationController.swift; sourceTree = "<group>"; };
 		458B828BA63A9B1CD73F2A04A5719A64 /* Pods-capioUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capioUITests-resources.sh"; sourceTree = "<group>"; };
-		46C4D632680946C03E0CF6E2D7D4C8CC /* MotionAnimation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MotionAnimation-umbrella.h"; sourceTree = "<group>"; };
+		4A514B5DDFC776A23587F5CDA5F5B950 /* ElasticTransition.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ElasticTransition.xcconfig; sourceTree = "<group>"; };
 		4C3A7BEEDB6F182B4126C55669974C46 /* Pods-capioUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-capioUITests-dummy.m"; sourceTree = "<group>"; };
 		4D66203D5C59837121CADDF1D1E701E9 /* Pods-capioUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-capioUITests.modulemap"; sourceTree = "<group>"; };
 		4D7E51BA4BC60B3DEC683614260411D8 /* Pods-capioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capioTests.release.xcconfig"; sourceTree = "<group>"; };
-		4FB60CA2238381A3DB503C10D9665333 /* ElasticTransition-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ElasticTransition-umbrella.h"; sourceTree = "<group>"; };
-		53673B60E38DB23435DA83EB9A7B05DD /* Pods_capioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		56CF152E88882936BD4BCDD2E56FC02C /* MotionAnimation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MotionAnimation.modulemap; sourceTree = "<group>"; };
+		4E289F7B8960118A858E90C7D19EAE3D /* ResourceBundle-BRYXBanner-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BRYXBanner-Info.plist"; sourceTree = "<group>"; };
+		4F4BF9AFE8440D99B421B42FACB41FC1 /* ElasticTransition-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ElasticTransition-prefix.pch"; sourceTree = "<group>"; };
+		512E6564627986D6DFBA1E5B1DEED20B /* Pods_capioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55F810F82AA907D240D820028A514D8D /* NSObject+MotionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+MotionAnimation.swift"; path = "MotionAnimation/NSObject+MotionAnimation.swift"; sourceTree = "<group>"; };
 		58CD9CB3914068CC7E39EF49B05D3F5B /* Pods-capio-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-capio-acknowledgements.markdown"; sourceTree = "<group>"; };
-		5F5E7A666EFE2B7E38AE07E0A5163D2C /* Pods_capioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58E6BA3B801775D9031C3B9ED0F71920 /* BRYXBanner.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BRYXBanner.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6043CDBA0AAE48A453D9B0FA1A885A3A /* Pods-capioUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capioUITests-frameworks.sh"; sourceTree = "<group>"; };
-		687C33D7B94BEA0D2E07909693ED9020 /* ElasticShapeLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticShapeLayer.swift; path = ElasticTransition/ElasticShapeLayer.swift; sourceTree = "<group>"; };
+		6479CCFF02E1E0E7EE77974A46280163 /* SpringValueAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringValueAnimation.swift; path = MotionAnimation/SpringValueAnimation.swift; sourceTree = "<group>"; };
+		665B4D9B650FFB0C3D910085BA81B14D /* MotionAnimation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MotionAnimation.modulemap; sourceTree = "<group>"; };
 		68F7E1E4E4D6334985B1BC2D2AA3186F /* Pods-capio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capio.debug.xcconfig"; sourceTree = "<group>"; };
 		7205AD88358B05DEFF43EFB3B99E82B7 /* Pods-capio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capio.release.xcconfig"; sourceTree = "<group>"; };
-		75D0DAA4581C62F6383B23BA2341512A /* EdgePanTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EdgePanTransition.swift; path = ElasticTransition/EdgePanTransition.swift; sourceTree = "<group>"; };
-		7654CF96DEAF7A6271D5BBD622ACAD2C /* Types.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Types.swift; path = MotionAnimation/Types.swift; sourceTree = "<group>"; };
 		76718552C76DDEC44016610BD8F56F1A /* Pods-capio.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-capio.modulemap"; sourceTree = "<group>"; };
-		77FECCA98DB668D48E586993A51C7366 /* MotionAnimation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MotionAnimation.xcconfig; sourceTree = "<group>"; };
-		7EE7BB32BCD415F358934B13C47A8B36 /* MotionAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79231D57EF4BCA8B20BE6AF20C35EB41 /* MotionAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8162E00F29EBF4B5A4824976B16BA0A2 /* MotionAnimation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MotionAnimation-prefix.pch"; sourceTree = "<group>"; };
+		819000F6877CBFE0B2B0D9327ABCD4D8 /* ElasticTransition.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ElasticTransition.modulemap; sourceTree = "<group>"; };
 		81F356CFB7619908215967ECE851E184 /* Pods-capio-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-capio-resources.sh"; sourceTree = "<group>"; };
+		8475CA67E1548080CCD7F763E7F0EE81 /* BRYXBanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BRYXBanner-dummy.m"; sourceTree = "<group>"; };
+		84B377EB3D1011D955E6D3C5F983593A /* Pods_capio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		861CCDDCB33FD327C0B0B91F9EFA5096 /* Pods-capioUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-capioUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		86BDECE4909545D5830BBD9827F8ACEF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		8897D7BF591FC3CFE92164AA99874501 /* Pods-capioTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-capioTests-dummy.m"; sourceTree = "<group>"; };
+		91DF64C850A325C62A011D748819A594 /* ElasticShapeLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticShapeLayer.swift; path = ElasticTransition/ElasticShapeLayer.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		993FC950E66FF60B510C412131742C32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		99662A4BAF096864B15E0B638941B92E /* MotionAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimator.swift; path = MotionAnimation/MotionAnimator.swift; sourceTree = "<group>"; };
 		A491DD753887844C12D008696D018024 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC027F6A929246CE752229CDF019D3B9 /* SpringValueAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringValueAnimation.swift; path = MotionAnimation/SpringValueAnimation.swift; sourceTree = "<group>"; };
+		B03D8E626A63C234223479816813BA3D /* MotionAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimator.swift; path = MotionAnimation/MotionAnimator.swift; sourceTree = "<group>"; };
 		B32399A8D44DBED056F34A76533E4645 /* MotionAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B53F285E1F4F5F726ED66ACD2366078F /* ValueAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValueAnimation.swift; path = MotionAnimation/ValueAnimation.swift; sourceTree = "<group>"; };
-		C0609CF3918775BB241A4A318485251D /* MotionAnimation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MotionAnimation-dummy.m"; sourceTree = "<group>"; };
+		B3D5CD9CA5D42DE506EFD4CF838147BC /* Banner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Pod/Classes/Banner.swift; sourceTree = "<group>"; };
+		BD0A0325258C0B5A401DE9319A10DECD /* MotionAnimation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MotionAnimation-umbrella.h"; sourceTree = "<group>"; };
 		C0E9C4C8192D902DAC286737A3BB4B0C /* Pods-capioTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-capioTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		C70C413E0AE249CAA8C2ECD43400B0DE /* ElasticTransition-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ElasticTransition-prefix.pch"; sourceTree = "<group>"; };
+		C47358B18EBAE073A3B5E6C3B0DE2CCA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C792DE65C0EB4305DB3BD2E6D608C781 /* BRYXBanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRYXBanner.xcconfig; sourceTree = "<group>"; };
 		CA3AE8CE8EB7ABCDA9E951619E8559F0 /* Pods-capioTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-capioTests-umbrella.h"; sourceTree = "<group>"; };
-		CBA371EAE61D2CFBDD030F36D42A3DBD /* MotionAnimation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MotionAnimation-prefix.pch"; sourceTree = "<group>"; };
 		D1BC5CE01985DCB4A946E16E187CD4B4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D95585113974AC0C533601B2745F577C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA0A31724D2F6A10619A5586C3D4AABD /* ElasticTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ElasticTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E11C51C8A39CBBF9E51D4BAF6778504E /* NSObject+MotionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+MotionAnimation.swift"; path = "MotionAnimation/NSObject+MotionAnimation.swift"; sourceTree = "<group>"; };
+		D2C0675A3682814728ED804EDE361560 /* ElasticTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ElasticTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9D451EF92C46A15E0020663EDB5E409 /* MotionAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MotionAnimation.swift; path = MotionAnimation/MotionAnimation.swift; sourceTree = "<group>"; };
+		E79A8DC6803E0A2A50D366E4B2E360BD /* MotionAnimation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MotionAnimation-dummy.m"; sourceTree = "<group>"; };
 		EAA3D9EC7D71E7B5EB725BE3609275F7 /* Pods-capioUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-capioUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		EE3691E58622B8527DD33B3CC2D0181D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF16B2845FB56DB14C405A66CA77C336 /* Pods-capio-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-capio-umbrella.h"; sourceTree = "<group>"; };
+		EFA73D18A5F00CBA25C69F04F6AD467D /* BRYXBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BRYXBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F076DAEF485983581058108C95A7A0DC /* Pods-capioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-capioTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F48796041906E8967B50C8FB3D75D90B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5AA732CE2AB69262D04853868374819 /* ElasticTransitionPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticTransitionPresentationController.swift; path = ElasticTransition/ElasticTransitionPresentationController.swift; sourceTree = "<group>"; };
+		F792ACFC98537E71FD3E1DDE3E502EDD /* MotionAnimation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MotionAnimation.xcconfig; sourceTree = "<group>"; };
 		FA19B8CDBE59B60CA45AE0FF582D6FDC /* Pods-capio-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-capio-acknowledgements.plist"; sourceTree = "<group>"; };
 		FC48C6B572BD4004F5C0CE9A9FA4B358 /* Pods-capioUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-capioUITests-umbrella.h"; sourceTree = "<group>"; };
-		FE81F189174037C97AA77F6029389E96 /* Pods_capio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_capio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDA58A8CFADDECFA0E331B0822B753EF /* ElasticTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElasticTransition.swift; path = ElasticTransition/ElasticTransition.swift; sourceTree = "<group>"; };
+		FF01E3EC45865C9E72F4717FAD7A352F /* ElasticTransition-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ElasticTransition-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,11 +168,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		29CA903B45A7B7D47947D302E26DB67F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1835A4714F3F5DEE9F9F882458A647F5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4221A80F0439CE2C54E12B563672741B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F28EEB61C5CBC389B687A49B8B988BBD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EC0BF59E031B944CEFD30624211F8C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E400B989EFC52488CDE753BE414B3A4C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,11 +200,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F9C9F6651AD9E47C6953F5BEDC70FF3 /* Frameworks */ = {
+		F58BDA84F275E04CA1E5846669A55722 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5CEB3ABC02F82C6084D1334E32F8BF3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,67 +220,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0CC4866F03BD8CEDBAF93FF70BDB32DB /* ElasticTransition */ = {
+		13F793DA8429544F994CA5E1D6F69EBA /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				75D0DAA4581C62F6383B23BA2341512A /* EdgePanTransition.swift */,
-				687C33D7B94BEA0D2E07909693ED9020 /* ElasticShapeLayer.swift */,
-				4360486E33DCBEAB86E183A79A1BBD55 /* ElasticTransition.swift */,
-				F5AA732CE2AB69262D04853868374819 /* ElasticTransitionPresentationController.swift */,
-				1F6A2482A7AA88A7134EFE3ED9C2A7D1 /* Util.swift */,
-				7B1DF619CFAE3BA6C40BE541FE8D93B4 /* Support Files */,
+				1ACB4FD20E78E145904157E21536679D /* BRYXBanner.modulemap */,
+				C792DE65C0EB4305DB3BD2E6D608C781 /* BRYXBanner.xcconfig */,
+				8475CA67E1548080CCD7F763E7F0EE81 /* BRYXBanner-dummy.m */,
+				1C9698033036BD5C464AE1EB71C1817D /* BRYXBanner-prefix.pch */,
+				14838014ECFA44C7D8CA55713D8025EC /* BRYXBanner-umbrella.h */,
+				EE3691E58622B8527DD33B3CC2D0181D /* Info.plist */,
+				4E289F7B8960118A858E90C7D19EAE3D /* ResourceBundle-BRYXBanner-Info.plist */,
 			);
-			path = ElasticTransition;
+			name = "Support Files";
+			path = "../Target Support Files/BRYXBanner";
 			sourceTree = "<group>";
 		};
-		23772473873676E00A9CCF7B87DF4C7A /* Pods */ = {
+		2AEDB1BC7A69753C8E62A9646235A955 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0CC4866F03BD8CEDBAF93FF70BDB32DB /* ElasticTransition */,
-				6230FD6ED8D5D597842E02AFE9CF06E7 /* MotionAnimation */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		35659F012A08E67C7EE5B005ACB13A8F /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				F48796041906E8967B50C8FB3D75D90B /* Info.plist */,
-				56CF152E88882936BD4BCDD2E56FC02C /* MotionAnimation.modulemap */,
-				77FECCA98DB668D48E586993A51C7366 /* MotionAnimation.xcconfig */,
-				C0609CF3918775BB241A4A318485251D /* MotionAnimation-dummy.m */,
-				CBA371EAE61D2CFBDD030F36D42A3DBD /* MotionAnimation-prefix.pch */,
-				46C4D632680946C03E0CF6E2D7D4C8CC /* MotionAnimation-umbrella.h */,
+				C47358B18EBAE073A3B5E6C3B0DE2CCA /* Info.plist */,
+				665B4D9B650FFB0C3D910085BA81B14D /* MotionAnimation.modulemap */,
+				F792ACFC98537E71FD3E1DDE3E502EDD /* MotionAnimation.xcconfig */,
+				E79A8DC6803E0A2A50D366E4B2E360BD /* MotionAnimation-dummy.m */,
+				8162E00F29EBF4B5A4824976B16BA0A2 /* MotionAnimation-prefix.pch */,
+				BD0A0325258C0B5A401DE9319A10DECD /* MotionAnimation-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/MotionAnimation";
 			sourceTree = "<group>";
 		};
-		523C65F6083E1060C84205073AF362DC /* Products */ = {
+		40BE74D05318144E69653807A1B42F95 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				DA0A31724D2F6A10619A5586C3D4AABD /* ElasticTransition.framework */,
-				7EE7BB32BCD415F358934B13C47A8B36 /* MotionAnimation.framework */,
-				FE81F189174037C97AA77F6029389E96 /* Pods_capio.framework */,
-				53673B60E38DB23435DA83EB9A7B05DD /* Pods_capioTests.framework */,
-				5F5E7A666EFE2B7E38AE07E0A5163D2C /* Pods_capioUITests.framework */,
+				819000F6877CBFE0B2B0D9327ABCD4D8 /* ElasticTransition.modulemap */,
+				4A514B5DDFC776A23587F5CDA5F5B950 /* ElasticTransition.xcconfig */,
+				3446E7BB5C444465D893886ADCB53F9F /* ElasticTransition-dummy.m */,
+				4F4BF9AFE8440D99B421B42FACB41FC1 /* ElasticTransition-prefix.pch */,
+				FF01E3EC45865C9E72F4717FAD7A352F /* ElasticTransition-umbrella.h */,
+				0DD1B698A4329564AB1E2784D1FEE4CE /* Info.plist */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/ElasticTransition";
 			sourceTree = "<group>";
 		};
-		6230FD6ED8D5D597842E02AFE9CF06E7 /* MotionAnimation */ = {
+		5AFCBBABA6EE211C1FF2E2D9A9C2DA3B /* MotionAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				197F2E4372B3D9C0C7A3F8579334CF49 /* MotionAnimation.swift */,
-				12F45BA5AD36551EC5ECFC94B6D7C003 /* MotionAnimationPropertyState.swift */,
-				99662A4BAF096864B15E0B638941B92E /* MotionAnimator.swift */,
-				E11C51C8A39CBBF9E51D4BAF6778504E /* NSObject+MotionAnimation.swift */,
-				AC027F6A929246CE752229CDF019D3B9 /* SpringValueAnimation.swift */,
-				7654CF96DEAF7A6271D5BBD622ACAD2C /* Types.swift */,
-				B53F285E1F4F5F726ED66ACD2366078F /* ValueAnimation.swift */,
-				35659F012A08E67C7EE5B005ACB13A8F /* Support Files */,
+				D9D451EF92C46A15E0020663EDB5E409 /* MotionAnimation.swift */,
+				2F45F318428FEC6FCDE40A48EED974EE /* MotionAnimationPropertyState.swift */,
+				B03D8E626A63C234223479816813BA3D /* MotionAnimator.swift */,
+				55F810F82AA907D240D820028A514D8D /* NSObject+MotionAnimation.swift */,
+				6479CCFF02E1E0E7EE77974A46280163 /* SpringValueAnimation.swift */,
+				0BBFF700E982CAEFBA58A6C88AA35356 /* Types.swift */,
+				2442569210086595AC942BD6B8634174 /* ValueAnimation.swift */,
+				2AEDB1BC7A69753C8E62A9646235A955 /* Support Files */,
 			);
 			path = MotionAnimation;
+			sourceTree = "<group>";
+		};
+		5E733330FB1117091B5853FFD6EEB0A7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A75A434C9A069D008DBBCD864AFBDD51 /* BRYXBanner */,
+				F24E3363BDB0CCAF3BB7DE7A3A06F035 /* ElasticTransition */,
+				5AFCBBABA6EE211C1FF2E2D9A9C2DA3B /* MotionAnimation */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		74F14B8F4337523EEBA29DDB9DC86CB0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B3D5CD9CA5D42DE506EFD4CF838147BC /* Banner.swift */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 		7A7B088A771787914A2FA372A5AAAD99 /* Pods-capio */ = {
@@ -257,29 +314,24 @@
 			path = "Target Support Files/Pods-capio";
 			sourceTree = "<group>";
 		};
-		7B1DF619CFAE3BA6C40BE541FE8D93B4 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				4334020B61E16DA8C751BCF283E30EE9 /* ElasticTransition.modulemap */,
-				298EE7E417A8A0B3D7F4DB8544CCD858 /* ElasticTransition.xcconfig */,
-				21927FDBC04D6FE922058EB2F4ED9361 /* ElasticTransition-dummy.m */,
-				C70C413E0AE249CAA8C2ECD43400B0DE /* ElasticTransition-prefix.pch */,
-				4FB60CA2238381A3DB503C10D9665333 /* ElasticTransition-umbrella.h */,
-				D95585113974AC0C533601B2745F577C /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ElasticTransition";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				CB7AE1D83928E889E062A217743ABE6E /* Frameworks */,
-				23772473873676E00A9CCF7B87DF4C7A /* Pods */,
-				523C65F6083E1060C84205073AF362DC /* Products */,
+				5E733330FB1117091B5853FFD6EEB0A7 /* Pods */,
+				E91D9389DA1647642607951A54F84F93 /* Products */,
 				DDFD7BA5FF05B386D7912186F8420D93 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		A75A434C9A069D008DBBCD864AFBDD51 /* BRYXBanner */ = {
+			isa = PBXGroup;
+			children = (
+				74F14B8F4337523EEBA29DDB9DC86CB0 /* Core */,
+				13F793DA8429544F994CA5E1D6F69EBA /* Support Files */,
+			);
+			path = BRYXBanner;
 			sourceTree = "<group>";
 		};
 		CB7AE1D83928E889E062A217743ABE6E /* Frameworks */ = {
@@ -319,6 +371,20 @@
 			path = "Target Support Files/Pods-capioUITests";
 			sourceTree = "<group>";
 		};
+		E91D9389DA1647642607951A54F84F93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58E6BA3B801775D9031C3B9ED0F71920 /* BRYXBanner.bundle */,
+				EFA73D18A5F00CBA25C69F04F6AD467D /* BRYXBanner.framework */,
+				D2C0675A3682814728ED804EDE361560 /* ElasticTransition.framework */,
+				79231D57EF4BCA8B20BE6AF20C35EB41 /* MotionAnimation.framework */,
+				84B377EB3D1011D955E6D3C5F983593A /* Pods_capio.framework */,
+				512E6564627986D6DFBA1E5B1DEED20B /* Pods_capioTests.framework */,
+				16591CCF9FAD860C46396E794B1CDFCC /* Pods_capioUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F12F6CD291E282C4E61897282E8DCBB3 /* Pods-capioTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +401,19 @@
 			);
 			name = "Pods-capioTests";
 			path = "Target Support Files/Pods-capioTests";
+			sourceTree = "<group>";
+		};
+		F24E3363BDB0CCAF3BB7DE7A3A06F035 /* ElasticTransition */ = {
+			isa = PBXGroup;
+			children = (
+				35CE650E1E13FC099E3DB81B02893C50 /* EdgePanTransition.swift */,
+				91DF64C850A325C62A011D748819A594 /* ElasticShapeLayer.swift */,
+				FDA58A8CFADDECFA0E331B0822B753EF /* ElasticTransition.swift */,
+				408EE054000F795F67CD0DC67CF4503D /* ElasticTransitionPresentationController.swift */,
+				144ADA65DDD8C043A9103D9534B0B537 /* Util.swift */,
+				40BE74D05318144E69653807A1B42F95 /* Support Files */,
+			);
+			path = ElasticTransition;
 			sourceTree = "<group>";
 		};
 		F42D5A737AD37AAAB3BD875922A3F6CB /* iOS */ = {
@@ -357,6 +436,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9C64D32544B69A29EC0B8AE4F7071355 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E999F8ECA6EA51FC320EFAF81BA3F8A /* Pods-capio-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A89878C7AEFE84E27331FDCBB7EAE4E6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,11 +452,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EF30FDA350E75B7076F48746C67DC89C /* Headers */ = {
+		C366A590250CCF691DE8DD6D83B5BCD4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9413AA9146105E2FBC18DB7AA077C4B /* Pods-capio-umbrella.h in Headers */,
+				6FDCBC9D6E29131C638CA708B1997D30 /* BRYXBanner-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,23 +479,43 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1DE2619A1A9D72AFD08DF32464CA306B /* Pods-capio */ = {
+		73EB1779F55957DD035C8BFA099DFDBD /* Pods-capio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7E63D9B4E487EC29CD40BB96CBEADFBA /* Build configuration list for PBXNativeTarget "Pods-capio" */;
+			buildConfigurationList = 72ACE2253ED48B1C32D19B174528C0F1 /* Build configuration list for PBXNativeTarget "Pods-capio" */;
 			buildPhases = (
-				9E839E576F98A70E7C74A6D7D616F89A /* Sources */,
-				9F9C9F6651AD9E47C6953F5BEDC70FF3 /* Frameworks */,
-				EF30FDA350E75B7076F48746C67DC89C /* Headers */,
+				5D4CF7DCFD0751D54ADC8838BEF8BA5A /* Sources */,
+				6EC0BF59E031B944CEFD30624211F8C6 /* Frameworks */,
+				9C64D32544B69A29EC0B8AE4F7071355 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D15709D7E6C3D6C64A152061AD3FA3FD /* PBXTargetDependency */,
-				D1A80AAC8F189597F2600369AC33EA58 /* PBXTargetDependency */,
+				659D6C573AF1D0ADF27B373DBD598FEA /* PBXTargetDependency */,
+				12B52B699110FFBEFF568F393D6EA46F /* PBXTargetDependency */,
+				5A382B6D59F9F5A15367A40E99C28599 /* PBXTargetDependency */,
 			);
 			name = "Pods-capio";
 			productName = "Pods-capio";
-			productReference = FE81F189174037C97AA77F6029389E96 /* Pods_capio.framework */;
+			productReference = 84B377EB3D1011D955E6D3C5F983593A /* Pods_capio.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		75AEEEFD7E431013E8E60009251D5797 /* BRYXBanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44C47E9BB39C5950AA6F6D88D07A66E1 /* Build configuration list for PBXNativeTarget "BRYXBanner" */;
+			buildPhases = (
+				274BF109B4F9D46B884ABAF5E62233A4 /* Sources */,
+				29CA903B45A7B7D47947D302E26DB67F /* Frameworks */,
+				19D690EB5701322FE17A3A2D6564057A /* Resources */,
+				C366A590250CCF691DE8DD6D83B5BCD4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA312F87378A022EE86EB823002D597F /* PBXTargetDependency */,
+			);
+			name = BRYXBanner;
+			productName = BRYXBanner;
+			productReference = EFA73D18A5F00CBA25C69F04F6AD467D /* BRYXBanner.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7CAAB4AEB098D0E3D8522D5B093FB6E3 /* ElasticTransition */ = {
@@ -426,7 +533,7 @@
 			);
 			name = ElasticTransition;
 			productName = ElasticTransition;
-			productReference = DA0A31724D2F6A10619A5586C3D4AABD /* ElasticTransition.framework */;
+			productReference = D2C0675A3682814728ED804EDE361560 /* ElasticTransition.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		AEC7CBCA47744C4DF5F94B412834136D /* Pods-capioUITests */ = {
@@ -443,7 +550,7 @@
 			);
 			name = "Pods-capioUITests";
 			productName = "Pods-capioUITests";
-			productReference = 5F5E7A666EFE2B7E38AE07E0A5163D2C /* Pods_capioUITests.framework */;
+			productReference = 16591CCF9FAD860C46396E794B1CDFCC /* Pods_capioUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D2D8648D30ACCE62039F35CDFAAFDD85 /* Pods-capioTests */ = {
@@ -460,8 +567,25 @@
 			);
 			name = "Pods-capioTests";
 			productName = "Pods-capioTests";
-			productReference = 53673B60E38DB23435DA83EB9A7B05DD /* Pods_capioTests.framework */;
+			productReference = 512E6564627986D6DFBA1E5B1DEED20B /* Pods_capioTests.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		E45C60E65DC7B25E659C0A735F907FC7 /* BRYXBanner-BRYXBanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E060CC8E66EC546BC8781C9854A15FD7 /* Build configuration list for PBXNativeTarget "BRYXBanner-BRYXBanner" */;
+			buildPhases = (
+				8A942900361D2285928B9965F0CCE20F /* Sources */,
+				F58BDA84F275E04CA1E5846669A55722 /* Frameworks */,
+				91FD6A1772683A53825B3BE511D1DFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BRYXBanner-BRYXBanner";
+			productName = "BRYXBanner-BRYXBanner";
+			productReference = 58E6BA3B801775D9031C3B9ED0F71920 /* BRYXBanner.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 		F28D60B0CC50AC866DDCE4811140455A /* MotionAnimation */ = {
 			isa = PBXNativeTarget;
@@ -477,7 +601,7 @@
 			);
 			name = MotionAnimation;
 			productName = MotionAnimation;
-			productReference = 7EE7BB32BCD415F358934B13C47A8B36 /* MotionAnimation.framework */;
+			productReference = 79231D57EF4BCA8B20BE6AF20C35EB41 /* MotionAnimation.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -497,20 +621,57 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 523C65F6083E1060C84205073AF362DC /* Products */;
+			productRefGroup = E91D9389DA1647642607951A54F84F93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				75AEEEFD7E431013E8E60009251D5797 /* BRYXBanner */,
+				E45C60E65DC7B25E659C0A735F907FC7 /* BRYXBanner-BRYXBanner */,
 				7CAAB4AEB098D0E3D8522D5B093FB6E3 /* ElasticTransition */,
 				F28D60B0CC50AC866DDCE4811140455A /* MotionAnimation */,
-				1DE2619A1A9D72AFD08DF32464CA306B /* Pods-capio */,
+				73EB1779F55957DD035C8BFA099DFDBD /* Pods-capio */,
 				D2D8648D30ACCE62039F35CDFAAFDD85 /* Pods-capioTests */,
 				AEC7CBCA47744C4DF5F94B412834136D /* Pods-capioUITests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		19D690EB5701322FE17A3A2D6564057A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D54348591FFF58E70D239A9602CA6AF /* BRYXBanner.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91FD6A1772683A53825B3BE511D1DFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		274BF109B4F9D46B884ABAF5E62233A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E48324FC76C43C08D8C16EAC9680C95 /* Banner.swift in Sources */,
+				9CFDF70EA0F7A8B0AD06F2EAF29D9C11 /* BRYXBanner-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D4CF7DCFD0751D54ADC8838BEF8BA5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1ADE805E1717362B99AC87E07F572E65 /* Pods-capio-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E4E8192C764DF77428E4C93A70E9128 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -519,11 +680,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E839E576F98A70E7C74A6D7D616F89A /* Sources */ = {
+		8A942900361D2285928B9965F0CCE20F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CFA2690286EAABBDD2B2B0B8AE73BF2 /* Pods-capio-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,27 +726,123 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		12B52B699110FFBEFF568F393D6EA46F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ElasticTransition;
+			target = 7CAAB4AEB098D0E3D8522D5B093FB6E3 /* ElasticTransition */;
+			targetProxy = 0C59A6604ED9BB0FA8A97A9A9661F9A0 /* PBXContainerItemProxy */;
+		};
 		1BB9418876426761F11F50DD8AD004E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MotionAnimation;
 			target = F28D60B0CC50AC866DDCE4811140455A /* MotionAnimation */;
 			targetProxy = 194702CCD1B3A769353EFABF1BD7ED6C /* PBXContainerItemProxy */;
 		};
-		D15709D7E6C3D6C64A152061AD3FA3FD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ElasticTransition;
-			target = 7CAAB4AEB098D0E3D8522D5B093FB6E3 /* ElasticTransition */;
-			targetProxy = AB94EC70EE9D7B7D008D42AA7DC57F86 /* PBXContainerItemProxy */;
-		};
-		D1A80AAC8F189597F2600369AC33EA58 /* PBXTargetDependency */ = {
+		5A382B6D59F9F5A15367A40E99C28599 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MotionAnimation;
 			target = F28D60B0CC50AC866DDCE4811140455A /* MotionAnimation */;
-			targetProxy = 3B1C9B7BD7850F2BCC22DC4ADF7C3460 /* PBXContainerItemProxy */;
+			targetProxy = D568B6BFA0EAA28242BE098ADF0C5AEB /* PBXContainerItemProxy */;
+		};
+		659D6C573AF1D0ADF27B373DBD598FEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BRYXBanner;
+			target = 75AEEEFD7E431013E8E60009251D5797 /* BRYXBanner */;
+			targetProxy = 87B23605C601C567A139CF762410BEC5 /* PBXContainerItemProxy */;
+		};
+		BA312F87378A022EE86EB823002D597F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "BRYXBanner-BRYXBanner";
+			target = E45C60E65DC7B25E659C0A735F907FC7 /* BRYXBanner-BRYXBanner */;
+			targetProxy = 96354DFD3D88F64BCA23A5F0D0EE1069 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0F1B556D953AD64E755053F9E6793EF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68F7E1E4E4D6334985B1BC2D2AA3186F /* Pods-capio.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-capio/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-capio/Pods-capio.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_capio;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1B3234E0983A1F41684F9FAB5C31A5F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7205AD88358B05DEFF43EFB3B99E82B7 /* Pods-capio.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-capio/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-capio/Pods-capio.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_capio;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		30CF0D5F404716A9277EB0F9CBB42649 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C792DE65C0EB4305DB3BD2E6D608C781 /* BRYXBanner.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BRYXBanner";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/BRYXBanner/ResourceBundle-BRYXBanner-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = BRYXBanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		3FA451D268613890FA8A5A03801E11D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -627,7 +883,7 @@
 		};
 		455885422D9814A2FC9C53B7B3075904 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77FECCA98DB668D48E586993A51C7366 /* MotionAnimation.xcconfig */;
+			baseConfigurationReference = F792ACFC98537E71FD3E1DDE3E502EDD /* MotionAnimation.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -731,7 +987,7 @@
 		};
 		790BD891D9CDEC3A03A2151697FC6962 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77FECCA98DB668D48E586993A51C7366 /* MotionAnimation.xcconfig */;
+			baseConfigurationReference = F792ACFC98537E71FD3E1DDE3E502EDD /* MotionAnimation.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -761,7 +1017,7 @@
 		};
 		8F156668C0C211C339A11E3870535B3A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 298EE7E417A8A0B3D7F4DB8544CCD858 /* ElasticTransition.xcconfig */;
+			baseConfigurationReference = 4A514B5DDFC776A23587F5CDA5F5B950 /* ElasticTransition.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -790,7 +1046,7 @@
 		};
 		9C6BA259F94A4338BC1141F7550B0985 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 298EE7E417A8A0B3D7F4DB8544CCD858 /* ElasticTransition.xcconfig */;
+			baseConfigurationReference = 4A514B5DDFC776A23587F5CDA5F5B950 /* ElasticTransition.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -851,9 +1107,26 @@
 			};
 			name = Debug;
 		};
-		A5F782988BBB3B1A5AFBDA0F4BF6D9B3 /* Debug */ = {
+		A626DF5A0641984D6DED07180D2F7BD2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68F7E1E4E4D6334985B1BC2D2AA3186F /* Pods-capio.debug.xcconfig */;
+			baseConfigurationReference = C792DE65C0EB4305DB3BD2E6D608C781 /* BRYXBanner.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BRYXBanner";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/BRYXBanner/ResourceBundle-BRYXBanner-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = BRYXBanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		C147987F5DD63A7E78627B74A0B57D70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C792DE65C0EB4305DB3BD2E6D608C781 /* BRYXBanner.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -864,18 +1137,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-capio/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/BRYXBanner/BRYXBanner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BRYXBanner/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-capio/Pods-capio.modulemap";
+				MODULEMAP_FILE = "Target Support Files/BRYXBanner/BRYXBanner.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_capio;
+				PRODUCT_NAME = BRYXBanner;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -885,9 +1154,9 @@
 			};
 			name = Debug;
 		};
-		B3755343E616FB5EF51C8FF453AF9CF7 /* Release */ = {
+		D572ACBAC4557E183CABDC69D4CA6658 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7205AD88358B05DEFF43EFB3B99E82B7 /* Pods-capio.release.xcconfig */;
+			baseConfigurationReference = C792DE65C0EB4305DB3BD2E6D608C781 /* BRYXBanner.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -898,18 +1167,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-capio/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/BRYXBanner/BRYXBanner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BRYXBanner/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-capio/Pods-capio.modulemap";
+				MODULEMAP_FILE = "Target Support Files/BRYXBanner/BRYXBanner.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_capio;
+				PRODUCT_NAME = BRYXBanner;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1023,11 +1288,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7E63D9B4E487EC29CD40BB96CBEADFBA /* Build configuration list for PBXNativeTarget "Pods-capio" */ = {
+		44C47E9BB39C5950AA6F6D88D07A66E1 /* Build configuration list for PBXNativeTarget "BRYXBanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A5F782988BBB3B1A5AFBDA0F4BF6D9B3 /* Debug */,
-				B3755343E616FB5EF51C8FF453AF9CF7 /* Release */,
+				C147987F5DD63A7E78627B74A0B57D70 /* Debug */,
+				D572ACBAC4557E183CABDC69D4CA6658 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72ACE2253ED48B1C32D19B174528C0F1 /* Build configuration list for PBXNativeTarget "Pods-capio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F1B556D953AD64E755053F9E6793EF2 /* Debug */,
+				1B3234E0983A1F41684F9FAB5C31A5F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E060CC8E66EC546BC8781C9854A15FD7 /* Build configuration list for PBXNativeTarget "BRYXBanner-BRYXBanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30CF0D5F404716A9277EB0F9CBB42649 /* Debug */,
+				A626DF5A0641984D6DED07180D2F7BD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

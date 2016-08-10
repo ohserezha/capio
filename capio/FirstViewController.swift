@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import Foundation
 import ElasticTransition
+import BRYXBanner
 
 class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -158,25 +159,25 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     // photo success/fail save
-    func onImageSaved(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+    func onImageSaved(savedImage: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
         if error == nil {
             
-            print("SUCCESSS0000")
+            let banner = Banner(
+                title: "Awesome!",
+                subtitle: "You made a picture!",
+                // todo                
+                // image: savedImage,
+                backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
+            banner.dismissesOnTap = true
+            banner.show(duration: 1.0)
             
-            let notification = UILocalNotification()
-            
-            notification.alertBody = "Photo Saved!"
-            notification.soundName = UILocalNotificationDefaultSoundName
-            notification.fireDate = NSDate(timeIntervalSinceNow: 0)
-            notification.timeZone = NSTimeZone.defaultTimeZone()
-            notification.userInfo = ["title": "capioPhoto", "UUID": "capioPhotoUUID"]
-            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-            
-            print("SUCCESSS111")
         } else {
-            let ac = UIAlertController(title: "Save error", message: error?.localizedDescription, preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            presentViewController(ac, animated: true, completion: nil)
+            let errorBanner = Banner(
+                title: "Shoot!",
+                subtitle: "something went terrebly wrong :(",
+                backgroundColor: UIColor(red:188.00/255.0, green:16.0/255.0, blue:16.5/255.0, alpha:0.500))
+            errorBanner.dismissesOnTap = true
+            errorBanner.show(duration: 1.5)
         }
     }       
     

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BRYXBanner-BRYXBanner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BRYXBanner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ElasticTransition.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +42,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1DE2619A1A9D72AFD08DF32464CA306B</key>
+		<key>73EB1779F55957DD035C8BFA099DFDBD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75AEEEFD7E431013E8E60009251D5797</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -48,6 +63,11 @@
 			<true/>
 		</dict>
 		<key>D2D8648D30ACCE62039F35CDFAAFDD85</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E45C60E65DC7B25E659C0A735F907FC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

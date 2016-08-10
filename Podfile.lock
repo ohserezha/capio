@@ -1,15 +1,20 @@
 PODS:
+  - BRYXBanner (0.5.2):
+    - BRYXBanner/Core (= 0.5.2)
+  - BRYXBanner/Core (0.5.2)
   - ElasticTransition (3.0.1):
     - MotionAnimation (~> 0.1.1)
   - MotionAnimation (0.1.1)
 
 DEPENDENCIES:
+  - BRYXBanner
   - ElasticTransition (~> 3.0.0)
 
 SPEC CHECKSUMS:
+  BRYXBanner: 5f0911d52e0a77e088f7ea7ddcdebd02afb7828a
   ElasticTransition: 231e60fa66f68f42129e7969736f4a9e69794f97
   MotionAnimation: ff356cfdbedcab52a5bfc94cc96ed44ea2f652e0
 
-PODFILE CHECKSUM: 18a59d87aceedd364bfc0679638b59f60648c300
+PODFILE CHECKSUM: a04e0fe7fe4dc95a30b6fbe7b219134497ef9378
 
 COCOAPODS: 1.0.1

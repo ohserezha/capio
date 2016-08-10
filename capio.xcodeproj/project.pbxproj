@@ -24,9 +24,24 @@
 		37E260051D32DB6D00644207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37E260031D32DB6D00644207 /* LaunchScreen.storyboard */; };
 		37E260101D32DB6D00644207 /* capioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2600F1D32DB6D00644207 /* capioTests.swift */; };
 		37E2601B1D32DB6D00644207 /* capioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2601A1D32DB6D00644207 /* capioUITests.swift */; };
+		D248C7F2536130819511982E /* Pods_capio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DF1F28D4BC41D0A2EA22AC /* Pods_capio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		371C33971D5AD82900E20BA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EFA73D18A5F00CBA25C69F04F6AD467D;
+			remoteInfo = BRYXBanner;
+		};
+		371C33991D5AD82900E20BA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58E6BA3B801775D9031C3B9ED0F71920;
+			remoteInfo = "BRYXBanner-BRYXBanner";
+		};
 		377937841D45A335004C86A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
@@ -118,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3779378E1D45A33E004C86A4 /* Pods_capio.framework in Frameworks */,
+				D248C7F2536130819511982E /* Pods_capio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +172,8 @@
 		3779377D1D45A334004C86A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				371C33981D5AD82900E20BA5 /* BRYXBanner.framework */,
+				371C339A1D5AD82900E20BA5 /* BRYXBanner.bundle */,
 				377937851D45A335004C86A4 /* ElasticTransition.framework */,
 				377937871D45A335004C86A4 /* MotionAnimation.framework */,
 				377937891D45A335004C86A4 /* Pods_capio.framework */,
@@ -352,6 +370,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		371C33981D5AD82900E20BA5 /* BRYXBanner.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BRYXBanner.framework;
+			remoteRef = 371C33971D5AD82900E20BA5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		371C339A1D5AD82900E20BA5 /* BRYXBanner.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BRYXBanner.bundle;
+			remoteRef = 371C33991D5AD82900E20BA5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		377937851D45A335004C86A4 /* ElasticTransition.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
