@@ -111,7 +111,11 @@ public extension UILabel {
 
         })
         
-        self.attributedText = attributedString
+        //when the view is about to be released -> overassignment mightn happen
+        //which will cause visual font issue
+        if (self.attributedText!.string != attributedString.string) {
+            self.attributedText = attributedString
+        }
     }
     
     func setTextWithIconFont(font: FontsFileNames, size: CGFloat = 15.0, text: String){
@@ -136,7 +140,11 @@ public extension UITextField{
             processFontPrefixes(self.font!.pointSize, attributedString: attributedString, matchedStringArray: s, substring: substring)            
         })
         
-        self.attributedText = attributedString
+        //when the view is about to be released -> overassignment mightn happen
+        //which will cause visual font issue
+        if (self.attributedText!.string != attributedString.string) {
+            self.attributedText = attributedString
+        }
     }
     
     func setTextWithIconFont(font: FontsFileNames, size: CGFloat = 15.0, text: String){
@@ -161,7 +169,11 @@ public extension UIButton {
             processFontPrefixes(self.titleLabel?.font!.pointSize, attributedString: attributedString, matchedStringArray: s, substring: substring)
         })
         
-        self.setAttributedTitle(attributedString, forState: .Normal)
+        //when the view is about to be released -> overassignment mightn happen
+        //which will cause visual font issue
+        if (self.titleLabel?.attributedText!.string != attributedString.string) {
+            self.setAttributedTitle(attributedString, forState: .Normal)
+        }
     }
     
     func setTextWithIconFont(font: FontsFileNames, size: CGFloat = 15.0, text: String){
