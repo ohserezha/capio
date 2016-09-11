@@ -69,6 +69,33 @@ func processFontPrefixes(fontSize: CGFloat?, attributedString: NSMutableAttribut
     }
 }
 
+func processTextIcons(
+    textToCheck: NSString,
+    pointSize: CGFloat,
+    attributedStringToCheck: NSAttributedString,
+    setTextCallback: (NSAttributedString) -> Void) {
+    
+    let text = textToCheck;
+    let textRange = NSMakeRange(0, text.length)
+    let attributedString = NSMutableAttributedString(string: textToCheck as String)
+    
+    text.enumerateSubstringsInRange(textRange, options: .ByWords, usingBlock: {
+        (substring, substringRange, _, _) in
+        var s = ["", ""]
+        s = substring!.characters.split{$0 == ":"}.map(String.init)
+        if s.count == 1{
+            return
+        }
+        processFontPrefixes(pointSize, attributedString: attributedString, matchedStringArray: s, substring: substring)
+    })
+    
+    //when the view is about to be released -> overassignment mightn happen
+    //which will cause visual font issue
+    if (attributedStringToCheck.string != attributedString.string) {
+        setTextCallback(attributedString);
+    }
+}
+
 
 public struct FontArr {
     static func getFontArr(fromFont: FontsFileNames) -> [String: String]{
@@ -96,26 +123,9 @@ public struct FontArr {
 
 public extension UILabel {
     func processIcons() {
-        let text = self.text! as NSString
-        let textRange = NSMakeRange(0, text.length)
-        let attributedString = NSMutableAttributedString(string: self.text!)
-        
-        text.enumerateSubstringsInRange(textRange, options: .ByWords, usingBlock: {
-            (substring, substringRange, _, _) in
-            var s = ["", ""]
-            s = substring!.characters.split{$0 == ":"}.map(String.init)
-            if s.count == 1{
-                return
-            }
-            processFontPrefixes(self.font!.pointSize, attributedString: attributedString, matchedStringArray: s, substring: substring)
-
-        })
-        
-        //when the view is about to be released -> overassignment mightn happen
-        //which will cause visual font issue
-        if (self.attributedText!.string != attributedString.string) {
+        processTextIcons(self.text! as NSString, pointSize: self.font!.pointSize, attributedStringToCheck: self.attributedText!, setTextCallback: {(attributedString: NSAttributedString) in
             self.attributedText = attributedString
-        }
+            })
     }
     
     func setTextWithIconFont(font: FontsFileNames, size: CGFloat = 15.0, text: String){
@@ -126,25 +136,9 @@ public extension UILabel {
 
 public extension UITextField{
     func processIcons() {
-        let text = self.text! as NSString
-        let textRange = NSMakeRange(0, text.length)
-        let attributedString = NSMutableAttributedString(string: self.text!)
-        
-        text.enumerateSubstringsInRange(textRange, options: .ByWords, usingBlock: {
-            (substring, substringRange, _, _) in
-            var s = ["", ""]
-            s = substring!.characters.split{$0 == ":"}.map(String.init)
-            if s.count == 1{
-                return
-            }
-            processFontPrefixes(self.font!.pointSize, attributedString: attributedString, matchedStringArray: s, substring: substring)            
-        })
-        
-        //when the view is about to be released -> overassignment mightn happen
-        //which will cause visual font issue
-        if (self.attributedText!.string != attributedString.string) {
+        processTextIcons(self.text! as NSString, pointSize: self.font!.pointSize, attributedStringToCheck: self.attributedText!, setTextCallback: {(attributedString: NSAttributedString) in
             self.attributedText = attributedString
-        }
+        })
     }
     
     func setTextWithIconFont(font: FontsFileNames, size: CGFloat = 15.0, text: String){
@@ -155,25 +149,9 @@ public extension UITextField{
 
 public extension UIButton {
     func processIcons() {
-        let text = (self.titleLabel?.text)! as NSString
-        let textRange = NSMakeRange(0, text.length)
-        let attributedString = NSMutableAttributedString(string: (self.titleLabel?.text)!)
-        
-        text.enumerateSubstringsInRange(textRange, options: .ByWords, usingBlock: {
-            (substring, substringRange, _, _) in var s = ["", ""]
-            s = substring!.characters.split{$0 == ":"}.map(String.init)
-            if s.count == 1{
-                return
-            }
-            
-            processFontPrefixes(self.titleLabel?.font!.pointSize, attributedString: attributedString, matchedStringArray: s, substring: substring)
-        })
-        
-        //when the view is about to be released -> overassignment mightn happen
-        //which will cause visual font issue
-        if (self.titleLabel?.attributedText!.string != attributedString.string) {
+        processTextIcons((self.titleLabel?.text)! as NSString, pointSize: (self.titleLabel?.font!.pointSize)!, attributedStringToCheck: (self.titleLabel?.attributedText)!, setTextCallback: {(attributedString: NSAttributedString) in
             self.setAttributedTitle(attributedString, forState: .Normal)
-        }
+        })
     }
     
     func setTextWithIconFont(font: FontsFileNames, size: CGFloat = 15.0, text: String){
