@@ -138,13 +138,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/FirstViewController.swift"
-            timestampString = "492492953.789323"
+            timestampString = "495331568.667911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "didReceiveMemoryWarning()"
-            landmarkType = "5">
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "viewDidAppear(animated:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,13 +154,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/FirstViewController.swift"
-            timestampString = "492492953.789323"
+            timestampString = "495331568.667911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "5">
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "viewWillAppear(animated:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -170,13 +170,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/FirstViewController.swift"
-            timestampString = "492492953.789323"
+            timestampString = "495331568.667911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,13 +186,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/FirstViewController.swift"
-            timestampString = "492492953.789323"
+            timestampString = "495331568.667911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -303,8 +303,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
             endingLineNumber = "27"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -319,8 +319,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -335,8 +335,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -351,8 +351,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -367,8 +367,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -383,8 +383,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -399,8 +399,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -415,8 +415,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -431,8 +431,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -447,8 +447,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
             endingLineNumber = "31"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -463,8 +463,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -479,8 +479,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
-            landmarkName = "loadFont(_:)"
-            landmarkType = "5">
+            landmarkName = "loadFont(fontName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -490,13 +490,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328142.702625"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "iconFontOfSize(_:fontSize:)"
-            landmarkType = "5">
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "iconFontOfSize(font:fontSize:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -506,13 +506,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328142.702625"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "iconFontOfSize(_:fontSize:)"
-            landmarkType = "5">
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "iconFontOfSize(font:fontSize:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -554,13 +554,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328142.702625"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "iconFontOfSize(_:fontSize:)"
-            landmarkType = "5">
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "iconFontOfSize(font:fontSize:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -575,8 +575,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "processFont(_:fontFileName:attributedString:matchedStringArray:substring:)"
-            landmarkType = "7">
+            landmarkName = "processFont(fontSize:fontFileName:attributedString:matchedStringArray:substring:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -591,8 +591,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
             endingLineNumber = "39"
-            landmarkName = "processFont(_:fontFileName:attributedString:matchedStringArray:substring:)"
-            landmarkType = "7">
+            landmarkName = "processFont(fontSize:fontFileName:attributedString:matchedStringArray:substring:)"
+            landmarkType = "9">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -639,8 +639,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "processFontPrefixes(_:attributedString:matchedStringArray:substring:)"
-            landmarkType = "7">
+            landmarkName = "processFontPrefixes(fontSize:attributedString:matchedStringArray:substring:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -655,8 +655,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
-            landmarkName = "processFontPrefixes(_:attributedString:matchedStringArray:substring:)"
-            landmarkType = "7">
+            landmarkName = "processFontPrefixes(fontSize:attributedString:matchedStringArray:substring:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -671,8 +671,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "processFontPrefixes(_:attributedString:matchedStringArray:substring:)"
-            landmarkType = "7">
+            landmarkName = "processFontPrefixes(fontSize:attributedString:matchedStringArray:substring:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -687,8 +687,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "5">
+            landmarkName = "viewWillDisappear(animated:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -703,8 +703,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "5">
+            landmarkName = "viewWillAppear(animated:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -714,13 +714,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328142.702625"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "processIcons()"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -762,13 +762,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328142.702625"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "setTextWithIconFont(_:size:text:)"
-            landmarkType = "5">
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "setTextWithIconFont(font:size:text:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -778,13 +778,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328142.702625"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "setTextWithIconFont(_:size:text:)"
-            landmarkType = "5">
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "setTextWithIconFont(font:size:text:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -794,13 +794,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328251.749507"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "processIcons()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -810,13 +810,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328255.105014"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "processIcons()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -826,13 +826,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328257.067879"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "processIcons()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -842,13 +842,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "capio/JQSwiftIcon/Classes/JQSwiftIcon.swift"
-            timestampString = "495328301.880963"
+            timestampString = "495331248.658293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "processIcons()"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -881,6 +881,22 @@
                   offsetFromSymbolStart = "80">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "capio/FirstViewController.swift"
+            timestampString = "495331521.775103"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "onDoVideo(sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

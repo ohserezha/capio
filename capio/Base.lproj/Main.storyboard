@@ -58,9 +58,18 @@
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qp-HC-EBJ">
+                                <rect key="frame" x="198" y="629" width="139" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="do dat video"/>
+                                <connections>
+                                    <action selector="onDoVideo:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="1J7-t2-8v5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="2qp-HC-EBJ" secondAttribute="trailing" constant="57" id="4Pk-3r-tc1"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="5hZ-C9-h5w"/>
                             <constraint firstItem="L2j-fR-bae" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="CC1-0y-njR"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="DGL-sr-EkX"/>
@@ -68,6 +77,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="L2j-fR-bae" secondAttribute="trailing" constant="-19" id="FJ0-B9-uvK"/>
                             <constraint firstAttribute="trailing" secondItem="M3A-8q-kT1" secondAttribute="trailing" id="L3e-oN-kW5"/>
                             <constraint firstAttribute="trailing" secondItem="M3A-8q-kT1" secondAttribute="trailing" id="NyM-yO-dC4"/>
+                            <constraint firstItem="L2j-fR-bae" firstAttribute="top" secondItem="2qp-HC-EBJ" secondAttribute="bottom" constant="21" id="ZOb-kQ-ukI"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="by3-uT-T1W"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="dSC-fw-1De"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="p4x-8e-SLN"/>
@@ -103,6 +113,7 @@
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
                         <outlet property="doPhotoBtn" destination="oC4-uG-gQP" id="Cmh-Ne-Zy7"/>
+                        <outlet property="doVideoBtn" destination="2qp-HC-EBJ" id="tKi-Uf-l8Z"/>
                         <outlet property="myCamView" destination="M3A-8q-kT1" id="Acg-PJ-crH"/>
                         <outlet property="settingsBtn" destination="aBd-3M-EcG" id="g9P-BM-g4q"/>
                         <segue destination="UDv-kk-OKg" kind="show" identifier="CameraOptionsView" id="GDl-qj-foH"/>
