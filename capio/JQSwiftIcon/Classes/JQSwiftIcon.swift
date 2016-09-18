@@ -79,15 +79,14 @@ func processTextIcons(
     let textRange = NSMakeRange(0, text.length)
     let attributedString = NSMutableAttributedString(string: textToCheck as String)
     
-    text.enumerateSubstrings(in: textRange, options: .byWords, using: {
-        (substring, substringRange, _, _) in
-        var s = ["", ""]
-        s = substring!.characters.split{$0 == ":"}.map(String.init)
-        if s.count == 1{
-            return
-        }
-        processFontPrefixes(pointSize, attributedString: attributedString, matchedStringArray: s, substring: substring)
-    })
+    let subStr = textToCheck.substring(with: textRange);
+    var s = ["", ""];
+    s = subStr.characters.split{$0 == ":"}.map(String.init)
+    if s.count == 1{
+        return
+    }
+    processFontPrefixes(pointSize, attributedString: attributedString, matchedStringArray: s, substring: subStr)
+
     
     //when the view is about to be released -> overassignment mightn happen
     //which will cause visual font issue
@@ -164,7 +163,6 @@ public extension UIFont{
     static func iconFontOfSize(_ font: FontsFileNames, fontSize: CGFloat) -> UIFont {
         let fontFileName = font.rawValue
         let fontName = FontNames[fontFileName]
-        var token: Int = 0
         if (UIFont.fontNames(forFamilyName: fontName!).count == 0) {
             FontLoader.loadFont(fontFileName.lowercased())
         }
