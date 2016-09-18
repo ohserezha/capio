@@ -30,23 +30,23 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var transition = ElasticTransition()    
     
-    @IBAction func onDoPhotoTrigger(sender: AnyObject) {
+    @IBAction func onDoPhotoTrigger(_ sender: AnyObject) {
         captureImage()
     }    
     
-    @IBAction func onShowOptionsPress(sender: UIButton) {
-        transition.edge = .Bottom
+    @IBAction func onShowOptionsPress(_ sender: UIButton) {
+        transition.edge = .bottom
         transition.startingPoint = sender.center
-        performSegueWithIdentifier("CameraOptionsView", sender: self)
+        performSegue(withIdentifier: "CameraOptionsView", sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination
         vc.transitioningDelegate = transition
-        vc.modalPresentationStyle = .Custom
+        vc.modalPresentationStyle = .custom
         
         if (segue.identifier == "CameraOptionsView") {
-            let cmvc = segue.destinationViewController as! CameraOptionsViewController;
+            let cmvc = segue.destination as! CameraOptionsViewController;
             cmvc.captureDevice = captureDevice
         }
     }
@@ -61,12 +61,12 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         transition.sticky = true
         transition.showShadow = true
         transition.panThreshold = 0.3
-        transition.transformType = .TranslateMid
+        transition.transformType = .translateMid
         transition.containerColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         transition.overlayColor = UIColor(white: 0, alpha: 0)
         transition.shadowColor = UIColor(white: 0, alpha: 0)
         transition.frontViewBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        transition.transformType = ElasticTransitionBackgroundTransform.Subtle
+        transition.transformType = ElasticTransitionBackgroundTransform.subtle
         
 
 //        
@@ -80,18 +80,18 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         exit(0)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         previewLayer?.frame = myCamView.bounds
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         // I hope i'm releasing it right...        
         super.viewWillDisappear(animated)
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         captureSession = AVCaptureSession()
@@ -101,13 +101,13 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         // todo -> write getter for Preset (device based)
         captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
 
-        captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
         listenVolumeButton()
         startCaptureSession()
     }
     
-    private func startCaptureSession() {
+    fileprivate func startCaptureSession() {
         var input: AVCaptureInput!
         
         do {
@@ -135,12 +135,12 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    private func captureImage() {
-        if let videoConnection = captureStillImageOut!.connectionWithMediaType(AVMediaTypeVideo) {
-            captureStillImageOut!.captureStillImageAsynchronouslyFromConnection(videoConnection) {
+    fileprivate func captureImage() {
+        if let videoConnection = captureStillImageOut!.connection(withMediaType: AVMediaTypeVideo) {
+            captureStillImageOut!.captureStillImageAsynchronously(from: videoConnection) {
                 (imageDataSampleBuffer, error) -> Void in
                 let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
-                UIImageWriteToSavedPhotosAlbum(UIImage(data: imageData)!,
+                UIImageWriteToSavedPhotosAlbum(UIImage(data: imageData!)!,
                                                self,
                                                #selector(FirstViewController.onImageSaved(_:didFinishSavingWithError:contextInfo:)),
                                                nil)
@@ -148,7 +148,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    private func onDispose() {
+    fileprivate func onDispose() {
         captureSession?.stopRunning()
         do {
             try audioSession?.setActive(false)
@@ -159,7 +159,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     // photo success/fail save
-    func onImageSaved(savedImage: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+    func onImageSaved(_ savedImage: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
         if error == nil {
             
             let banner = Banner(
@@ -186,17 +186,17 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
             audioSession = AVAudioSession.sharedInstance()
             // in case you have music plaing in your phone
             // it will not get muted thanks to that
-            try audioSession?.setCategory(AVAudioSessionCategoryPlayback, withOptions: .MixWithOthers)
+            try audioSession?.setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
             try audioSession!.setActive(true)
             audioSession!.addObserver(self, forKeyPath: "outputVolume",
-                                     options: NSKeyValueObservingOptions.New, context: nil)
+                                     options: NSKeyValueObservingOptions.new, context: nil)
         } catch {
             print(error)
         }
 
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "outputVolume"{
             captureImage()
         }

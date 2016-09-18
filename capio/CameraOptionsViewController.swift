@@ -59,15 +59,15 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         super.didReceiveMemoryWarning()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         focusIconLabel.processIcons();
@@ -81,18 +81,18 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         configureCamera()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
-    @IBAction func onFocusSlideDrag(sender: UISlider) {
+    @IBAction func onFocusSlideDrag(_ sender: UISlider) {
         focusDistance = sender.value
         focusValueLabel.text = String(focusDistance)
         
         configureCamera()
     }
     
-    @IBAction func onTemperatureSliderChange(sender: UISlider) {
+    @IBAction func onTemperatureSliderChange(_ sender: UISlider) {
         temperatureValue = sender.value
         temperatureValueLabel.text = String(temperatureValue)
         
@@ -100,30 +100,30 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         configureCamera()
     }    
     
-    @IBAction func onIsoSliderChange(sender: UISlider) {
+    @IBAction func onIsoSliderChange(_ sender: UISlider) {
         isoValue = sender.value
         isoLabel.text = String(isoValue)
         configureCamera()
     }
     
-    @IBAction func onShutterSliderChange(sender: UISlider) {
+    @IBAction func onShutterSliderChange(_ sender: UISlider) {
         setExposureDuration()
         configureCamera()
     }
     
-    private func setCurrentDefaultCameraSettings() {
+    fileprivate func setCurrentDefaultCameraSettings() {
         
         focusDistance = captureDevice!.lensPosition
         focusValueLabel.text = String(focusDistance)
         
-        isoValue = captureDevice!.ISO
+        isoValue = captureDevice!.iso
         isoLabel.text = String(isoValue)
         
         isoSlider.value = isoValue
         focusSlider.value = focusDistance
 
         currentColorGains = captureDevice!.deviceWhiteBalanceGains
-        currentColorTemperature = captureDevice!.temperatureAndTintValuesForDeviceWhiteBalanceGains(currentColorGains)
+        currentColorTemperature = captureDevice!.temperatureAndTintValues(forDeviceWhiteBalanceGains: currentColorGains)
         temperatureSlider.value = currentColorTemperature.temperature
         temperatureValueLabel.text = String(temperatureSlider.value)
         
@@ -139,7 +139,7 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         shutterValueLabel.text = "1/\(Int(1.0 / CMTimeGetSeconds(exposureDuration)))"
     }
 
-    private func setExposureDuration() {
+    fileprivate func setExposureDuration() {
         let p: Double = Double(pow( shutterSlider.value, EXPOSURE_DURATION_POWER )); // Apply power function to expand slider's low-end range
         let minDurationSeconds: Double  = max(CMTimeGetSeconds(captureDevice!.activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
         let maxDurationSeconds: Double = CMTimeGetSeconds(captureDevice!.activeFormat.maxExposureDuration);
@@ -151,13 +151,13 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     
     
     //Take the actual temperature value
-    private func changeTemperatureRaw(temperature: Float) {
+    fileprivate func changeTemperatureRaw(_ temperature: Float) {
         currentColorTemperature = AVCaptureWhiteBalanceTemperatureAndTintValues(temperature: temperature, tint: 0.0)
-        currentColorGains = captureDevice!.deviceWhiteBalanceGainsForTemperatureAndTintValues(currentColorTemperature)        
+        currentColorGains = captureDevice!.deviceWhiteBalanceGains(for: currentColorTemperature)        
     }
     
     // Normalize the gain so it does not exceed
-    private func normalizedGains(gains: AVCaptureWhiteBalanceGains) -> AVCaptureWhiteBalanceGains {
+    fileprivate func normalizedGains(_ gains: AVCaptureWhiteBalanceGains) -> AVCaptureWhiteBalanceGains {
         var g = gains;
         g.redGain = max(1.0, g.redGain);
         g.greenGain = max(1.0, g.greenGain);
@@ -170,14 +170,14 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         return g;
     }
     
-    private func configureCamera() {
+    fileprivate func configureCamera() {
         
         if let device = captureDevice {
             do {
                 try device.lockForConfiguration()
-                device.focusMode = .Locked
+                device.focusMode = .locked
                 device.setFocusModeLockedWithLensPosition(focusDistance, completionHandler: { (time) -> Void in })
-                device.setExposureModeCustomWithDuration(exposureDuration, ISO: isoValue, completionHandler: { (time) -> Void in })
+                device.setExposureModeCustomWithDuration(exposureDuration, iso: isoValue, completionHandler: { (time) -> Void in })
                 device.setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains(normalizedGains(currentColorGains), completionHandler: { (time) -> Void in })
                 device.unlockForConfiguration()
             } catch {

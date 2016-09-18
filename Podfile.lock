@@ -8,13 +8,30 @@ PODS:
 
 DEPENDENCIES:
   - BRYXBanner
-  - ElasticTransition (~> 3.0.0)
+  - ElasticTransition (from `https://github.com/lkzhao/ElasticTransition.git`, branch `swift3`)
+  - MotionAnimation (from `https://github.com/lkzhao/MotionAnimation.git`, branch `swift3`)
+
+EXTERNAL SOURCES:
+  ElasticTransition:
+    :branch: swift3
+    :git: https://github.com/lkzhao/ElasticTransition.git
+  MotionAnimation:
+    :branch: swift3
+    :git: https://github.com/lkzhao/MotionAnimation.git
+
+CHECKOUT OPTIONS:
+  ElasticTransition:
+    :commit: 426816315ff4d5411d2187298d7c1808a5368a68
+    :git: https://github.com/lkzhao/ElasticTransition.git
+  MotionAnimation:
+    :commit: dd81eab887d43917602b2c58f4801a7c45519777
+    :git: https://github.com/lkzhao/MotionAnimation.git
 
 SPEC CHECKSUMS:
   BRYXBanner: 5f0911d52e0a77e088f7ea7ddcdebd02afb7828a
   ElasticTransition: 231e60fa66f68f42129e7969736f4a9e69794f97
   MotionAnimation: ff356cfdbedcab52a5bfc94cc96ed44ea2f652e0
 
-PODFILE CHECKSUM: a04e0fe7fe4dc95a30b6fbe7b219134497ef9378
+PODFILE CHECKSUM: 792db7d29cb59c0ac50f4bc9d9b8a4d4639269a0
 
 COCOAPODS: 1.0.1
