@@ -1,7 +1,7 @@
 //
 //  JQSwiftIcon.swift
 //
-//  Created by Jose Quintero on 8/6/2016 and tweaked by Roman Zhyliov on 08/08/2016.
+//  Created by Jose Quintero on 9/11/2016 and tweaked by Roman Zhyliov on 09/15/2016.
 //  Copyright © 2016 Jose Quintero. All rights reserved.
 //
 
@@ -32,7 +32,7 @@ public enum FontsFileNames: String {
 }
 
 func processFont(_ fontSize: CGFloat?, fontFileName: FontsFileNames, attributedString: NSMutableAttributedString, matchedStringArray: [String], substring: String!) {
-    
+
     let substringRange = NSMakeRange(0, substring.characters.count);
     attributedString.replaceCharacters(in: substringRange, with: String.iconWithCode(fontFileName, code: matchedStringArray[1])!)
     let newRange = _NSRange(location: substringRange.location, length: 1)
@@ -74,11 +74,11 @@ func processTextIcons(
     pointSize: CGFloat,
     attributedStringToCheck: NSAttributedString,
     setTextCallback: (NSAttributedString) -> Void) {
-    
+
     let text = textToCheck;
     let textRange = NSMakeRange(0, text.length)
     let attributedString = NSMutableAttributedString(string: textToCheck as String)
-    
+
     let subStr = textToCheck.substring(with: textRange);
     var s = ["", ""];
     s = subStr.characters.split{$0 == ":"}.map(String.init)
@@ -87,7 +87,7 @@ func processTextIcons(
     }
     processFontPrefixes(pointSize, attributedString: attributedString, matchedStringArray: s, substring: subStr)
 
-    
+
     //when the view is about to be released -> overassignment mightn happen
     //which will cause visual font issue
     if (attributedStringToCheck.string != attributedString.string) {
@@ -126,7 +126,7 @@ public extension UILabel {
             self.attributedText = attributedString
             })
     }
-    
+
     func setTextWithIconFont(_ font: FontsFileNames, size: CGFloat = 15.0, text: String){
         self.font = UIFont.iconFontOfSize(font, fontSize: size)
         self.text = text
@@ -139,7 +139,7 @@ public extension UITextField{
             self.attributedText = attributedString
         })
     }
-    
+
     func setTextWithIconFont(_ font: FontsFileNames, size: CGFloat = 15.0, text: String){
         self.font = UIFont.iconFontOfSize(font, fontSize: size)
         self.text = text
@@ -152,7 +152,7 @@ public extension UIButton {
             self.setAttributedTitle(attributedString, for: UIControlState())
         })
     }
-    
+
     func setTextWithIconFont(_ font: FontsFileNames, size: CGFloat = 15.0, text: String){
         self.titleLabel?.font = UIFont.iconFontOfSize(font, fontSize: size)
         self.titleLabel?.text = text

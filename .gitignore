@@ -3,3 +3,5 @@ Pods/
 Pods/*.xcodeproj/
 *.xcuserstate
 *.xcbkptlist
+xcuserdata/*
+.DS_Store
