@@ -5,3 +5,5 @@ Pods/*.xcodeproj/
 *.xcbkptlist
 xcuserdata/*
 .DS_Store
+xcuserdata/
+project.xcworkspace/
