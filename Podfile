@@ -6,6 +6,7 @@ target 'capio' do
   use_frameworks!
   pod 'MotionAnimation', :git => 'https://github.com/lkzhao/MotionAnimation.git', :branch => 'swift3'
   pod 'ElasticTransition', :git => 'https://github.com/lkzhao/ElasticTransition.git', :branch => 'swift3'
+  pod 'JQSwiftIcon', :git => 'https://github.com/ronanamsterdam/JQSwiftIcon.git', :branch => '_rz-to-swift3'
   pod 'BRYXBanner'
 
   # Pods for capio

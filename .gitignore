@@ -1,7 +1,11 @@
 Pods
 Pods/
+Pods/*
 Pods/*.xcodeproj/
 *.xcuserstate
 *.xcbkptlist
 xcuserdata/*
 .DS_Store
+xcuserdata/
+project.xcworkspace/
+Podfile.lock

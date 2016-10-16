@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 import AVFoundation
 import ElasticTransition
+import JQSwiftIcon
 
 class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelegate {
     
