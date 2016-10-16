@@ -27,7 +27,7 @@
                                 <items>
                                     <barButtonItem style="plain" id="ElU-qP-Ral">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aBd-3M-EcG">
-                                            <rect key="frame" x="20" y="1" width="175" height="42"/>
+                                            <rect key="frame" x="20" y="1" width="115" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <state key="normal" title="mat:tune">
@@ -40,7 +40,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="HPU-VS-u8A">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oC4-uG-gQP">
-                                            <rect key="frame" x="205" y="1" width="168" height="42"/>
+                                            <rect key="frame" x="145" y="1" width="115" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <state key="normal" title="fa:camera.retro">
@@ -51,27 +51,31 @@
                                             </connections>
                                         </button>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" id="GQ0-tu-PgG">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="566-6D-xDQ">
+                                            <rect key="frame" x="270" y="1" width="115" height="42"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <state key="normal" title="mat:videocam">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onDoVideo:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="N0c-zR-Je2"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qp-HC-EBJ">
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="do dat video"/>
-                                <connections>
-                                    <action selector="onDoVideo:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="1J7-t2-8v5"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="865-yf-mAH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2qp-HC-EBJ" secondAttribute="trailing" constant="57" id="THf-sj-EiL"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="ToB-ih-bzK"/>
                             <constraint firstItem="L2j-fR-bae" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-21" id="VGl-mH-rDf"/>
                             <constraint firstItem="L2j-fR-bae" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="bUP-Ki-9DV"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="gqg-sU-MbR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="L2j-fR-bae" secondAttribute="trailing" constant="-19" id="pdR-W1-9nf"/>
-                            <constraint firstItem="L2j-fR-bae" firstAttribute="top" secondItem="2qp-HC-EBJ" secondAttribute="bottom" constant="21" id="vpi-wH-f2Z"/>
                             <constraint firstAttribute="trailing" secondItem="M3A-8q-kT1" secondAttribute="trailing" id="zde-5V-nIx"/>
                         </constraints>
                         <variation key="default">
@@ -91,15 +95,28 @@
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
                         <outlet property="doPhotoBtn" destination="oC4-uG-gQP" id="Cmh-Ne-Zy7"/>
-                        <outlet property="doVideoBtn" destination="2qp-HC-EBJ" id="tKi-Uf-l8Z"/>
+                        <outlet property="doVideoBtn" destination="566-6D-xDQ" id="oiP-wT-khK"/>
                         <outlet property="myCamView" destination="M3A-8q-kT1" id="Acg-PJ-crH"/>
                         <outlet property="settingsBtn" destination="aBd-3M-EcG" id="g9P-BM-g4q"/>
                         <segue destination="UDv-kk-OKg" kind="show" identifier="CameraOptionsView" id="GDl-qj-foH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <barButtonItem style="plain" id="eha-Pa-uuA">
+                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kWr-7Q-gnM">
+                        <rect key="frame" x="205" y="1" width="168" height="42"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <state key="normal" title="fa:camera.retro">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="onDoPhotoTrigger:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="23h-63-9FP"/>
+                        </connections>
+                    </button>
+                </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="954" y="0.0"/>
+            <point key="canvasLocation" x="953.60000000000002" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

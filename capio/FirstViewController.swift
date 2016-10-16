@@ -11,6 +11,9 @@ import AVFoundation
 import Foundation
 import ElasticTransition
 import BRYXBanner
+import JQSwiftIcon
+
+import Photos
 
 class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureFileOutputRecordingDelegate {
 
@@ -28,6 +31,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet var myCamView:                UIView!
     @IBOutlet var settingsBtn:              UIButton!
     @IBOutlet var doPhotoBtn:               UIButton!
+    @IBOutlet var doVideoBtn:               UIButton!
 
     var transition = ElasticTransition()
 
@@ -41,14 +45,18 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         performSegue(withIdentifier: "CameraOptionsView", sender: self)
     }
 
-    @IBOutlet var doVideoBtn:               UIButton!
-
     @IBAction func onDoPhotoTrigger(sender: AnyObject) {
         captureImage()
     }
 
-    @IBAction func onDoVideo(sender: AnyObject) {
-        print("Loool")
+    @IBAction func onDoVideo(_ sender: UIButton) {
+        if (!(captureVideoOut?.isRecording)!) {
+            sender.titleLabel?.textColor = UIColor.red
+            self.startRecording()
+        } else if(captureVideoOut?.isRecording)! {
+            sender.titleLabel?.textColor = UIColor.white
+            self.stopRecording()
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,6 +75,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
         settingsBtn.processIcons();
         doPhotoBtn.processIcons();
+        doVideoBtn.processIcons();
 
         // customization
         transition.sticky = true
@@ -135,25 +144,27 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
                 myCamView.layer.addSublayer((previewLayer)!)
 
-                captureSession?.startRunning()
             } else {
-                //@todo: disable videobutton here if not available
+                //todo: disable videobutton here if not available
             }
-
 
             captureVideoOut = AVCaptureMovieFileOutput()
 
             if(captureSession?.canAddOutput(captureVideoOut) != nil) {
-                let preferredTimeScale:Int32 = 30
-                let totalSeconds:Int64 = Int64(Int(7) * Int(preferredTimeScale)) // after 7 sec video recording stop automatically
-                let maxDuration:CMTime = CMTimeMake(totalSeconds, preferredTimeScale)
-                captureVideoOut?.maxRecordedDuration = maxDuration
+                  // todo: consider to be a setting?
+//                let preferredTimeScale:Int32 = 30
+//                let totalSeconds:Int64 = Int64(Int(7) * Int(preferredTimeScale)) // after 7 sec video recording stop automatically
+//                let maxDuration:CMTime = CMTimeMake(totalSeconds, preferredTimeScale)
+//                captureVideoOut?.maxRecordedDuration = maxDuration
 
                 captureVideoOut?.minFreeDiskSpaceLimit = 1024 * 1024
 
+                captureSession?.addOutput(captureVideoOut)
             } else {
-                //@todo: disable videobutton here if not available
+                //todo: disable videobutton here if not available
             }
+
+            captureSession?.startRunning()
         }
     }
 
@@ -171,7 +182,17 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
 
     func startRecording(){
-        let outputUrl = NSURL(fileURLWithPath: NSTemporaryDirectory() + "test.mp4")
+
+        let outputUrl = NSURL(fileURLWithPath: NSTemporaryDirectory() + "temp.mp4")
+        if(FileManager().fileExists(atPath: NSTemporaryDirectory() + "temp.mp4")) {
+            print("how-howhow")
+            do {
+                try FileManager().removeItem(atPath: NSTemporaryDirectory() + "temp.mp4")
+            } catch {
+                print(error)
+            }
+        }
+
         captureVideoOut?.startRecording(toOutputFileURL: outputUrl as URL!, recordingDelegate: self)
     }
 
@@ -186,24 +207,44 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         error: Error!
         ) {
 
-        print("Finish recording")
-//        let success:Bool = false
+//        print("Finish recording")
         if (error != nil) {
-            print("error")
-//            let value: AnyObject? = error.userInfo?[AVErrorRecordingSuccessfullyFinishedKey]
-//            if value == nil{
-//                success = true
-//            }else{
-//                success = false
-//            }
+            //finish loading message is being written in error obj for what ever reason
+            // todo: test for space limit
+            print("error: " + error.localizedDescription)
         }
-//        if success == true{
-        self.stopRecording()
-//        }
-    }
 
-    private func captureVideo() {
+        PHPhotoLibrary.requestAuthorization({ (authorizationStatus: PHAuthorizationStatus) -> Void in
+            // check if user authorized access photos for your app
+            if authorizationStatus == .authorized {
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileURL)}) { completed, error in
+                        if completed {
+                            print("Video asset created")
 
+                            // todo: banner started acted funky here..
+                            let banner = Banner(
+                                title: "Swells!",
+                                subtitle: "You made a video!",
+                                // todo
+                                // image: savedImage,
+                                backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
+                            banner.dismissesOnTap = true
+                            banner.show(duration: 1.0)
+
+                        } else {
+                            print(error?.localizedDescription)
+
+                            let errorBanner = Banner(
+                                title: "Damn!",
+                                subtitle: "no luck saving dat :(",
+                                backgroundColor: UIColor(red:188.00/255.0, green:16.0/255.0, blue:16.5/255.0, alpha:0.500))
+                            errorBanner.dismissesOnTap = true
+                            errorBanner.show(duration: 1.5)
+                        }
+                }
+            }
+        })
 
     }
 
