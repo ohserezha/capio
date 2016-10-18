@@ -101,7 +101,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        // I hope i'm releasing it right...
         super.viewWillDisappear(animated)
     }
 
@@ -221,26 +220,29 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileURL)}) { completed, error in
                         if completed {
                             print("Video asset created")
-
-                            // todo: banner started acted funky here..
-                            let banner = Banner(
-                                title: "Swells!",
-                                subtitle: "You made a video!",
-                                // todo
-                                // image: savedImage,
-                                backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
-                            banner.dismissesOnTap = true
-                            banner.show(duration: 1.0)
-
+                            //coz you need to run UIKit opeartions on main thread
+                            DispatchQueue.main.async {
+                                let banner = Banner(
+                                    title: "Swells!",
+                                    subtitle: "You made a video!",
+                                    // todo
+                                    // image: savedImage,
+                                    backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
+                                banner.dismissesOnTap = true
+                                banner.show(duration: 1.0)
+                            }
                         } else {
                             print(error?.localizedDescription)
-
-                            let errorBanner = Banner(
-                                title: "Damn!",
-                                subtitle: "no luck saving dat :(",
-                                backgroundColor: UIColor(red:188.00/255.0, green:16.0/255.0, blue:16.5/255.0, alpha:0.500))
-                            errorBanner.dismissesOnTap = true
-                            errorBanner.show(duration: 1.5)
+                            
+                            //coz you need to run UIKit opeartions on main thread
+                            DispatchQueue.main.async {
+                                let errorBanner = Banner(
+                                    title: "Damn!",
+                                    subtitle: "no luck saving dat :(",
+                                    backgroundColor: UIColor(red:188.00/255.0, green:16.0/255.0, blue:16.5/255.0, alpha:0.500))
+                                errorBanner.dismissesOnTap = true
+                                errorBanner.show(duration: 1.5)
+                            }
                         }
                 }
             }
@@ -261,23 +263,28 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
     // photo success/fail save
     func onImageSaved(_ savedImage: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
         if error == nil {
-
-            let banner = Banner(
-                title: "Awesome!",
-                subtitle: "You made a picture!",
-                // todo
-                // image: savedImage,
-                backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
-            banner.dismissesOnTap = true
-            banner.show(duration: 1.0)
-
+            //coz you need to run UIKit opeartions on main thread
+            DispatchQueue.main.async {
+                let banner = Banner(
+                    title: "Awesome!",
+                    subtitle: "You made a picture!",
+                    // todo
+                    // image: savedImage,
+                    backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
+                banner.dismissesOnTap = true
+                banner.show(duration: 1.0)
+            }
         } else {
-            let errorBanner = Banner(
-                title: "Shoot!",
-                subtitle: "something went terrebly wrong :(",
-                backgroundColor: UIColor(red:188.00/255.0, green:16.0/255.0, blue:16.5/255.0, alpha:0.500))
-            errorBanner.dismissesOnTap = true
-            errorBanner.show(duration: 1.5)
+            
+            //coz you need to run UIKit opeartions on main thread
+            DispatchQueue.main.async {
+                let errorBanner = Banner(
+                    title: "Shoot!",
+                    subtitle: "something went terrebly wrong :(",
+                    backgroundColor: UIColor(red:188.00/255.0, green:16.0/255.0, blue:16.5/255.0, alpha:0.500))
+                errorBanner.dismissesOnTap = true
+                errorBanner.show(duration: 1.5)
+            }
         }
     }
 
