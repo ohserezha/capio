@@ -110,9 +110,9 @@
 		37E25FF51D32DB6D00644207 /* capio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = capio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E25FF81D32DB6D00644207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37E25FFA1D32DB6D00644207 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		37E25FFF1D32DB6D00644207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		37E25FFF1D32DB6D00644207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		37E260011D32DB6D00644207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		37E260041D32DB6D00644207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		37E260041D32DB6D00644207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37E260061D32DB6D00644207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37E2600B1D32DB6D00644207 /* capioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = capioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E2600F1D32DB6D00644207 /* capioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = capioTests.swift; sourceTree = "<group>"; };
@@ -186,6 +186,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		37B4194C1DB6AC750082C29C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				37E25FFA1D32DB6D00644207 /* FirstViewController.swift */,
+				37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		37B419561DB6AC9A0082C29C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				37E25FFE1D32DB6D00644207 /* Main.storyboard */,
+				37E260031D32DB6D00644207 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		37E25FEC1D32DB6D00644207 = {
 			isa = PBXGroup;
 			children = (
@@ -212,12 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				37E25FF81D32DB6D00644207 /* AppDelegate.swift */,
-				37E25FFA1D32DB6D00644207 /* FirstViewController.swift */,
-				37E25FFE1D32DB6D00644207 /* Main.storyboard */,
+				37B4194C1DB6AC750082C29C /* Controllers */,
+				37B419561DB6AC9A0082C29C /* UI */,
 				37E260011D32DB6D00644207 /* Assets.xcassets */,
-				37E260031D32DB6D00644207 /* LaunchScreen.storyboard */,
 				37E260061D32DB6D00644207 /* Info.plist */,
-				37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */,
 			);
 			path = capio;
 			sourceTree = "<group>";
