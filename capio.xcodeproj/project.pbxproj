@@ -348,10 +348,12 @@
 					};
 					37E2600A1D32DB6D00644207 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 37E25FF41D32DB6D00644207;
 					};
 					37E260151D32DB6D00644207 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 37E25FF41D32DB6D00644207;
 					};
 				};
