@@ -15,7 +15,11 @@ import JQSwiftIcon
 
 import Photos
 
-class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureFileOutputRecordingDelegate {
+class FirstViewController:
+    UIViewController,
+    UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate,
+    AVCaptureFileOutputRecordingDelegate {
 
     var captureSession:                     AVCaptureSession?
     var captureStillImageOut:               AVCaptureStillImageOutput?
@@ -66,7 +70,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
         if (segue.identifier == "CameraOptionsView") {
             let cmvc = segue.destination as! CameraOptionsViewController;
-            cmvc.captureDevice = captureDevice
+            cmvc.captureDevice = self.captureDevice
         }
     }
 
@@ -79,10 +83,10 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
         // customization
         transition.sticky = true
-        transition.showShadow = true
+        transition.showShadow = false
         transition.panThreshold = 0.3
         transition.transformType = .translateMid
-        transition.containerColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        transition.containerColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
         transition.overlayColor = UIColor(white: 0, alpha: 0)
         transition.shadowColor = UIColor(white: 0, alpha: 0)
         transition.frontViewBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
@@ -115,7 +119,7 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
 
         captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-
+        
         listenVolumeButton()
         startCaptureSession()
     }
@@ -155,7 +159,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
 //                let totalSeconds:Int64 = Int64(Int(7) * Int(preferredTimeScale)) // after 7 sec video recording stop automatically
 //                let maxDuration:CMTime = CMTimeMake(totalSeconds, preferredTimeScale)
 //                captureVideoOut?.maxRecordedDuration = maxDuration
-
                 captureVideoOut?.minFreeDiskSpaceLimit = 1024 * 1024
 
                 captureSession?.addOutput(captureVideoOut)
@@ -163,7 +166,34 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 //todo: disable videobutton here if not available
             }
 
-            captureSession?.startRunning()
+            // 1
+            if (self.captureDevice!.activeVideoMaxFrameDuration.timescale != 6) {
+                do {
+                    
+                    try self.captureDevice?.lockForConfiguration()
+                    
+                    for vFormat in self.captureDevice!.formats {
+                        
+                        // 2
+                        let ranges = (vFormat as AnyObject).videoSupportedFrameRateRanges as! [AVFrameRateRange]
+                        let frameRates = ranges[0]
+                        
+                        // 3
+                        if frameRates.maxFrameRate == 240 {
+                            
+                            // 4
+                            self.captureDevice!.activeFormat = vFormat as! AVCaptureDeviceFormat
+                            self.captureDevice!.activeVideoMinFrameDuration = frameRates.minFrameDuration
+                            self.captureDevice!.activeVideoMaxFrameDuration = frameRates.maxFrameDuration
+                        }
+                    }
+                    self.captureDevice?.unlockForConfiguration()
+                } catch {
+                    print(error)
+                }
+            }
+            
+            captureSession?.startRunning()            
         }
     }
 
@@ -179,7 +209,18 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
             }
         }
     }
-
+    
+    fileprivate func onDispose() {
+        captureSession?.stopRunning()
+        do {
+            try audioSession?.setActive(false)
+            audioSession?.removeObserver(self, forKeyPath: "outputVolume")
+        } catch {
+            print(error)
+        }
+    }
+    
+    //starts vide recording
     func startRecording(){
 
         let outputUrl = NSURL(fileURLWithPath: NSTemporaryDirectory() + "temp.mp4")
@@ -206,7 +247,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
         error: Error!
         ) {
 
-//        print("Finish recording")
         if (error != nil) {
             //finish loading message is being written in error obj for what ever reason
             // todo: test for space limit
@@ -248,16 +288,6 @@ class FirstViewController: UIViewController, UIImagePickerControllerDelegate, UI
             }
         })
 
-    }
-
-    fileprivate func onDispose() {
-        captureSession?.stopRunning()
-        do {
-            try audioSession?.setActive(false)
-            audioSession?.removeObserver(self, forKeyPath: "outputVolume")
-        } catch {
-            print(error)
-        }
     }
 
     // photo success/fail save
