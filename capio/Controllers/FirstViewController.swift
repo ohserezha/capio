@@ -19,10 +19,11 @@ class FirstViewController:
     UIViewController,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate,
-    AVCaptureFileOutputRecordingDelegate {
-
+    AVCaptureFileOutputRecordingDelegate,
+    AVCapturePhotoCaptureDelegate {
+    
     var captureSession:                     AVCaptureSession?
-    var captureStillImageOut:               AVCaptureStillImageOutput?
+    var captureStillImageOut:               AVCapturePhotoOutput?
     var captureVideoOut:                    AVCaptureMovieFileOutput?
     var previewLayer:                       AVCaptureVideoPreviewLayer?
 
@@ -136,8 +137,8 @@ class FirstViewController:
         if (captureSession?.canAddInput(input) != nil) {
             captureSession?.addInput(input)
 
-            captureStillImageOut = AVCaptureStillImageOutput()
-            captureStillImageOut?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+            captureStillImageOut = AVCapturePhotoOutput()
+            //captureStillImageOut?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
 
             if (captureSession?.canAddOutput(captureStillImageOut) != nil) {
                 captureSession?.addOutput(captureStillImageOut)
@@ -198,16 +199,16 @@ class FirstViewController:
     }
 
     fileprivate func captureImage() {
-        if let videoConnection = captureStillImageOut!.connection(withMediaType: AVMediaTypeVideo) {
-            captureStillImageOut!.captureStillImageAsynchronously(from: videoConnection) {
-                (imageDataSampleBuffer, error) -> Void in
-                let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
-                UIImageWriteToSavedPhotosAlbum(UIImage(data: imageData!)!,
-                                               self,
-                                               #selector(FirstViewController.onImageSaved(_:didFinishSavingWithError:contextInfo:)),
-                                               nil)
-            }
-        }
+        let settings = AVCapturePhotoSettings()
+        
+        let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
+        let previewFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
+                             kCVPixelBufferWidthKey as String: 160,
+                             kCVPixelBufferHeightKey as String: 160,
+                             ]
+        settings.previewPhotoFormat = previewFormat
+        
+        captureStillImageOut!.capturePhoto(with: settings, delegate: self)
     }
     
     fileprivate func onDispose() {
@@ -217,6 +218,59 @@ class FirstViewController:
             audioSession?.removeObserver(self, forKeyPath: "outputVolume")
         } catch {
             print(error)
+        }
+    }
+    
+    @objc(captureOutput:didFinishProcessingPhotoSampleBuffer:previewPhotoSampleBuffer:resolvedSettings:bracketSettings:error:) func capture(
+        _ captureOutput: AVCapturePhotoOutput,
+        didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?,
+        previewPhotoSampleBuffer: CMSampleBuffer?,
+        resolvedSettings: AVCaptureResolvedPhotoSettings,
+        bracketSettings racketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        
+        if let error = error {
+            print(error.localizedDescription)
+        }
+        
+        if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
+            //print(image: UIImage(data: dataImage)?.size)
+            
+            UIImageWriteToSavedPhotosAlbum(UIImage(data: dataImage)!,
+                                            self,
+                                            #selector(FirstViewController.onImageSaved(_:didFinishSavingWithError:contextInfo:)),
+                                            nil)
+        } else {
+            print("Error on saving the image")
+        }
+    }
+    
+    // photo success/fail save
+    func onImageSaved(_ savedImage: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
+        if error == nil {
+            //coz you need to run UIKit opeartions on main thread
+            DispatchQueue.main.async {
+                let banner = Banner(
+                    title: "Awesome!",
+                    subtitle: "You made a picture!",
+                    // todo
+                    // works locally but this needs to be merged:
+                    // https://github.com/bryx-inc/BRYXBanner/pull/48
+                    image: savedImage,
+                    backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
+                banner.dismissesOnTap = true
+                banner.show(duration: 1.0)
+            }
+        } else {
+            
+            //coz you need to run UIKit opeartions on main thread
+            DispatchQueue.main.async {
+                let errorBanner = Banner(
+                    title: "Shoot!",
+                    subtitle: "something went terrebly wrong :(",
+                    backgroundColor: UIColor(red:188.00/255.0, green:16.0/255.0, blue:16.5/255.0, alpha:0.500))
+                errorBanner.dismissesOnTap = true
+                errorBanner.show(duration: 1.5)
+            }
         }
     }
     
@@ -240,6 +294,7 @@ class FirstViewController:
         captureVideoOut?.stopRecording()
     }
 
+    //video is being captured right here
     func capture(
         _ captureOutput: AVCaptureFileOutput!,
         didFinishRecordingToOutputFileAt fileURL: URL!,
@@ -265,8 +320,6 @@ class FirstViewController:
                                 let banner = Banner(
                                     title: "Swells!",
                                     subtitle: "You made a video!",
-                                    // todo
-                                    // image: savedImage,
                                     backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
                                 banner.dismissesOnTap = true
                                 banner.show(duration: 1.0)
@@ -288,34 +341,6 @@ class FirstViewController:
             }
         })
 
-    }
-
-    // photo success/fail save
-    func onImageSaved(_ savedImage: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
-        if error == nil {
-            //coz you need to run UIKit opeartions on main thread
-            DispatchQueue.main.async {
-                let banner = Banner(
-                    title: "Awesome!",
-                    subtitle: "You made a picture!",
-                    // todo
-                    // image: savedImage,
-                    backgroundColor: UIColor(red:13.00/255.0, green:13.0/255.0, blue:13.5/255.0, alpha:0.500))
-                banner.dismissesOnTap = true
-                banner.show(duration: 1.0)
-            }
-        } else {
-            
-            //coz you need to run UIKit opeartions on main thread
-            DispatchQueue.main.async {
-                let errorBanner = Banner(
-                    title: "Shoot!",
-                    subtitle: "something went terrebly wrong :(",
-                    backgroundColor: UIColor(red:188.00/255.0, green:16.0/255.0, blue:16.5/255.0, alpha:0.500))
-                errorBanner.dismissesOnTap = true
-                errorBanner.show(duration: 1.5)
-            }
-        }
     }
 
     func listenVolumeButton(){
