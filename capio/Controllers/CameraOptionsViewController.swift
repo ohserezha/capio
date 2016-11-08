@@ -34,7 +34,6 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     var currentColorTemperature:            AVCaptureWhiteBalanceTemperatureAndTintValues!
     var currentColorGains:                  AVCaptureWhiteBalanceGains!
     
-    
     @IBOutlet var focusSlider:              UISlider!
     @IBOutlet var focusValueLabel:          UILabel!
     
@@ -116,11 +115,21 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         
         focusDistance = captureDevice!.lensPosition
         focusValueLabel.text = String(focusDistance)
+
+        if(captureDevice!.iso >= captureDevice!.activeFormat.maxISO) {
+            isoValue = captureDevice!.activeFormat.maxISO
+        } else if (captureDevice!.iso <= captureDevice!.activeFormat.minISO) {
+            isoValue = captureDevice!.activeFormat.minISO
+        } else {
+            isoValue = captureDevice!.iso
+        }
         
-        isoValue = captureDevice!.iso
         isoLabel.text = String(isoValue)
         
         isoSlider.value = isoValue
+        isoSlider.maximumValue = captureDevice!.activeFormat.maxISO
+        isoSlider.minimumValue = captureDevice!.activeFormat.minISO
+        
         focusSlider.value = focusDistance
 
         currentColorGains = captureDevice!.deviceWhiteBalanceGains
@@ -150,7 +159,6 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         shutterValueLabel.text = "1/\(Int(1.0 / newSecondsAmount))"
     }
     
-    
     //Take the actual temperature value
     fileprivate func changeTemperatureRaw(_ temperature: Float) {
         currentColorTemperature = AVCaptureWhiteBalanceTemperatureAndTintValues(temperature: temperature, tint: 0.0)
@@ -176,6 +184,7 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         if let device = captureDevice {
             do {
                 try device.lockForConfiguration()
+                
                 device.focusMode = .locked
                 device.setFocusModeLockedWithLensPosition(focusDistance, completionHandler: { (time) -> Void in })
                 device.setExposureModeCustomWithDuration(exposureDuration, iso: isoValue, completionHandler: { (time) -> Void in })
