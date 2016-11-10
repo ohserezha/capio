@@ -9,18 +9,23 @@
 import UIKit
 import AVFoundation
 import Foundation
-import ElasticTransition
 import BRYXBanner
 import JQSwiftIcon
 
 import Photos
+
+import ScalePicker
+
+import CariocaMenu
 
 class FirstViewController:
     UIViewController,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate,
     AVCaptureFileOutputRecordingDelegate,
-    AVCapturePhotoCaptureDelegate {
+    AVCapturePhotoCaptureDelegate,
+    UIGestureRecognizerDelegate,
+    CariocaMenuDelegate {
     
     var captureSession:                     AVCaptureSession?
     var captureStillImageOut:               AVCapturePhotoOutput?
@@ -32,25 +37,119 @@ class FirstViewController:
     var captureDevice :                     AVCaptureDevice?
 
     var flashLightMode:                     String!
-
+    
+    var logging:                            Bool = true
+    
     @IBOutlet var myCamView:                UIView!
-    @IBOutlet var settingsBtn:              UIButton!
     @IBOutlet var doPhotoBtn:               UIButton!
     @IBOutlet var doVideoBtn:               UIButton!
+    
+    @IBOutlet var actionToolbar: UIToolbar!
+    
+    @IBOutlet var sliderHostView: UIView!
+    private var optionsMenu:CariocaMenu?
+    
+    private var cameraOptionsViewController: CameraOptionsViewController?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    var transition = ElasticTransition()
-
+        setCaptureSession()
+        processUi()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        onDispose()
+        exit(0)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        previewLayer?.frame = myCamView.bounds
+        
+        optionsMenu?.addInView(self.view)
+        optionsMenu?.isDraggableVertically = true
+        optionsMenu?.showIndicator(.right, position: .bottom, offset: -30)
+        
+        optionsMenu?.addGestureHelperViews([.left,.right], width:30)
+    }
+    
+    fileprivate func processUi() {
+        
+        let camViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.handlerCamViewTap(_:)))
+        
+        myCamView.addGestureRecognizer(camViewTapRecognizer)
+        
+        cameraOptionsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraOptionsSlider") as! CameraOptionsViewController
+        
+        sliderHostView.addSubview((cameraOptionsViewController?.view)!)
+        cameraOptionsViewController?.setActiveDevice(captureDevice!)
+        
+        setupMenu()
+        
+        doPhotoBtn.processIcons();
+        doVideoBtn.processIcons();
+    }
+    
+    private func setupMenu() {
+        let menuCtrl = self.storyboard?.instantiateViewController(withIdentifier: "CameraMenu") as! CameraMenuContentController
+        
+        //Set the tableviewcontroller for the shared carioca menu
+        optionsMenu = CariocaMenu(dataSource: menuCtrl)
+        optionsMenu?.selectedIndexPath = IndexPath(item: 0, section: 0)
+        
+        optionsMenu?.delegate = self
+        optionsMenu?.boomerang = .verticalAndHorizontal
+        
+        //reverse delegate for cell selection by tap :
+        menuCtrl.cariocaMenu = optionsMenu
+    }
+    
+    func handlerCamViewTap(_ gestureRecognizer: UIGestureRecognizer) {
+        if (sliderHostView != nil) {
+            hideActiveSetting() {_ in 
+                print("Done hiding from tap")
+            }
+        }
+    }
+    
+    fileprivate func showActiveSetting() {
+        
+        sliderHostView.center.x = self.view.center.x
+        
+        sliderHostView.transform = CGAffineTransform.init(translationX: 0, y: view.bounds.height/2 + self.sliderHostView.bounds.height + self.actionToolbar.bounds.height
+        )
+        sliderHostView.isHidden = false
+        
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
+            self.sliderHostView.transform = CGAffineTransform.init(translationX: 0, y:
+                self.view.bounds.height/2 - self.sliderHostView.bounds.height/2 - self.actionToolbar.bounds.height/2
+            )
+        })
+    }
+    
+    private func hideActiveSetting(_ completion: @escaping (_ result: AnyObject) -> Void) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn, animations: {
+            self.sliderHostView.transform = CGAffineTransform.init(translationX: 0, y: self.view.bounds.height/2 + self.sliderHostView.bounds.height + self.actionToolbar.bounds.height
+                //- self.sliderHostView.frame.origin.y
+            )
+        }) { (success:Bool) in
+            self.sliderHostView.isHidden = true
+            self.cameraOptionsViewController?.unsetActiveslider()
+            completion(success as AnyObject)
+        }
+    }
+    
+    func didChangeScaleValue(_ picker: ScalePicker, value: CGFloat) {
+        //todo?
+    }
+    
     @IBAction func onDoPhotoTrigger(_ sender: AnyObject) {
-        captureImage()
-    }
-
-    @IBAction func onShowOptionsPress(_ sender: UIButton) {
-        transition.edge = .bottom
-        transition.startingPoint = sender.center
-        performSegue(withIdentifier: "CameraOptionsView", sender: self)
-    }
-
-    @IBAction func onDoPhotoTrigger(sender: AnyObject) {
         captureImage()
     }
 
@@ -63,62 +162,103 @@ class FirstViewController:
             self.stopRecording()
         }
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination
-        vc.transitioningDelegate = transition
-        vc.modalPresentationStyle = .custom
-
-        if (segue.identifier == "CameraOptionsView") {
-            let cmvc = segue.destination as! CameraOptionsViewController;
-            cmvc.captureDevice = self.captureDevice
+    
+    func showDemoControllerForIndex(_ index:Int){
+        
+        hideActiveSetting() {_ in
+            print("Done hiding from show")
+            
+            switch index {
+                
+            case 0:
+                self.cameraOptionsViewController?.setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.focus)
+                self.showActiveSetting();
+                break
+            case 1:
+                self.cameraOptionsViewController?.setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.shutter)
+                self.showActiveSetting();
+                break
+            case 2:
+                self.cameraOptionsViewController?.setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.iso)
+                self.showActiveSetting();
+                break
+            case 3:
+                self.cameraOptionsViewController?.setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.temperature)
+                self.showActiveSetting();
+                break
+            default:
+                
+                
+                break
+            }
+            
+            self.optionsMenu?.moveToTop()
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        settingsBtn.processIcons();
-        doPhotoBtn.processIcons();
-        doVideoBtn.processIcons();
-
-        // customization
-        transition.sticky = true
-        transition.showShadow = false
-        transition.panThreshold = 0.3
-        transition.transformType = .translateMid
-        transition.containerColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
-        transition.overlayColor = UIColor(white: 0, alpha: 0)
-        transition.shadowColor = UIColor(white: 0, alpha: 0)
-        transition.frontViewBackgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        transition.transformType = ElasticTransitionBackgroundTransform.subtle
+    
+    ///`Optional` Called when a menu item was selected
+    ///- parameters:
+    ///  - menu: The menu object
+    ///  - indexPath: The selected indexPath
+    func cariocaMenuDidSelect(_ menu:CariocaMenu, indexPath:IndexPath) {
+        showDemoControllerForIndex(indexPath.row)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        onDispose()
-        exit(0)
+    
+    ///`Optional` Called when the menu is about to open
+    ///- parameters:
+    ///  - menu: The opening menu object
+    func cariocaMenuWillOpen(_ menu:CariocaMenu) {
+        if(logging){
+            print("carioca MenuWillOpen \(menu)")
+        }
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        previewLayer?.frame = myCamView.bounds
+    
+    ///`Optional` Called when the menu just opened
+    ///- parameters:
+    ///  - menu: The opening menu object
+    func cariocaMenuDidOpen(_ menu:CariocaMenu){
+        if(logging){
+            switch menu.openingEdge{
+            case .left:
+                print("carioca MenuDidOpen \(menu) left")
+                break;
+            default:
+                print("carioca MenuDidOpen \(menu) right")
+                break;
+            }
+        }
+    }
+    
+    ///`Optional` Called when the menu is about to be dismissed
+    ///- parameters:
+    ///  - menu: The disappearing menu object
+    func cariocaMenuWillClose(_ menu:CariocaMenu) {
+        if(logging){
+            print("carioca MenuWillClose \(menu)")
+        }
+    }
+    
+    ///`Optional` Called when the menu is dismissed
+    ///- parameters:
+    ///  - menu: The disappearing menu object
+    func cariocaMenuDidClose(_ menu:CariocaMenu){
+        if(logging){
+            print("carioca MenuDidClose \(menu)")
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
+    fileprivate func setCaptureSession() {
         captureSession = AVCaptureSession()
         // in case you have music plaing in your phone
         // it will not get muted thanks to that
         captureSession?.automaticallyConfiguresApplicationAudioSession = false
         // todo -> write getter for Preset (device based)
         captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
-
+        
         captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
         listenVolumeButton()
@@ -198,7 +338,7 @@ class FirstViewController:
         }
     }
 
-    fileprivate func captureImage() {
+    private func captureImage() {
         let settings = AVCapturePhotoSettings()
         
         let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
@@ -211,7 +351,7 @@ class FirstViewController:
         captureStillImageOut!.capturePhoto(with: settings, delegate: self)
     }
     
-    fileprivate func onDispose() {
+    private func onDispose() {
         captureSession?.stopRunning()
         do {
             try audioSession?.setActive(false)
@@ -274,10 +414,10 @@ class FirstViewController:
         }
     }
     
-    //starts vide recording
+    //starts video recording
     func startRecording(){
 
-        let outputUrl = NSURL(fileURLWithPath: NSTemporaryDirectory() + "temp.mp4")
+        let outputUrl = URL(fileURLWithPath: NSTemporaryDirectory() + "temp.mp4")
         if(FileManager().fileExists(atPath: NSTemporaryDirectory() + "temp.mp4")) {
             print("how-howhow")
             do {
