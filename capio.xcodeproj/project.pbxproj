@@ -209,9 +209,9 @@
 		37B4194C1DB6AC750082C29C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				374B458F1E3C518E00BB727F /* CameraMenuContentController.swift */,
 				374B45901E3C518E00BB727F /* MyMenuTableViewCell.swift */,
 				37E25FFA1D32DB6D00644207 /* FirstViewController.swift */,
+				374B458F1E3C518E00BB727F /* CameraMenuContentController.swift */,
 				37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */,
 			);
 			path = Controllers;
