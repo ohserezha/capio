@@ -8,16 +8,34 @@
 import UIKit
 import Foundation
 import AVFoundation
-import ElasticTransition
 import JQSwiftIcon
+import ScalePicker
 
-class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelegate {
+class CameraOptionsViewController:
+UIViewController,
+ScalePickerDelegate {
     
-    //ElasticTransition options
-    var contentLength:CGFloat = 250
-    var dismissByBackgroundTouch = true
-    var dismissByBackgroundDrag = true
-    var dismissByForegroundDrag = true
+    enum CameraOptionsTypes {
+        case focus, shutter, iso, temperature
+    }
+    
+    private class SliderValue {
+        var value:      CGFloat = 0.0
+        var maxValue:   CGFloat = 1.0
+        var minValue:   CGFloat = -1.0
+        var valueFactor: Float = 10.0
+        
+        init(
+            _value: CGFloat = 0.0,
+            _maxValue: CGFloat = 1.0,
+            _minValue: CGFloat = -1.0,
+            _valueFactor: Float = 10.0) {
+            value       = _value
+            maxValue    = _maxValue
+            minValue    = _minValue
+            valueFactor = _valueFactor
+        }
+    }
     
     // Some default settings
     let EXPOSURE_DURATION_POWER:            Float       = 4.0 //the exposure slider gain
@@ -28,31 +46,27 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     var exposureDuration:                   CMTime!
     var focusDistance:                      Float       = 0
     var isoValue:                           Float       = 100
+    var shutterValue:                       Float       = 0.0
     
     var temperatureValue:                   Float!
     
     var currentColorTemperature:            AVCaptureWhiteBalanceTemperatureAndTintValues!
     var currentColorGains:                  AVCaptureWhiteBalanceGains!
     
-    @IBOutlet var focusSlider:              UISlider!
-    @IBOutlet var focusValueLabel:          UILabel!
+    private var sliderViewScalePicker:      ScalePicker!
     
-    @IBOutlet var shutterValueLabel:        UILabel!
-    @IBOutlet var shutterSlider:            UISlider!
+    private var activeSlider:               ScalePicker! = nil
+    private var activeSliderType:           CameraOptionsTypes = CameraOptionsTypes.focus
+    private var activeSliderValueObj:       SliderValue! = nil
     
-    @IBOutlet var isoLabel:                 UILabel!
-    @IBOutlet var isoSlider:                UISlider!
-    
-    @IBOutlet var temperatureSlider:        UISlider!
-    @IBOutlet var temperatureValueLabel:    UILabel!
-    
-    @IBOutlet var focusIconLabel:           UILabel!
-    @IBOutlet var shutterIconLabel:         UILabel!
-    @IBOutlet var isoIconLabel:             UILabel!
-    @IBOutlet var tempIconLabel:            UILabel!
+    @IBOutlet var blurViewMain:             UIVisualEffectView!
+    @IBOutlet var sliderView:               UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        blurViewMain.layer.masksToBounds = true
+        blurViewMain.layer.cornerRadius = 5
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,53 +83,167 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        focusIconLabel.processIcons();
-        shutterIconLabel.processIcons();
-        isoIconLabel.processIcons();
-        tempIconLabel.processIcons();
-
-        currentColorGains = captureDevice?.deviceWhiteBalanceGains
         
-        setCurrentDefaultCameraSettings()
-        configureCamera()
+    }
+    
+    func setActiveDevice(_ device: AVCaptureDevice) {
+        if device.isKind(of: AVCaptureDevice.self) {
+            captureDevice = device
+
+            setCurrentDefaultCameraSettings()
+        }
+        else {
+            print("Invalid device added")
+        }
+    }
+    
+    func setActiveSlider(_ sliderType: CameraOptionsTypes = CameraOptionsTypes.focus) {
+        activeSliderType = sliderType
+        setCaptureSession()
+        setUi()
+    }
+    
+    func unsetActiveslider() {
+        if (activeSlider != nil) {
+            activeSlider.removeFromSuperview()
+            activeSlider = nil
+        }
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
     
-    @IBAction func onFocusSlideDrag(_ sender: UISlider) {
-        focusDistance = sender.value
-        focusValueLabel.text = String(focusDistance)
+    fileprivate func setUi() {
         
-        configureCamera()
+        guard let pickerView = getActiveSlider()
+            else {
+                return
+        }
+        
+        sliderView.addSubview(pickerView)
     }
     
-    @IBAction func onTemperatureSliderChange(_ sender: UISlider) {
-        temperatureValue = sender.value
-        temperatureValueLabel.text = String(temperatureValue)
+    private func getActiveSlider() -> ScalePicker? {
         
-        changeTemperatureRaw(sender.value)
-        configureCamera()
-    }    
+        initSlider()
+        
+        sliderViewScalePicker = ScalePicker(frame:
+            CGRect.init(x: 0, y: 0, width: sliderView.bounds.size.width, height: sliderView.bounds.size.height)
+        )
+            
+        activeSliderValueObj = getSliderValueForType()
+            
+        activeSlider.maxValue = activeSliderValueObj.maxValue
+        activeSlider.minValue = activeSliderValueObj.minValue
+            
+        activeSlider.numberOfTicksBetweenValues = UInt(Int(5 * log10(activeSliderValueObj.valueFactor)))
     
-    @IBAction func onIsoSliderChange(_ sender: UISlider) {
-        isoValue = sender.value
-        isoLabel.text = String(isoValue)
-        configureCamera()
+        activeSlider.setInitialCurrentValue(activeSliderValueObj.value)
+            
+        return activeSlider
     }
     
-    @IBAction func onShutterSliderChange(_ sender: UISlider) {
-        setExposureDuration()
+    private func initSlider() {
+        activeSlider = ScalePicker(frame:
+            CGRect.init(x: 0, y: 0, width: sliderView.bounds.size.width, height: sliderView.bounds.size.height)
+        )
+        
+        activeSlider.delegate = self
+        activeSlider.spaceBetweenTicks = 12.0
+        activeSlider.showTickLabels = true
+        activeSlider.snapEnabled = true
+        activeSlider.bounces = false
+        activeSlider.showCurrentValue = false
+        
+        activeSlider.centerArrowImage = UIImage.init(named: "indicator")
+    }
+    
+    private func getSliderValueForType() -> SliderValue {
+        let sliderValue = SliderValue()
+        
+        switch(activeSliderType) {
+            case CameraOptionsTypes.focus:
+                sliderValue.value = CGFloat(focusDistance * 10)
+                sliderValue.maxValue = 10.0
+                sliderValue.minValue = 0.0
+                break
+            case CameraOptionsTypes.shutter:
+                let minDurationSeconds: Double  = max(CMTimeGetSeconds(captureDevice!.activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
+                let maxDurationSeconds: Double = CMTimeGetSeconds(captureDevice!.activeFormat.maxExposureDuration);
+                
+                sliderValue.value = CGFloat(pow(
+                    Float((CMTimeGetSeconds(exposureDuration) - minDurationSeconds) / (maxDurationSeconds - minDurationSeconds)),
+                    1/EXPOSURE_DURATION_POWER)) * 10
+                
+                sliderValue.minValue = 0.0
+                sliderValue.maxValue = 10.0
+                
+                break
+            
+            case CameraOptionsTypes.iso:
+                
+                sliderValue.valueFactor = 100
+                
+                sliderValue.value = CGFloat(floor(Double(isoValue/sliderValue.valueFactor)))
+                
+                sliderValue.maxValue = CGFloat(floor(Double(captureDevice!.activeFormat.maxISO/sliderValue.valueFactor)))
+                sliderValue.minValue = CGFloat(ceil(Double(captureDevice!.activeFormat.minISO/sliderValue.valueFactor)))
+                
+                break
+            
+            case CameraOptionsTypes.temperature:
+                
+                sliderValue.valueFactor = 1000
+                
+                sliderValue.value = CGFloat(floor(Double(temperatureValue/sliderValue.valueFactor)))
+            
+                sliderValue.maxValue = 8.0
+                sliderValue.minValue = 3.0
+            
+                break
+        }
+        
+        return sliderValue
+    }
+    
+    func willChangeScaleValue(_ picker: ScalePicker, value: CGFloat) {
+        if (abs(picker.currentValue - value) > 0.1) {
+            AudioServicesPlaySystemSound(1519)
+            
+            let roundedValue = Float(Double(value).roundTo(2))
+            
+            switch(activeSliderType) {
+                case CameraOptionsTypes.focus:
+                    focusDistance = Float(roundedValue/activeSliderValueObj.valueFactor)
+                    break
+                case CameraOptionsTypes.shutter:
+                    shutterValue = Float(roundedValue/activeSliderValueObj.valueFactor)
+                    setExposureDuration(value: shutterValue)
+                    break
+                case CameraOptionsTypes.iso:
+                    isoValue = Float(roundedValue * activeSliderValueObj.valueFactor)
+                    break
+                case CameraOptionsTypes.temperature:
+                    temperatureValue = Float(roundedValue * activeSliderValueObj.valueFactor)
+                    changeTemperatureRaw(temperatureValue)
+                    break
+            }
+            configureCamera()
+        }
+    }
+    
+    func didChangeScaleValue(_ picker: ScalePicker, value: CGFloat) {
+        //todo?
+    }
+    
+    fileprivate func setCaptureSession() {
+        setCurrentDefaultCameraSettings()
         configureCamera()
     }
     
     fileprivate func setCurrentDefaultCameraSettings() {
-        
-        focusDistance = captureDevice!.lensPosition
-        focusValueLabel.text = String(focusDistance)
-
+                
         if(captureDevice!.iso >= captureDevice!.activeFormat.maxISO) {
             isoValue = captureDevice!.activeFormat.maxISO
         } else if (captureDevice!.iso <= captureDevice!.activeFormat.minISO) {
@@ -123,40 +251,29 @@ class CameraOptionsViewController: UIViewController, ElasticMenuTransitionDelega
         } else {
             isoValue = captureDevice!.iso
         }
-        
-        isoLabel.text = String(isoValue)
-        
-        isoSlider.value = isoValue
-        isoSlider.maximumValue = captureDevice!.activeFormat.maxISO
-        isoSlider.minimumValue = captureDevice!.activeFormat.minISO
-        
-        focusSlider.value = focusDistance
 
         currentColorGains = captureDevice!.deviceWhiteBalanceGains
         currentColorTemperature = captureDevice!.temperatureAndTintValues(forDeviceWhiteBalanceGains: currentColorGains)
-        temperatureSlider.value = currentColorTemperature.temperature
-        temperatureValueLabel.text = String(temperatureSlider.value)
+        temperatureValue = currentColorTemperature.temperature
         
         exposureDuration = captureDevice!.exposureDuration
         
         let minDurationSeconds: Double  = max(CMTimeGetSeconds(captureDevice!.activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
         let maxDurationSeconds: Double = CMTimeGetSeconds(captureDevice!.activeFormat.maxExposureDuration);
         
-        let shutterSpeedSliderValue = pow(
+        shutterValue = pow(
             Float((CMTimeGetSeconds(exposureDuration) - minDurationSeconds) / (maxDurationSeconds - minDurationSeconds)),
             1/EXPOSURE_DURATION_POWER)
-        shutterSlider.value = shutterSpeedSliderValue
-        shutterValueLabel.text = "1/\(Int(1.0 / CMTimeGetSeconds(exposureDuration)))"
+        
+        focusDistance = captureDevice!.lensPosition
     }
 
-    fileprivate func setExposureDuration() {
-        let p: Double = Double(pow( shutterSlider.value, EXPOSURE_DURATION_POWER )); // Apply power function to expand slider's low-end range
-        let minDurationSeconds: Double  = max(CMTimeGetSeconds(captureDevice!.activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
+    fileprivate func setExposureDuration(value: Float) {
+        let p: Double = Double(pow( value, EXPOSURE_DURATION_POWER )); // Apply power function to expand slider's low-end range
+        let minDurationSeconds: Double = max(CMTimeGetSeconds(captureDevice!.activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
         let maxDurationSeconds: Double = CMTimeGetSeconds(captureDevice!.activeFormat.maxExposureDuration);
         let newSecondsAmount = p * ( maxDurationSeconds - minDurationSeconds ) + minDurationSeconds
         exposureDuration = CMTimeMakeWithSeconds(Float64(newSecondsAmount), 1000*1000*1000); // Scale from 0-1 slider range to actual duration
-        
-        shutterValueLabel.text = "1/\(Int(1.0 / newSecondsAmount))"
     }
     
     //Take the actual temperature value
