@@ -1,7 +1,7 @@
 
 import UIKit
 
-class MyMenuTableViewCell:UITableViewCell {
+class CameraMenuTableViewCell:UITableViewCell {
     
     fileprivate let textColorNormal = UIColor.lightGray
     fileprivate let textColorHighlighted = UIColor(red:0.46, green:0.82, blue:0.89, alpha:1)
@@ -12,12 +12,6 @@ class MyMenuTableViewCell:UITableViewCell {
     
     override func draw(_ rect: CGRect) {
 
-//        self.selectedBackgroundView = UIView(frame: CGRectZero)
-//        self.selectedBackgroundView.backgroundColor = UIColor.clearColor()
-        
-//        let highlight = UIView(frame: CGRectOffset(self.bounds,0, 0.0))
-//        highlight.backgroundColor = UIColor(red:0.08, green:0.61, blue:0.84, alpha:0.4)
-//        self.selectedBackgroundView!.addSubview(highlight)
     }
     
     func applyStyleNormal(){

@@ -27,29 +27,30 @@ class FirstViewController:
     UIGestureRecognizerDelegate,
     CariocaMenuDelegate {
     
-    var captureSession:                     AVCaptureSession?
-    var captureStillImageOut:               AVCapturePhotoOutput?
-    var captureVideoOut:                    AVCaptureMovieFileOutput?
-    var previewLayer:                       AVCaptureVideoPreviewLayer?
+    var captureSession:                         AVCaptureSession?
+    var captureStillImageOut:                   AVCapturePhotoOutput?
+    var captureVideoOut:                        AVCaptureMovieFileOutput?
+    var previewLayer:                           AVCaptureVideoPreviewLayer?
 
-    var audioSession:                       AVAudioSession?
+    var audioSession:                           AVAudioSession?
 
-    var captureDevice :                     AVCaptureDevice?
+    var captureDevice :                         AVCaptureDevice?
 
-    var flashLightMode:                     String!
+    var flashLightMode:                         String!
     
-    var logging:                            Bool = true
+    var logging:                                Bool = true
     
-    @IBOutlet var myCamView:                UIView!
-    @IBOutlet var doPhotoBtn:               UIButton!
-    @IBOutlet var doVideoBtn:               UIButton!
+    @IBOutlet var myCamView:                    UIView!
+    @IBOutlet var doPhotoBtn:                   UIButton!
+    @IBOutlet var doVideoBtn:                   UIButton!
     
-    @IBOutlet var actionToolbar: UIToolbar!
+    @IBOutlet var actionToolbar:                UIToolbar!
     
-    @IBOutlet var sliderHostView: UIView!
-    private var optionsMenu:CariocaMenu?
+    @IBOutlet var sliderHostView:               UIView!
     
-    private var cameraOptionsViewController: CameraOptionsViewController?
+    private var optionsMenu:                    CariocaMenu?
+    private var cariocaMenuViewController:      CameraMenuContentController? = nil
+    private var cameraOptionsViewController:    CameraOptionsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,17 +98,19 @@ class FirstViewController:
     }
     
     private func setupMenu() {
-        let menuCtrl = self.storyboard?.instantiateViewController(withIdentifier: "CameraMenu") as! CameraMenuContentController
+        cariocaMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraMenu") as! CameraMenuContentController
         
         //Set the tableviewcontroller for the shared carioca menu
-        optionsMenu = CariocaMenu(dataSource: menuCtrl)
+        optionsMenu = CariocaMenu(dataSource: cariocaMenuViewController!)
         optionsMenu?.selectedIndexPath = IndexPath(item: 0, section: 0)
         
         optionsMenu?.delegate = self
         optionsMenu?.boomerang = .verticalAndHorizontal
         
+        optionsMenu?.selectedIndexPath = IndexPath(row: (cariocaMenuViewController?.iconNames.count)! - 1, section: 0)
+        
         //reverse delegate for cell selection by tap :
-        menuCtrl.cariocaMenu = optionsMenu
+        cariocaMenuViewController?.cariocaMenu = optionsMenu
     }
     
     func handlerCamViewTap(_ gestureRecognizer: UIGestureRecognizer) {
@@ -201,6 +204,7 @@ class FirstViewController:
     ///  - menu: The menu object
     ///  - indexPath: The selected indexPath
     func cariocaMenuDidSelect(_ menu:CariocaMenu, indexPath:IndexPath) {
+        cariocaMenuViewController?.menuWillClose()
         showDemoControllerForIndex(indexPath.row)
     }
     
@@ -208,6 +212,7 @@ class FirstViewController:
     ///- parameters:
     ///  - menu: The opening menu object
     func cariocaMenuWillOpen(_ menu:CariocaMenu) {
+        cariocaMenuViewController?.menuWillOpen()
         if(logging){
             print("carioca MenuWillOpen \(menu)")
         }
@@ -233,6 +238,7 @@ class FirstViewController:
     ///- parameters:
     ///  - menu: The disappearing menu object
     func cariocaMenuWillClose(_ menu:CariocaMenu) {
+        cariocaMenuViewController?.menuWillClose()
         if(logging){
             print("carioca MenuWillClose \(menu)")
         }

@@ -5,10 +5,12 @@ import CariocaMenu
 
 class CameraMenuContentController: UITableViewController, CariocaMenuDataSource {
     
-    var iconNames = Array<String>()
-    var menuNames = Array<String>()
-    weak var cariocaMenu:CariocaMenu?
-    var cellTypeIdentifier = "cellLeft"
+    var iconNames               = Array<String>()
+    var menuNames               = Array<String>()
+    weak var cariocaMenu:       CariocaMenu?
+    var cellTypeIdentifier      = "cellLeft"
+    
+    var isOpened: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,7 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
 //        iconNames.append("grid")
 //        iconNames.append("flash")
 //        iconNames.append("timer")
-        iconNames.append("nevermind")
+        iconNames.append("close")
         
         menuNames.append("Focus")
         menuNames.append("Shutter")
@@ -35,13 +37,21 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
 //        menuNames.append("Timer")
         menuNames.append("Nevermind")
     }
-    
+        
     func getShapeColor() -> UIColor {
         return UIColor(red:0.15, green:0.15, blue:0.15, alpha:1)
     }
     
     func getBlurStyle() -> UIBlurEffectStyle {
         return UIBlurEffectStyle.dark
+    }
+    
+    func menuWillOpen() {
+        isOpened = true
+    }
+    
+    func menuWillClose() {
+        isOpened = false
     }
 
     // MARK: - Table view data source
@@ -56,7 +66,7 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellTypeIdentifier, for: indexPath) as! MyMenuTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellTypeIdentifier, for: indexPath) as! CameraMenuTableViewCell
         //set the title in the cell
         cell.titleLabel.text = menuNames[indexPath.row]
         
@@ -69,7 +79,7 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
             cell.applyStyleNormal()
         }
         
-        //cell.iconImageView.image = UIImage(named: "\(iconNames[indexPath.row])_menu.png")!
+        cell.iconImageView.image = UIImage(named: "menu_\(iconNames[indexPath.row]).png")!
         
         return cell
     }
@@ -97,6 +107,7 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
     
     func preselectRowAtIndexPath(_ indexPath: IndexPath) -> Void {
 //        CariocaMenu.Log("preselectRowAtIndexPath \(indexPath.row)")
+//        cariocaMenu?.selectedIndexPath = indexPath
         getCellFor(indexPath).applyStyleHighlighted()
     }
     
@@ -121,8 +132,8 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
     
     // MARK: - Get the Cell
     
-    fileprivate func getCellFor(_ indexPath:IndexPath)->MyMenuTableViewCell {
-        return self.tableView.cellForRow(at: indexPath) as! MyMenuTableViewCell
+    fileprivate func getCellFor(_ indexPath:IndexPath) -> CameraMenuTableViewCell {
+        return self.tableView.cellForRow(at: indexPath) as! CameraMenuTableViewCell
     }
     
     // MARK: - Data source protocol
@@ -140,7 +151,15 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
     }
     
     func iconForRowAtIndexPath(_ indexPath:IndexPath)->UIImage {
-        return UIImage()//UIImage(named: "\(iconNames[indexPath.row])_indicator.png")!
+        var menuPinShapeIcon:UIImage = UIImage()
+        
+        if (indexPath.row == menuNames.count - 1 && !isOpened) {
+            menuPinShapeIcon = UIImage(named: "menu_options.png")!
+        } else {
+            menuPinShapeIcon = UIImage(named: "menu_\(iconNames[indexPath.row]).png")!
+        }
+        
+        return menuPinShapeIcon
     }
     
     func setCellIdentifierForEdge(_ identifier:String)->Void {
