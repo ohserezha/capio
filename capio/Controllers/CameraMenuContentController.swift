@@ -53,6 +53,11 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
     func menuWillClose() {
         isOpened = false
     }
+    
+    func menuToDefault() {
+        cariocaMenu?.selectedIndexPath = IndexPath(row: menuNames.count - 1, section: 0)
+        cariocaMenu?.showIndicator(.right, position: .bottom, offset: -50)
+    }
 
     // MARK: - Table view data source
     

@@ -49,7 +49,7 @@ class FirstViewController:
     @IBOutlet var sliderHostView:               UIView!
     
     private var optionsMenu:                    CariocaMenu?
-    private var cariocaMenuViewController:      CameraMenuContentController? = nil
+    private var cariocaMenuViewController:      CameraMenuContentController?
     private var cameraOptionsViewController:    CameraOptionsViewController?
     
     override func viewDidLoad() {
@@ -75,7 +75,7 @@ class FirstViewController:
         
         optionsMenu?.addInView(self.view)
         optionsMenu?.isDraggableVertically = true
-        optionsMenu?.showIndicator(.right, position: .bottom, offset: -30)
+        optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
         
         optionsMenu?.addGestureHelperViews([.left,.right], width:30)
     }
@@ -115,7 +115,8 @@ class FirstViewController:
     
     func handlerCamViewTap(_ gestureRecognizer: UIGestureRecognizer) {
         if (sliderHostView != nil) {
-            hideActiveSetting() {_ in 
+            self.cariocaMenuViewController?.menuToDefault()
+            hideActiveSetting() {_ in
                 print("Done hiding from tap")
             }
         }
@@ -129,15 +130,15 @@ class FirstViewController:
         )
         sliderHostView.isHidden = false
         
-        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             self.sliderHostView.transform = CGAffineTransform.init(translationX: 0, y:
-                self.view.bounds.height/2 - self.sliderHostView.bounds.height/2 - self.actionToolbar.bounds.height/2
+                self.view.bounds.height/2 - self.sliderHostView.bounds.height - self.actionToolbar.bounds.height/2
             )
         })
     }
     
     private func hideActiveSetting(_ completion: @escaping (_ result: AnyObject) -> Void) {
-        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
             self.sliderHostView.transform = CGAffineTransform.init(translationX: 0, y: self.view.bounds.height/2 + self.sliderHostView.bounds.height + self.actionToolbar.bounds.height
                 //- self.sliderHostView.frame.origin.y
             )
@@ -190,8 +191,6 @@ class FirstViewController:
                 self.showActiveSetting();
                 break
             default:
-                
-                
                 break
             }
             
