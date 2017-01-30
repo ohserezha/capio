@@ -361,7 +361,7 @@
                                     <constraint firstAttribute="height" constant="49" id="SkS-8W-hxb"/>
                                     <constraint firstAttribute="width" constant="240" id="ngR-1z-doy"/>
                                 </constraints>
-                                <blurEffect style="light"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
