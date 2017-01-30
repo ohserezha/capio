@@ -198,8 +198,8 @@ ScalePickerDelegate {
                 
                 sliderValue.value = CGFloat(floor(Double(temperatureValue/sliderValue.valueFactor)))
             
-                sliderValue.maxValue = 8.0
-                sliderValue.minValue = 3.0
+                sliderValue.maxValue = 10.0
+                sliderValue.minValue = 1.0
             
                 break
         }
@@ -208,7 +208,7 @@ ScalePickerDelegate {
     }
     
     func willChangeScaleValue(_ picker: ScalePicker, value: CGFloat) {
-        if (abs(picker.currentValue - value) > 0.1) {
+        if (abs(picker.currentValue - value) > 0.01) {
             AudioServicesPlaySystemSound(1519)
             
             let roundedValue = Float(Double(value).roundTo(2))

@@ -11,7 +11,6 @@ class CameraMenuTableViewCell:UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     override func draw(_ rect: CGRect) {
-
     }
     
     func applyStyleNormal(){

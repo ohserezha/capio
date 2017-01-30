@@ -86,7 +86,7 @@ class FirstViewController:
         
         myCamView.addGestureRecognizer(camViewTapRecognizer)
         
-        cameraOptionsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraOptionsSlider") as! CameraOptionsViewController
+        cameraOptionsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraOptionsSlider") as? CameraOptionsViewController
         
         sliderHostView.addSubview((cameraOptionsViewController?.view)!)
         cameraOptionsViewController?.setActiveDevice(captureDevice!)
@@ -98,7 +98,7 @@ class FirstViewController:
     }
     
     private func setupMenu() {
-        cariocaMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraMenu") as! CameraMenuContentController
+        cariocaMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraMenu") as? CameraMenuContentController
         
         //Set the tableviewcontroller for the shared carioca menu
         optionsMenu = CariocaMenu(dataSource: cariocaMenuViewController!)
@@ -470,7 +470,7 @@ class FirstViewController:
                                 banner.show(duration: 1.0)
                             }
                         } else {
-                            print(error?.localizedDescription)
+                            print(error?.localizedDescription ?? "PHPhotoLibrary.requestAuthorization did not worked out")
                             
                             //coz you need to run UIKit opeartions on main thread
                             DispatchQueue.main.async {

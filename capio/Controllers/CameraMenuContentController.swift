@@ -76,11 +76,9 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
         cell.titleLabel.text = menuNames[indexPath.row]
         
         if (indexPath == cariocaMenu?.selectedIndexPath){
-//            CariocaMenu.Log("cellForRow : selected")
             cell.applyStyleSelected()
         }
         else{
-//            CariocaMenu.Log("cellForRow : normal")
             cell.applyStyleNormal()
         }
         
@@ -99,10 +97,9 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
         return footerView
     }
     
-//MARK: - Cell styles and selection/preselection
+    //MARK: - Cell styles and selection/preselection
     
     func unselectRowAtIndexPath(_ indexPath: IndexPath) -> Void {
-//        CariocaMenu.Log("unselectRowAtIndexPath \(indexPath.row)")
         if (indexPath == cariocaMenu?.selectedIndexPath){
             getCellFor(indexPath).applyStyleSelected()
         }else {
@@ -111,26 +108,21 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
     }
     
     func preselectRowAtIndexPath(_ indexPath: IndexPath) -> Void {
-//        CariocaMenu.Log("preselectRowAtIndexPath \(indexPath.row)")
-//        cariocaMenu?.selectedIndexPath = indexPath
         getCellFor(indexPath).applyStyleHighlighted()
     }
     
     func setSelectedIndexPath(_ indexPath: IndexPath) -> Void {
-//        CariocaMenu.Log("setSelectedIndexPath \(indexPath.row)")
         getCellFor(indexPath).applyStyleSelected()
     }
     
     //Called when the user releases the gesture on a menu item
     func selectRowAtIndexPath(_ indexPath: IndexPath) -> Void {
-//        CariocaMenu.Log("selectRowAtIndexPath \(indexPath.row)")
         self.tableView(self.tableView, didSelectRowAt: indexPath)
     }
     
-// MARK: - Table view delegate
+    // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        CariocaMenu.Log("didSelectRowAtIndexPath \(indexPath.row)")
         //Transfer the event to the menu, so that he can manage the selection
         cariocaMenu?.didSelectRowAtIndexPath(indexPath, fromContentController:true)
     }
@@ -171,6 +163,7 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
         cellTypeIdentifier = identifier
         self.tableView.reloadData()
     }
+
     // MARK: -
     
     override func didReceiveMemoryWarning() {
