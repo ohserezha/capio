@@ -74,7 +74,6 @@ class FirstViewController:
         previewLayer?.frame = myCamView.bounds
         
         optionsMenu?.addInView(self.view)
-        optionsMenu?.isDraggableVertically = true
         optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
         
         optionsMenu?.addGestureHelperViews([.left,.right], width:30)
@@ -266,7 +265,7 @@ class FirstViewController:
         
         captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
-        listenVolumeButton()
+//        listenVolumeButton()
         startCaptureSession()
     }
 
@@ -283,7 +282,6 @@ class FirstViewController:
             captureSession?.addInput(input)
 
             captureStillImageOut = AVCapturePhotoOutput()
-            //captureStillImageOut?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
 
             if (captureSession?.canAddOutput(captureStillImageOut) != nil) {
                 captureSession?.addOutput(captureStillImageOut)
@@ -312,7 +310,6 @@ class FirstViewController:
                 //todo: disable videobutton here if not available
             }
 
-            // 1
             if (self.captureDevice!.activeVideoMaxFrameDuration.timescale != 6) {
                 do {
                     
@@ -320,14 +317,13 @@ class FirstViewController:
                     
                     for vFormat in self.captureDevice!.formats {
                         
-                        // 2
                         let ranges = (vFormat as AnyObject).videoSupportedFrameRateRanges as! [AVFrameRateRange]
                         let frameRates = ranges[0]
                         
-                        // 3
+                        //there are also 30/60/120
+                        //todo: make an opton to switch between
                         if frameRates.maxFrameRate == 240 {
                             
-                            // 4
                             self.captureDevice!.activeFormat = vFormat as! AVCaptureDeviceFormat
                             self.captureDevice!.activeVideoMinFrameDuration = frameRates.minFrameDuration
                             self.captureDevice!.activeVideoMaxFrameDuration = frameRates.maxFrameDuration
@@ -378,7 +374,6 @@ class FirstViewController:
         }
         
         if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
-            //print(image: UIImage(data: dataImage)?.size)
             
             UIImageWriteToSavedPhotosAlbum(UIImage(data: dataImage)!,
                                             self,
@@ -487,26 +482,31 @@ class FirstViewController:
         })
 
     }
-
-    func listenVolumeButton(){
-        do {
-            audioSession = AVAudioSession.sharedInstance()
-            // in case you have music plaing in your phone
-            // it will not get muted thanks to that
-            try audioSession?.setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
-            try audioSession!.setActive(true)
-            audioSession!.addObserver(self, forKeyPath: "outputVolume",
-                                     options: NSKeyValueObservingOptions.new, context: nil)
-        } catch {
-            print(error)
-        }
-
-    }
-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "outputVolume"{
-            captureImage()
-        }
-    }
+    
+    //don't remove all this bellow yet -> get it back later once 
+    // the active photo/video source is being figured
+//    func listenVolumeButton(){
+//            NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.applicationIsActive), name: .UIApplicationDidBecomeActive, object: nil)
+//    }
+//
+//    func applicationIsActive() {
+//        do {
+//            audioSession = AVAudioSession.sharedInstance()
+//            // in case you have music plaing in your phone
+//            // it will not get muted thanks to that
+//            try audioSession?.setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+//            try audioSession!.setActive(true)
+//            audioSession!.addObserver(self, forKeyPath: "outputVolume",
+//                                      options: NSKeyValueObservingOptions.new, context: nil)
+//        } catch {
+//            print(error)
+//        }
+//    }
+//    
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == "outputVolume"{
+//            captureImage()
+//        }
+//    }
 }
 

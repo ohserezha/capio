@@ -19,6 +19,10 @@ ScalePickerDelegate {
         case focus, shutter, iso, temperature
     }
     
+    enum SettingLockModes: Int {
+        case auto, manual
+    }
+    
     private class SliderValue {
         var value:      CGFloat = 0.0
         var maxValue:   CGFloat = 1.0
@@ -53,14 +57,14 @@ ScalePickerDelegate {
     var currentColorTemperature:            AVCaptureWhiteBalanceTemperatureAndTintValues!
     var currentColorGains:                  AVCaptureWhiteBalanceGains!
     
-    private var sliderViewScalePicker:      ScalePicker!
-    
-    private var activeSlider:               ScalePicker! = nil
+    private var activeSlider:               ScalePicker!
     private var activeSliderType:           CameraOptionsTypes = CameraOptionsTypes.focus
-    private var activeSliderValueObj:       SliderValue! = nil
+    private var activeSliderValueObj:       SliderValue!
     
     @IBOutlet var blurViewMain:             UIVisualEffectView!
     @IBOutlet var sliderView:               UIView!
+    
+    @IBOutlet var modeSwitch: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,10 +132,8 @@ ScalePickerDelegate {
         
         initSlider()
         
-        sliderViewScalePicker = ScalePicker(frame:
-            CGRect.init(x: 0, y: 0, width: sliderView.bounds.size.width, height: sliderView.bounds.size.height)
-        )
-            
+        modeSwitch.selectedSegmentIndex = activeSlider.blockedUI ? 0 : 1
+        
         activeSliderValueObj = getSliderValueForType()
             
         activeSlider.maxValue = activeSliderValueObj.maxValue
@@ -149,6 +151,9 @@ ScalePickerDelegate {
             CGRect.init(x: 0, y: 0, width: sliderView.bounds.size.width, height: sliderView.bounds.size.height)
         )
         
+        activeSlider.blockedUI = !isActiveSettingAdjustble()
+        activeSlider.alpha = activeSlider.blockedUI ? 0.5 : 1
+        
         activeSlider.delegate = self
         activeSlider.spaceBetweenTicks = 12.0
         activeSlider.showTickLabels = true
@@ -157,6 +162,21 @@ ScalePickerDelegate {
         activeSlider.showCurrentValue = false
         
         activeSlider.centerArrowImage = UIImage.init(named: "indicator")
+    }
+    
+    private func isActiveSettingAdjustble() -> Bool {
+        switch(activeSliderType) {
+            case CameraOptionsTypes.focus:
+                return captureDevice.focusMode == .locked
+                
+            case CameraOptionsTypes.shutter:
+                return captureDevice.exposureMode == .custom
+            case CameraOptionsTypes.iso:
+                //todo emulate iso
+                return false
+            case CameraOptionsTypes.temperature:
+                return captureDevice.whiteBalanceMode == .locked
+        }
     }
     
     private func getSliderValueForType() -> SliderValue {
@@ -205,6 +225,59 @@ ScalePickerDelegate {
         }
         
         return sliderValue
+    }
+    @IBAction func onModeSwitchChange(_ modeSwitch: UISegmentedControl) {
+        setActiveSettingMode(SettingLockModes(rawValue: modeSwitch.selectedSegmentIndex)!)
+    }
+    
+    private func setActiveSettingMode(_ mode: SettingLockModes = SettingLockModes.auto) {
+        do {
+            try captureDevice.lockForConfiguration()
+            if (mode == SettingLockModes.auto) {
+                switch(activeSliderType) {
+                case CameraOptionsTypes.focus:
+                    captureDevice.focusMode = .continuousAutoFocus
+                    break
+                case CameraOptionsTypes.shutter:
+                    captureDevice.exposureMode = .continuousAutoExposure
+                    break
+                case CameraOptionsTypes.iso:
+                    //todo emulate iso
+                    break
+                case CameraOptionsTypes.temperature:
+                    captureDevice.whiteBalanceMode = .continuousAutoWhiteBalance
+                    break
+                }
+                
+                activeSlider.blockedUI = true
+                
+            } else if (mode == SettingLockModes.manual) {
+                switch(activeSliderType) {
+                case CameraOptionsTypes.focus:
+                    captureDevice.focusMode = .locked
+                    break
+                case CameraOptionsTypes.shutter:
+                    captureDevice.exposureMode = .custom
+                    break
+                case CameraOptionsTypes.iso:
+                    //todo emulate iso
+                    break
+                case CameraOptionsTypes.temperature:
+                    captureDevice.whiteBalanceMode = .locked
+                    break
+                }
+                
+                activeSlider.blockedUI = activeSliderType == CameraOptionsTypes.iso
+            }
+            
+            activeSlider.alpha = activeSlider.blockedUI ? 0.5 : 1
+            
+            captureDevice.unlockForConfiguration()
+        } catch {
+            print(error)
+        }
+        
+        configureCamera()
     }
     
     func willChangeScaleValue(_ picker: ScalePicker, value: CGFloat) {
@@ -302,10 +375,21 @@ ScalePickerDelegate {
             do {
                 try device.lockForConfiguration()
                 
-                device.focusMode = .locked
-                device.setFocusModeLockedWithLensPosition(focusDistance, completionHandler: { (time) -> Void in })
-                device.setExposureModeCustomWithDuration(exposureDuration, iso: isoValue, completionHandler: { (time) -> Void in })
-                device.setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains(normalizedGains(currentColorGains), completionHandler: { (time) -> Void in })
+                
+                if (device.focusMode == .locked) {
+                    device.setFocusModeLockedWithLensPosition(focusDistance, completionHandler: { (time) -> Void in })
+                }
+                //iso and shutter
+                
+                if (device.exposureMode == .custom) {
+                    device.setExposureModeCustomWithDuration(exposureDuration, iso: isoValue, completionHandler: { (time) -> Void in })
+                }
+                
+                //temperature
+                if (device.whiteBalanceMode == .locked) {
+                    device.setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains(normalizedGains(currentColorGains), completionHandler: { (time) -> Void in })
+                    
+                }
                 device.unlockForConfiguration()
             } catch {
                 print(error)

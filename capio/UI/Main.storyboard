@@ -61,7 +61,7 @@
                                 </items>
                             </toolbar>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KfB-Tn-urK" userLabel="sliderHostView">
-                                <rect key="frame" x="67" y="309" width="240" height="49"/>
+                                <rect key="frame" x="67" y="309" width="240" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -329,36 +329,62 @@
                         <viewControllerLayoutGuide type="bottom" id="5If-F5-C7g"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jci-kJ-cDw">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="49"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wt-R8-52e">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="49"/>
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="90"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ker-es-cpO">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="90"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOy-lj-Kdm">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="49"/>
+                                            <rect key="frame" x="8" y="42" width="224" height="49"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9Vn-eQ-exV">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="49"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="224" height="49"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="49" id="uRc-16-SEu"/>
+                                            </constraints>
+                                            <vibrancyEffect>
+                                                <blurEffect style="dark"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="svp-oR-FsR">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="fc8-Ny-ZQg">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mc1-rw-KDz">
+                                                        <rect key="frame" x="8" y="8" width="224" height="29"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <segments>
+                                                            <segment title="Auto"/>
+                                                            <segment title="Manual"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="onModeSwitchChange:" destination="ciD-hc-faV" eventType="valueChanged" id="tFc-Sb-Sse"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </view>
                                             <vibrancyEffect>
                                                 <blurEffect style="dark"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="LOy-lj-Kdm" secondAttribute="bottom" id="NDY-Ae-kPF"/>
-                                        <constraint firstAttribute="trailing" secondItem="LOy-lj-Kdm" secondAttribute="trailing" id="US0-su-iqn"/>
-                                        <constraint firstItem="LOy-lj-Kdm" firstAttribute="leading" secondItem="Ker-es-cpO" secondAttribute="leading" id="hZx-tL-Cig"/>
-                                        <constraint firstItem="LOy-lj-Kdm" firstAttribute="top" secondItem="Ker-es-cpO" secondAttribute="top" id="kdQ-RC-jjo"/>
+                                        <constraint firstAttribute="bottom" secondItem="LOy-lj-Kdm" secondAttribute="bottom" constant="-1" id="NDY-Ae-kPF"/>
+                                        <constraint firstAttribute="trailing" secondItem="LOy-lj-Kdm" secondAttribute="trailing" constant="8" id="US0-su-iqn"/>
+                                        <constraint firstItem="LOy-lj-Kdm" firstAttribute="leading" secondItem="Ker-es-cpO" secondAttribute="leading" constant="8" id="hZx-tL-Cig"/>
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="SkS-8W-hxb"/>
                                     <constraint firstAttribute="width" constant="240" id="ngR-1z-doy"/>
                                 </constraints>
                                 <blurEffect style="dark"/>
@@ -377,15 +403,16 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="240" height="49"/>
+                    <size key="freeformSize" width="240" height="90"/>
                     <connections>
                         <outlet property="blurViewMain" destination="4wt-R8-52e" id="q5G-xz-UeD"/>
+                        <outlet property="modeSwitch" destination="mc1-rw-KDz" id="oTe-4A-VQi"/>
                         <outlet property="sliderView" destination="9Vn-eQ-exV" id="61f-kq-vdq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eL1-0I-WUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="759"/>
+            <point key="canvasLocation" x="1864" y="758.32083958020996"/>
         </scene>
         <!--Camera Menu Content Controller-->
         <scene sceneID="KVh-0a-sM1">
