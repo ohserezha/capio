@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -61,7 +61,7 @@
                                 </items>
                             </toolbar>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KfB-Tn-urK" userLabel="sliderHostView">
-                                <rect key="frame" x="67" y="309" width="240" height="90"/>
+                                <rect key="frame" x="67" y="309" width="240" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -329,26 +329,31 @@
                         <viewControllerLayoutGuide type="bottom" id="5If-F5-C7g"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jci-kJ-cDw">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="90"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="110"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wt-R8-52e">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="90"/>
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="110"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ker-es-cpO">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="110"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOy-lj-Kdm">
-                                            <rect key="frame" x="8" y="42" width="224" height="49"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9Vn-eQ-exV">
-                                                <rect key="frame" x="0.0" y="0.0" width="224" height="49"/>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNV-py-02P">
+                                            <rect key="frame" x="0.0" y="45" width="240" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="RxR-kl-krd">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osm-fu-CSi">
+                                                        <rect key="frame" x="0.0" y="2" width="240" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                             </view>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="49" id="uRc-16-SEu"/>
-                                            </constraints>
                                             <vibrancyEffect>
                                                 <blurEffect style="dark"/>
                                             </vibrancyEffect>
@@ -377,9 +382,24 @@
                                                 <blurEffect style="dark"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOy-lj-Kdm">
+                                            <rect key="frame" x="8" y="61" width="224" height="49"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9Vn-eQ-exV">
+                                                <rect key="frame" x="0.0" y="0.0" width="224" height="49"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="49" id="uRc-16-SEu"/>
+                                            </constraints>
+                                            <vibrancyEffect>
+                                                <blurEffect style="dark"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="LOy-lj-Kdm" secondAttribute="bottom" constant="-1" id="NDY-Ae-kPF"/>
+                                        <constraint firstAttribute="bottom" secondItem="LOy-lj-Kdm" secondAttribute="bottom" id="NDY-Ae-kPF"/>
                                         <constraint firstAttribute="trailing" secondItem="LOy-lj-Kdm" secondAttribute="trailing" constant="8" id="US0-su-iqn"/>
                                         <constraint firstItem="LOy-lj-Kdm" firstAttribute="leading" secondItem="Ker-es-cpO" secondAttribute="leading" constant="8" id="hZx-tL-Cig"/>
                                     </constraints>
@@ -403,8 +423,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="240" height="90"/>
+                    <size key="freeformSize" width="240" height="110"/>
                     <connections>
+                        <outlet property="activeSliderValueLabel" destination="Osm-fu-CSi" id="HG0-Mo-pdE"/>
                         <outlet property="blurViewMain" destination="4wt-R8-52e" id="q5G-xz-UeD"/>
                         <outlet property="modeSwitch" destination="mc1-rw-KDz" id="oTe-4A-VQi"/>
                         <outlet property="sliderView" destination="9Vn-eQ-exV" id="61f-kq-vdq"/>
