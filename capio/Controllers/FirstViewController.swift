@@ -48,6 +48,11 @@ class FirstViewController:
     
     @IBOutlet var sliderHostView:               UIView!
     
+    @IBOutlet var resolutionBlurView:           UIVisualEffectView!
+    @IBOutlet var FPSLabel: UILabel!    
+    @IBOutlet var sloMoIndicatorLaber: UILabel!
+    
+    @IBOutlet var resolutionChangeBtn: UIButton!
     private var optionsMenu:                    CariocaMenu?
     private var cariocaMenuViewController:      CameraMenuContentController?
     private var cameraOptionsViewController:    CameraOptionsViewController?
@@ -80,6 +85,9 @@ class FirstViewController:
     }
     
     fileprivate func processUi() {
+        
+        resolutionBlurView.layer.masksToBounds    = true
+        resolutionBlurView.layer.cornerRadius     = 5
         
         let camViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.handlerCamViewTap(_:)))
         
@@ -154,6 +162,10 @@ class FirstViewController:
     
     @IBAction func onDoPhotoTrigger(_ sender: AnyObject) {
         captureImage()
+    }
+    
+    @IBAction func onResolutionButtonTrigger(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(1519)
     }
 
     @IBAction func onDoVideo(_ sender: UIButton) {
@@ -285,10 +297,12 @@ class FirstViewController:
 
             if (captureSession?.canAddOutput(captureStillImageOut) != nil) {
                 captureSession?.addOutput(captureStillImageOut)
+                
+                captureStillImageOut?.isHighResolutionCaptureEnabled = true
 
                 previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                 previewLayer?.videoGravity = AVLayerVideoGravityResizeAspect
-
+                
                 myCamView.layer.addSublayer((previewLayer)!)
 
             } else {
@@ -322,7 +336,7 @@ class FirstViewController:
                         
                         //there are also 30/60/120
                         //todo: make an opton to switch between
-                        if frameRates.maxFrameRate == 240 {
+                        if frameRates.maxFrameRate == 60 {
                             
                             self.captureDevice!.activeFormat = vFormat as! AVCaptureDeviceFormat
                             self.captureDevice!.activeVideoMinFrameDuration = frameRates.minFrameDuration
@@ -340,6 +354,7 @@ class FirstViewController:
     }
 
     private func captureImage() {
+        AudioServicesPlaySystemSound(1519)
         let settings = AVCapturePhotoSettings()
         
         let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
@@ -348,6 +363,7 @@ class FirstViewController:
                              kCVPixelBufferHeightKey as String: 160,
                              ]
         settings.previewPhotoFormat = previewFormat
+        settings.isHighResolutionPhotoEnabled = true
         
         captureStillImageOut!.capturePhoto(with: settings, delegate: self)
     }
@@ -375,7 +391,11 @@ class FirstViewController:
         
         if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
             
-            UIImageWriteToSavedPhotosAlbum(UIImage(data: dataImage)!,
+            let imageToSave = UIImage(data: dataImage)
+            print("width: " + String(describing: UIImage(data: dataImage)?.size.width))
+            print("heighth: " + String(describing: UIImage(data: dataImage)?.size.height))
+            
+            UIImageWriteToSavedPhotosAlbum(imageToSave!,
                                             self,
                                             #selector(FirstViewController.onImageSaved(_:didFinishSavingWithError:contextInfo:)),
                                             nil)
