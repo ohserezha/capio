@@ -49,14 +49,14 @@
                                                             <action selector="onResolutionButtonTrigger:" destination="9pv-A4-QxB" eventType="touchUpInside" id="tZt-cy-CIe"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FPS30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkW-0y-OJh">
-                                                        <rect key="frame" x="8" y="8" width="46" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FPS240" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkW-0y-OJh">
+                                                        <rect key="frame" x="0.0" y="8" width="62" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SLO-MO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1E-SU-gfi">
+                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SLO-MO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1E-SU-gfi">
                                                         <rect key="frame" x="10" y="49" width="42" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -147,7 +147,7 @@
                         <outlet property="resolutionBlurView" destination="Dbh-k7-TDt" id="qm7-W1-XAq"/>
                         <outlet property="resolutionChangeBtn" destination="3DA-dM-W8m" id="Yqk-6Q-1L9"/>
                         <outlet property="sliderHostView" destination="KfB-Tn-urK" id="dEe-zu-Jjt"/>
-                        <outlet property="sloMoIndicatorLaber" destination="m1E-SU-gfi" id="7J3-jS-RHu"/>
+                        <outlet property="sloMoIndicatorLabel" destination="m1E-SU-gfi" id="dZK-g2-3PE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

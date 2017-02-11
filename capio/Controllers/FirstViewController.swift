@@ -49,13 +49,33 @@ class FirstViewController:
     @IBOutlet var sliderHostView:               UIView!
     
     @IBOutlet var resolutionBlurView:           UIVisualEffectView!
-    @IBOutlet var FPSLabel: UILabel!    
-    @IBOutlet var sloMoIndicatorLaber: UILabel!
+    @IBOutlet var FPSLabel:                     UILabel!
+    @IBOutlet var sloMoIndicatorLabel:          UILabel!
+    @IBOutlet var resolutionChangeBtn:          UIButton!
     
-    @IBOutlet var resolutionChangeBtn: UIButton!
     private var optionsMenu:                    CariocaMenu?
     private var cariocaMenuViewController:      CameraMenuContentController?
     private var cameraOptionsViewController:    CameraOptionsViewController?
+    
+    private class ResolutionFormat {
+        let photoResolutionString:  CMVideoDimensions!
+        let videoResolutionString:  CMVideoDimensions!
+        let fpsRange:               AVFrameRateRange!
+        let isSlomo:                Bool!
+        var isActive:               Bool    = false
+        let format:                 AVCaptureDeviceFormat!
+        
+        init(_format: AVCaptureDeviceFormat, _frameRateObj: AVFrameRateRange) {
+            videoResolutionString   = CMVideoFormatDescriptionGetDimensions(_format.formatDescription)
+            photoResolutionString   = _format.highResolutionStillImageDimensions
+            fpsRange                = _frameRateObj
+            isSlomo                 = _frameRateObj.maxFrameRate >= 240.0
+            format                  = _format
+        }
+    }
+    
+    private var resolutionFormatsArray: [ResolutionFormat] = [ResolutionFormat]()
+    private var activeresolutionFormat: ResolutionFormat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -325,32 +345,61 @@ class FirstViewController:
             }
 
             if (self.captureDevice!.activeVideoMaxFrameDuration.timescale != 6) {
-                do {
+                
                     
-                    try self.captureDevice?.lockForConfiguration()
                     
-                    for vFormat in self.captureDevice!.formats {
+                    for vFormat in self.captureDevice!.formats as! [AVCaptureDeviceFormat] {
                         
                         let ranges = (vFormat as AnyObject).videoSupportedFrameRateRanges as! [AVFrameRateRange]
-                        let frameRates = ranges[0]
+                        let frameRateObj: AVFrameRateRange = ranges[0]
                         
-                        //there are also 30/60/120
-                        //todo: make an opton to switch between
-                        if frameRates.maxFrameRate == 60 {
+                        if (resolutionFormatsArray.count == 0) {
+                            let newResolutionFormat = ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj)
+                            resolutionFormatsArray.append(newResolutionFormat)
+                        } else {
+                            var matchFound:Bool = false
                             
-                            self.captureDevice!.activeFormat = vFormat as! AVCaptureDeviceFormat
-                            self.captureDevice!.activeVideoMinFrameDuration = frameRates.minFrameDuration
-                            self.captureDevice!.activeVideoMaxFrameDuration = frameRates.maxFrameDuration
+                            resolutionFormatsArray = resolutionFormatsArray.map({ (resolutionFormat: ResolutionFormat) -> ResolutionFormat in
+                                //accumulating maximum possible res for each frame-rate set
+                                if(resolutionFormat.fpsRange.maxFrameRate == frameRateObj.maxFrameRate && CMVideoFormatDescriptionGetDimensions(vFormat.formatDescription).width >= resolutionFormat.videoResolutionString.width) {
+                                    matchFound = true
+                                    return ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj)
+                                } else {
+                                    return resolutionFormat
+                                }
+                            })
+                            
+                            if (!matchFound) {
+                                resolutionFormatsArray.append(ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj))
+                            }
+                            
+                            resolutionFormatsArray = resolutionFormatsArray.sorted(by: { $0.fpsRange.maxFrameRate < $1.fpsRange.maxFrameRate })
                         }
-                    }
-                    self.captureDevice?.unlockForConfiguration()
-                } catch {
-                    print(error)
                 }
+
             }
-            
+            setResolution(resolutionFormatsArray.first!)
             captureSession?.startRunning()            
         }
+    }
+    
+    private func setResolution(_ newResolutionFormat: ResolutionFormat) {
+        activeresolutionFormat = newResolutionFormat
+        
+        do {
+            try self.captureDevice?.lockForConfiguration()
+                self.captureDevice!.activeFormat = activeresolutionFormat.format
+                self.captureDevice!.activeVideoMinFrameDuration = activeresolutionFormat.fpsRange.minFrameDuration
+                self.captureDevice!.activeVideoMaxFrameDuration = activeresolutionFormat.fpsRange.maxFrameDuration
+            
+            self.captureDevice?.unlockForConfiguration()
+        } catch {
+            print(error)
+        }
+        
+        FPSLabel.text = "FPS" + String(Int(activeresolutionFormat.fpsRange.maxFrameRate))
+        sloMoIndicatorLabel.alpha = activeresolutionFormat.isSlomo == true ? 1.0 : 0.4
+        resolutionChangeBtn.setTitle(String(Int(floor(Double(activeresolutionFormat.videoResolutionString.width/1000)))) + "K", for: .normal)
     }
 
     private func captureImage() {
