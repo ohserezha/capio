@@ -106,7 +106,6 @@ ScalePickerDelegate {
             
             _killTimer()
             
-            
             timer = Timer.scheduledTimer(withTimeInterval: 0.016, repeats: true, block: { timer in
                 var value: Float
                 
@@ -128,6 +127,10 @@ ScalePickerDelegate {
         private func getTime(time: Float) -> Float {
             // ease_in_quad
             return time * time
+        }
+        
+        func stop() {
+            _killTimer()
         }
         
         private func _killTimer() {
@@ -171,10 +174,7 @@ ScalePickerDelegate {
     @IBOutlet var modeSwitch: UISegmentedControl!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        blurViewMain.layer.masksToBounds    = true
-        blurViewMain.layer.cornerRadius     = 5
+        super.viewDidLoad()        
     }
     
     override func didReceiveMemoryWarning() {
@@ -221,14 +221,18 @@ ScalePickerDelegate {
             if (captureDevice!.exposureMode == .custom) {
                 if (isShutterLocked && !isIsoLocked) {
                     valueStepper.startReachingTarget(_currentVal: captureDevice.iso, _targetVal: getEmulatedIso(), stepResultCallback: { stepResult in
-                        self.isoValue = self.getValueWithinRange(
-                            value: stepResult,
-                            min: self.captureDevice!.activeFormat.minISO,
-                            max: self.captureDevice!.activeFormat.maxISO,
-                            defaultReturn: 100.0
-                        )
-                        
-                        self.configureCamera()
+                        if(self.isIsoLocked) {
+                            self.valueStepper.stop()
+                        } else {
+                            self.isoValue = self.getValueWithinRange(
+                                value: stepResult,
+                                min: self.captureDevice!.activeFormat.minISO,
+                                max: self.captureDevice!.activeFormat.maxISO,
+                                defaultReturn: 100.0
+                            )
+                            
+                            self.configureCamera()
+                        }
                     })
                 }
                 if (isIsoLocked && !isShutterLocked) {
@@ -237,8 +241,12 @@ ScalePickerDelegate {
                         _targetVal: Float(CMTimeGetSeconds(getExposureFromValue(value: pow(exp(exposureTargetDA.accValue + 18), -0.36)))),
                         speed: 1500,
                         stepResultCallback: { stepResult in
-                            self.exposureDuration = self.getExposureFromValue(value: stepResult)
-                        self.configureCamera()
+                            if(self.isShutterLocked) {
+                                self.valueStepper.stop()
+                            } else {
+                                self.exposureDuration = self.getExposureFromValue(value: stepResult)
+                                self.configureCamera()
+                            }
                     })
                 }
             }
