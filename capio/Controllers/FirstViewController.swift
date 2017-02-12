@@ -254,8 +254,7 @@ class FirstViewController:
             //todo -> switchcase for misc menu
             self.menuHostView.setActiveMenu(self.cameraOptionsViewController!, menuType: .cameraSliderMenu)
             
-            self.menuHostView.setCameraSliderViewControllerForIndex(indexPath.row)
-            self.showActiveSetting();
+            self.menuHostView.setCameraSliderViewControllerForIndex(indexPath.row, callbackToOpenMenu: self.showActiveSetting)
             self.optionsMenu?.moveToTop()
         }
     }

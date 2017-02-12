@@ -57,24 +57,33 @@ class MenuHostView: UIView {
         }
     }
     
-    func setCameraSliderViewControllerForIndex(_ index:Int){
+    func setCameraSliderViewControllerForIndex(_ index:Int, callbackToOpenMenu: () -> Void){
+        var activeSliderPresent: Bool = false
         
             switch index {
                 
             case 0:
                 (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.focus)
+                activeSliderPresent = true
                 break
             case 1:
                 (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.shutter)
+                activeSliderPresent = true
                 break
             case 2:
                 (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.iso)
+                activeSliderPresent = true
                 break
             case 3:
                 (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.temperature)
+                activeSliderPresent = true
                 break
             default:
                 break
             }
+        
+        if (activeSliderPresent) {
+            callbackToOpenMenu()
+        }
     }
 }
