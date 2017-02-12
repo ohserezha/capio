@@ -150,7 +150,25 @@ ScalePickerDelegate {
     
     var exposureDuration:                   CMTime!
     var focusDistance:                      Float       = 0
-    var isoValue:                           Float       = 100
+    var _isoValue:                          Float       = 100.0
+    var isoValue:                           Float {
+        set {
+            self._isoValue = self.getValueWithinRange(
+                value: newValue,
+                min: self.captureDevice!.activeFormat.minISO,
+                max: self.captureDevice!.activeFormat.maxISO,
+                defaultReturn: 100.0
+            )
+        }
+        get {
+            return self.getValueWithinRange(
+                value: self._isoValue,
+                min: self.captureDevice!.activeFormat.minISO,
+                max: self.captureDevice!.activeFormat.maxISO,
+                defaultReturn: 100.0
+            )
+        }
+    }
     var shutterValue:                       Float       = 0.0
     
     var isIsoLocked:                        Bool        = false
@@ -224,12 +242,7 @@ ScalePickerDelegate {
                         if(self.isIsoLocked) {
                             self.valueStepper.stop()
                         } else {
-                            self.isoValue = self.getValueWithinRange(
-                                value: stepResult,
-                                min: self.captureDevice!.activeFormat.minISO,
-                                max: self.captureDevice!.activeFormat.maxISO,
-                                defaultReturn: 100.0
-                            )
+                            self.isoValue = stepResult
                             
                             self.configureCamera()
                         }
@@ -541,7 +554,7 @@ ScalePickerDelegate {
         }
     }
     
-    private func getValueWithinRange(value: Float, min: Float, max: Float, defaultReturn: Float) -> Float {
+    func getValueWithinRange(value: Float, min: Float, max: Float, defaultReturn: Float) -> Float {
         
         let valueRange:ClosedRange = min...max
         
