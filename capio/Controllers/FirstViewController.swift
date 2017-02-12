@@ -18,6 +18,29 @@ import ScalePicker
 
 import CariocaMenu
 
+enum SettingMenuTypes {
+    case none, cameraSliderMenu, resolutionMenu, flashMenu, allStatsMenu, miscMenu
+}
+
+class ResolutionFormat {
+    let photoResolution:  CMVideoDimensions!
+    let videoResolution:  CMVideoDimensions!
+    let fpsRange:         AVFrameRateRange!
+    let isSlomo:          Bool!
+    var isActive:         Bool    = false
+    let format:           AVCaptureDeviceFormat!
+    let name:             String!
+    
+    init(_format: AVCaptureDeviceFormat, _frameRateObj: AVFrameRateRange) {
+        videoResolution   = CMVideoFormatDescriptionGetDimensions(_format.formatDescription)
+        photoResolution   = _format.highResolutionStillImageDimensions
+        fpsRange          = _frameRateObj
+        isSlomo           = _frameRateObj.maxFrameRate >= 120.0 //well technically it's 104.0
+        format            = _format
+        name              = String(Double(videoResolution.width)/1000.0) + "K"
+    }
+}
+
 class FirstViewController:
     UIViewController,
     UIImagePickerControllerDelegate,
@@ -26,6 +49,8 @@ class FirstViewController:
     AVCapturePhotoCaptureDelegate,
     UIGestureRecognizerDelegate,
     CariocaMenuDelegate {
+    
+    let SUPPORTED_ASPECT_RATIO:                 Double = 1280/720
     
     var captureSession:                         AVCaptureSession?
     var captureStillImageOut:                   AVCapturePhotoOutput?
@@ -46,7 +71,7 @@ class FirstViewController:
     
     @IBOutlet var actionToolbar:                UIToolbar!
     
-    @IBOutlet var sliderHostView:               UIView!
+    @IBOutlet var menuHostView:               MenuHostView!
     
     @IBOutlet var resolutionBlurView:           UIVisualEffectView!
     @IBOutlet var FPSLabel:                     UILabel!
@@ -55,28 +80,14 @@ class FirstViewController:
     
     private var optionsMenu:                    CariocaMenu?
     private var cariocaMenuViewController:      CameraMenuContentController?
-    private var cameraOptionsViewController:    CameraOptionsViewController?
     
-    private class ResolutionFormat {
-        let photoResolutionString:  CMVideoDimensions!
-        let videoResolutionString:  CMVideoDimensions!
-        let fpsRange:               AVFrameRateRange!
-        let isSlomo:                Bool!
-        var isActive:               Bool    = false
-        let format:                 AVCaptureDeviceFormat!
-        
-        init(_format: AVCaptureDeviceFormat, _frameRateObj: AVFrameRateRange) {
-            videoResolutionString   = CMVideoFormatDescriptionGetDimensions(_format.formatDescription)
-            photoResolutionString   = _format.highResolutionStillImageDimensions
-            fpsRange                = _frameRateObj
-            isSlomo                 = _frameRateObj.maxFrameRate >= 240.0
-            format                  = _format
-        }
-    }
+    //menu controllers here
+    private var cameraOptionsViewController:    CameraOptionsViewController?
+    private var cameraResolutionMenu:           ResolutionViewController?
     
     private var resolutionFormatsArray: [ResolutionFormat] = [ResolutionFormat]()
-    private var activeresolutionFormat: ResolutionFormat!
-    
+    private var activeResolutionFormat: ResolutionFormat!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -113,18 +124,21 @@ class FirstViewController:
         
         myCamView.addGestureRecognizer(camViewTapRecognizer)
         
+        //todo: all settings processing should be moved in to a single unit
         cameraOptionsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraOptionsSlider") as? CameraOptionsViewController
-        
-        sliderHostView.addSubview((cameraOptionsViewController?.view)!)
         cameraOptionsViewController?.setActiveDevice(captureDevice!)
         
-        setupMenu()
+        menuHostView.layer.masksToBounds    = true
+        menuHostView.layer.cornerRadius     = 5
+        menuHostView.setActiveMenu(cameraOptionsViewController!, menuType: .cameraSliderMenu)
+        
+        setupCameraSettingsSwipeMenu()
         
         doPhotoBtn.processIcons();
         doVideoBtn.processIcons();
     }
     
-    private func setupMenu() {
+    private func setupCameraSettingsSwipeMenu() {
         cariocaMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraMenu") as? CameraMenuContentController
         
         //Set the tableviewcontroller for the shared carioca menu
@@ -141,7 +155,7 @@ class FirstViewController:
     }
     
     func handlerCamViewTap(_ gestureRecognizer: UIGestureRecognizer) {
-        if (sliderHostView != nil) {
+        if (menuHostView != nil) {
             self.cariocaMenuViewController?.menuToDefault()
             hideActiveSetting() {_ in
                 print("Done hiding from tap")
@@ -151,27 +165,31 @@ class FirstViewController:
     
     fileprivate func showActiveSetting() {
         
-        sliderHostView.center.x = self.view.center.x
+        menuHostView.center.x = self.view.center.x
         
-        sliderHostView.transform = CGAffineTransform.init(translationX: 0, y: view.bounds.height/2 + self.sliderHostView.bounds.height + self.actionToolbar.bounds.height
+        menuHostView.transform = CGAffineTransform.init(translationX: 0, y: view.bounds.height/2 + self.menuHostView.bounds.height + self.actionToolbar.bounds.height
         )
-        sliderHostView.isHidden = false
+        menuHostView.isHidden = false
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            self.sliderHostView.transform = CGAffineTransform.init(translationX: 0, y:
-                self.view.bounds.height/2 - self.sliderHostView.bounds.height - self.actionToolbar.bounds.height/2
+            self.menuHostView.transform = CGAffineTransform.init(translationX: 0, y:
+                self.view.bounds.height/2 - self.menuHostView.bounds.height - self.actionToolbar.bounds.height/2
             )
         })
     }
     
     private func hideActiveSetting(_ completion: @escaping (_ result: AnyObject) -> Void) {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.sliderHostView.transform = CGAffineTransform.init(translationX: 0, y: self.view.bounds.height/2 + self.sliderHostView.bounds.height + self.actionToolbar.bounds.height
-                //- self.sliderHostView.frame.origin.y
+            self.menuHostView.transform = CGAffineTransform.init(translationX: 0, y: self.view.bounds.height/2 + self.menuHostView.bounds.height + self.actionToolbar.bounds.height
             )
         }) { (success:Bool) in
-            self.sliderHostView.isHidden = true
-            self.cameraOptionsViewController?.unsetActiveslider()
+            self.menuHostView.isHidden = true
+            
+            if(self.menuHostView.activeMenuType == .resolutionMenu) {
+                self.cameraResolutionMenu?.removeObserver(self, forKeyPath: "selectedRowIndex")
+            }
+            
+            self.menuHostView.unsetActiveMenu()
             completion(success as AnyObject)
         }
     }
@@ -186,6 +204,31 @@ class FirstViewController:
     
     @IBAction func onResolutionButtonTrigger(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1519)
+        
+        hideActiveSetting() { _ in
+            if(self.cameraResolutionMenu == nil) {
+                self.cameraResolutionMenu = self.storyboard?.instantiateViewController(withIdentifier: "CameraResolutionMenu") as? ResolutionViewController
+            }
+            
+            self.cameraResolutionMenu?.resolutionFormatsArray = self.resolutionFormatsArray
+            
+            self.menuHostView.setActiveMenu(self.cameraResolutionMenu!, menuType: .resolutionMenu)
+
+            self.cameraResolutionMenu?.activeResolutionFormat = self.activeResolutionFormat
+
+            self.showActiveSetting()
+            
+            //todo -> figureout a better way of propagating back to parent
+            self.cameraResolutionMenu?.addObserver(self, forKeyPath: "selectedRowIndex", options: NSKeyValueObservingOptions.new, context: nil)
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if keyPath == "selectedRowIndex"{
+            let row = change?[NSKeyValueChangeKey.newKey] as! Int
+            self.setResolution(self.resolutionFormatsArray[row])
+        }
     }
 
     @IBAction func onDoVideo(_ sender: UIButton) {
@@ -198,44 +241,23 @@ class FirstViewController:
         }
     }
     
-    func showDemoControllerForIndex(_ index:Int){
-        
-        hideActiveSetting() {_ in
-            print("Done hiding from show")
-            
-            switch index {
-                
-            case 0:
-                self.cameraOptionsViewController?.setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.focus)
-                self.showActiveSetting();
-                break
-            case 1:
-                self.cameraOptionsViewController?.setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.shutter)
-                self.showActiveSetting();
-                break
-            case 2:
-                self.cameraOptionsViewController?.setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.iso)
-                self.showActiveSetting();
-                break
-            case 3:
-                self.cameraOptionsViewController?.setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.temperature)
-                self.showActiveSetting();
-                break
-            default:
-                break
-            }
-            
-            self.optionsMenu?.moveToTop()
-        }
-    }
-    
     ///`Optional` Called when a menu item was selected
     ///- parameters:
     ///  - menu: The menu object
     ///  - indexPath: The selected indexPath
     func cariocaMenuDidSelect(_ menu:CariocaMenu, indexPath:IndexPath) {
         cariocaMenuViewController?.menuWillClose()
-        showDemoControllerForIndex(indexPath.row)
+        
+        hideActiveSetting() {_ in
+            print("Done hiding from show")
+            
+            //todo -> switchcase for misc menu
+            self.menuHostView.setActiveMenu(self.cameraOptionsViewController!, menuType: .cameraSliderMenu)
+            
+            self.menuHostView.setCameraSliderViewControllerForIndex(indexPath.row)
+            self.showActiveSetting();
+            self.optionsMenu?.moveToTop()
+        }
     }
     
     ///`Optional` Called when the menu is about to open
@@ -326,7 +348,7 @@ class FirstViewController:
                 myCamView.layer.addSublayer((previewLayer)!)
 
             } else {
-                //todo: disable videobutton here if not available
+                doPhotoBtn.isEnabled = false
             }
 
             captureVideoOut = AVCaptureMovieFileOutput()
@@ -341,14 +363,19 @@ class FirstViewController:
 
                 captureSession?.addOutput(captureVideoOut)
             } else {
-                //todo: disable videobutton here if not available
+                doVideoBtn.isEnabled = false
             }
 
             if (self.captureDevice!.activeVideoMaxFrameDuration.timescale != 6) {
-                
-                    
-                    
                     for vFormat in self.captureDevice!.formats as! [AVCaptureDeviceFormat] {
+                        
+                        let formatDescription = CMVideoFormatDescriptionGetDimensions(vFormat.formatDescription)
+                        
+                        let ratio = Double(formatDescription.width) / Double(formatDescription.height)
+                        
+                        if (ratio != SUPPORTED_ASPECT_RATIO) {
+                            continue
+                        }
                         
                         let ranges = (vFormat as AnyObject).videoSupportedFrameRateRanges as! [AVFrameRateRange]
                         let frameRateObj: AVFrameRateRange = ranges[0]
@@ -361,7 +388,7 @@ class FirstViewController:
                             
                             resolutionFormatsArray = resolutionFormatsArray.map({ (resolutionFormat: ResolutionFormat) -> ResolutionFormat in
                                 //accumulating maximum possible res for each frame-rate set
-                                if(resolutionFormat.fpsRange.maxFrameRate == frameRateObj.maxFrameRate && CMVideoFormatDescriptionGetDimensions(vFormat.formatDescription).width >= resolutionFormat.videoResolutionString.width) {
+                                if(resolutionFormat.fpsRange.maxFrameRate == frameRateObj.maxFrameRate && CMVideoFormatDescriptionGetDimensions(vFormat.formatDescription).width >= resolutionFormat.videoResolution.width) {
                                     matchFound = true
                                     return ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj)
                                 } else {
@@ -384,22 +411,22 @@ class FirstViewController:
     }
     
     private func setResolution(_ newResolutionFormat: ResolutionFormat) {
-        activeresolutionFormat = newResolutionFormat
+        activeResolutionFormat = newResolutionFormat
         
         do {
             try self.captureDevice?.lockForConfiguration()
-                self.captureDevice!.activeFormat = activeresolutionFormat.format
-                self.captureDevice!.activeVideoMinFrameDuration = activeresolutionFormat.fpsRange.minFrameDuration
-                self.captureDevice!.activeVideoMaxFrameDuration = activeresolutionFormat.fpsRange.maxFrameDuration
+                self.captureDevice!.activeFormat = activeResolutionFormat.format
+                self.captureDevice!.activeVideoMinFrameDuration = activeResolutionFormat.fpsRange.minFrameDuration
+                self.captureDevice!.activeVideoMaxFrameDuration = activeResolutionFormat.fpsRange.maxFrameDuration
             
             self.captureDevice?.unlockForConfiguration()
         } catch {
             print(error)
         }
         
-        FPSLabel.text = "FPS" + String(Int(activeresolutionFormat.fpsRange.maxFrameRate))
-        sloMoIndicatorLabel.alpha = activeresolutionFormat.isSlomo == true ? 1.0 : 0.4
-        resolutionChangeBtn.setTitle(String(Int(floor(Double(activeresolutionFormat.videoResolutionString.width/1000)))) + "K", for: .normal)
+        FPSLabel.text = "FPS" + String(Int(activeResolutionFormat.fpsRange.maxFrameRate))
+        sloMoIndicatorLabel.alpha = activeResolutionFormat.isSlomo == true ? 1.0 : 0.4
+        resolutionChangeBtn.setTitle(activeResolutionFormat.name, for: .normal)
     }
 
     private func captureImage() {
