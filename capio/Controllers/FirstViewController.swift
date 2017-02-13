@@ -415,23 +415,10 @@ class FirstViewController:
         do {
             try self.captureDevice?.lockForConfiguration()
             
-                //iso and shutter
-                //todo -> move to separate camera settings handler
-                //todo: it's a temporary fix
-                if (self.captureDevice!.exposureMode == .custom) {
-                    
-                    self.cameraOptionsViewController?.isoValue = (self.cameraOptionsViewController?.getValueWithinRange(
-                        value: (self.cameraOptionsViewController?.isoValue)!,
-                        min: activeResolutionFormat.format.minISO,
-                        max: activeResolutionFormat.format.maxISO,
-                        defaultReturn: 100.0
-                        ))!
-                    
-                    //iso and shutter
-                    if (self.captureDevice!.exposureMode == .custom) {
-                        self.captureDevice!.setExposureModeCustomWithDuration((self.cameraOptionsViewController?.exposureDuration)!, iso: (self.cameraOptionsViewController?.isoValue)!, completionHandler: { (time) -> Void in })
-                    }
-                }
+                self.captureDevice!.exposureMode = .continuousAutoExposure
+                self.captureDevice!.whiteBalanceMode = .continuousAutoWhiteBalance
+                self.cameraOptionsViewController?.isIsoLocked = false
+                self.cameraOptionsViewController?.isShutterLocked = false
             
                 self.captureDevice!.activeFormat = activeResolutionFormat.format
                 self.captureDevice!.activeVideoMinFrameDuration = activeResolutionFormat.fpsRange.minFrameDuration

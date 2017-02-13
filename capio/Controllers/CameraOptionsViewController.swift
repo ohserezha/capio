@@ -251,13 +251,16 @@ ScalePickerDelegate {
                 if (isIsoLocked && !isShutterLocked) {
                     valueStepper.startReachingTarget(
                         _currentVal: Float(CMTimeGetSeconds(captureDevice.exposureDuration)),
-                        _targetVal: Float(CMTimeGetSeconds(getExposureFromValue(value: pow(exp(exposureTargetDA.accValue + 18), -0.36)))),
+                        _targetVal: Float(CMTimeGetSeconds(getExposureFromValue(
+                                            value: pow(exp(exposureTargetDA.accValue + 18), -0.36),
+                                            activeFormat: captureDevice!.activeFormat
+                                        ))),
                         speed: 1500,
                         stepResultCallback: { stepResult in
                             if(self.isShutterLocked) {
                                 self.valueStepper.stop()
                             } else {
-                                self.exposureDuration = self.getExposureFromValue(value: stepResult)
+                                self.exposureDuration = self.getExposureFromValue(value: stepResult, activeFormat: self.captureDevice!.activeFormat)
                                 self.configureCamera()
                             }
                     })
@@ -287,9 +290,9 @@ ScalePickerDelegate {
         )
     }    
     
-    private func getExposureFromValue(value: Float) -> CMTime {
-        let minDurationSeconds: Double = max(CMTimeGetSeconds(captureDevice!.activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
-        let maxDurationSeconds: Double = CMTimeGetSeconds(captureDevice!.activeFormat.maxExposureDuration);
+    func getExposureFromValue(value: Float, activeFormat: AVCaptureDeviceFormat) -> CMTime {
+        let minDurationSeconds: Double = max(CMTimeGetSeconds(activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
+        let maxDurationSeconds: Double = CMTimeGetSeconds(activeFormat.maxExposureDuration);
         
         let exposure: Double = Double(getValueWithinRange(
                                         value: value,
@@ -297,7 +300,7 @@ ScalePickerDelegate {
                                         max: Float(maxDurationSeconds),
                                         defaultReturn: 0.01
                                     ))
-            
+        
         return CMTime.init(seconds: exposure, preferredTimescale: captureDevice!.exposureDuration.timescale)
     }
     
@@ -603,6 +606,7 @@ ScalePickerDelegate {
         let minDurationSeconds: Double = max(CMTimeGetSeconds(captureDevice!.activeFormat.minExposureDuration), EXPOSURE_MINIMUM_DURATION);
         let maxDurationSeconds: Double = CMTimeGetSeconds(captureDevice!.activeFormat.maxExposureDuration);
         let newSecondsAmount = min(0.16, p * ( maxDurationSeconds - minDurationSeconds ) + minDurationSeconds)
+        
         exposureDuration = CMTimeMakeWithSeconds(Float64(newSecondsAmount), 1000*1000*1000); // Scale from 0-1 slider range to actual duration
     }
     
