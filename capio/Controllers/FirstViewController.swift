@@ -51,6 +51,7 @@ class FirstViewController:
     CariocaMenuDelegate {
     
     let SUPPORTED_ASPECT_RATIO:                 Double = 1280/720
+    let VIDEO_RECORD_INTERVAL_COUNTDOWN:        Double = 1
     
     var captureSession:                         AVCaptureSession?
     var captureStillImageOut:                   AVCapturePhotoOutput?
@@ -77,6 +78,12 @@ class FirstViewController:
     @IBOutlet var FPSLabel:                     UILabel!
     @IBOutlet var sloMoIndicatorLabel:          UILabel!
     @IBOutlet var resolutionChangeBtn:          UIButton!
+    
+    @IBOutlet var videoCounterLabel:            UILabel!
+    @IBOutlet var videoRecordIndicator:         UIImageView!
+
+    private var videoRecordCountdownSeconds:    Double = 0.0
+    private var videRecordCountdownTimer:       Timer!
     
     private var optionsMenu:                    CariocaMenu?
     private var cariocaMenuViewController:      CameraMenuContentController?
@@ -518,24 +525,62 @@ class FirstViewController:
             }
         }
     }
-    
     //starts video recording
     func startRecording(){
-
-        let outputUrl = URL(fileURLWithPath: NSTemporaryDirectory() + "temp.mp4")
-        if(FileManager().fileExists(atPath: NSTemporaryDirectory() + "temp.mp4")) {
-            print("how-howhow")
+        
+        let fileNameAndExtension: String = "capioTempMovie.mov"
+        let urlPath: String = NSTemporaryDirectory() + fileNameAndExtension
+        
+        let outputUrl = URL(fileURLWithPath: urlPath)
+        if(FileManager().fileExists(atPath: urlPath)) {
+            print("temp .mov file exists -> so gonna remove it. and todo: i might wanna remove that also after recording is done")
             do {
-                try FileManager().removeItem(atPath: NSTemporaryDirectory() + "temp.mp4")
+                try FileManager().removeItem(atPath: urlPath)
             } catch {
                 print(error)
             }
         }
 
         captureVideoOut?.startRecording(toOutputFileURL: outputUrl as URL!, recordingDelegate: self)
+        
+        //videou countdown counter starts here
+        UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, delay: 0, options: .curveEaseOut, animations: {
+            self.videoRecordIndicator.alpha = 0.5
+            self.videoCounterLabel.alpha = 1.0
+            self.videoCounterLabel.text = String(format: "%02d:%02d:%02d", 0.0, 0.0, 0.0)
+        }) { success in
+            
+            self.videRecordCountdownTimer = Timer.scheduledTimer(withTimeInterval: self.VIDEO_RECORD_INTERVAL_COUNTDOWN, repeats: true, block: {timer in
+                let videoRecordCountdownSeconds = (self.captureVideoOut?.recordedDuration.seconds)!
+                
+                let seconds: Int = Int(videoRecordCountdownSeconds) % 60
+                let minutes: Int = Int((videoRecordCountdownSeconds / 60)) % 60
+                let hours: Int = Int(videoRecordCountdownSeconds) / 3600
+                
+                DispatchQueue.main.async {
+                    self.videoCounterLabel.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+                }
+                
+                UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, delay: 0, options: .curveEaseOut, animations: {
+                    self.videoRecordIndicator.alpha = self.videoRecordIndicator.alpha == 0.5 ? 0.1 : 0.5
+                })
+            })
+        }            
     }
 
     func stopRecording(){
+        videRecordCountdownTimer.invalidate()
+        UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, delay: 0, options: .curveEaseOut, animations: {
+            self.videoRecordIndicator.alpha = 0.0
+            self.videoRecordCountdownSeconds = 0.0
+            self.videoCounterLabel.alpha = 0.0
+
+        }) { (success:Bool) in
+            DispatchQueue.main.async {
+                self.videoCounterLabel.text = String()
+            }
+        }
+        
         captureVideoOut?.stopRecording()
     }
 
