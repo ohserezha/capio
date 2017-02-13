@@ -449,6 +449,11 @@ class FirstViewController:
     private func setResolution(_ newResolutionFormat: ResolutionFormat) {
         activeResolutionFormat = newResolutionFormat
         
+        if (self.captureVideoOut?.isRecording)! {
+            doVideoBtn.titleLabel?.textColor = UIColor.white
+            self.stopRecording()
+        }
+        
         do {
             try self.captureDevice?.lockForConfiguration()
             
