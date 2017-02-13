@@ -22,7 +22,7 @@ enum SettingMenuTypes {
     case none, cameraSliderMenu, resolutionMenu, flashMenu, allStatsMenu, miscMenu
 }
 
-class ResolutionFormat {
+class ResolutionFormat: NSObject {
     let photoResolution:  CMVideoDimensions!
     let videoResolution:  CMVideoDimensions!
     let fpsRange:         AVFrameRateRange!
@@ -229,7 +229,9 @@ class FirstViewController:
         
         if keyPath == "selectedRowIndex"{
             let row = change?[NSKeyValueChangeKey.newKey] as! Int
-            self.setResolution(self.resolutionFormatsArray[row])
+            if (activeResolutionFormat != self.resolutionFormatsArray[row]) {
+                self.setResolution(self.resolutionFormatsArray[row])
+            }
         }
     }
 
