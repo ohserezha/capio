@@ -163,6 +163,9 @@ class FirstViewController:
     
     func handlerCamViewTap(_ gestureRecognizer: UIGestureRecognizer) {
         if (menuHostView != nil) {
+            if (menuHostView.activeMenuType == .cameraSliderMenu) {
+                cariocaMenuViewController?.menuToDefault()
+            }
             hideActiveSetting() {_ in
                 print("Done hiding from tap")
             }
@@ -191,9 +194,6 @@ class FirstViewController:
         }) { (success:Bool) in
             self.menuHostView.isHidden = true
             
-            if(self.menuHostView.activeMenuType == .cameraSliderMenu) {
-                self.cariocaMenuViewController?.menuToDefault()
-            }
             if(self.menuHostView.activeMenuType == .resolutionMenu) {
                 self.cameraResolutionMenu?.removeObserver(self, forKeyPath: "selectedRowIndex")
             }
@@ -214,6 +214,10 @@ class FirstViewController:
     @IBAction func onResolutionButtonTrigger(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1519)
         
+        if (menuHostView.activeMenuType == .cameraSliderMenu) {
+            cariocaMenuViewController?.menuToDefault()
+        }
+
         hideActiveSetting() { _ in
             if(self.cameraResolutionMenu == nil) {
                 self.cameraResolutionMenu = self.storyboard?.instantiateViewController(withIdentifier: "CameraResolutionMenu") as? ResolutionViewController
