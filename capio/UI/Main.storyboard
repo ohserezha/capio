@@ -310,7 +310,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fWG-7a-UPd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CsN-ZZ-PS1">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="130"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="129"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4F-ls-JkH">
@@ -326,7 +326,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="250"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pxo-4d-Hh5">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pxo-4d-Hh5">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="130"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -461,7 +461,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="240" height="130"/>
+                    <size key="freeformSize" width="240" height="129"/>
                     <connections>
                         <outlet property="tableView" destination="pxo-4d-Hh5" id="9hR-eh-9B9"/>
                     </connections>
