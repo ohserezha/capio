@@ -156,7 +156,6 @@ class FirstViewController:
     
     func handlerCamViewTap(_ gestureRecognizer: UIGestureRecognizer) {
         if (menuHostView != nil) {
-            self.cariocaMenuViewController?.menuToDefault()
             hideActiveSetting() {_ in
                 print("Done hiding from tap")
             }
@@ -185,6 +184,9 @@ class FirstViewController:
         }) { (success:Bool) in
             self.menuHostView.isHidden = true
             
+            if(self.menuHostView.activeMenuType == .cameraSliderMenu) {
+                self.cariocaMenuViewController?.menuToDefault()
+            }
             if(self.menuHostView.activeMenuType == .resolutionMenu) {
                 self.cameraResolutionMenu?.removeObserver(self, forKeyPath: "selectedRowIndex")
             }
