@@ -128,8 +128,26 @@ class FirstViewController:
         resolutionBlurView.layer.cornerRadius     = 5
         
         let camViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.handlerCamViewTap(_:)))
+        camViewTapRecognizer.numberOfTapsRequired = 1
+        camViewTapRecognizer.numberOfTouchesRequired = 1
+        
+        let camViewDoubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.captureImage))
+        camViewDoubleTapRecognizer.numberOfTapsRequired = 2
+        camViewDoubleTapRecognizer.numberOfTouchesRequired = 1
+        
+        let camViewTrippleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.startStopRecording))
+        
+        camViewTrippleTapRecognizer.numberOfTapsRequired = 3
+        camViewTrippleTapRecognizer.numberOfTouchesRequired = 1
         
         myCamView.addGestureRecognizer(camViewTapRecognizer)
+        myCamView.addGestureRecognizer(camViewDoubleTapRecognizer)
+        myCamView.addGestureRecognizer(camViewTrippleTapRecognizer)
+        
+        //setting gesture priorities
+        camViewTapRecognizer.require(toFail: camViewDoubleTapRecognizer)
+        camViewTapRecognizer.require(toFail: camViewTrippleTapRecognizer)
+        camViewDoubleTapRecognizer.require(toFail: camViewTrippleTapRecognizer)
         
         //todo: all settings processing should be moved in to a single unit
         cameraOptionsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraOptionsSlider") as? CameraOptionsViewController
@@ -247,11 +265,15 @@ class FirstViewController:
     }
 
     @IBAction func onDoVideo(_ sender: UIButton) {
+        startStopRecording()
+    }
+    
+    func startStopRecording() {
         if (!(captureVideoOut?.isRecording)!) {
-            sender.titleLabel?.textColor = UIColor.red
+            doVideoBtn.titleLabel?.textColor = UIColor.red
             self.startRecording()
         } else if(captureVideoOut?.isRecording)! {
-            sender.titleLabel?.textColor = UIColor.white
+            doVideoBtn.titleLabel?.textColor = UIColor.white
             self.stopRecording()
         }
     }
@@ -449,7 +471,7 @@ class FirstViewController:
         resolutionChangeBtn.setTitle(activeResolutionFormat.name, for: .normal)
     }
 
-    private func captureImage() {
+    func captureImage() {
         AudioServicesPlaySystemSound(1519)
         let settings = AVCapturePhotoSettings()
         
