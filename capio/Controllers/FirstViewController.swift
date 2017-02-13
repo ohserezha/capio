@@ -581,6 +581,10 @@ class FirstViewController:
             self.videoCounterLabel.text = String(format: "%02d:%02d:%02d", 0.0, 0.0, 0.0)
         }) { success in
             
+            if (self.videRecordCountdownTimer != nil) {
+                self.videRecordCountdownTimer.invalidate()
+            }
+            
             self.videRecordCountdownTimer = Timer.scheduledTimer(withTimeInterval: self.VIDEO_RECORD_INTERVAL_COUNTDOWN, repeats: true, block: {timer in
                 let videoRecordCountdownSeconds = (self.captureVideoOut?.recordedDuration.seconds)!
                 
