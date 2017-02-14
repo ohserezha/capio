@@ -272,6 +272,10 @@ ScalePickerDelegate {
                 setCurrentDefaultCameraSettings()
                 activeSliderValueObj = getSliderValueForType()
                 activeSlider.currentValue = activeSliderValueObj.value
+
+                if (modeSwitch.selectedSegmentIndex == 1) {
+                    modeSwitch.selectedSegmentIndex = 0
+                }
             }
         }
         
@@ -649,10 +653,6 @@ ScalePickerDelegate {
                 if (device.whiteBalanceMode == .locked) {
                     device.setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains(normalizedGains(currentColorGains), completionHandler: { (time) -> Void in })
                     
-                }
-                
-                if (!isActiveSettingAdjustble() && modeSwitch.selectedSegmentIndex == 1) {
-                    modeSwitch.selectedSegmentIndex = 0
                 }
                 
                 device.unlockForConfiguration()
