@@ -275,6 +275,8 @@ ScalePickerDelegate {
 
                 if (modeSwitch.selectedSegmentIndex == 1) {
                     modeSwitch.selectedSegmentIndex = 0
+                    activeSlider.blockedUI = true
+                    activeSlider.alpha = 0.5
                 }
             }
         }
