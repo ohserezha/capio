@@ -194,7 +194,7 @@ class FirstViewController:
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         setResolution(resolutionFormatsArray[row])
-        self.cameraResolutionMenu?.activeResolutionFormat = self.activeResolutionFormat
+        self.cameraResolutionMenu?.activeResolutionFormat = self.activeResolutionFormat        
     }
     
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -555,28 +555,31 @@ class FirstViewController:
     }
     
     private func setResolution(_ newResolutionFormat: ResolutionFormat) {
-        activeResolutionFormat = newResolutionFormat
-        
-        if (self.captureVideoOut?.isRecording)! {
-            doVideoBtn.titleLabel?.textColor = UIColor.white
-            self.stopRecording()
-        }
-        
-        do {
-            try self.captureDevice?.lockForConfiguration()
+        if (newResolutionFormat != activeResolutionFormat) {
+            activeResolutionFormat = newResolutionFormat
             
+            if (self.captureVideoOut?.isRecording)! {
+                doVideoBtn.titleLabel?.textColor = UIColor.white
+                self.stopRecording()
+            }
+            
+            do {
+                try self.captureDevice?.lockForConfiguration()
+                
+                self.captureDevice!.focusMode = .continuousAutoFocus
                 self.captureDevice!.exposureMode = .continuousAutoExposure
                 self.captureDevice!.whiteBalanceMode = .continuousAutoWhiteBalance
                 self.cameraOptionsViewController?.isIsoLocked = false
                 self.cameraOptionsViewController?.isShutterLocked = false
-            
+                
                 self.captureDevice!.activeFormat = activeResolutionFormat.format
                 self.captureDevice!.activeVideoMinFrameDuration = activeResolutionFormat.fpsRange.minFrameDuration
                 self.captureDevice!.activeVideoMaxFrameDuration = activeResolutionFormat.fpsRange.maxFrameDuration
-            
-            self.captureDevice?.unlockForConfiguration()
-        } catch {
-            print(error)
+                
+                self.captureDevice?.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
         }
     }
 

@@ -189,7 +189,7 @@ ScalePickerDelegate {
     @IBOutlet var blurViewMain:             UIVisualEffectView!
     @IBOutlet var sliderView:               UIView!
     
-    @IBOutlet var modeSwitch: UISegmentedControl!
+    @IBOutlet var modeSwitch:               UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -650,6 +650,11 @@ ScalePickerDelegate {
                     device.setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains(normalizedGains(currentColorGains), completionHandler: { (time) -> Void in })
                     
                 }
+                
+                if (!isActiveSettingAdjustble() && modeSwitch.selectedSegmentIndex == 1) {
+                    modeSwitch.selectedSegmentIndex = 0
+                }
+                
                 device.unlockForConfiguration()
             } catch {
                 print(error)
