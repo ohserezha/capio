@@ -41,6 +41,65 @@ class ResolutionFormat: NSObject {
     }
 }
 
+class ResPickerView: UIView {
+    
+    var name: String!
+    var fps:    String!
+    var isSlomo: Bool = false
+    
+    private var fpsLabel: UILabel!
+    private var nameLabel: UILabel!
+    private var slomoLabel: UILabel!
+    
+    init(
+        frame: CGRect,
+        _name: String,
+        _fps:  String,
+        _isSlomo: Bool = false) {
+        
+        super.init(frame: frame)
+        
+        name    = _name
+        fps     =   _fps
+        isSlomo = _isSlomo
+        
+        createFpsLabelView()
+        createNameView()
+        createSloMoView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func createFpsLabelView() {
+        fpsLabel = UILabel.init(frame: CGRect.init(x: 0, y: 8, width: 50, height: 20))
+        fpsLabel.textAlignment = .center
+        fpsLabel.font = fpsLabel.font.withSize(9)
+        fpsLabel.text = "FPS" + fps
+        addSubview(fpsLabel)
+    }
+    
+    func createNameView() {
+        nameLabel = UILabel.init(frame: CGRect.init(x: 0, y: 28, width: 50, height: 20))
+        nameLabel.textAlignment = .center
+        nameLabel.text = name
+        
+        addSubview(nameLabel)
+    }
+    
+    func createSloMoView() {
+        
+        slomoLabel = UILabel.init(frame: CGRect.init(x: 0, y: 50, width: 50, height: 20))
+        slomoLabel.textAlignment = .center
+        slomoLabel.font = fpsLabel.font.withSize(9)
+        slomoLabel.text = "SLO-MO"
+        
+        slomoLabel.alpha = isSlomo == true ? 1 : 0.4
+        addSubview(slomoLabel)
+    }
+}
+
 class FirstViewController:
     UIViewController,
     UIImagePickerControllerDelegate,
@@ -48,7 +107,9 @@ class FirstViewController:
     AVCaptureFileOutputRecordingDelegate,
     AVCapturePhotoCaptureDelegate,
     UIGestureRecognizerDelegate,
-    CariocaMenuDelegate {
+    CariocaMenuDelegate,
+    UIPickerViewDelegate,
+    UIPickerViewDataSource {
     
     let SUPPORTED_ASPECT_RATIO:                 Double = 1280/720
     let VIDEO_RECORD_INTERVAL_COUNTDOWN:        Double = 1
@@ -85,6 +146,7 @@ class FirstViewController:
     private var videoRecordCountdownSeconds:    Double = 0.0
     private var videRecordCountdownTimer:       Timer!
     
+    @IBOutlet var resModePicker: UIPickerView!
     private var optionsMenu:                    CariocaMenu?
     private var cariocaMenuViewController:      CameraMenuContentController?
     
@@ -122,12 +184,47 @@ class FirstViewController:
         optionsMenu?.addGestureHelperViews([.left,.right], width:30)
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return resolutionFormatsArray.count
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        setResolution(resolutionFormatsArray[row])
+        self.cameraResolutionMenu?.activeResolutionFormat = self.activeResolutionFormat
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 80
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+
+        var pickerCell = view as! ResPickerView!
+        if pickerCell == nil {
+            pickerCell = ResPickerView.init(frame: CGRect.init(x: 0, y: 0, width: 50, height: 80),
+                _name: resolutionFormatsArray[row].name,
+                _fps: String(resolutionFormatsArray[row].fpsRange.maxFrameRate),
+                _isSlomo: resolutionFormatsArray[row].isSlomo
+            )
+        }
+        
+        return pickerCell!
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     fileprivate func processUi() {
         
         resolutionBlurView.layer.masksToBounds    = true
         resolutionBlurView.layer.cornerRadius     = 5
         
-        let camViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.handlerCamViewTap(_:)))
+        let camViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.handlerCamViewTap))
         camViewTapRecognizer.numberOfTapsRequired = 1
         camViewTapRecognizer.numberOfTouchesRequired = 1
         
@@ -158,6 +255,16 @@ class FirstViewController:
         menuHostView.setActiveMenu(cameraOptionsViewController!, menuType: .cameraSliderMenu)
         
         setupCameraSettingsSwipeMenu()
+        
+        resModePicker.dataSource = self
+        resModePicker.delegate = self
+        
+        let resTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.onShowResOptions))
+        resTapRecognizer.numberOfTapsRequired = 1
+        resTapRecognizer.numberOfTouchesRequired = 1
+        resTapRecognizer.delegate = self
+        
+        resModePicker.addGestureRecognizer(resTapRecognizer)
         
         doPhotoBtn.processIcons();
         doVideoBtn.processIcons();
@@ -221,21 +328,36 @@ class FirstViewController:
         }
     }
     
-    func didChangeScaleValue(_ picker: ScalePicker, value: CGFloat) {
-        //todo?
-    }
-    
     @IBAction func onDoPhotoTrigger(_ sender: AnyObject) {
         captureImage()
     }
     
     @IBAction func onResolutionButtonTrigger(_ sender: UIButton) {
+        onShowResOptions()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if keyPath == "selectedRowIndex"{
+            let row = change?[NSKeyValueChangeKey.newKey] as! Int
+            if (activeResolutionFormat != self.resolutionFormatsArray[row]) {
+                self.resModePicker.selectRow(row, inComponent: 0, animated: true)
+                self.setResolution(self.resolutionFormatsArray[row])
+            }
+        }
+    }
+
+    @IBAction func onDoVideo(_ sender: UIButton) {
+        startStopRecording()
+    }
+    
+    open func onShowResOptions() {
         AudioServicesPlaySystemSound(1519)
         
         if (menuHostView.activeMenuType == .cameraSliderMenu) {
             cariocaMenuViewController?.menuToDefault()
         }
-
+        
         hideActiveSetting() { _ in
             if(self.cameraResolutionMenu == nil) {
                 self.cameraResolutionMenu = self.storyboard?.instantiateViewController(withIdentifier: "CameraResolutionMenu") as? ResolutionViewController
@@ -244,28 +366,14 @@ class FirstViewController:
             self.cameraResolutionMenu?.resolutionFormatsArray = self.resolutionFormatsArray
             
             self.menuHostView.setActiveMenu(self.cameraResolutionMenu!, menuType: .resolutionMenu)
-
+            
             self.cameraResolutionMenu?.activeResolutionFormat = self.activeResolutionFormat
-
+            
             self.showActiveSetting()
             
             //todo -> figureout a better way of propagating back to parent
             self.cameraResolutionMenu?.addObserver(self, forKeyPath: "selectedRowIndex", options: NSKeyValueObservingOptions.new, context: nil)
         }
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == "selectedRowIndex"{
-            let row = change?[NSKeyValueChangeKey.newKey] as! Int
-            if (activeResolutionFormat != self.resolutionFormatsArray[row]) {
-                self.setResolution(self.resolutionFormatsArray[row])
-            }
-        }
-    }
-
-    @IBAction func onDoVideo(_ sender: UIButton) {
-        startStopRecording()
     }
     
     func startStopRecording() {
@@ -470,10 +578,6 @@ class FirstViewController:
         } catch {
             print(error)
         }
-        
-        FPSLabel.text = "FPS" + String(Int(activeResolutionFormat.fpsRange.maxFrameRate))
-        sloMoIndicatorLabel.alpha = activeResolutionFormat.isSlomo == true ? 1.0 : 0.4
-        resolutionChangeBtn.setTitle(activeResolutionFormat.name, for: .normal)
     }
 
     func captureImage() {
@@ -667,31 +771,5 @@ class FirstViewController:
         })
 
     }
-    
-    //don't remove all this bellow yet -> get it back later once 
-    // the active photo/video source is being figured
-//    func listenVolumeButton(){
-//            NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.applicationIsActive), name: .UIApplicationDidBecomeActive, object: nil)
-//    }
-//
-//    func applicationIsActive() {
-//        do {
-//            audioSession = AVAudioSession.sharedInstance()
-//            // in case you have music plaing in your phone
-//            // it will not get muted thanks to that
-//            try audioSession?.setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
-//            try audioSession!.setActive(true)
-//            audioSession!.addObserver(self, forKeyPath: "outputVolume",
-//                                      options: NSKeyValueObservingOptions.new, context: nil)
-//        } catch {
-//            print(error)
-//        }
-//    }
-//    
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == "outputVolume"{
-//            captureImage()
-//        }
-//    }
 }
 

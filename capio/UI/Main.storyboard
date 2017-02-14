@@ -64,43 +64,23 @@
                                 </vibrancyEffect>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dbh-k7-TDt">
-                                <rect key="frame" x="10" y="536" width="51" height="78"/>
+                                <rect key="frame" x="10" y="544" width="51" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="P3V-SS-1uR">
-                                    <rect key="frame" x="0.0" y="0.0" width="51" height="78"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="51" height="70"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jud-cm-Zp4">
-                                            <rect key="frame" x="0.0" y="0.0" width="51" height="78"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="51" height="70"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="FEh-rO-wrl">
-                                                <rect key="frame" x="0.0" y="0.0" width="51" height="78"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="51" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DA-dM-W8m">
-                                                        <rect key="frame" x="0.0" y="23" width="51" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="1K">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="onResolutionButtonTrigger:" destination="9pv-A4-QxB" eventType="touchUpInside" id="tZt-cy-CIe"/>
-                                                        </connections>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FPS240" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkW-0y-OJh">
-                                                        <rect key="frame" x="0.0" y="8" width="51" height="21"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SLO-MO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1E-SU-gfi">
-                                                        <rect key="frame" x="0.0" y="49" width="51" height="21"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxA-BS-Ecp">
+                                                        <rect key="frame" x="0.0" y="-7" width="50" height="85"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    </pickerView>
                                                 </subviews>
                                             </view>
                                             <vibrancyEffect>
@@ -176,16 +156,14 @@
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="FPSLabel" destination="UkW-0y-OJh" id="Zea-pW-GCF"/>
                         <outlet property="actionToolbar" destination="L0M-Ch-DYw" id="1NJ-Lz-10Q"/>
                         <outlet property="blurViewMain" destination="4wt-R8-52e" id="cOx-gS-J2d"/>
                         <outlet property="doPhotoBtn" destination="oC4-uG-gQP" id="Cmh-Ne-Zy7"/>
                         <outlet property="doVideoBtn" destination="566-6D-xDQ" id="oiP-wT-khK"/>
                         <outlet property="menuHostView" destination="KfB-Tn-urK" id="3cX-ji-eWZ"/>
                         <outlet property="myCamView" destination="M3A-8q-kT1" id="Acg-PJ-crH"/>
+                        <outlet property="resModePicker" destination="mxA-BS-Ecp" id="Sb3-Hb-ehA"/>
                         <outlet property="resolutionBlurView" destination="Dbh-k7-TDt" id="qm7-W1-XAq"/>
-                        <outlet property="resolutionChangeBtn" destination="3DA-dM-W8m" id="Yqk-6Q-1L9"/>
-                        <outlet property="sloMoIndicatorLabel" destination="m1E-SU-gfi" id="dZK-g2-3PE"/>
                         <outlet property="videoCounterLabel" destination="705-P4-kWN" id="h2k-wv-N2Q"/>
                         <outlet property="videoRecordIndicator" destination="4hZ-f4-6z0" id="xIT-63-mwz"/>
                     </connections>
