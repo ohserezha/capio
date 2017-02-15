@@ -109,7 +109,8 @@ class FirstViewController:
     UIGestureRecognizerDelegate,
     CariocaMenuDelegate,
     UIPickerViewDelegate,
-    UIPickerViewDataSource {
+    UIPickerViewDataSource,
+    AVCaptureAudioDataOutputSampleBufferDelegate {
     
     let SUPPORTED_ASPECT_RATIO:                 Double = 1280/720
     let VIDEO_RECORD_INTERVAL_COUNTDOWN:        Double = 1
@@ -159,7 +160,7 @@ class FirstViewController:
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setCaptureSession()
         processUi()
     }
@@ -454,104 +455,154 @@ class FirstViewController:
     }
 
     fileprivate func setCaptureSession() {
+        
         captureSession = AVCaptureSession()
         // in case you have music plaing in your phone
-        // it will not get muted thanks to that
+        // it will not get muted thanks to that AND! setAudioSession
         captureSession?.automaticallyConfiguresApplicationAudioSession = false
         // todo -> write getter for Preset (device based)
         captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
         
         captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
-//        listenVolumeButton()
+        setAudioSession()
         startCaptureSession()
+        
+        //each time you spawn application back -> this observer gonna be triggered
+        NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.setAudioSession), name: .UIApplicationDidBecomeActive, object: nil)
     }
-
-    fileprivate func startCaptureSession() {
-       var input: AVCaptureInput!
-
+    
+    func setAudioSession() {
         do {
-            try input = AVCaptureDeviceInput(device: captureDevice!)
+            audioSession = AVAudioSession.sharedInstance()
+            // in case you have music plaing in your phone
+            // it will not get muted thanks to that AND! automaticallyConfiguresApplicationAudioSession
+            try audioSession?.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .mixWithOthers)
+            try audioSession?.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+            try audioSession!.setActive(true)
         } catch {
             print(error)
         }
+    }
 
-        if (captureSession?.canAddInput(input) != nil) {
-            captureSession?.addInput(input)
+    fileprivate func startCaptureSession() {
+       var videoDeviceInput: AVCaptureInput!
 
-            captureStillImageOut = AVCapturePhotoOutput()
-
-            if (captureSession?.canAddOutput(captureStillImageOut) != nil) {
-                captureSession?.addOutput(captureStillImageOut)
-                
-                captureStillImageOut?.isHighResolutionCaptureEnabled = true
-
-                previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-                previewLayer?.videoGravity = AVLayerVideoGravityResizeAspect
-                
-                myCamView.layer.addSublayer((previewLayer)!)
-
-            } else {
-                doPhotoBtn.isEnabled = false
+        do {
+            //setting video
+            try videoDeviceInput = AVCaptureDeviceInput(device: captureDevice!)
+        } catch {
+            fatalError()
+        }
+        
+        if (captureSession?.canAddInput(videoDeviceInput) != nil) {
+            captureSession?.addInput(videoDeviceInput)
+        } else {
+            fatalError()
+        }
+        
+        do {
+            //setting audio
+            let audioDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
+            
+            let audioDeviceInput: AVCaptureDeviceInput
+            
+            do {
+                audioDeviceInput = try AVCaptureDeviceInput(device: audioDevice)
             }
+        catch {
+            fatalError("[startCaptureSession]Could not create AVCaptureDeviceInput instance with error: \(error).")
+        }
+            guard (captureSession?.canAddInput(audioDeviceInput))! else {
+                fatalError()
+            }
+            captureSession?.addInput(audioDeviceInput as AVCaptureInput)
+        }
+        
+        //setting photo and video outputs
+        captureStillImageOut = AVCapturePhotoOutput()
 
-            captureVideoOut = AVCaptureMovieFileOutput()
+        if (captureSession?.canAddOutput(captureStillImageOut) != nil) {
+            captureSession?.addOutput(captureStillImageOut)
+                
+            captureStillImageOut?.isHighResolutionCaptureEnabled = true
 
-            if(captureSession?.canAddOutput(captureVideoOut) != nil) {
+            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            previewLayer?.videoGravity = AVLayerVideoGravityResizeAspect
+                
+            myCamView.layer.addSublayer((previewLayer)!)
+
+        } else {
+            doPhotoBtn.isEnabled = false
+            fatalError()
+        }
+            
+        let audioDataOutput = AVCaptureAudioDataOutput()
+        let queue = DispatchQueue(label: "com.shu223.audiosamplequeue")
+        audioDataOutput.setSampleBufferDelegate(self, queue: queue)
+        guard (captureSession?.canAddOutput(audioDataOutput))! else {
+            fatalError()
+        }
+                    
+        captureSession?.addOutput(audioDataOutput)
+
+        captureVideoOut = AVCaptureMovieFileOutput()
+
+        if(captureSession?.canAddOutput(captureVideoOut) != nil) {
                   // todo: consider to be a setting?
 //                let preferredTimeScale:Int32 = 30
 //                let totalSeconds:Int64 = Int64(Int(7) * Int(preferredTimeScale)) // after 7 sec video recording stop automatically
 //                let maxDuration:CMTime = CMTimeMake(totalSeconds, preferredTimeScale)
 //                captureVideoOut?.maxRecordedDuration = maxDuration
-                captureVideoOut?.minFreeDiskSpaceLimit = 1024 * 1024
+            captureVideoOut?.minFreeDiskSpaceLimit = 1024 * 1024
+            captureVideoOut?.movieFragmentInterval = kCMTimeInvalid
 
-                captureSession?.addOutput(captureVideoOut)
-            } else {
-                doVideoBtn.isEnabled = false
-            }
-
-            if (self.captureDevice!.activeVideoMaxFrameDuration.timescale != 6) {
-                    for vFormat in self.captureDevice!.formats as! [AVCaptureDeviceFormat] {
-                        
-                        let formatDescription = CMVideoFormatDescriptionGetDimensions(vFormat.formatDescription)
-                        
-                        let ratio = Double(formatDescription.width) / Double(formatDescription.height)
-                        
-                        if (ratio != SUPPORTED_ASPECT_RATIO) {
-                            continue
-                        }
-                        
-                        let ranges = (vFormat as AnyObject).videoSupportedFrameRateRanges as! [AVFrameRateRange]
-                        let frameRateObj: AVFrameRateRange = ranges[0]
-                        
-                        if (resolutionFormatsArray.count == 0) {
-                            let newResolutionFormat = ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj)
-                            resolutionFormatsArray.append(newResolutionFormat)
-                        } else {
-                            var matchFound:Bool = false
-                            
-                            resolutionFormatsArray = resolutionFormatsArray.map({ (resolutionFormat: ResolutionFormat) -> ResolutionFormat in
-                                //accumulating maximum possible res for each frame-rate set
-                                if(resolutionFormat.fpsRange.maxFrameRate == frameRateObj.maxFrameRate && CMVideoFormatDescriptionGetDimensions(vFormat.formatDescription).width >= resolutionFormat.videoResolution.width) {
-                                    matchFound = true
-                                    return ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj)
-                                } else {
-                                    return resolutionFormat
-                                }
-                            })
-                            
-                            if (!matchFound) {
-                                resolutionFormatsArray.append(ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj))
-                            }
-                            
-                            resolutionFormatsArray = resolutionFormatsArray.sorted(by: { $0.fpsRange.maxFrameRate < $1.fpsRange.maxFrameRate })
-                        }
-                }
-
-            }
-            setResolution(resolutionFormatsArray.first!)
-            captureSession?.startRunning()            
+            captureSession?.addOutput(captureVideoOut)
+        } else {
+            doVideoBtn.isEnabled = false
+            fatalError()
         }
+
+        if (self.captureDevice!.activeVideoMaxFrameDuration.timescale != 6) {
+            for vFormat in self.captureDevice!.formats as! [AVCaptureDeviceFormat] {
+                        
+                let formatDescription = CMVideoFormatDescriptionGetDimensions(vFormat.formatDescription)
+                        
+                let ratio = Double(formatDescription.width) / Double(formatDescription.height)
+                        
+                if (ratio != SUPPORTED_ASPECT_RATIO) {
+                    continue
+                }
+                        
+                let ranges = (vFormat as AnyObject).videoSupportedFrameRateRanges as! [AVFrameRateRange]
+                let frameRateObj: AVFrameRateRange = ranges[0]
+                        
+                if (resolutionFormatsArray.count == 0) {
+                    let newResolutionFormat = ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj)
+                    resolutionFormatsArray.append(newResolutionFormat)
+                } else {
+                    var matchFound:Bool = false
+                            
+                    resolutionFormatsArray = resolutionFormatsArray.map({ (resolutionFormat: ResolutionFormat) -> ResolutionFormat in
+                                //accumulating maximum possible res for each frame-rate set
+                            if(resolutionFormat.fpsRange.maxFrameRate == frameRateObj.maxFrameRate && CMVideoFormatDescriptionGetDimensions(vFormat.formatDescription).width >= resolutionFormat.videoResolution.width) {
+                            matchFound = true
+                            return ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj)
+                        } else {
+                            return resolutionFormat
+                        }
+                    })
+                            
+                    if (!matchFound) {
+                        resolutionFormatsArray.append(ResolutionFormat(_format: vFormat, _frameRateObj: frameRateObj))
+                    }
+                            
+                    resolutionFormatsArray = resolutionFormatsArray.sorted(by: { $0.fpsRange.maxFrameRate < $1.fpsRange.maxFrameRate })
+                }
+            }
+        }
+        setResolution(resolutionFormatsArray.first!)
+        captureSession?.startRunning()
     }
     
     private func setResolution(_ newResolutionFormat: ResolutionFormat) {
