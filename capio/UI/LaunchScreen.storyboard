@@ -21,20 +21,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="capio_ico" translatesAutoresizingMaskIntoConstraints="NO" id="6o2-D3-kiz">
-                                <rect key="frame" x="175" y="321" width="24" height="24"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <imageView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="cio_inapp_ico" translatesAutoresizingMaskIntoConstraints="NO" id="d6a-Tm-ZZx">
+                                <rect key="frame" x="162" y="308" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="1tC-Tl-0Zt"/>
+                                    <constraint firstAttribute="height" constant="50" id="9Gv-xg-RRk"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="d6a-Tm-ZZx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Ku1-LU-of2"/>
+                            <constraint firstItem="d6a-Tm-ZZx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lrp-Lk-lMN"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
-        <image name="capio_ico" width="24" height="24"/>
+        <image name="cio_inapp_ico" width="50" height="50"/>
     </resources>
 </document>
