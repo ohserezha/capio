@@ -743,7 +743,7 @@ class FirstViewController:
                 self.videRecordCountdownTimer.invalidate()
             }
             
-            self.videRecordCountdownTimer = Timer.scheduledTimer(withTimeInterval: self.VIDEO_RECORD_INTERVAL_COUNTDOWN, repeats: true, block: {timer in
+            self.videRecordCountdownTimer = Timer.scheduledTimer(withTimeInterval: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, repeats: true, block: {timer in
                 let videoRecordCountdownSeconds = (self.captureVideoOut?.recordedDuration.seconds)!
                 
                 let seconds: Int = Int(videoRecordCountdownSeconds) % 60
@@ -754,7 +754,7 @@ class FirstViewController:
                     self.videoCounterLabel.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
                 }
                 
-                UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, delay: 0, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/3, delay: 0, options: .curveEaseOut, animations: {
                     self.videoRecordIndicator.alpha = self.videoRecordIndicator.alpha == 0.5 ? 0.1 : 0.5
                 })
             })
