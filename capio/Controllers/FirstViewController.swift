@@ -474,11 +474,16 @@ class FirstViewController:
     
     func setAudioSession() {
         do {
+            //todo -> do audioSession set/unset on video record start/stop
             audioSession = AVAudioSession.sharedInstance()
             // in case you have music plaing in your phone
             // it will not get muted thanks to that AND! automaticallyConfiguresApplicationAudioSession
             try audioSession?.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .mixWithOthers)
-            try audioSession?.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+            let currentPortName = ((audioSession?.currentRoute as AVAudioSessionRouteDescription!).outputs[0] as AVAudioSessionPortDescription!).portName
+            if (currentPortName == AVAudioSessionPortBuiltInSpeaker || currentPortName == AVAudioSessionPortBuiltInReceiver) {
+                try audioSession?.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+            }
+            
             try audioSession!.setActive(true)
         } catch {
             print(error)
@@ -650,6 +655,9 @@ class FirstViewController:
         settings.previewPhotoFormat = previewFormat
         settings.isHighResolutionPhotoEnabled = true
         
+        //todo: make a wait_promt here, cuz on higher resolution sampleBuffer might take pretty long
+        // specifically on night images
+        
         captureStillImageOut!.capturePhoto(with: settings, delegate: self)
     }
     
@@ -677,13 +685,11 @@ class FirstViewController:
         if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
             
             let imageToSave = UIImage(data: dataImage)
-            print("width: " + String(describing: UIImage(data: dataImage)?.size.width))
-            print("heighth: " + String(describing: UIImage(data: dataImage)?.size.height))
             
             UIImageWriteToSavedPhotosAlbum(imageToSave!,
-                                            self,
-                                            #selector(FirstViewController.onImageSaved(_:didFinishSavingWithError:contextInfo:)),
-                                            nil)
+                                               self,
+                                               #selector(FirstViewController.onImageSaved(_:didFinishSavingWithError:contextInfo:)),
+                                               nil)
         } else {
             print("Error on saving the image")
         }
@@ -720,7 +726,7 @@ class FirstViewController:
     }
     //starts video recording
     func startRecording(){
-        
+        //todo: address long start on big resolution videos -> need a message promt for user to wait till it actually starts
         let fileNameAndExtension: String = "capioTempMovie.mov"
         let urlPath: String = NSTemporaryDirectory() + fileNameAndExtension
         
