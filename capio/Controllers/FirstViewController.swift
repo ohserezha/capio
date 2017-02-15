@@ -635,7 +635,11 @@ class FirstViewController:
     }
 
     func captureImage() {
+        //currently any vibration won'e work due to "by design" bug on apple's side
+        //https://github.com/lionheart/openradar-mirror/issues/5479
+        //https://developer.apple.com/reference/audiotoolbox/1405202-audioservicesplayalertsound
         AudioServicesPlaySystemSound(1519)
+        
         let settings = AVCapturePhotoSettings()
         
         let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
