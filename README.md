@@ -1,5 +1,5 @@
 # capio
-Professional photo-video iphone app that give control over camera back to users
+Professional photo-video iphone app that gives control over camera back to users
 
 ![Alt text](/capio_ico_ArtWrk150x150.png "app_ico_art")
 
