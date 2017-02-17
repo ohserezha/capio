@@ -155,6 +155,8 @@ class FirstViewController:
     private var cameraOptionsViewController:    CameraOptionsViewController?
     private var cameraResolutionMenu:           ResolutionViewController?
     
+    private var focusZoomView:                  FocusZoomViewController?
+    
     private var resolutionFormatsArray: [ResolutionFormat] = [ResolutionFormat]()
     private var activeResolutionFormat: ResolutionFormat!
         
@@ -238,9 +240,12 @@ class FirstViewController:
         camViewTrippleTapRecognizer.numberOfTapsRequired = 3
         camViewTrippleTapRecognizer.numberOfTouchesRequired = 1
         
+        let camViewLongTapRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(FirstViewController.handleLongPress))
+        
         myCamView.addGestureRecognizer(camViewTapRecognizer)
         myCamView.addGestureRecognizer(camViewDoubleTapRecognizer)
         myCamView.addGestureRecognizer(camViewTrippleTapRecognizer)
+        myCamView.addGestureRecognizer(camViewLongTapRecognizer)
         
         //setting gesture priorities
         camViewTapRecognizer.require(toFail: camViewDoubleTapRecognizer)
@@ -253,7 +258,6 @@ class FirstViewController:
         
         menuHostView.layer.masksToBounds    = true
         menuHostView.layer.cornerRadius     = 5
-        menuHostView.setActiveMenu(cameraOptionsViewController!, menuType: .cameraSliderMenu)
         
         setupCameraSettingsSwipeMenu()
         
@@ -287,14 +291,80 @@ class FirstViewController:
         cariocaMenuViewController?.cariocaMenu = optionsMenu
     }
     
+    func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        let point: CGPoint = gestureRecognizer.location(in: gestureRecognizer.view)
+        
+        if (gestureRecognizer.state == .began) {
+            if(self.focusZoomView == nil) {
+                self.focusZoomView = self.storyboard?.instantiateViewController(withIdentifier: "FocusZoomView") as? FocusZoomViewController
+            }
+            
+            self.focusZoomView?.resetView()
+            
+            gestureRecognizer.view?.addSubview((self.focusZoomView?.view)!)
+
+            self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)
+            
+            self.focusZoomView?.scaleToAppear()
+        }
+        
+        if (gestureRecognizer.state == .changed) {
+            self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)
+        }
+        
+        if (gestureRecognizer.state == .ended) {
+            
+            self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)            
+            
+            self.focusZoomView?.scaleToDisolve()
+            
+            setPointOfInterest(point)
+        }
+    }
+    
     func handlerCamViewTap(_ gestureRecognizer: UIGestureRecognizer) {
-        if (menuHostView != nil) {
+        if (menuHostView != nil && menuHostView.activeMenuType != .none) {
             if (menuHostView.activeMenuType == .cameraSliderMenu) {
                 cariocaMenuViewController?.menuToDefault()
             }
             hideActiveSetting() {_ in
                 print("Done hiding from tap")
             }
+        } else {
+                if(self.focusZoomView == nil) {
+                    self.focusZoomView = self.storyboard?.instantiateViewController(withIdentifier: "FocusZoomView") as? FocusZoomViewController
+                }
+                
+                self.focusZoomView?.resetView()
+                self.focusZoomView?.scaleToDisolve()
+                
+                gestureRecognizer.view?.addSubview((self.focusZoomView?.view)!)
+                let point: CGPoint = gestureRecognizer.location(in: gestureRecognizer.view)
+                
+                self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)
+            
+                setPointOfInterest(point)
+        }
+    }
+    
+    private func setPointOfInterest(_ point: CGPoint) {
+        let focusPoint = CGPoint(x: point.y / myCamView.bounds.height, y: 1.0 - point.x / myCamView.bounds.width)
+        
+        do {
+            try captureDevice!.lockForConfiguration()
+            
+            if captureDevice!.isFocusPointOfInterestSupported {
+                captureDevice!.focusPointOfInterest = focusPoint
+                captureDevice!.focusMode = .continuousAutoFocus
+            }
+            if captureDevice!.exposureMode != .custom && captureDevice!.isExposurePointOfInterestSupported {
+                captureDevice!.exposurePointOfInterest = focusPoint
+                captureDevice!.exposureMode = .continuousAutoExposure
+            }
+            captureDevice!.unlockForConfiguration()
+            
+        } catch {
+            print (" [handlerCamViewTap] Error in on configuring camera")
         }
     }
     
