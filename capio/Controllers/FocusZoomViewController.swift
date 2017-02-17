@@ -27,20 +27,22 @@ class FocusZoomViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        resetView()
+       
     }
     
     func scaleToAppear() {
         self.view.alpha = 0
-        UIView.animate(withDuration: 0.6, delay: 0.2, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut, animations: {
             self.view.alpha = 1
         })
     }
     
     func scaleToDisolve() {
         UIView.animate(withDuration: 0.6, delay: 0.2, options: .curveEaseInOut, animations: {
-            self.view.alpha = 0
-        })
+            self.view.alpha = 0            
+        }) { _ in
+            self.resetView()
+        }
     }
     
     func resetView() {
