@@ -79,6 +79,7 @@ class MenuHostView: UIView {
                 activeSliderPresent = true
                 break
             default:
+                unsetActiveMenu()
                 break
             }
         
