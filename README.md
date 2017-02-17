@@ -24,4 +24,5 @@ Professional photo-video iphone app that gives control over camera back to users
   - fastest ever swipe-to-select menu for camera settings
   - handy fast gestures to perform photo (double tap) and video (tripple tap)
   - do long exposure photos or slo-mo video by adjusting shutter speed
-  - use camera as meter for all camera settings while they are in AutoMode 
+  - use camera as meter for all camera settings while they are in AutoMode
+  - tap to focus and long tap and drag to focus at point
