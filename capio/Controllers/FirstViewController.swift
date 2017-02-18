@@ -292,7 +292,7 @@ class FirstViewController:
     }
     
     func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        let point: CGPoint = gestureRecognizer.location(in: gestureRecognizer.view)
+        var point: CGPoint = gestureRecognizer.location(in: gestureRecognizer.view)
         
         if (gestureRecognizer.state == .began) {
             if(self.focusZoomView == nil) {
@@ -305,7 +305,7 @@ class FirstViewController:
 
             self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)
             
-            self.focusZoomView?.scaleToAppear()
+            self.focusZoomView?.appear()
         }
         
         if (gestureRecognizer.state == .changed) {
@@ -313,10 +313,20 @@ class FirstViewController:
         }
         
         if (gestureRecognizer.state == .ended) {
+            let centerDelta: CGFloat = 50.0
+            if (point.x < (gestureRecognizer.view?.bounds.width)!/2 + centerDelta &&
+                point.x > (gestureRecognizer.view?.bounds.width)!/2 - centerDelta &&
+                point.y < (gestureRecognizer.view?.bounds.height)!/2 + centerDelta &&
+                point.x < (gestureRecognizer.view?.bounds.height)!/2 + centerDelta ) {
+                
+                point = CGPoint.init(x: (gestureRecognizer.view?.bounds.width)!/2, y: (gestureRecognizer.view?.bounds.height)!/2)
+                
+                self.focusZoomView?.disolveToRemove()
+            } else {
+                self.focusZoomView?.disolve()
+            }
             
-            self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)            
-            
-            self.focusZoomView?.scaleToDisolve()
+            self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)
             
             setPointOfInterest(point)
         }
@@ -336,10 +346,22 @@ class FirstViewController:
                 }
                 
                 self.focusZoomView?.resetView()
-                self.focusZoomView?.scaleToDisolve()
+            
                 
                 gestureRecognizer.view?.addSubview((self.focusZoomView?.view)!)
-                let point: CGPoint = gestureRecognizer.location(in: gestureRecognizer.view)
+                var point: CGPoint = gestureRecognizer.location(in: gestureRecognizer.view)
+            let centerDelta: CGFloat = 50.0
+            if (point.x < (gestureRecognizer.view?.bounds.width)!/2 + centerDelta &&
+                point.x > (gestureRecognizer.view?.bounds.width)!/2 - centerDelta &&
+                point.y < (gestureRecognizer.view?.bounds.height)!/2 + centerDelta &&
+                point.x < (gestureRecognizer.view?.bounds.height)!/2 + centerDelta ) {
+                
+                point = CGPoint.init(x: (gestureRecognizer.view?.bounds.width)!/2, y: (gestureRecognizer.view?.bounds.height)!/2)
+                
+                self.focusZoomView?.disolveToRemove()
+            } else {
+                self.focusZoomView?.disolve()
+            }
                 
                 self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)
             
