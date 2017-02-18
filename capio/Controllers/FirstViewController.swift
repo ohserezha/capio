@@ -313,11 +313,11 @@ class FirstViewController:
         }
         
         if (gestureRecognizer.state == .ended) {
-            let centerDelta: CGFloat = 50.0
-            if (point.x < (gestureRecognizer.view?.bounds.width)!/2 + centerDelta &&
-                point.x > (gestureRecognizer.view?.bounds.width)!/2 - centerDelta &&
-                point.y < (gestureRecognizer.view?.bounds.height)!/2 + centerDelta &&
-                point.x < (gestureRecognizer.view?.bounds.height)!/2 + centerDelta ) {
+            let centerDelta: CGFloat = 100.0
+            if (point.x <= (gestureRecognizer.view?.bounds.width)!/2 + centerDelta &&
+                point.x >= (gestureRecognizer.view?.bounds.width)!/2 - centerDelta &&
+                point.y <= (gestureRecognizer.view?.bounds.height)!/2 + centerDelta &&
+                point.y >= (gestureRecognizer.view?.bounds.height)!/2 - centerDelta ) {
                 
                 point = CGPoint.init(x: (gestureRecognizer.view?.bounds.width)!/2, y: (gestureRecognizer.view?.bounds.height)!/2)
                 
@@ -346,15 +346,14 @@ class FirstViewController:
                 }
                 
                 self.focusZoomView?.resetView()
-            
-                
+                            
                 gestureRecognizer.view?.addSubview((self.focusZoomView?.view)!)
                 var point: CGPoint = gestureRecognizer.location(in: gestureRecognizer.view)
-            let centerDelta: CGFloat = 50.0
-            if (point.x < (gestureRecognizer.view?.bounds.width)!/2 + centerDelta &&
-                point.x > (gestureRecognizer.view?.bounds.width)!/2 - centerDelta &&
-                point.y < (gestureRecognizer.view?.bounds.height)!/2 + centerDelta &&
-                point.x < (gestureRecognizer.view?.bounds.height)!/2 + centerDelta ) {
+            let centerDelta: CGFloat = 100.0
+            if (point.x <= (gestureRecognizer.view?.bounds.width)!/2 + centerDelta &&
+                point.x >= (gestureRecognizer.view?.bounds.width)!/2 - centerDelta &&
+                point.y <= (gestureRecognizer.view?.bounds.height)!/2 + centerDelta &&
+                point.y >= (gestureRecognizer.view?.bounds.height)!/2 - centerDelta ) {
                 
                 point = CGPoint.init(x: (gestureRecognizer.view?.bounds.width)!/2, y: (gestureRecognizer.view?.bounds.height)!/2)
                 
