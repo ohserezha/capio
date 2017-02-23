@@ -12,11 +12,11 @@ Professional photo-video iphone app that gives control over camera back to users
 ```
 
 ### Current Features List:
-  - manually change at any given point following settings:  
-    -- focus    
-    -- shutter    
-    -- iso    
-    -- temperature    
+  - manually change at any given point following settings:
+    -- focus
+    -- shutter
+    -- iso
+    -- temperature
   - record video with sound playing in background from your phone
   - adjust any camera setting while recording video or making photo
   - make photos while recording video
@@ -26,3 +26,9 @@ Professional photo-video iphone app that gives control over camera back to users
   - do long exposure photos or slo-mo video by adjusting shutter speed
   - use camera as meter for all camera settings while they are in AutoMode
   - tap to focus and long tap and drag to focus at point
+  - lock device orientation
+
+### TODO:
+  - flash settings
+  - grid and double grid
+  - timer
