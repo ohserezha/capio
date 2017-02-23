@@ -197,6 +197,12 @@ class FirstViewController:
         
         cameraSecondaryOptions = self.storyboard?.instantiateViewController(withIdentifier: "RightMenuViewController") as? RightMenuSetViewController
         
+        if !(captureDevice?.isFlashAvailable)! {
+            cameraSecondaryOptions?.isFlashAvailable = false
+        } else {
+            cameraSecondaryOptions?.isFlashAvailable = true
+        }
+        
         view.addSubview((cameraSecondaryOptions?.view)!)
         
         cameraSecondaryOptions?.view.transform = CGAffineTransform.init(translationX: view.bounds.width-(cameraSecondaryOptions?.view.bounds.width)! + 5, y: view.bounds.height - (cameraSecondaryOptions?.view.bounds.height)! - 100)
@@ -724,13 +730,6 @@ class FirstViewController:
         captureSession?.startRunning()
     }
     
-//    private func getOrientation(_ orientation: OrientationStates = .auto) -> AVCaptureVideoOrientation {
-//        switch orientation {
-//            case .auto
-//                return AVCaptureVideoOrientation.
-//        }
-//    }
-    
     private func setResolution(_ newResolutionFormat: ResolutionFormat) {
         if (newResolutionFormat != activeResolutionFormat) {
             activeResolutionFormat = newResolutionFormat
@@ -742,7 +741,6 @@ class FirstViewController:
             
             do {
                 try self.captureDevice?.lockForConfiguration()
-                
                 self.captureDevice!.focusMode = .continuousAutoFocus
                 self.captureDevice!.exposureMode = .continuousAutoExposure
                 self.captureDevice!.whiteBalanceMode = .continuousAutoWhiteBalance
@@ -773,6 +771,16 @@ class FirstViewController:
                              kCVPixelBufferWidthKey as String: 160,
                              kCVPixelBufferHeightKey as String: 160,
                              ]
+        
+        if !(captureDevice?.isFlashAvailable)! || (captureVideoOut?.isRecording)! {
+            //todo: do a better watching over captureDevice?.isFlashAvailable
+            cameraSecondaryOptions?.isFlashAvailable = false
+            settings.flashMode = AVCaptureFlashMode.off
+        } else {
+            cameraSecondaryOptions?.isFlashAvailable = true
+            settings.flashMode = (cameraSecondaryOptions?.flashModeState)!
+        }
+        
         settings.previewPhotoFormat = previewFormat
         settings.isHighResolutionPhotoEnabled = true
         
@@ -883,7 +891,7 @@ class FirstViewController:
     //starts video recording
     func startRecording(){
         cameraSecondaryOptions?.isOrientationSwitchEnabled = false
-        
+        cameraSecondaryOptions?.isFlashAvailable = false
         //todo: address long start on big resolution videos -> need a message promt for user to wait till it actually starts
         let fileNameAndExtension: String = "capioTempMovie.mov"
         let urlPath: String = NSTemporaryDirectory() + fileNameAndExtension
@@ -905,6 +913,7 @@ class FirstViewController:
 
     func stopRecording() {
         cameraSecondaryOptions?.isOrientationSwitchEnabled = true
+        cameraSecondaryOptions?.isFlashAvailable = true
 
         videRecordCountdownTimer.invalidate()
         UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, delay: 0, options: .curveEaseOut, animations: {

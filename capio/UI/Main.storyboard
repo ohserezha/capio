@@ -640,6 +640,34 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N1L-Jl-WYb" customClass="OrientationButtonView" customModule="capio" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="51" width="65" height="51"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_flash_on_white" translatesAutoresizingMaskIntoConstraints="NO" id="DHg-Mq-4vk">
+                                                            <rect key="frame" x="13" y="9" width="32" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <accessibility key="accessibilityConfiguration">
+                                                                <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                                            </accessibility>
+                                                        </imageView>
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_flash_off_white" translatesAutoresizingMaskIntoConstraints="NO" id="c6g-NN-QmV">
+                                                            <rect key="frame" x="13" y="9" width="32" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <accessibility key="accessibilityConfiguration">
+                                                                <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                                            </accessibility>
+                                                        </imageView>
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_flash_auto_white" translatesAutoresizingMaskIntoConstraints="NO" id="k8U-Fg-IO1">
+                                                            <rect key="frame" x="18" y="9" width="32" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <accessibility key="accessibilityConfiguration">
+                                                                <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                                            </accessibility>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84f-ZY-nmM">
                                                     <rect key="frame" x="6" y="153" width="51" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -649,11 +677,6 @@
                                                     <rect key="frame" x="6" y="102" width="51" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="ic_grid_off_white"/>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zr2-aN-f48">
-                                                    <rect key="frame" x="6" y="51" width="51" height="51"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="ic_flash_off_white"/>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -674,6 +697,10 @@
                         <outlet property="deviceOrientationImage" destination="z6W-fg-djk" id="dHG-DF-CMB"/>
                         <outlet property="deviceOrientationLockedImage" destination="n8x-hN-3NS" id="0Jy-ne-t6a"/>
                         <outlet property="deviceOrientationView" destination="KeU-0c-jfC" id="czS-Au-X6z"/>
+                        <outlet property="flashAutoImg" destination="k8U-Fg-IO1" id="tqQ-w0-12H"/>
+                        <outlet property="flashModeView" destination="N1L-Jl-WYb" id="L3R-VL-x45"/>
+                        <outlet property="flashOffImg" destination="c6g-NN-QmV" id="bWz-5A-tJK"/>
+                        <outlet property="flashOnImg" destination="DHg-Mq-4vk" id="ktE-fb-YgN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xz7-xa-vsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,12 +808,14 @@
     <resources>
         <image name="device_orientation" width="32" height="32"/>
         <image name="first" width="30" height="30"/>
-        <image name="ic_flash_off_white" width="24" height="24"/>
+        <image name="ic_flash_auto_white" width="36" height="36"/>
+        <image name="ic_flash_off_white" width="36" height="36"/>
+        <image name="ic_flash_on_white" width="36" height="36"/>
         <image name="ic_grid_off_white" width="24" height="24"/>
         <image name="ic_lock_white" width="24" height="24"/>
         <image name="ic_timer_white" width="24" height="24"/>
         <image name="ico_photo" width="24" height="24"/>
         <image name="ico_video" width="24" height="24"/>
-        <image name="rotation" width="24" height="24"/>
+        <image name="rotation" width="36" height="36"/>
     </resources>
 </document>

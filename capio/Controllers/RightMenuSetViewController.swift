@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 enum OrientationStates: Int {
     case landscapeLocked, portraitLocked, auto
@@ -20,7 +21,13 @@ class RightMenuSetViewController: UIViewController {
     @IBOutlet var deviceOrientationLockedImage: UIImageView!
     @IBOutlet var deviceOrientationFreeImage: UIImageView!
     
-    var _isOrientationSwitchEnabled: Bool = false
+    @IBOutlet var flashModeView: UIView!
+    
+    @IBOutlet var flashOnImg: UIImageView!
+    @IBOutlet var flashOffImg: UIImageView!
+    @IBOutlet var flashAutoImg: UIImageView!
+    
+    private var _isOrientationSwitchEnabled: Bool = false
     
     var isOrientationSwitchEnabled: Bool {
         set {
@@ -45,22 +52,51 @@ class RightMenuSetViewController: UIViewController {
         }
     }
     
+    private var _isFlashAvailable: Bool = false
+    
+    var isFlashAvailable: Bool {
+        set {
+            if (self.flashModeView != nil) {
+                if (newValue) {
+                    self.flashModeView?.alpha = 1.0
+                } else {
+                    self.flashModeView?.alpha = 0.4
+                }
+            }
+            
+            self._isFlashAvailable = newValue
+        }
+        get {
+            return self._isFlashAvailable
+        }
+    }
+    
+    var flashModeState: AVCaptureFlashMode? {
+        didSet {
+            flashModeRawState = (flashModeState?.rawValue)!
+        }
+    }
+    
+    dynamic var flashModeRawState: Int = 0
+    
     dynamic var orientationRawState: Int = 0
     
     override func viewDidLoad() {
-
-        let edgeRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(RightMenuSetViewController.onOrientationTap))
         
         let orientationTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(RightMenuSetViewController.onOrientationTap))
-        orientationTapRecognizer.numberOfTapsRequired = 1
-        orientationTapRecognizer.numberOfTouchesRequired = 1
         
-        deviceOrientationView.addGestureRecognizer(edgeRecognizer)
         deviceOrientationView.addGestureRecognizer(orientationTapRecognizer)
+        
+        let flashTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(RightMenuSetViewController.onFlashModeTap))
+        
+        flashModeView.addGestureRecognizer(flashTapRecognizer)
         
         orientationState            = OrientationStates.auto
         isOrientationSwitchEnabled  = true
-        setOrientation(orientationState: orientationState!)
+        setOrientation(orientationState!)
+        
+        flashModeState              = .off
+        setFlashMode(flashModeState!)
     }
     
     func onOrientationTap(_ recognizer: UIGestureRecognizer) {
@@ -68,11 +104,44 @@ class RightMenuSetViewController: UIViewController {
             let newVal = OrientationStates(rawValue: orientationRawState + 1)
             orientationState = newVal == nil ? OrientationStates.landscapeLocked : newVal!
             
-            setOrientation(orientationState: orientationState!)
+            setOrientation(orientationState!)
         }
     }
     
-    private func setOrientation(orientationState: OrientationStates) {
+    func onFlashModeTap(_ recognizer: UIGestureRecognizer) {
+        if (isFlashAvailable) {
+            let newVal = AVCaptureFlashMode(rawValue: flashModeRawState + 1)
+            //todo: do a better cal for state than <=2
+            flashModeState = newVal != nil && (newVal?.rawValue)! <= 2 ? newVal! : AVCaptureFlashMode.off
+            
+            setFlashMode(flashModeState!)
+        }
+    }
+    
+    private func setFlashMode(_ flashMode: AVCaptureFlashMode) {
+        var autoAlpha: CGFloat = 0.0
+        var onAlpha: CGFloat = 0.0
+        var offAlpha: CGFloat = 0.0
+        switch flashMode {
+        case .off:
+            offAlpha = 1.0
+            break
+        case .on:
+            onAlpha = 1.0
+            break
+        case .auto:
+            autoAlpha = 1.0
+            break
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.flashOnImg.alpha = onAlpha
+            self.flashOffImg.alpha = offAlpha
+            self.flashAutoImg.alpha = autoAlpha
+        })
+    }
+    
+    private func setOrientation(_ orientationState: OrientationStates) {
         let transform: CGAffineTransform
         var lockAlpha: Float = 0.0
         switch orientationState {
