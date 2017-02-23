@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 import Foundation
+import CoreMotion
+
 import BRYXBanner
 import JQSwiftIcon
 
@@ -20,84 +22,6 @@ import CariocaMenu
 
 enum SettingMenuTypes {
     case none, cameraSliderMenu, resolutionMenu, flashMenu, allStatsMenu, miscMenu
-}
-
-class ResolutionFormat: NSObject {
-    let photoResolution:  CMVideoDimensions!
-    let videoResolution:  CMVideoDimensions!
-    let fpsRange:         AVFrameRateRange!
-    let isSlomo:          Bool!
-    var isActive:         Bool    = false
-    let format:           AVCaptureDeviceFormat!
-    let name:             String!
-    
-    init(_format: AVCaptureDeviceFormat, _frameRateObj: AVFrameRateRange) {
-        videoResolution   = CMVideoFormatDescriptionGetDimensions(_format.formatDescription)
-        photoResolution   = _format.highResolutionStillImageDimensions
-        fpsRange          = _frameRateObj
-        isSlomo           = _frameRateObj.maxFrameRate >= 120.0 //well technically it's 104.0
-        format            = _format
-        name              = String(Double(videoResolution.width)/1000.0) + "K"
-    }
-}
-
-class ResPickerView: UIView {
-    
-    var name: String!
-    var fps:    String!
-    var isSlomo: Bool = false
-    
-    private var fpsLabel: UILabel!
-    private var nameLabel: UILabel!
-    private var slomoLabel: UILabel!
-    
-    init(
-        frame: CGRect,
-        _name: String,
-        _fps:  String,
-        _isSlomo: Bool = false) {
-        
-        super.init(frame: frame)
-        
-        name    = _name
-        fps     =   _fps
-        isSlomo = _isSlomo
-        
-        createFpsLabelView()
-        createNameView()
-        createSloMoView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func createFpsLabelView() {
-        fpsLabel = UILabel.init(frame: CGRect.init(x: 0, y: 8, width: 50, height: 20))
-        fpsLabel.textAlignment = .center
-        fpsLabel.font = fpsLabel.font.withSize(9)
-        fpsLabel.text = "FPS" + fps
-        addSubview(fpsLabel)
-    }
-    
-    func createNameView() {
-        nameLabel = UILabel.init(frame: CGRect.init(x: 0, y: 28, width: 50, height: 20))
-        nameLabel.textAlignment = .center
-        nameLabel.text = name
-        
-        addSubview(nameLabel)
-    }
-    
-    func createSloMoView() {
-        
-        slomoLabel = UILabel.init(frame: CGRect.init(x: 0, y: 50, width: 50, height: 20))
-        slomoLabel.textAlignment = .center
-        slomoLabel.font = fpsLabel.font.withSize(9)
-        slomoLabel.text = "SLO-MO"
-        
-        slomoLabel.alpha = isSlomo == true ? 1 : 0.4
-        addSubview(slomoLabel)
-    }
 }
 
 class FirstViewController:
@@ -153,9 +77,12 @@ class FirstViewController:
     
     //menu controllers here
     private var cameraOptionsViewController:    CameraOptionsViewController?
+    private var cameraSecondaryOptions:         RightMenuSetViewController?
     private var cameraResolutionMenu:           ResolutionViewController?
     
     private var focusZoomView:                  FocusZoomViewController?
+    
+    private var motionManager:                  CMMotionManager!
     
     private var resolutionFormatsArray: [ResolutionFormat] = [ResolutionFormat]()
     private var activeResolutionFormat: ResolutionFormat!
@@ -224,9 +151,6 @@ class FirstViewController:
     
     fileprivate func processUi() {
         
-        resolutionBlurView.layer.masksToBounds    = true
-        resolutionBlurView.layer.cornerRadius     = 5
-        
         let camViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.handlerCamViewTap))
         camViewTapRecognizer.numberOfTapsRequired = 1
         camViewTapRecognizer.numberOfTouchesRequired = 1
@@ -270,6 +194,14 @@ class FirstViewController:
         resTapRecognizer.delegate = self
         
         resModePicker.addGestureRecognizer(resTapRecognizer)
+        
+        cameraSecondaryOptions = self.storyboard?.instantiateViewController(withIdentifier: "RightMenuViewController") as? RightMenuSetViewController
+        
+        view.addSubview((cameraSecondaryOptions?.view)!)
+        
+        cameraSecondaryOptions?.view.transform = CGAffineTransform.init(translationX: view.bounds.width-(cameraSecondaryOptions?.view.bounds.width)! + 5, y: view.bounds.height - (cameraSecondaryOptions?.view.bounds.height)! - 100)
+        
+        self.cameraSecondaryOptions?.addObserver(self, forKeyPath: "orientationRawState", options: NSKeyValueObservingOptions.new, context: nil)
         
         doPhotoBtn.processIcons();
         doVideoBtn.processIcons();
@@ -362,9 +294,9 @@ class FirstViewController:
                 self.focusZoomView?.disolve()
             }
                 
-                self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)
+            self.focusZoomView?.view.transform = CGAffineTransform.init(translationX: point.x - (focusZoomView?.view.bounds.width)!/2, y: point.y - (focusZoomView?.view.bounds.height)!/2)
             
-                setPointOfInterest(point)
+            setPointOfInterest(point)
         }
     }
     
@@ -436,6 +368,16 @@ class FirstViewController:
                 self.resModePicker.selectRow(row, inComponent: 0, animated: true)
                 self.setResolution(self.resolutionFormatsArray[row])
             }
+        }
+        if keyPath == "orientationRawState" {
+            switch (self.cameraSecondaryOptions?.orientationState)! as OrientationStates {
+                case .landscapeLocked:
+                    self.setPreviewLayerOrientation(UIInterfaceOrientation.landscapeLeft)
+                case .portraitLocked:
+                    self.setPreviewLayerOrientation(UIInterfaceOrientation.portrait)
+                default:
+                    break
+            }            
         }
     }
 
@@ -561,9 +503,90 @@ class FirstViewController:
         
         //each time you spawn application back -> this observer gonna be triggered
         NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.setAudioSession), name: .UIApplicationDidBecomeActive, object: nil)
+        
+        initMotionManager()
+    }
+    
+    private func initMotionManager() {
+        
+        motionManager = CMMotionManager()
+        motionManager.accelerometerUpdateInterval = 0.2
+        
+        motionManager.startAccelerometerUpdates()
+            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
+                if let accelerometerData = self.motionManager.accelerometerData {
+                    self.onAccelerationData(accelerometerData.acceleration)
+            }
+        }
+    }
+    
+    private var currentOrientation: UIInterfaceOrientation!
+    private var currentPreviewLayerOrientation: AVCaptureVideoOrientation!
+    
+    private func onAccelerationData(_ acceleration: CMAcceleration) {
+        var orientationNew: UIInterfaceOrientation!;
+        
+        if (acceleration.x >= 0.75) {
+            orientationNew = UIInterfaceOrientation.landscapeLeft
+        }
+        else if (acceleration.x <= -0.75) {
+            orientationNew = UIInterfaceOrientation.landscapeRight
+        }
+        else if (acceleration.y <= -0.75) {
+            orientationNew = UIInterfaceOrientation.portrait
+        }
+        else if (acceleration.y >= 0.75) {
+            orientationNew = UIInterfaceOrientation.portraitUpsideDown
+        }
+        else {
+            // Consider same as last time
+            return
+        }
+        
+        if (orientationNew == currentOrientation) {
+            return
+        }
+        
+        currentOrientation = orientationNew;
+        
+        setPreviewLayerOrientation(currentOrientation)
+    }
+    
+    private func setPreviewLayerOrientation(_ deviceOrientattion: UIInterfaceOrientation) {
+        if (!(self.captureVideoOut?.isRecording)!) {
+            switch deviceOrientattion {
+            case .landscapeLeft:
+                if (cameraSecondaryOptions?.orientationState != OrientationStates.portraitLocked) {
+                    currentPreviewLayerOrientation = AVCaptureVideoOrientation.landscapeLeft
+                }
+                break
+            case .landscapeRight:
+                if (cameraSecondaryOptions?.orientationState != OrientationStates.portraitLocked) {
+                    currentPreviewLayerOrientation = AVCaptureVideoOrientation.landscapeRight
+                }
+                break
+            case .portrait:
+                if (cameraSecondaryOptions?.orientationState != OrientationStates.landscapeLocked) {
+                    currentPreviewLayerOrientation = AVCaptureVideoOrientation.portrait
+                }
+                break
+            case .portraitUpsideDown:
+                if (cameraSecondaryOptions?.orientationState != OrientationStates.landscapeLocked) {
+                    currentPreviewLayerOrientation = AVCaptureVideoOrientation.portraitUpsideDown
+                }
+                break
+                
+            default:
+                break
+            }
+            
+            self.captureVideoOut?.connection(withMediaType: AVMediaTypeVideo).videoOrientation = self.currentPreviewLayerOrientation
+            self.captureStillImageOut?.connection(withMediaType: AVMediaTypeVideo).videoOrientation = self.currentPreviewLayerOrientation
+        }
     }
     
     func setAudioSession() {
+        
         do {
             //todo -> do audioSession set/unset on video record start/stop
             audioSession = AVAudioSession.sharedInstance()
@@ -634,7 +657,7 @@ class FirstViewController:
         }
             
         let audioDataOutput = AVCaptureAudioDataOutput()
-        let queue = DispatchQueue(label: "com.shu223.audiosamplequeue")
+        let queue = DispatchQueue(label: "com.theroman.capio.audiosamplequeue")
         audioDataOutput.setSampleBufferDelegate(self, queue: queue)
         guard (captureSession?.canAddOutput(audioDataOutput))! else {
             fatalError()
@@ -701,6 +724,13 @@ class FirstViewController:
         captureSession?.startRunning()
     }
     
+//    private func getOrientation(_ orientation: OrientationStates = .auto) -> AVCaptureVideoOrientation {
+//        switch orientation {
+//            case .auto
+//                return AVCaptureVideoOrientation.
+//        }
+//    }
+    
     private func setResolution(_ newResolutionFormat: ResolutionFormat) {
         if (newResolutionFormat != activeResolutionFormat) {
             activeResolutionFormat = newResolutionFormat
@@ -750,6 +780,10 @@ class FirstViewController:
         // specifically on night images
         
         captureStillImageOut!.capturePhoto(with: settings, delegate: self)
+    }
+    
+    func onOrinentaionChange() {
+        print("HellYah!")
     }
     
     private func onDispose() {
@@ -815,24 +849,8 @@ class FirstViewController:
             }
         }
     }
-    //starts video recording
-    func startRecording(){
-        //todo: address long start on big resolution videos -> need a message promt for user to wait till it actually starts
-        let fileNameAndExtension: String = "capioTempMovie.mov"
-        let urlPath: String = NSTemporaryDirectory() + fileNameAndExtension
-        
-        let outputUrl = URL(fileURLWithPath: urlPath)
-        if(FileManager().fileExists(atPath: urlPath)) {
-            print("temp .mov file exists -> so gonna remove it. and todo: i might wanna remove that also after recording is done")
-            do {
-                try FileManager().removeItem(atPath: urlPath)
-            } catch {
-                print(error)
-            }
-        }
-
-        captureVideoOut?.startRecording(toOutputFileURL: outputUrl as URL!, recordingDelegate: self)
-        
+    
+    func startStopVideoCounter() {
         //videou countdown counter starts here
         UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, delay: 0, options: .curveEaseOut, animations: {
             self.videoRecordIndicator.alpha = 0.5
@@ -859,10 +877,35 @@ class FirstViewController:
                     self.videoRecordIndicator.alpha = self.videoRecordIndicator.alpha == 0.5 ? 0.1 : 0.5
                 })
             })
-        }            
+        }
+    }
+    
+    //starts video recording
+    func startRecording(){
+        cameraSecondaryOptions?.isOrientationSwitchEnabled = false
+        
+        //todo: address long start on big resolution videos -> need a message promt for user to wait till it actually starts
+        let fileNameAndExtension: String = "capioTempMovie.mov"
+        let urlPath: String = NSTemporaryDirectory() + fileNameAndExtension
+        
+        let outputUrl = URL(fileURLWithPath: urlPath)
+        if(FileManager().fileExists(atPath: urlPath)) {
+            print("temp .mov file exists -> so gonna remove it. and todo: i might wanna remove that also after recording is done")
+            do {
+                try FileManager().removeItem(atPath: urlPath)
+            } catch {
+                print(error)
+            }
+        }
+        
+        captureVideoOut?.startRecording(toOutputFileURL: outputUrl as URL!, recordingDelegate: self)
+        
+        startStopVideoCounter()
     }
 
-    func stopRecording(){
+    func stopRecording() {
+        cameraSecondaryOptions?.isOrientationSwitchEnabled = true
+
         videRecordCountdownTimer.invalidate()
         UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, delay: 0, options: .curveEaseOut, animations: {
             self.videoRecordIndicator.alpha = 0.0
@@ -885,13 +928,13 @@ class FirstViewController:
         fromConnections connections: [Any]!,
         error: Error!
         ) {
-
+        
         if (error != nil) {
             //finish loading message is being written in error obj for what ever reason
             // todo: test for space limit
             print("error: " + error.localizedDescription)
         }
-
+        
         PHPhotoLibrary.requestAuthorization({ (authorizationStatus: PHAuthorizationStatus) -> Void in
             // check if user authorized access photos for your app
             if authorizationStatus == .authorized {
@@ -928,3 +971,89 @@ class FirstViewController:
     }
 }
 
+class SharedBlurView: UIVisualEffectView {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.layer.masksToBounds    = true
+        self.layer.cornerRadius     = 5
+    }
+}
+
+class ResolutionFormat: NSObject {
+    let photoResolution:  CMVideoDimensions!
+    let videoResolution:  CMVideoDimensions!
+    let fpsRange:         AVFrameRateRange!
+    let isSlomo:          Bool!
+    var isActive:         Bool    = false
+    let format:           AVCaptureDeviceFormat!
+    let name:             String!
+    
+    init(_format: AVCaptureDeviceFormat, _frameRateObj: AVFrameRateRange) {
+        videoResolution   = CMVideoFormatDescriptionGetDimensions(_format.formatDescription)
+        photoResolution   = _format.highResolutionStillImageDimensions
+        fpsRange          = _frameRateObj
+        isSlomo           = _frameRateObj.maxFrameRate >= 120.0 //well technically it's 104.0
+        format            = _format
+        name              = String(Double(videoResolution.width)/1000.0) + "K"
+    }
+}
+
+class ResPickerView: UIView {
+    
+    var name: String!
+    var fps:    String!
+    var isSlomo: Bool = false
+    
+    private var fpsLabel: UILabel!
+    private var nameLabel: UILabel!
+    private var slomoLabel: UILabel!
+    
+    init(
+        frame: CGRect,
+        _name: String,
+        _fps:  String,
+        _isSlomo: Bool = false) {
+        
+        super.init(frame: frame)
+        
+        name    = _name
+        fps     =   _fps
+        isSlomo = _isSlomo
+        
+        createFpsLabelView()
+        createNameView()
+        createSloMoView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func createFpsLabelView() {
+        fpsLabel = UILabel.init(frame: CGRect.init(x: 0, y: 8, width: 50, height: 20))
+        fpsLabel.textAlignment = .center
+        fpsLabel.font = fpsLabel.font.withSize(9)
+        fpsLabel.text = "FPS" + fps
+        addSubview(fpsLabel)
+    }
+    
+    func createNameView() {
+        nameLabel = UILabel.init(frame: CGRect.init(x: 0, y: 28, width: 50, height: 20))
+        nameLabel.textAlignment = .center
+        nameLabel.text = name
+        
+        addSubview(nameLabel)
+    }
+    
+    func createSloMoView() {
+        
+        slomoLabel = UILabel.init(frame: CGRect.init(x: 0, y: 50, width: 50, height: 20))
+        slomoLabel.textAlignment = .center
+        slomoLabel.font = fpsLabel.font.withSize(9)
+        slomoLabel.text = "SLO-MO"
+        
+        slomoLabel.alpha = isSlomo == true ? 1 : 0.4
+        addSubview(slomoLabel)
+    }
+}
