@@ -27,8 +27,9 @@ Professional photo-video iphone app that gives control over camera back to users
   - use camera as meter for all camera settings while they are in AutoMode
   - tap to focus and long tap and drag to focus at point
   - lock device orientation
+  - flash mode toggle
 
 ### TODO:
-  - flash settings
   - grid and double grid
   - timer
+  - torch mode on-off
