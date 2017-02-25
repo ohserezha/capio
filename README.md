@@ -37,3 +37,4 @@ Photo/Video iphone app that gives full control over camera back to users
   - TimeLapse
   - HDR
   - Live
+  - inApp tutorial 
