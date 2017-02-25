@@ -38,3 +38,4 @@ Photo/Video iphone app that gives full control over camera back to users
   - HDR
   - Live
   - inApp tutorial 
+  - better notifications and UI response feedback
