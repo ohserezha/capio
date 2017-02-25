@@ -34,3 +34,6 @@ Professional photo-video iphone app that gives control over camera back to users
   - grid and double grid
   - timer
   - torch mode on-off
+  - TimeLapse
+  - HDR
+  - Live
