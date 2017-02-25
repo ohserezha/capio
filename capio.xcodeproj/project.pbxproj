@@ -378,7 +378,7 @@
 				TargetAttributes = {
 					37E25FF41D32DB6D00644207 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = XH5ZGQP8H6;
+						DevelopmentTeam = 2N23H46X83;
 						LastSwiftMigration = 0820;
 					};
 					37E2600A1D32DB6D00644207 = {
@@ -830,12 +830,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2N23H46X83;
 				INFOPLIST_FILE = capio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.capio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theromanapps.capio;
 				PRODUCT_NAME = capio;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -847,12 +849,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2N23H46X83;
 				INFOPLIST_FILE = capio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.theroman.capio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theromanapps.capio;
 				PRODUCT_NAME = capio;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
