@@ -10,6 +10,7 @@
 		1B494BC1E74356A672F0C38E /* Pods_capioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E700FAE66DD075380AB694 /* Pods_capioTests.framework */; };
 		3571FA3147F413E95928F1CE /* Pods_capioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE02DE45CE8EB6D4AEF93DD /* Pods_capioUITests.framework */; };
 		3706CCA01E5D4D8300E4EC77 /* RightMenuSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706CC9F1E5D4D8300E4EC77 /* RightMenuSetViewController.swift */; };
+		372D1DA21E647014006D740B /* GridManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372D1DA11E647014006D740B /* GridManager.swift */; };
 		3740AE141E5001E4004DE9BE /* ResolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740AE131E5001E4004DE9BE /* ResolutionViewController.swift */; };
 		3740AE211E502A24004DE9BE /* MenuHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740AE201E502A24004DE9BE /* MenuHostView.swift */; };
 		374B45911E3C518E00BB727F /* CameraMenuContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B458F1E3C518E00BB727F /* CameraMenuContentController.swift */; };
@@ -126,6 +127,7 @@
 		211DA7C77B9A00C1F55E778B /* Pods-capio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capio/Pods-capio.debug.xcconfig"; sourceTree = "<group>"; };
 		367359E6A01C5AE98BA957BA /* Pods-capioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capioUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capioUITests/Pods-capioUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3706CC9F1E5D4D8300E4EC77 /* RightMenuSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightMenuSetViewController.swift; sourceTree = "<group>"; };
+		372D1DA11E647014006D740B /* GridManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridManager.swift; sourceTree = "<group>"; };
 		3740AE131E5001E4004DE9BE /* ResolutionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResolutionViewController.swift; sourceTree = "<group>"; };
 		3740AE201E502A24004DE9BE /* MenuHostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHostView.swift; sourceTree = "<group>"; };
 		374B458F1E3C518E00BB727F /* CameraMenuContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraMenuContentController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				3740AE201E502A24004DE9BE /* MenuHostView.swift */,
 				3740AE131E5001E4004DE9BE /* ResolutionViewController.swift */,
 				3706CC9F1E5D4D8300E4EC77 /* RightMenuSetViewController.swift */,
+				372D1DA11E647014006D740B /* GridManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				3740AE211E502A24004DE9BE /* MenuHostView.swift in Sources */,
 				37E25FF91D32DB6D00644207 /* AppDelegate.swift in Sources */,
 				3740AE141E5001E4004DE9BE /* ResolutionViewController.swift in Sources */,
+				372D1DA21E647014006D740B /* GridManager.swift in Sources */,
 				37A596BB1E56A9C500FC6194 /* FocusZoomViewController.swift in Sources */,
 				374B45921E3C518E00BB727F /* CameraMenuTableViewCell.swift in Sources */,
 				374B45911E3C518E00BB727F /* CameraMenuContentController.swift in Sources */,

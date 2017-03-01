@@ -164,10 +164,9 @@
                                     <blurEffect style="dark"/>
                                 </vibrancyEffect>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dbh-k7-TDt" customClass="SharedBlurView" customModule="capio" customModuleProvider="target">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbh-k7-TDt" customClass="SharedBlurView" customModule="capio" customModuleProvider="target">
                                 <rect key="frame" x="-5" y="541" width="65" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="P3V-SS-1uR">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="P3V-SS-1uR">
                                     <rect key="frame" x="0.0" y="0.0" width="65" height="70"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -190,6 +189,10 @@
                                         </visualEffectView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="FV0-aP-dFy"/>
+                                    <constraint firstAttribute="width" constant="65" id="k6p-Sy-bP1"/>
+                                </constraints>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="L0M-Ch-DYw">
@@ -212,7 +215,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="GQ0-tu-PgG">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="566-6D-xDQ">
-                                            <rect key="frame" x="191" y="2" width="165" height="41"/>
+                                            <rect key="frame" x="191" y="1.5" width="165" height="41"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -237,10 +240,12 @@
                         <constraints>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Ifo-Ir-NPa"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="L0M-Ch-DYw" secondAttribute="leading" id="M8W-oA-Pib"/>
+                            <constraint firstItem="Dbh-k7-TDt" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="-5" id="NsL-2W-6Mz"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="WsA-of-BeH"/>
                             <constraint firstItem="L0M-Ch-DYw" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="aMj-Go-fKF"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="trailing" secondItem="L0M-Ch-DYw" secondAttribute="trailing" id="c7u-Mm-qzs"/>
                             <constraint firstAttribute="trailing" secondItem="M3A-8q-kT1" secondAttribute="trailing" id="eRQ-fI-zhl"/>
+                            <constraint firstItem="L0M-Ch-DYw" firstAttribute="top" secondItem="Dbh-k7-TDt" secondAttribute="bottom" constant="12" id="hKh-co-Lb6"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="mcv-wV-0xO"/>
                         </constraints>
                         <variation key="default">
@@ -455,7 +460,7 @@
                                                                 <rect key="frame" x="0.0" y="22" width="240" height="70"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rg2-5T-hct" id="aKP-Sl-ckc">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4231x4234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s71-nq-Skw">
@@ -528,7 +533,7 @@
                                                                 <rect key="frame" x="0.0" y="92" width="240" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KmU-0r-p2W" id="n1y-wN-dAT">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-37-u8j">
