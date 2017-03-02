@@ -94,7 +94,7 @@ class FirstViewController:
     
     @IBOutlet var actionToolbar:                UIToolbar!
     
-    @IBOutlet var menuHostView:               MenuHostView!
+    @IBOutlet var menuHostView:                 MenuHostView!
     
     @IBOutlet var resolutionBlurView:           UIVisualEffectView!
     @IBOutlet var FPSLabel:                     UILabel!
@@ -122,6 +122,8 @@ class FirstViewController:
     
     private var resolutionFormatsArray: [ResolutionFormat] = [ResolutionFormat]()
     private var activeResolutionFormat: ResolutionFormat!
+    
+    private var gridManager:                    GridManager!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +151,8 @@ class FirstViewController:
         optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
         
         optionsMenu?.addGestureHelperViews([.left,.right], width:30)
+        
+        gridManager = GridManager.init(_gridView: myCamView, _storyBoard: self.storyboard!, _parentViewDimentions: myCamView.bounds)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -216,10 +220,7 @@ class FirstViewController:
         //todo: all settings processing should be moved in to a single unit
         cameraOptionsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraOptionsSlider") as? CameraOptionsViewController
         cameraOptionsViewController?.setActiveDevice(captureDevice!)
-        
-        menuHostView.layer.masksToBounds    = true
-        menuHostView.layer.cornerRadius     = 5
-        
+                
         setupCameraSettingsSwipeMenu()
         
         resModePicker.dataSource = self
@@ -245,6 +246,7 @@ class FirstViewController:
         cameraSecondaryOptions?.view.transform = CGAffineTransform.init(translationX: view.bounds.width-(cameraSecondaryOptions?.view.bounds.width)! + 5, y: view.bounds.height - (cameraSecondaryOptions?.view.bounds.height)! - 100)
         
         self.cameraSecondaryOptions?.addObserver(self, forKeyPath: "orientationRawState", options: NSKeyValueObservingOptions.new, context: nil)
+        self.cameraSecondaryOptions?.addObserver(self, forKeyPath: "gridRawState", options: NSKeyValueObservingOptions.new, context: nil)
         
         doPhotoBtn.processIcons();
         doVideoBtn.processIcons();
@@ -421,6 +423,18 @@ class FirstViewController:
                 default:
                     break
             }            
+        }
+        if keyPath == "gridRawState" {
+            switch (self.cameraSecondaryOptions?.gridState)! as GridFactors {
+            case .off:
+                gridManager.gridFactor = .off
+            case .double:
+                gridManager.gridFactor = .double
+            case .quad:
+                gridManager.gridFactor = .quad
+            default:
+                break
+            }
         }
     }
 

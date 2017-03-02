@@ -215,7 +215,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="GQ0-tu-PgG">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="566-6D-xDQ">
-                                            <rect key="frame" x="191" y="1.5" width="165" height="41"/>
+                                            <rect key="frame" x="191" y="2" width="165" height="41"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -460,7 +460,7 @@
                                                                 <rect key="frame" x="0.0" y="22" width="240" height="70"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rg2-5T-hct" id="aKP-Sl-ckc">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4231x4234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s71-nq-Skw">
@@ -533,7 +533,7 @@
                                                                 <rect key="frame" x="0.0" y="92" width="240" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KmU-0r-p2W" id="n1y-wN-dAT">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-37-u8j">
@@ -593,6 +593,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeB-Aa-LJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="952" y="612.59370314842579"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dce-Vy-Bpb">
+            <objects>
+                <viewController storyboardIdentifier="GridLineItem" id="BpI-Og-Q0Z" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Adj-D2-2V2"/>
+                        <viewControllerLayoutGuide type="bottom" id="0V3-UL-qKd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O8L-Jw-fj3">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l2q-kq-X0d">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="w5G-aJ-khN">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tHN-8h-vU6">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="Tyv-5V-4Gb">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="dark"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="50" height="50"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mea-Ci-JjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="-613"/>
         </scene>
         <!--Right Menu Set View Controller-->
         <scene sceneID="SF3-Qy-k12">
@@ -678,11 +725,25 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="ic_timer_white"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-Mb-pvV">
-                                                    <rect key="frame" x="6" y="102" width="51" height="51"/>
+                                                <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OwV-aa-fXR" userLabel="Grid Button View" customClass="OrientationButtonView" customModule="capio" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="102" width="65" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="ic_grid_off_white"/>
-                                                </button>
+                                                    <subviews>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" image="grid_off_36pt" translatesAutoresizingMaskIntoConstraints="NO" id="o3B-gU-bR3">
+                                                            <rect key="frame" x="11" y="7" width="36" height="36"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </imageView>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="center" fixedFrame="YES" image="grid_double_36pt" translatesAutoresizingMaskIntoConstraints="NO" id="CbB-Cv-1Zf">
+                                                            <rect key="frame" x="11" y="7" width="36" height="36"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </imageView>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="center" fixedFrame="YES" image="grid_quad_36pt" translatesAutoresizingMaskIntoConstraints="NO" id="SFb-oK-drh">
+                                                            <rect key="frame" x="11" y="7" width="36" height="36"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </view>
                                     </subviews>
@@ -706,6 +767,10 @@
                         <outlet property="flashModeView" destination="N1L-Jl-WYb" id="L3R-VL-x45"/>
                         <outlet property="flashOffImg" destination="c6g-NN-QmV" id="bWz-5A-tJK"/>
                         <outlet property="flashOnImg" destination="DHg-Mq-4vk" id="ktE-fb-YgN"/>
+                        <outlet property="gridDoubleImg" destination="CbB-Cv-1Zf" id="KM8-NW-Aex"/>
+                        <outlet property="gridOffImgView" destination="o3B-gU-bR3" id="9E7-RD-GrK"/>
+                        <outlet property="gridQuadImg" destination="SFb-oK-drh" id="cze-J1-vDH"/>
+                        <outlet property="gridView" destination="OwV-aa-fXR" id="DLg-ft-7gW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xz7-xa-vsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -813,10 +878,12 @@
     <resources>
         <image name="device_orientation" width="32" height="32"/>
         <image name="first" width="30" height="30"/>
+        <image name="grid_double_36pt" width="36" height="36"/>
+        <image name="grid_off_36pt" width="36" height="36"/>
+        <image name="grid_quad_36pt" width="36" height="36"/>
         <image name="ic_flash_auto_white" width="36" height="36"/>
         <image name="ic_flash_off_white" width="36" height="36"/>
         <image name="ic_flash_on_white" width="36" height="36"/>
-        <image name="ic_grid_off_white" width="24" height="24"/>
         <image name="ic_lock_white" width="24" height="24"/>
         <image name="ic_timer_white" width="24" height="24"/>
         <image name="ico_photo" width="24" height="24"/>
