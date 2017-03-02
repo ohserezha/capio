@@ -123,8 +123,9 @@ class FirstViewController:
     private var resolutionFormatsArray: [ResolutionFormat] = [ResolutionFormat]()
     private var activeResolutionFormat: ResolutionFormat!
     
+    @IBOutlet var gridHostView:                 UIView!
     private var gridManager:                    GridManager!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -152,7 +153,7 @@ class FirstViewController:
         
         optionsMenu?.addGestureHelperViews([.left,.right], width:30)
         
-        gridManager = GridManager.init(_gridView: myCamView, _storyBoard: self.storyboard!, _parentViewDimentions: myCamView.bounds)
+        gridManager = GridManager.init(_gridView: gridHostView, _storyBoard: self.storyboard!, _parentViewDimentions: gridHostView.bounds)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
