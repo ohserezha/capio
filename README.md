@@ -40,4 +40,4 @@ Photo/Video iphone app that gives full control over camera back to users
   - inApp tutorial 
   - better notifications and UI response feedback
   - settings presets
-  - apps fast access from phone's widgets view
+  - app's fast access from phone's widgets view
