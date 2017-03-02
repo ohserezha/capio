@@ -25,39 +25,10 @@ enum SettingMenuTypes {
 }
 
 class CariocaMenuOverride: CariocaMenu {
-
-    private let swipeGestureView: UIView!
-    
-    init(dataSource:CariocaMenuDataSource, _swipeGestureView: UIView) {
-        swipeGestureView = _swipeGestureView
-        super.init(dataSource: dataSource)
-    }
-    
-    /**
-     Generates a gesture helper view with autolayout constraints
-     - parameters:
-     - edgeAttribute: `.Leading` or `.Trailing`
-     - width: The width of the helper view.
-     - returns: `UIView` The helper view constrained to the hostView edge
-     */
     override func prepareGestureHelperView(_ edgeAttribute:NSLayoutAttribute, width:CGFloat)->UIView{
-        
         let view = UIView()
-        view.backgroundColor = UIColor.clear
-        swipeGestureView?.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false;
-        
-        hostView?.addConstraints([
-            getEqualConstraint(view, toItem: hostView!, attribute: edgeAttribute),
-            NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width),
-            getEqualConstraint(view, toItem: hostView!, attribute: .bottom),
-            getEqualConstraint(view, toItem: hostView!, attribute: .top)
-            ])
-        
-        view.setNeedsLayout()
         return view
     }
-    
 }
 
 class FirstViewController:
@@ -257,7 +228,7 @@ class FirstViewController:
         cariocaMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraMenu") as? CameraMenuContentController
         
         //Set the tableviewcontroller for the shared carioca menu
-        optionsMenu = CariocaMenuOverride(dataSource: cariocaMenuViewController!, _swipeGestureView: myCamView)
+        optionsMenu = CariocaMenuOverride(dataSource: cariocaMenuViewController!)
         optionsMenu?.selectedIndexPath = IndexPath(item: 0, section: 0)
         
         optionsMenu?.delegate = self
@@ -809,8 +780,26 @@ class FirstViewController:
             }
         }
     }
-
+    
     func captureImage() {
+        if cameraSecondaryOptions?.timerScale != TimerScales.off  {
+            if (cameraSecondaryOptions?.timerState != TimerStates.ticking) {
+                doPhotoBtn.isEnabled = false
+                doPhotoBtn.alpha = 0.4
+                cameraSecondaryOptions?.startTimerTick {
+                    self.doPhotoBtn.isEnabled = true
+                    self.doPhotoBtn.alpha = 1
+                    self._captureImage()
+                }
+            }
+        } else {
+            doPhotoBtn.alpha = 1
+            doPhotoBtn.isEnabled = true
+            _captureImage()
+        }
+    }
+
+    func _captureImage() {
         //currently any vibration won'e work due to "by design" bug on apple's side
         //https://github.com/lionheart/openradar-mirror/issues/5479
         //https://developer.apple.com/reference/audiotoolbox/1405202-audioservicesplayalertsound
