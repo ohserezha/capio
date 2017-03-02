@@ -506,11 +506,11 @@
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_video" translatesAutoresizingMaskIntoConstraints="NO" id="lU2-4L-djN">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video" translatesAutoresizingMaskIntoConstraints="NO" id="lU2-4L-djN">
                                                                             <rect key="frame" x="12" y="9" width="25" height="25"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         </imageView>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ico_photo" translatesAutoresizingMaskIntoConstraints="NO" id="BXi-6f-oyC">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="BXi-6f-oyC">
                                                                             <rect key="frame" x="12" y="38" width="25" height="25"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         </imageView>
@@ -677,7 +677,7 @@
                                                     <rect key="frame" x="1" y="0.0" width="65" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" image="ic_lock_white" translatesAutoresizingMaskIntoConstraints="NO" id="n8x-hN-3NS">
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="n8x-hN-3NS">
                                                             <rect key="frame" x="9" y="34" width="12" height="12"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <accessibility key="accessibilityConfiguration">
@@ -705,21 +705,21 @@
                                                     <rect key="frame" x="0.0" y="51" width="65" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_flash_on_white" translatesAutoresizingMaskIntoConstraints="NO" id="DHg-Mq-4vk">
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flash_on" translatesAutoresizingMaskIntoConstraints="NO" id="DHg-Mq-4vk">
                                                             <rect key="frame" x="13" y="9" width="32" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                                             </accessibility>
                                                         </imageView>
-                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_flash_off_white" translatesAutoresizingMaskIntoConstraints="NO" id="c6g-NN-QmV">
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flash_off" translatesAutoresizingMaskIntoConstraints="NO" id="c6g-NN-QmV">
                                                             <rect key="frame" x="13" y="9" width="32" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                                             </accessibility>
                                                         </imageView>
-                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_flash_auto_white" translatesAutoresizingMaskIntoConstraints="NO" id="k8U-Fg-IO1">
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="flash_auto" translatesAutoresizingMaskIntoConstraints="NO" id="k8U-Fg-IO1">
                                                             <rect key="frame" x="18" y="9" width="32" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <accessibility key="accessibilityConfiguration">
@@ -729,11 +729,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84f-ZY-nmM">
-                                                    <rect key="frame" x="6" y="153" width="51" height="51"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="ic_timer_white"/>
-                                                </button>
                                                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OwV-aa-fXR" userLabel="Grid Button View" customClass="OrientationButtonView" customModule="capio" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="102" width="65" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -747,6 +742,29 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </imageView>
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="center" fixedFrame="YES" image="grid_quad_36pt" translatesAutoresizingMaskIntoConstraints="NO" id="SFb-oK-drh">
+                                                            <rect key="frame" x="11" y="7" width="36" height="36"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SqS-2z-S0e" userLabel="Timer Button View" customClass="OrientationButtonView" customModule="capio" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="153" width="65" height="51"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <pickerView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbE-mf-al7">
+                                                            <rect key="frame" x="2" y="-7" width="20" height="65"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <accessibility key="accessibilityConfiguration">
+                                                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                            </accessibility>
+                                                        </pickerView>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" image="timer" translatesAutoresizingMaskIntoConstraints="NO" id="Rz1-XX-xM1">
+                                                            <rect key="frame" x="25" y="14" width="22" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </imageView>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="timer_off" translatesAutoresizingMaskIntoConstraints="NO" id="8FY-Xc-noO">
                                                             <rect key="frame" x="11" y="7" width="36" height="36"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </imageView>
@@ -780,6 +798,10 @@
                         <outlet property="gridOffImgView" destination="o3B-gU-bR3" id="9E7-RD-GrK"/>
                         <outlet property="gridQuadImg" destination="SFb-oK-drh" id="cze-J1-vDH"/>
                         <outlet property="gridView" destination="OwV-aa-fXR" id="DLg-ft-7gW"/>
+                        <outlet property="timePicker" destination="gbE-mf-al7" id="Oga-at-cE9"/>
+                        <outlet property="timerOffImg" destination="8FY-Xc-noO" id="xcm-M3-Akx"/>
+                        <outlet property="timerView" destination="SqS-2z-S0e" id="3w2-FO-pr6"/>
+                        <outlet property="timerViewImg" destination="Rz1-XX-xM1" id="NIW-lE-0uB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xz7-xa-vsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -887,16 +909,17 @@
     <resources>
         <image name="device_orientation" width="32" height="32"/>
         <image name="first" width="30" height="30"/>
+        <image name="flash_auto" width="36" height="36"/>
+        <image name="flash_off" width="36" height="36"/>
+        <image name="flash_on" width="36" height="36"/>
         <image name="grid_double_36pt" width="36" height="36"/>
         <image name="grid_off_36pt" width="36" height="36"/>
         <image name="grid_quad_36pt" width="36" height="36"/>
-        <image name="ic_flash_auto_white" width="36" height="36"/>
-        <image name="ic_flash_off_white" width="36" height="36"/>
-        <image name="ic_flash_on_white" width="36" height="36"/>
-        <image name="ic_lock_white" width="24" height="24"/>
-        <image name="ic_timer_white" width="24" height="24"/>
-        <image name="ico_photo" width="24" height="24"/>
-        <image name="ico_video" width="24" height="24"/>
+        <image name="lock" width="24" height="24"/>
+        <image name="photo" width="24" height="24"/>
         <image name="rotation" width="36" height="36"/>
+        <image name="timer" width="36" height="36"/>
+        <image name="timer_off" width="36" height="36"/>
+        <image name="video" width="24" height="24"/>
     </resources>
 </document>
