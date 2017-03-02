@@ -30,12 +30,14 @@ Photo/Video iphone app that gives full control over camera back to users
   - lock device recording orientation (landscape/portrait/auto)
   - flash mode toggle
   - grid toggle and quad grid
+  - camera timer (3x, 10x)
   
 ### TODO:
-  - timer
   - torch mode on-off
   - TimeLapse
   - HDR
   - Live
   - inApp tutorial 
   - better notifications and UI response feedback
+  - settings presets
+  - apps fast access from phone's widgets view
