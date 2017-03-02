@@ -29,9 +29,9 @@ Photo/Video iphone app that gives full control over camera back to users
   - tap to focus and long tap and drag to focus at point
   - lock device recording orientation (landscape/portrait/auto)
   - flash mode toggle
-
+  - grid toggle and quad grid
+  
 ### TODO:
-  - grid and double grid
   - timer
   - torch mode on-off
   - TimeLapse
