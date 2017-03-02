@@ -15,19 +15,31 @@ enum OrientationStates: Int {
 
 class RightMenuSetViewController: UIViewController {
     
-    @IBOutlet var deviceOrientationView: UIView!
+    @IBOutlet var deviceOrientationView:        UIView!
 
-    @IBOutlet var deviceOrientationImage: UIImageView!
+    @IBOutlet var deviceOrientationImage:       UIImageView!
     @IBOutlet var deviceOrientationLockedImage: UIImageView!
-    @IBOutlet var deviceOrientationFreeImage: UIImageView!
+    @IBOutlet var deviceOrientationFreeImage:   UIImageView!
     
-    @IBOutlet var flashModeView: UIView!
+    @IBOutlet var flashModeView:                UIView!
     
-    @IBOutlet var flashOnImg: UIImageView!
-    @IBOutlet var flashOffImg: UIImageView!
-    @IBOutlet var flashAutoImg: UIImageView!
+    @IBOutlet var flashOnImg:                   UIImageView!
+    @IBOutlet var flashOffImg:                  UIImageView!
+    @IBOutlet var flashAutoImg:                 UIImageView!
     
-    private var _isOrientationSwitchEnabled: Bool = false
+    @IBOutlet var gridView:                     UIView!
+    
+    @IBOutlet var gridOffImgView:               UIImageView!
+    @IBOutlet var gridDoubleImg:                UIImageView!
+    @IBOutlet var gridQuadImg:                  UIImageView!
+    
+    var gridState: GridFactors! {
+        didSet {
+            gridRawState = gridState.rawValue
+        }
+    }
+    
+    private var _isOrientationSwitchEnabled:    Bool = false
     
     var isOrientationSwitchEnabled: Bool {
         set {
@@ -77,9 +89,11 @@ class RightMenuSetViewController: UIViewController {
         }
     }
     
-    dynamic var flashModeRawState: Int = 0
+    dynamic var flashModeRawState:      Int = 0
     
-    dynamic var orientationRawState: Int = 0
+    dynamic var orientationRawState:    Int = 0
+    
+    dynamic var gridRawState:           Int = 0
     
     override func viewDidLoad() {
         
@@ -90,6 +104,10 @@ class RightMenuSetViewController: UIViewController {
         let flashTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(RightMenuSetViewController.onFlashModeTap))
         
         flashModeView.addGestureRecognizer(flashTapRecognizer)
+        
+        let gridTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(RightMenuSetViewController.onGridTap))
+        
+        gridView.addGestureRecognizer(gridTapRecognizer)
         
         orientationState            = OrientationStates.auto
         isOrientationSwitchEnabled  = true
@@ -116,6 +134,37 @@ class RightMenuSetViewController: UIViewController {
             
             setFlashMode(flashModeState!)
         }
+    }
+    
+    func onGridTap(_ recognizer: UIGestureRecognizer) {
+        let newVal = GridFactors(rawValue: gridRawState + 1)
+        //todo: do a better cal for state than <=2
+        gridState = newVal != nil ? newVal! : GridFactors.off
+        
+        setGridMode(gridState!)
+    }
+    
+    private func setGridMode(_ gridMode: GridFactors) {
+        var quadAlpha: CGFloat = 0.0
+        var doubleAlpha: CGFloat = 0.0
+        var offAlpha: CGFloat = 0.0
+        switch gridMode {
+        case .off:
+            offAlpha = 1.0
+            break
+        case .double:
+            doubleAlpha = 1.0
+            break
+        case .quad:
+            quadAlpha = 1.0
+            break
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.gridOffImgView.alpha = offAlpha
+            self.gridDoubleImg.alpha = doubleAlpha
+            self.gridQuadImg.alpha = quadAlpha
+        })
     }
     
     private func setFlashMode(_ flashMode: AVCaptureFlashMode) {

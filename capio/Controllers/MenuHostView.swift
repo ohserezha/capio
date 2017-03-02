@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuHostView: UIView {
+class MenuHostView: SharedBlurView {
     
     var activeMenuType: SettingMenuTypes = .none
     

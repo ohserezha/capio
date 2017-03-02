@@ -24,6 +24,42 @@ enum SettingMenuTypes {
     case none, cameraSliderMenu, resolutionMenu, flashMenu, allStatsMenu, miscMenu
 }
 
+class CariocaMenuOverride: CariocaMenu {
+
+    private let swipeGestureView: UIView!
+    
+    init(dataSource:CariocaMenuDataSource, _swipeGestureView: UIView) {
+        swipeGestureView = _swipeGestureView
+        super.init(dataSource: dataSource)
+    }
+    
+    /**
+     Generates a gesture helper view with autolayout constraints
+     - parameters:
+     - edgeAttribute: `.Leading` or `.Trailing`
+     - width: The width of the helper view.
+     - returns: `UIView` The helper view constrained to the hostView edge
+     */
+    override func prepareGestureHelperView(_ edgeAttribute:NSLayoutAttribute, width:CGFloat)->UIView{
+        
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        swipeGestureView?.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false;
+        
+        hostView?.addConstraints([
+            getEqualConstraint(view, toItem: hostView!, attribute: edgeAttribute),
+            NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width),
+            getEqualConstraint(view, toItem: hostView!, attribute: .bottom),
+            getEqualConstraint(view, toItem: hostView!, attribute: .top)
+            ])
+        
+        view.setNeedsLayout()
+        return view
+    }
+    
+}
+
 class FirstViewController:
     UIViewController,
     UIImagePickerControllerDelegate,
@@ -58,7 +94,7 @@ class FirstViewController:
     
     @IBOutlet var actionToolbar:                UIToolbar!
     
-    @IBOutlet var menuHostView:               MenuHostView!
+    @IBOutlet var menuHostView:                 MenuHostView!
     
     @IBOutlet var resolutionBlurView:           UIVisualEffectView!
     @IBOutlet var FPSLabel:                     UILabel!
@@ -71,8 +107,8 @@ class FirstViewController:
     private var videoRecordCountdownSeconds:    Double = 0.0
     private var videRecordCountdownTimer:       Timer!
     
-    @IBOutlet var resModePicker: UIPickerView!
-    private var optionsMenu:                    CariocaMenu?
+    @IBOutlet var resModePicker:                UIPickerView!
+    private var optionsMenu:                    CariocaMenuOverride?
     private var cariocaMenuViewController:      CameraMenuContentController?
     
     //menu controllers here
@@ -86,6 +122,8 @@ class FirstViewController:
     
     private var resolutionFormatsArray: [ResolutionFormat] = [ResolutionFormat]()
     private var activeResolutionFormat: ResolutionFormat!
+    
+    private var gridManager:                    GridManager!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,10 +146,13 @@ class FirstViewController:
         super.viewDidAppear(animated)
         previewLayer?.frame = myCamView.bounds
         
+        
         optionsMenu?.addInView(self.view)
         optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
         
         optionsMenu?.addGestureHelperViews([.left,.right], width:30)
+        
+        gridManager = GridManager.init(_gridView: myCamView, _storyBoard: self.storyboard!, _parentViewDimentions: myCamView.bounds)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -179,10 +220,7 @@ class FirstViewController:
         //todo: all settings processing should be moved in to a single unit
         cameraOptionsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraOptionsSlider") as? CameraOptionsViewController
         cameraOptionsViewController?.setActiveDevice(captureDevice!)
-        
-        menuHostView.layer.masksToBounds    = true
-        menuHostView.layer.cornerRadius     = 5
-        
+                
         setupCameraSettingsSwipeMenu()
         
         resModePicker.dataSource = self
@@ -208,6 +246,7 @@ class FirstViewController:
         cameraSecondaryOptions?.view.transform = CGAffineTransform.init(translationX: view.bounds.width-(cameraSecondaryOptions?.view.bounds.width)! + 5, y: view.bounds.height - (cameraSecondaryOptions?.view.bounds.height)! - 100)
         
         self.cameraSecondaryOptions?.addObserver(self, forKeyPath: "orientationRawState", options: NSKeyValueObservingOptions.new, context: nil)
+        self.cameraSecondaryOptions?.addObserver(self, forKeyPath: "gridRawState", options: NSKeyValueObservingOptions.new, context: nil)
         
         doPhotoBtn.processIcons();
         doVideoBtn.processIcons();
@@ -217,7 +256,7 @@ class FirstViewController:
         cariocaMenuViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraMenu") as? CameraMenuContentController
         
         //Set the tableviewcontroller for the shared carioca menu
-        optionsMenu = CariocaMenu(dataSource: cariocaMenuViewController!)
+        optionsMenu = CariocaMenuOverride(dataSource: cariocaMenuViewController!, _swipeGestureView: myCamView)
         optionsMenu?.selectedIndexPath = IndexPath(item: 0, section: 0)
         
         optionsMenu?.delegate = self
@@ -384,6 +423,18 @@ class FirstViewController:
                 default:
                     break
             }            
+        }
+        if keyPath == "gridRawState" {
+            switch (self.cameraSecondaryOptions?.gridState)! as GridFactors {
+            case .off:
+                gridManager.gridFactor = .off
+            case .double:
+                gridManager.gridFactor = .double
+            case .quad:
+                gridManager.gridFactor = .quad
+            default:
+                break
+            }
         }
     }
 
