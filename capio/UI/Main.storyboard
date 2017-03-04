@@ -122,11 +122,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="cio_inapp_ico_gray" translatesAutoresizingMaskIntoConstraints="NO" id="uYr-V4-PYM">
+                                <rect key="frame" x="162" y="308" width="50" height="50"/>
+                            </imageView>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M3A-8q-kT1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVO-tY-I3l" customClass="SharedBlurView" customModule="capio" customModuleProvider="target">
+                                <rect key="frame" x="67" y="299" width="240" height="66"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="z1c-MY-jES">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="66"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQG-AH-IMD">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="dcd-gh-vM9">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="66"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Please enable all the required permissions: photo library/video/audio" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-OS-gdx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textView>
+                                                </subviews>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="dark"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="T8z-6R-Rgv"/>
+                                    <constraint firstAttribute="width" constant="240" id="Uom-z7-XAs"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qY1-OW-n4q">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -243,16 +280,20 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="qY1-OW-n4q" secondAttribute="bottom" id="7Nl-yR-1Ij"/>
+                            <constraint firstItem="hVO-tY-I3l" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Fru-wp-Xqc"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Ifo-Ir-NPa"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="L0M-Ch-DYw" secondAttribute="leading" id="M8W-oA-Pib"/>
                             <constraint firstItem="Dbh-k7-TDt" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="-5" id="NsL-2W-6Mz"/>
                             <constraint firstAttribute="trailing" secondItem="qY1-OW-n4q" secondAttribute="trailing" id="P9M-2G-N5K"/>
                             <constraint firstItem="qY1-OW-n4q" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Qz2-kl-Ehw"/>
+                            <constraint firstItem="uYr-V4-PYM" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="RMg-Yw-2dt"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="WsA-of-BeH"/>
+                            <constraint firstItem="uYr-V4-PYM" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="YgQ-QI-Tqn"/>
                             <constraint firstItem="L0M-Ch-DYw" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="aMj-Go-fKF"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="trailing" secondItem="L0M-Ch-DYw" secondAttribute="trailing" id="c7u-Mm-qzs"/>
                             <constraint firstAttribute="trailing" secondItem="M3A-8q-kT1" secondAttribute="trailing" id="eRQ-fI-zhl"/>
                             <constraint firstItem="L0M-Ch-DYw" firstAttribute="top" secondItem="Dbh-k7-TDt" secondAttribute="bottom" constant="12" id="hKh-co-Lb6"/>
+                            <constraint firstItem="hVO-tY-I3l" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-1.5" id="hct-YN-z79"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="mcv-wV-0xO"/>
                             <constraint firstItem="qY1-OW-n4q" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="qsc-Zn-4mc"/>
                         </constraints>
@@ -275,11 +316,13 @@
                         <outlet property="blurViewMain" destination="4wt-R8-52e" id="cOx-gS-J2d"/>
                         <outlet property="doPhotoBtn" destination="oC4-uG-gQP" id="Cmh-Ne-Zy7"/>
                         <outlet property="doVideoBtn" destination="566-6D-xDQ" id="oiP-wT-khK"/>
+                        <outlet property="enablePermsView" destination="hVO-tY-I3l" id="Xui-UQ-Ic2"/>
                         <outlet property="gridHostView" destination="qY1-OW-n4q" id="tuo-ym-zP5"/>
                         <outlet property="menuHostView" destination="KfB-Tn-urK" id="3cX-ji-eWZ"/>
                         <outlet property="myCamView" destination="M3A-8q-kT1" id="Acg-PJ-crH"/>
                         <outlet property="resModePicker" destination="mxA-BS-Ecp" id="Sb3-Hb-ehA"/>
                         <outlet property="resolutionBlurView" destination="Dbh-k7-TDt" id="qm7-W1-XAq"/>
+                        <outlet property="resolutionHostBlurView" destination="Dbh-k7-TDt" id="9Mz-hY-2rv"/>
                         <outlet property="videoCounterLabel" destination="705-P4-kWN" id="h2k-wv-N2Q"/>
                         <outlet property="videoRecordIndicator" destination="4hZ-f4-6z0" id="xIT-63-mwz"/>
                     </connections>
@@ -469,7 +512,7 @@
                                                                 <rect key="frame" x="0.0" y="22" width="240" height="70"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rg2-5T-hct" id="aKP-Sl-ckc">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4231x4234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s71-nq-Skw">
@@ -542,7 +585,7 @@
                                                                 <rect key="frame" x="0.0" y="92" width="240" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KmU-0r-p2W" id="n1y-wN-dAT">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-37-u8j">
@@ -907,6 +950,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cio_inapp_ico_gray" width="50" height="50"/>
         <image name="device_orientation" width="32" height="32"/>
         <image name="first" width="30" height="30"/>
         <image name="flash_auto" width="36" height="36"/>
