@@ -669,7 +669,7 @@ class FirstViewController:
         }
 
         currentOrientation = orientationNew;
-
+        
         setPreviewLayerOrientation(currentOrientation)
     }
 
@@ -700,9 +700,18 @@ class FirstViewController:
             default:
                 break
             }
-
-            self.captureVideoOut?.connection(withMediaType: AVMediaTypeVideo).videoOrientation = self.currentPreviewLayerOrientation
-            self.captureStillImageOut?.connection(withMediaType: AVMediaTypeVideo).videoOrientation = self.currentPreviewLayerOrientation
+            
+            guard let videoConnection = self.captureVideoOut?.connection(withMediaType: AVMediaTypeVideo) else {
+                return
+            }
+            
+            videoConnection.videoOrientation = self.currentPreviewLayerOrientation
+            
+            guard let photoConnection = self.captureStillImageOut?.connection(withMediaType: AVMediaTypeVideo) else {
+                return
+            }
+            
+            photoConnection.videoOrientation = self.currentPreviewLayerOrientation
         }
     }
 
