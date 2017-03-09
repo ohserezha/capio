@@ -53,9 +53,9 @@ class ResolutionViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     var activeResolutionFormat: ResolutionFormat {
         set {
-            
+            //todo: figure a better way to pass the index right away here instead of lookup
             let rowIndex = resolutionFormatsArray.index { (format: ResolutionFormat) -> Bool in
-                return format.photoResolution.width == newValue.photoResolution.width && format.videoResolution.height == newValue.videoResolution.height && format.name == newValue.name
+                return format.photoResolution.width == newValue.photoResolution.width && format.videoResolution.height == newValue.videoResolution.height && format.name == newValue.name && format.fpsRange == newValue.fpsRange && format.isSlomo == newValue.isSlomo
             }
             
             let cell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! PickerCell

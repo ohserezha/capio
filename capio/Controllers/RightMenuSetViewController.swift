@@ -111,9 +111,17 @@ class RightMenuSetViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    var flashModeState: AVCaptureFlashMode? {
-        didSet {
-            flashModeRawState = (flashModeState?.rawValue)!
+    
+    private var _flashModeState: AVCaptureFlashMode  = .off
+
+    var flashModeState: AVCaptureFlashMode {
+        set {
+            _flashModeState = newValue
+            flashModeRawState = _flashModeState.rawValue
+        }
+        
+        get {
+            return self._flashModeState
         }
     }
     
@@ -149,8 +157,7 @@ class RightMenuSetViewController: UIViewController, UIPickerViewDelegate, UIPick
         isOrientationSwitchEnabled  = true
         setOrientation(orientationState!)
         
-        flashModeState              = .off
-        setFlashMode(flashModeState!)
+        setFlashMode(flashModeState)
         
         timerView.layer.masksToBounds   = true
         timerScale                      = .off
@@ -234,7 +241,7 @@ class RightMenuSetViewController: UIViewController, UIPickerViewDelegate, UIPick
             //todo: do a better cal for state than <=2
             flashModeState = newVal != nil && (newVal?.rawValue)! <= 2 ? newVal! : AVCaptureFlashMode.off
             
-            setFlashMode(flashModeState!)
+            setFlashMode(flashModeState)
         }
     }
     

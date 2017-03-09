@@ -16,8 +16,8 @@
 		374B45911E3C518E00BB727F /* CameraMenuContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B458F1E3C518E00BB727F /* CameraMenuContentController.swift */; };
 		374B45921E3C518E00BB727F /* CameraMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374B45901E3C518E00BB727F /* CameraMenuTableViewCell.swift */; };
 		3779378E1D45A33E004C86A4 /* Pods_capio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377937891D45A335004C86A4 /* Pods_capio.framework */; };
+		377E09FA1E6F5636007EA4ED /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377E09F91E6F5636007EA4ED /* CaptureSessionManager.swift */; };
 		37A596BB1E56A9C500FC6194 /* FocusZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A596BA1E56A9C500FC6194 /* FocusZoomViewController.swift */; };
-		37AFDD7A1E68369F00D8FE6A /* CameraTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AFDD791E68369F00D8FE6A /* CameraTimerManager.swift */; };
 		37D63F791D45A608009CD6D9 /* CameraOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */; };
 		37E25FF91D32DB6D00644207 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E25FF81D32DB6D00644207 /* AppDelegate.swift */; };
 		37E25FFB1D32DB6D00644207 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E25FFA1D32DB6D00644207 /* FirstViewController.swift */; };
@@ -134,8 +134,8 @@
 		374B458F1E3C518E00BB727F /* CameraMenuContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraMenuContentController.swift; sourceTree = "<group>"; };
 		374B45901E3C518E00BB727F /* CameraMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraMenuTableViewCell.swift; sourceTree = "<group>"; };
 		3779377C1D45A334004C86A4 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		377E09F91E6F5636007EA4ED /* CaptureSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		37A596BA1E56A9C500FC6194 /* FocusZoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusZoomViewController.swift; sourceTree = "<group>"; };
-		37AFDD791E68369F00D8FE6A /* CameraTimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTimerManager.swift; sourceTree = "<group>"; };
 		37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraOptionsViewController.swift; sourceTree = "<group>"; };
 		37E25FF51D32DB6D00644207 /* capio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = capio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37E25FF81D32DB6D00644207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 				37A596BA1E56A9C500FC6194 /* FocusZoomViewController.swift */,
 				374B458F1E3C518E00BB727F /* CameraMenuContentController.swift */,
 				374B45901E3C518E00BB727F /* CameraMenuTableViewCell.swift */,
-				37AFDD791E68369F00D8FE6A /* CameraTimerManager.swift */,
+				377E09F91E6F5636007EA4ED /* CaptureSessionManager.swift */,
 				37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */,
 				3740AE201E502A24004DE9BE /* MenuHostView.swift */,
 				3740AE131E5001E4004DE9BE /* ResolutionViewController.swift */,
@@ -677,9 +677,9 @@
 			files = (
 				37D63F791D45A608009CD6D9 /* CameraOptionsViewController.swift in Sources */,
 				3706CCA01E5D4D8300E4EC77 /* RightMenuSetViewController.swift in Sources */,
-				37AFDD7A1E68369F00D8FE6A /* CameraTimerManager.swift in Sources */,
 				3740AE211E502A24004DE9BE /* MenuHostView.swift in Sources */,
 				37E25FF91D32DB6D00644207 /* AppDelegate.swift in Sources */,
+				377E09FA1E6F5636007EA4ED /* CaptureSessionManager.swift in Sources */,
 				3740AE141E5001E4004DE9BE /* ResolutionViewController.swift in Sources */,
 				372D1DA21E647014006D740B /* GridManager.swift in Sources */,
 				37A596BB1E56A9C500FC6194 /* FocusZoomViewController.swift in Sources */,

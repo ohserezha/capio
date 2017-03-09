@@ -50,6 +50,7 @@ class FocusZoomViewController: UIViewController {
     func disolve() {
         bounceTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true, block: { (timer) in
             UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseInOut, animations: {
+                //todo -> exception flies here on app's terminate
                 self.view.alpha = floor(10*self.view.alpha) == 2 ? 0.45 : 0.2;
             })
         })
