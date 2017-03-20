@@ -63,19 +63,19 @@ class MenuHostView: SharedBlurView {
             switch index {
                 
             case 0:
-                (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.focus)
+                (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsTypes.focus)
                 activeSliderPresent = true
                 break
             case 1:
-                (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.shutter)
+                (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsTypes.shutter)
                 activeSliderPresent = true
                 break
             case 2:
-                (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.iso)
+                (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsTypes.iso)
                 activeSliderPresent = true
                 break
             case 3:
-                (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsViewController.CameraOptionsTypes.temperature)
+                (self.activeSubviewController as! CameraOptionsViewController).setActiveSlider(CameraOptionsTypes.temperature)
                 activeSliderPresent = true
                 break
             default:

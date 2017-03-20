@@ -12,11 +12,17 @@ target 'capio' do
 
   pod 'CariocaMenu', :git => 'https://github.com/ronanamsterdam/cariocamenu.git', :branch => '_rz-views-state-collision'
 
+  pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift'
+  pod 'RxCocoa', :git => 'https://github.com/ReactiveX/RxSwift'
+
+
   # Pods for capio
 
   target 'capioTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxBlocking', :git => 'https://github.com/ReactiveX/RxSwift'
+    pod 'RxTest',     :git => 'https://github.com/ReactiveX/RxSwift'
   end
 
   target 'capioUITests' do
