@@ -694,6 +694,26 @@ class SharedBlurView: UIVisualEffectView {
         super.init(coder: aDecoder)
         self.layer.masksToBounds    = true
         self.layer.cornerRadius     = 5
+    }    
+}
+
+class SharedButtonView: UIButton {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+            self.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
+            self.transform = CGAffineTransform.init(translationX: 2, y: 0)
+            self.alpha = 0.5
+        })
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+            self.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+            self.transform = CGAffineTransform.init(translationX: -2, y: 0)
+            self.alpha = 1
+        })
     }
 }
 
