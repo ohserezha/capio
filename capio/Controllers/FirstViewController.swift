@@ -53,9 +53,7 @@ class FirstViewController:
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate,
     UIGestureRecognizerDelegate,
-    CariocaMenuDelegate,
-    UIPickerViewDelegate,
-    UIPickerViewDataSource {
+    CariocaMenuDelegate {
 
     let VIDEO_RECORD_INTERVAL_COUNTDOWN:        Double = 1
 
@@ -64,13 +62,9 @@ class FirstViewController:
     @IBOutlet var doVideoBtn:                   UIButton!
     @IBOutlet var actionToolbar:                UIToolbar!
     @IBOutlet var menuHostView:                 MenuHostView!
-    @IBOutlet var resolutionBlurView:           UIVisualEffectView!
     @IBOutlet var FPSLabel:                     UILabel!
-    @IBOutlet var sloMoIndicatorLabel:          UILabel!
-    @IBOutlet var resolutionChangeBtn:          UIButton!
     @IBOutlet var videoCounterLabel:            UILabel!
     @IBOutlet var videoRecordIndicator:         UIImageView!
-    @IBOutlet var resModePicker:                UIPickerView!
     @IBOutlet var resolutionHostBlurView:       SharedBlurView!
     @IBOutlet var enablePermsView:              SharedBlurView!
     @IBOutlet var gridHostView:                 UIView!
@@ -88,6 +82,7 @@ class FirstViewController:
     //menu controllers here
     private var cameraOptionsViewController:    CameraOptionsViewController?
     private var cameraSecondaryOptions:         RightMenuSetViewController?
+    private var cameraResolutionSideMenu:       ResolutionSideMenuViewController?
     private var cameraResolutionMenu:           ResolutionViewController?
 
     private var focusZoomView:                  FocusZoomViewController?
@@ -129,42 +124,11 @@ class FirstViewController:
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    }
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.captureSessionManager.resolutionFormatsArray.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.setResolution(self.captureSessionManager.resolutionFormatsArray[row])
-        self.cameraResolutionMenu?.activeResolutionFormat = self.captureSessionManager.activeResolutionFormat
-    }
-
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 80
-    }
-
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-
-        var pickerCell = view as! ResPickerView!
-        if pickerCell == nil {
-            pickerCell = ResPickerView.init(frame: CGRect.init(x: 0, y: 0, width: 50, height: 80),
-                _name: self.captureSessionManager.resolutionFormatsArray[row].name,
-                _fps: String(self.captureSessionManager.resolutionFormatsArray[row].fpsRange.maxFrameRate),
-                _isSlomo: self.captureSessionManager.resolutionFormatsArray[row].isSlomo
-            )
-        }
-
-        return pickerCell!
-    }
+    }  
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
-    }
+    }    
 
     /////////////////// Carioca Menu Overrides START
 
@@ -336,27 +300,21 @@ class FirstViewController:
     }
 
     open func onShowResOptions() {
-        AudioServicesPlaySystemSound(1519)
         if isAppUsable {
-        if (menuHostView.activeMenuType == .cameraSliderMenu) {
-            cariocaMenuViewController?.menuToDefault()
-        }
-
-        hideActiveSetting() { _ in
-                if(self.cameraResolutionMenu == nil) {
-                    self.cameraResolutionMenu = self.storyboard?.instantiateViewController(withIdentifier: "CameraResolutionMenu") as? ResolutionViewController
+            if (menuHostView.activeMenuType != .resolutionMenu) {
+                if (menuHostView.activeMenuType == .cameraSliderMenu) {
+                    cariocaMenuViewController?.menuToDefault()
                 }
-
-                self.cameraResolutionMenu?.resolutionFormatsArray = self.captureSessionManager.resolutionFormatsArray
-
-                self.menuHostView.setActiveMenu(self.cameraResolutionMenu!, menuType: .resolutionMenu)
-
-                self.cameraResolutionMenu?.activeResolutionFormat = self.captureSessionManager.activeResolutionFormat
-
-                self.showActiveSetting()
-
-                //todo -> figureout a better way of propagating back to parent
-                self.cameraResolutionMenu?.addObserver(self, forKeyPath: "selectedRowIndex", options: NSKeyValueObservingOptions.new, context: nil)
+                
+                hideActiveSetting() { _ in
+                    if(self.cameraResolutionMenu == nil) {
+                        self.cameraResolutionMenu = self.storyboard?.instantiateViewController(withIdentifier: "CameraResolutionMenu") as? ResolutionViewController
+                    }
+                    
+                    self.menuHostView.setActiveMenu(self.cameraResolutionMenu!, menuType: .resolutionMenu)
+                    
+                    self.showActiveSetting()
+                }
             }
         }
     }
@@ -403,6 +361,7 @@ class FirstViewController:
     func startStopVideoCounter(start: Bool) {
         if start {
             //video countdown counter starts here
+            
             UIView.animate(withDuration: self.VIDEO_RECORD_INTERVAL_COUNTDOWN/2, delay: 0, options: .curveEaseOut, animations: {
                 self.videoRecordIndicator.alpha = 0.5
                 self.videoCounterLabel.alpha = 1.0
@@ -505,7 +464,8 @@ class FirstViewController:
     }
 
     private func processUi() {
-
+        //TODO: re-factor the method! it's too damn big
+        
         let camViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.handlerCamViewTap))
         camViewTapRecognizer.numberOfTapsRequired = 1
         camViewTapRecognizer.numberOfTouchesRequired = 1
@@ -536,22 +496,19 @@ class FirstViewController:
 
         setupCameraSettingsSwipeMenu()
 
-        resModePicker.dataSource = self
-        resModePicker.delegate = self
-
-        let resTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.onShowResOptions))
-        
-        resTapRecognizer.numberOfTapsRequired = 1
-        resTapRecognizer.numberOfTouchesRequired = 1
-        resTapRecognizer.delegate = self
-
-        resModePicker.addGestureRecognizer(resTapRecognizer)
-
         cameraSecondaryOptions = self.storyboard?.instantiateViewController(withIdentifier: "RightMenuViewController") as? RightMenuSetViewController
 
         view.addSubview((cameraSecondaryOptions?.view)!)
 
         cameraSecondaryOptions?.view.transform = CGAffineTransform.init(translationX: view.bounds.width-(cameraSecondaryOptions?.view.bounds.width)! + 5, y: view.bounds.height - (cameraSecondaryOptions?.view.bounds.height)! - 100)
+        
+        cameraResolutionSideMenu = self.storyboard?.instantiateViewController(withIdentifier: "ResolutionSideMenuViewController") as? ResolutionSideMenuViewController
+        
+        view.addSubview((cameraResolutionSideMenu?.view)!)
+
+        cameraResolutionSideMenu?.view.transform = CGAffineTransform.init(translationX: -2, y: view.bounds.height - (cameraResolutionSideMenu?.view.bounds.height)! - 56)
+        
+        cameraResolutionSideMenu?.setTouchEndCb(cb: onShowResOptions)
 
         self.cameraSecondaryOptions?.addObserver(self, forKeyPath: "orientationRawState", options: NSKeyValueObservingOptions.new, context: nil)
         self.cameraSecondaryOptions?.addObserver(self, forKeyPath: "gridRawState", options: NSKeyValueObservingOptions.new, context: nil)
@@ -559,9 +516,6 @@ class FirstViewController:
 
         doPhotoBtn.processIcons();
         doVideoBtn.processIcons();
-        
-        resolutionBlurView.layer.borderWidth = 1
-        resolutionBlurView.layer.borderColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2).cgColor
     }
 
     private func enableUi() {
@@ -571,14 +525,15 @@ class FirstViewController:
             self.doVideoBtn.isEnabled = true
             self.doVideoBtn.alpha = 1
             self.cameraSecondaryOptions?.view.isHidden = false
-            self.resolutionHostBlurView?.isHidden = false
+            self.cameraResolutionSideMenu?.view.isHidden = false
             self.enablePermsView.isHidden = true
 
             if (self.optionsMenu?.hostView != nil) {
                 self.optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
             }
-
-            self.resModePicker.reloadComponent(0)
+            
+            //todo -> reload UI method
+            self.cameraResolutionSideMenu?.resModePicker.reloadComponent(0)
         })
     }
 
@@ -588,7 +543,7 @@ class FirstViewController:
         doVideoBtn.isEnabled = false
         doVideoBtn.alpha = 0.4
         cameraSecondaryOptions?.view.isHidden = true
-        resolutionHostBlurView?.isHidden = true
+        cameraResolutionSideMenu?.view.isHidden = true
         if (!areAnyStatesNotDetermined) {
             enablePermsView.isHidden = false
         }
@@ -620,53 +575,45 @@ class FirstViewController:
         if isAppUsable {
             menuHostView.center.x = self.view.center.x
 
-            menuHostView.transform = CGAffineTransform.init(translationX: 0, y: view.bounds.height/2 + self.menuHostView.bounds.height + self.actionToolbar.bounds.height
-            )
+            var tBefore = CGAffineTransform.identity
+            tBefore = tBefore.translatedBy(x: 0, y: self.view.bounds.height/2 + self.menuHostView.bounds.height + self.actionToolbar.bounds.height)
+            tBefore = tBefore.scaledBy(x: 0.6, y: 1)
+            
+            menuHostView.transform = tBefore
+            
             menuHostView.isHidden = false
 
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                self.menuHostView.transform = CGAffineTransform.init(translationX: 0, y:
-                    self.view.bounds.height/2 - self.menuHostView.bounds.height - self.actionToolbar.bounds.height/2
-                )
+                var tAfter = CGAffineTransform.identity
+                tAfter = tAfter.translatedBy(x: 0, y: self.view.bounds.height/2 - self.menuHostView.bounds.height - self.actionToolbar.bounds.height/2)
+                tAfter = tAfter.scaledBy(x: 1, y: 1)
+                
+                self.menuHostView.transform = tAfter
             })
         }
     }
 
     private func hideActiveSetting(_ completion: @escaping (_ result: AnyObject) -> Void) {
+        
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.menuHostView.transform = CGAffineTransform.init(translationX: 0, y: self.view.bounds.height/2 + self.menuHostView.bounds.height + self.actionToolbar.bounds.height
-            )
+            
+            var t = CGAffineTransform.identity
+            t = t.translatedBy(x: 0, y: self.view.bounds.height/2 + self.menuHostView.bounds.height + self.actionToolbar.bounds.height)
+            t = t.scaledBy(x: 1.4, y: 1)
+            
+            self.menuHostView.transform = t
         }) { (success:Bool) in
             self.menuHostView.isHidden = true
-
-            if(self.menuHostView.activeMenuType == .resolutionMenu) {
-                do {
-                    try self.cameraResolutionMenu?.removeObserver(self, forKeyPath: "selectedRowIndex")
-                } catch {
-                    print("[hideActiveSetting] " + String(error.localizedDescription))
-                }
-
-            }
 
             self.menuHostView.unsetActiveMenu()
             completion(success as AnyObject)
         }
     }
 
-    private func setResolution(_ newResFormat: ResolutionFormat) {
-        self.captureSessionManager.setResolution(newResFormat)
-    }
-
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         let _keyPath: String = keyPath == nil ? "" : keyPath!
 
         switch _keyPath {
-            case "selectedRowIndex":
-                let row = change?[NSKeyValueChangeKey.newKey] as! Int
-                if (self.captureSessionManager.activeResolutionFormat != self.captureSessionManager.resolutionFormatsArray[row]) {
-                    self.resModePicker.selectRow(row, inComponent: 0, animated: true)
-                    self.setResolution(self.captureSessionManager.resolutionFormatsArray[row])
-                }
             case "orientationRawState":
                 self.captureSessionManager.onLockUnLockOrientation((self.cameraSecondaryOptions?.orientationState)! as OrientationStates)
             case "gridRawState":
@@ -700,97 +647,27 @@ class SharedBlurView: UIVisualEffectView {
 class SharedButtonView: UIButton {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-            self.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
-            self.transform = CGAffineTransform.init(translationX: 2, y: 0)
-            self.alpha = 0.5
-        })
+        DispatchQueue.global(qos: .userInteractive).async {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                    self.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
+                    self.transform = CGAffineTransform.init(translationX: 2, y: 0)
+                    self.alpha = 0.5
+                })
+            }
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-            self.transform = CGAffineTransform.init(scaleX: 1, y: 1)
-            self.transform = CGAffineTransform.init(translationX: -2, y: 0)
-            self.alpha = 1
-        })
-    }
-}
-
-class ResolutionFormat: NSObject {
-    let photoResolution:  CMVideoDimensions!
-    let videoResolution:  CMVideoDimensions!
-    let fpsRange:         AVFrameRateRange!
-    let isSlomo:          Bool!
-    var isActive:         Bool    = false
-    let format:           AVCaptureDeviceFormat!
-    let name:             String!
-
-    init(_format: AVCaptureDeviceFormat, _frameRateObj: AVFrameRateRange) {
-        videoResolution   = CMVideoFormatDescriptionGetDimensions(_format.formatDescription)
-        photoResolution   = _format.highResolutionStillImageDimensions
-        fpsRange          = _frameRateObj
-        isSlomo           = _frameRateObj.maxFrameRate >= 120.0 //well technically it's 104.0
-        format            = _format
-        name              = String(Double(videoResolution.width)/1000.0) + "K"
-    }
-}
-
-class ResPickerView: UIView {
-
-    var name: String!
-    var fps:    String!
-    var isSlomo: Bool = false
-
-    private var fpsLabel: UILabel!
-    private var nameLabel: UILabel!
-    private var slomoLabel: UILabel!
-
-    init(
-        frame: CGRect,
-        _name: String,
-        _fps:  String,
-        _isSlomo: Bool = false) {
-
-        super.init(frame: frame)
-
-        name    = _name
-        fps     =   _fps
-        isSlomo = _isSlomo
-
-        createFpsLabelView()
-        createNameView()
-        createSloMoView()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func createFpsLabelView() {
-        fpsLabel = UILabel.init(frame: CGRect.init(x: 0, y: 8, width: 50, height: 20))
-        fpsLabel.textAlignment = .center
-        fpsLabel.font = fpsLabel.font.withSize(9)
-        fpsLabel.text = "FPS" + fps
-        addSubview(fpsLabel)
-    }
-
-    func createNameView() {
-        nameLabel = UILabel.init(frame: CGRect.init(x: 0, y: 28, width: 50, height: 20))
-        nameLabel.textAlignment = .center
-        nameLabel.text = name
-
-        addSubview(nameLabel)
-    }
-
-    func createSloMoView() {
-
-        slomoLabel = UILabel.init(frame: CGRect.init(x: 0, y: 50, width: 50, height: 20))
-        slomoLabel.textAlignment = .center
-        slomoLabel.font = fpsLabel.font.withSize(9)
-        slomoLabel.text = "SLO-MO"
-
-        slomoLabel.alpha = isSlomo == true ? 1 : 0.4
-        addSubview(slomoLabel)
+        DispatchQueue.global(qos: .userInteractive).async {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                    self.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                    self.transform = CGAffineTransform.init(translationX: -2, y: 0)
+                    self.alpha = 1
+                })
+            }
+        }
     }
 }

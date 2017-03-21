@@ -45,31 +45,14 @@ class PickerCell: UITableViewCell {
 }
 
 class ResolutionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+
+    var captureSessionManager:                  CaptureSessionManager! = CaptureSessionManager.sharedInstance
     
+    //todo: do a local hot observer from cameraSettingsObservable
+
     var menu:[ResMenuType] = [ResMenuType]()
-    var resolutionFormatsArray: [ResolutionFormat] = [ResolutionFormat]()
-    
-    dynamic var selectedRowIndex: Int = 0
-    
-    var activeResolutionFormat: ResolutionFormat {
-        set {
-            //todo: figure a better way to pass the index right away here instead of lookup
-            let rowIndex = resolutionFormatsArray.index { (format: ResolutionFormat) -> Bool in
-                return format.photoResolution.width == newValue.photoResolution.width && format.videoResolution.height == newValue.videoResolution.height && format.name == newValue.name && format.fpsRange == newValue.fpsRange && format.isSlomo == newValue.isSlomo
-            }
-            
-            let cell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! PickerCell
-            
-            cell.resPicker.selectRow(rowIndex!, inComponent: 0, animated: true)
-            onPickerRowSelected(rowIndex!)
-        }
-        get {
-            return self.activeResolutionFormat
-        }
-    }
     
     @IBOutlet var tableView: UITableView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +61,7 @@ class ResolutionViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         menu.append(.label)
         menu.append(.picker)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,15 +70,17 @@ class ResolutionViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        processSubscribers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -102,11 +88,11 @@ class ResolutionViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return resolutionFormatsArray.count
+        return captureSessionManager.resolutionFormatsArray.count
     }
     
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return resolutionFormatsArray[row].name
+        return captureSessionManager.resolutionFormatsArray[row].name
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -116,13 +102,13 @@ class ResolutionViewController: UIViewController, UIPickerViewDelegate, UIPicker
     private func onPickerRowSelected(_ row: Int) {
         let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! LabelCell
         
-        cell.videoResDimensions = resolutionFormatsArray[row].videoResolution
-        cell.photoResDimensions = resolutionFormatsArray[row].photoResolution
+        cell.videoResDimensions = captureSessionManager.resolutionFormatsArray[row].videoResolution
+        cell.photoResDimensions = captureSessionManager.resolutionFormatsArray[row].photoResolution
         
-        cell.fpsLabel.text = String(Int(resolutionFormatsArray[row].fpsRange.maxFrameRate))
-        cell.slomoLabel.alpha = resolutionFormatsArray[row].isSlomo == true ? 1 : 0.4
+        cell.fpsLabel.text = String(Int(captureSessionManager.resolutionFormatsArray[row].fpsRange.maxFrameRate))
+        cell.slomoLabel.alpha = captureSessionManager.resolutionFormatsArray[row].isSlomo == true ? 1 : 0.4
         
-        selectedRowIndex = row
+        captureSessionManager.setResolution(captureSessionManager.resolutionFormatsArray[row])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -158,5 +144,25 @@ class ResolutionViewController: UIViewController, UIPickerViewDelegate, UIPicker
         case .picker:
             return 60
         }
+    }
+    
+    private var currentBuffedFormat: ResolutionFormat!
+    
+    private func processSubscribers() {
+        captureSessionManager.cameraSettingsObservable.subscribe(onNext: { (newCameraSettings: CameraSessionSettings) in
+            if newCameraSettings.activeResFormat != nil && self.currentBuffedFormat != newCameraSettings.activeResFormat {
+                let newFormat = newCameraSettings.activeResFormat!
+                self.currentBuffedFormat = newCameraSettings.activeResFormat
+                //todo: figure a better way to pass the index right away here instead of lookup
+                let rowIndex = self.captureSessionManager.resolutionFormatsArray.index { (format: ResolutionFormat) -> Bool in
+                    return format.photoResolution.width == newFormat.photoResolution.width && format.videoResolution.height == newFormat.videoResolution.height && format.name == newFormat.name && format.fpsRange == newFormat.fpsRange && format.isSlomo == newFormat.isSlomo
+                }
+                
+                let cell = self.tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! PickerCell
+                
+                cell.resPicker.selectRow(rowIndex!, inComponent: 0, animated: true)
+                self.onPickerRowSelected(rowIndex!)
+            }
+        })
     }
 }

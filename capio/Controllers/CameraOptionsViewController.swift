@@ -16,6 +16,8 @@ UIViewController,
 ScalePickerDelegate {
 
     var captureSessionManager:CaptureSessionManager! = CaptureSessionManager.sharedInstance
+    
+    //todo: do a local hot observer from cameraSettingsObservable
 
     private var activeSlider:               ScalePicker!
     private var activeSliderType:           CameraOptionsTypes = CameraOptionsTypes.focus

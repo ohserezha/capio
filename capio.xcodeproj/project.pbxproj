@@ -10,6 +10,7 @@
 		1B494BC1E74356A672F0C38E /* Pods_capioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E700FAE66DD075380AB694 /* Pods_capioTests.framework */; };
 		3571FA3147F413E95928F1CE /* Pods_capioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE02DE45CE8EB6D4AEF93DD /* Pods_capioUITests.framework */; };
 		3706CCA01E5D4D8300E4EC77 /* RightMenuSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706CC9F1E5D4D8300E4EC77 /* RightMenuSetViewController.swift */; };
+		370B6D2C1E82B2FF00B51A1B /* ResolutionSideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B6D2B1E82B2FF00B51A1B /* ResolutionSideMenuViewController.swift */; };
 		372D1DA21E647014006D740B /* GridManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372D1DA11E647014006D740B /* GridManager.swift */; };
 		3740AE141E5001E4004DE9BE /* ResolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740AE131E5001E4004DE9BE /* ResolutionViewController.swift */; };
 		3740AE211E502A24004DE9BE /* MenuHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3740AE201E502A24004DE9BE /* MenuHostView.swift */; };
@@ -30,6 +31,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		370B6D3C1E82B30000B51A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2F006D7975A217F7251E72FE5F0798D2;
+			remoteInfo = RxBlocking;
+		};
+		370B6D3E1E82B30000B51A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 543F5DE9F2A23A550C6D0BF7AF03E98C;
+			remoteInfo = RxCocoa;
+		};
+		370B6D401E82B30000B51A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E193EF8C88629F64B734B287BD8C4DF6;
+			remoteInfo = RxSwift;
+		};
+		370B6D421E82B30000B51A1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 837BA08919D6F41D9C26343F45379BF8;
+			remoteInfo = RxTest;
+		};
 		371C33971D5AD82900E20BA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
@@ -128,6 +157,7 @@
 		211DA7C77B9A00C1F55E778B /* Pods-capio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capio/Pods-capio.debug.xcconfig"; sourceTree = "<group>"; };
 		367359E6A01C5AE98BA957BA /* Pods-capioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-capioUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-capioUITests/Pods-capioUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3706CC9F1E5D4D8300E4EC77 /* RightMenuSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightMenuSetViewController.swift; sourceTree = "<group>"; };
+		370B6D2B1E82B2FF00B51A1B /* ResolutionSideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResolutionSideMenuViewController.swift; sourceTree = "<group>"; };
 		372D1DA11E647014006D740B /* GridManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridManager.swift; sourceTree = "<group>"; };
 		3740AE131E5001E4004DE9BE /* ResolutionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResolutionViewController.swift; sourceTree = "<group>"; };
 		3740AE201E502A24004DE9BE /* MenuHostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHostView.swift; sourceTree = "<group>"; };
@@ -213,6 +243,10 @@
 				377937891D45A335004C86A4 /* Pods_capio.framework */,
 				3779378B1D45A335004C86A4 /* Pods_capioTests.framework */,
 				3779378D1D45A335004C86A4 /* Pods_capioUITests.framework */,
+				370B6D3D1E82B30000B51A1B /* RxBlocking.framework */,
+				370B6D3F1E82B30000B51A1B /* RxCocoa.framework */,
+				370B6D411E82B30000B51A1B /* RxSwift.framework */,
+				370B6D431E82B30000B51A1B /* RxTest.framework */,
 				3749F3CA1E399D4B00A39DFA /* ScalePicker.framework */,
 			);
 			name = Products;
@@ -229,6 +263,7 @@
 				37D63F781D45A608009CD6D9 /* CameraOptionsViewController.swift */,
 				3740AE201E502A24004DE9BE /* MenuHostView.swift */,
 				3740AE131E5001E4004DE9BE /* ResolutionViewController.swift */,
+				370B6D2B1E82B2FF00B51A1B /* ResolutionSideMenuViewController.swift */,
 				3706CC9F1E5D4D8300E4EC77 /* RightMenuSetViewController.swift */,
 				372D1DA11E647014006D740B /* GridManager.swift */,
 			);
@@ -426,6 +461,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		370B6D3D1E82B30000B51A1B /* RxBlocking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxBlocking.framework;
+			remoteRef = 370B6D3C1E82B30000B51A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		370B6D3F1E82B30000B51A1B /* RxCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxCocoa.framework;
+			remoteRef = 370B6D3E1E82B30000B51A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		370B6D411E82B30000B51A1B /* RxSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxSwift.framework;
+			remoteRef = 370B6D401E82B30000B51A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		370B6D431E82B30000B51A1B /* RxTest.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxTest.framework;
+			remoteRef = 370B6D421E82B30000B51A1B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		371C33981D5AD82900E20BA5 /* BRYXBanner.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -677,6 +740,7 @@
 			files = (
 				37D63F791D45A608009CD6D9 /* CameraOptionsViewController.swift in Sources */,
 				3706CCA01E5D4D8300E4EC77 /* RightMenuSetViewController.swift in Sources */,
+				370B6D2C1E82B2FF00B51A1B /* ResolutionSideMenuViewController.swift in Sources */,
 				3740AE211E502A24004DE9BE /* MenuHostView.swift in Sources */,
 				37E25FF91D32DB6D00644207 /* AppDelegate.swift in Sources */,
 				377E09FA1E6F5636007EA4ED /* CaptureSessionManager.swift in Sources */,
