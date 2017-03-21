@@ -220,10 +220,6 @@ class FirstViewController:
         captureImage()
     }
 
-    @IBAction func onResolutionButtonTrigger(_ sender: UIButton) {
-        onShowResOptions()
-    }
-
     @IBAction func onDoVideo(_ sender: UIButton) {
         startStopRecording()
     }
@@ -544,6 +540,7 @@ class FirstViewController:
         resModePicker.delegate = self
 
         let resTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.onShowResOptions))
+        
         resTapRecognizer.numberOfTapsRequired = 1
         resTapRecognizer.numberOfTouchesRequired = 1
         resTapRecognizer.delegate = self
@@ -562,6 +559,9 @@ class FirstViewController:
 
         doPhotoBtn.processIcons();
         doVideoBtn.processIcons();
+        
+        resolutionBlurView.layer.borderWidth = 1
+        resolutionBlurView.layer.borderColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2).cgColor
     }
 
     private func enableUi() {
