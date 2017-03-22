@@ -205,43 +205,12 @@
                                     <blurEffect style="dark"/>
                                 </vibrancyEffect>
                             </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbh-k7-TDt" customClass="SharedBlurView" customModule="capio" customModuleProvider="target">
-                                <rect key="frame" x="-5" y="541" width="65" height="70"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="P3V-SS-1uR">
-                                    <rect key="frame" x="0.0" y="0.0" width="65" height="70"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jud-cm-Zp4">
-                                            <rect key="frame" x="0.0" y="0.0" width="65" height="70"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="FEh-rO-wrl">
-                                                <rect key="frame" x="0.0" y="0.0" width="65" height="70"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxA-BS-Ecp">
-                                                        <rect key="frame" x="5" y="-7" width="60" height="85"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                    </pickerView>
-                                                </subviews>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="dark"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="FV0-aP-dFy"/>
-                                    <constraint firstAttribute="width" constant="65" id="k6p-Sy-bP1"/>
-                                </constraints>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="L0M-Ch-DYw">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                 <items>
                                     <barButtonItem style="plain" id="HPU-VS-u8A">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oC4-uG-gQP">
+                                        <button key="customView" opaque="NO" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oC4-uG-gQP" customClass="SharedButtonView" customModule="capio" customModuleProvider="target">
                                             <rect key="frame" x="16" y="5" width="165" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
@@ -255,7 +224,7 @@
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="GQ0-tu-PgG">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="566-6D-xDQ">
+                                        <button key="customView" opaque="NO" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="566-6D-xDQ" customClass="SharedButtonView" customModule="capio" customModuleProvider="target">
                                             <rect key="frame" x="191" y="2" width="165" height="41"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
@@ -283,7 +252,6 @@
                             <constraint firstItem="hVO-tY-I3l" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Fru-wp-Xqc"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Ifo-Ir-NPa"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="L0M-Ch-DYw" secondAttribute="leading" id="M8W-oA-Pib"/>
-                            <constraint firstItem="Dbh-k7-TDt" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="-5" id="NsL-2W-6Mz"/>
                             <constraint firstAttribute="trailing" secondItem="qY1-OW-n4q" secondAttribute="trailing" id="P9M-2G-N5K"/>
                             <constraint firstItem="qY1-OW-n4q" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Qz2-kl-Ehw"/>
                             <constraint firstItem="uYr-V4-PYM" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="RMg-Yw-2dt"/>
@@ -292,7 +260,6 @@
                             <constraint firstItem="L0M-Ch-DYw" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="aMj-Go-fKF"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="trailing" secondItem="L0M-Ch-DYw" secondAttribute="trailing" id="c7u-Mm-qzs"/>
                             <constraint firstAttribute="trailing" secondItem="M3A-8q-kT1" secondAttribute="trailing" id="eRQ-fI-zhl"/>
-                            <constraint firstItem="L0M-Ch-DYw" firstAttribute="top" secondItem="Dbh-k7-TDt" secondAttribute="bottom" constant="12" id="hKh-co-Lb6"/>
                             <constraint firstItem="hVO-tY-I3l" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-1.5" id="hct-YN-z79"/>
                             <constraint firstItem="M3A-8q-kT1" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="mcv-wV-0xO"/>
                             <constraint firstItem="qY1-OW-n4q" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="qsc-Zn-4mc"/>
@@ -320,9 +287,6 @@
                         <outlet property="gridHostView" destination="qY1-OW-n4q" id="tuo-ym-zP5"/>
                         <outlet property="menuHostView" destination="KfB-Tn-urK" id="3cX-ji-eWZ"/>
                         <outlet property="myCamView" destination="M3A-8q-kT1" id="Acg-PJ-crH"/>
-                        <outlet property="resModePicker" destination="mxA-BS-Ecp" id="Sb3-Hb-ehA"/>
-                        <outlet property="resolutionBlurView" destination="Dbh-k7-TDt" id="qm7-W1-XAq"/>
-                        <outlet property="resolutionHostBlurView" destination="Dbh-k7-TDt" id="9Mz-hY-2rv"/>
                         <outlet property="videoCounterLabel" destination="705-P4-kWN" id="h2k-wv-N2Q"/>
                         <outlet property="videoRecordIndicator" destination="4hZ-f4-6z0" id="xIT-63-mwz"/>
                     </connections>
@@ -361,6 +325,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Resolution Side Menu View Controller-->
+        <scene sceneID="HPb-lo-Vrc">
+            <objects>
+                <viewController storyboardIdentifier="ResolutionSideMenuViewController" autoresizesArchivedViewToFullSize="NO" id="euj-oE-Jfm" customClass="ResolutionSideMenuViewController" customModule="capio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FGj-0y-Pug"/>
+                        <viewControllerLayoutGuide type="bottom" id="fbo-Qe-kLc"/>
+                    </layoutGuides>
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ki7-cd-SbD">
+                        <rect key="frame" x="0.0" y="0.0" width="60" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nPT-yD-3YY" customClass="SharedBlurView" customModule="capio" customModuleProvider="target">
+                                <rect key="frame" x="-3" y="0.0" width="65" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" id="nLY-TZ-jCq">
+                                    <rect key="frame" x="0.0" y="0.0" width="65" height="70"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQq-uH-L8u">
+                                            <rect key="frame" x="0.0" y="0.0" width="65" height="70"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" id="RUe-ao-wGP">
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZZ-dY-Bvm">
+                                                        <rect key="frame" x="5" y="0.0" width="60" height="70"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="euj-oE-Jfm" id="Emt-AZ-yAf"/>
+                                                            <outlet property="delegate" destination="euj-oE-Jfm" id="RGX-6I-rey"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="center" fixedFrame="YES" image="indicator" translatesAutoresizingMaskIntoConstraints="NO" id="hCp-bT-dr3">
+                                                        <rect key="frame" x="30" y="5" width="7" height="4"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </imageView>
+                                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="center" fixedFrame="YES" image="indicator_down" translatesAutoresizingMaskIntoConstraints="NO" id="e4e-hC-aPI">
+                                                        <rect key="frame" x="29" y="61" width="7" height="4"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="dark"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="60" height="70"/>
+                    <connections>
+                        <outlet property="resModePicker" destination="hZZ-dY-Bvm" id="XCn-YE-KDO"/>
+                        <outlet property="resolutionBlurView" destination="nPT-yD-3YY" id="pYc-ap-ini"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JAo-xW-CD5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="484.80000000000001" y="219.49025487256372"/>
         </scene>
         <!--Camera Options View Controller-->
         <scene sceneID="GP8-fA-Dyv">
@@ -512,7 +545,7 @@
                                                                 <rect key="frame" x="0.0" y="22" width="240" height="70"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rg2-5T-hct" id="aKP-Sl-ckc">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4231x4234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s71-nq-Skw">
@@ -585,12 +618,20 @@
                                                                 <rect key="frame" x="0.0" y="92" width="240" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KmU-0r-p2W" id="n1y-wN-dAT">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-37-u8j">
                                                                             <rect key="frame" x="0.0" y="1" width="240" height="60.5"/>
                                                                         </pickerView>
+                                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="center" fixedFrame="YES" image="indicator" translatesAutoresizingMaskIntoConstraints="NO" id="B26-YA-Eb7">
+                                                                            <rect key="frame" x="117" y="6" width="7" height="4"/>
+                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                                        </imageView>
+                                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="center" fixedFrame="YES" image="indicator_down" translatesAutoresizingMaskIntoConstraints="NO" id="Sgx-t7-2Yw">
+                                                                            <rect key="frame" x="116" y="51" width="7" height="4"/>
+                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                                        </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
@@ -644,7 +685,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeB-Aa-LJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="952" y="612.59370314842579"/>
+            <point key="canvasLocation" x="952" y="612.14392803598207"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dce-Vy-Bpb">
@@ -959,6 +1000,8 @@
         <image name="grid_double_36pt" width="36" height="36"/>
         <image name="grid_off_36pt" width="36" height="36"/>
         <image name="grid_quad_36pt" width="36" height="36"/>
+        <image name="indicator" width="7" height="4"/>
+        <image name="indicator_down" width="7" height="4"/>
         <image name="lock" width="24" height="24"/>
         <image name="photo" width="24" height="24"/>
         <image name="rotation" width="36" height="36"/>

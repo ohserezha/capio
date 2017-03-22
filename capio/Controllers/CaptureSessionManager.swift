@@ -473,6 +473,8 @@ class CaptureSessionManager:
             } catch {
                 print(error)
             }
+            
+            setAndEmitCameraSettings(self.captureDevice!)
         }
     }
 
@@ -1051,7 +1053,8 @@ class CaptureSessionManager:
             _focusdistance:     focusDistance,
             _flashModeState:    flashModeState,
             _isFlashAvailable:  isFlashAvailable,
-            _recordingState:    recodringState
+            _recordingState:    recodringState,
+            _activeResFormat:   activeResolutionFormat
         ))
     }
 
@@ -1104,6 +1107,8 @@ class CameraSessionSettings {
     let flashModeState:     AVCaptureFlashMode
     let isFlashAvailable:   Bool
     let recordingState:     RecordingStates
+    
+    let activeResFormat:    ResolutionFormat?    
 
     init (
         _iso:               Float                   = 0.0,
@@ -1112,15 +1117,18 @@ class CameraSessionSettings {
         _focusdistance:     Float                   = 0.0,
         _flashModeState:    AVCaptureFlashMode      = .off,
         _isFlashAvailable:  Bool                    = true,
-        _recordingState:    RecordingStates         = .off
+        _recordingState:    RecordingStates         = .off,
+        _activeResFormat:   ResolutionFormat?       = nil
+        
         ) {
         iso              = 	_iso
         shutter          = 	_shutter
-        temperature      =   _temperature
-        focusdistance    =   _focusdistance
-        flashModeState   =   _flashModeState
+        temperature      =  _temperature
+        focusdistance    =  _focusdistance
+        flashModeState   =  _flashModeState
         isFlashAvailable =  _isFlashAvailable
-        recordingState   =   _recordingState
+        recordingState   =  _recordingState
+        activeResFormat  = _activeResFormat
     }
 }
 
@@ -1139,5 +1147,24 @@ class CameraSettingValueObj {
         maxValue    = _maxValue
         minValue    = _minValue
         valueFactor = _valueFactor
+    }
+}
+
+class ResolutionFormat: NSObject {
+    let photoResolution:  CMVideoDimensions!
+    let videoResolution:  CMVideoDimensions!
+    let fpsRange:         AVFrameRateRange!
+    let isSlomo:          Bool!
+    var isActive:         Bool    = false
+    let format:           AVCaptureDeviceFormat!
+    let name:             String!
+    
+    init(_format: AVCaptureDeviceFormat, _frameRateObj: AVFrameRateRange) {
+        videoResolution   = CMVideoFormatDescriptionGetDimensions(_format.formatDescription)
+        photoResolution   = _format.highResolutionStillImageDimensions
+        fpsRange          = _frameRateObj
+        isSlomo           = _frameRateObj.maxFrameRate >= 120.0 //well technically it's 104.0
+        format            = _format
+        name              = String(Double(videoResolution.width)/1000.0) + "K"
     }
 }
