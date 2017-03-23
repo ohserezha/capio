@@ -39,7 +39,7 @@ class CameraMenuContentController: UITableViewController, CariocaMenuDataSource 
     }
         
     func getShapeColor() -> UIColor {
-        return UIColor(red:0.15, green:0.15, blue:0.15, alpha:0.8)
+        return UIColor(red:0.15, green:0.15, blue:0.15, alpha:0.5)
     }
     
     func getBlurStyle() -> UIBlurEffectStyle {

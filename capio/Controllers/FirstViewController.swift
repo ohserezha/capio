@@ -114,7 +114,10 @@ class FirstViewController:
 
         optionsMenu?.addInView(self.view)
         if isAppUsable {
-            optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
+            Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: {_ in
+                self.optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
+            })
+            
         } else {
             optionsMenu?.showIndicator(.right, position: .bottom, offset: 50)
         }
@@ -529,7 +532,9 @@ class FirstViewController:
             self.enablePermsView.isHidden = true
 
             if (self.optionsMenu?.hostView != nil) {
-                self.optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
+                Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: {_ in
+                    self.optionsMenu?.showIndicator(.right, position: .bottom, offset: -50)
+                })
             }
             
             //todo -> reload UI method

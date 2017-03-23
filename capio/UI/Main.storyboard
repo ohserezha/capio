@@ -143,7 +143,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="66"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Please enable all the required permissions: photo library/video/audio" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-OS-gdx">
+                                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Please go to Setting -&gt; cap/IO and enable all the required permissions: Photo / Video / Library" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-OS-gdx">
                                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -225,7 +225,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="GQ0-tu-PgG">
                                         <button key="customView" opaque="NO" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="566-6D-xDQ" customClass="SharedButtonView" customModule="capio" customModuleProvider="target">
-                                            <rect key="frame" x="191" y="2" width="165" height="41"/>
+                                            <rect key="frame" x="191" y="1.5" width="165" height="41"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -545,7 +545,7 @@
                                                                 <rect key="frame" x="0.0" y="22" width="240" height="70"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rg2-5T-hct" id="aKP-Sl-ckc">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="69.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4231x4234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s71-nq-Skw">
@@ -618,7 +618,7 @@
                                                                 <rect key="frame" x="0.0" y="92" width="240" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KmU-0r-p2W" id="n1y-wN-dAT">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="59.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WH5-37-u8j">

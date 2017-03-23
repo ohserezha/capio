@@ -382,11 +382,13 @@ class CaptureSessionManager:
     func onSessionDispose() {
         captureSession?.stopRunning()
         
-        if (captureVideoOut?.isRecording)! {
+        if captureVideoOut != nil && (captureVideoOut?.isRecording)! {
             stopRecording()
         }
         
-        setAndEmitCameraSettings(captureDevice!);
+        if captureDevice != nil {
+            setAndEmitCameraSettings(captureDevice!);
+        }
         
         if let inputs = captureSession?.inputs as? [AVCaptureDeviceInput] {
             for input in inputs {
