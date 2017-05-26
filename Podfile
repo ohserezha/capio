@@ -10,7 +10,7 @@ target 'capio' do
   pod 'BRYXBanner'
   pod 'ScalePicker', :git => 'https://github.com/ronanamsterdam/ScalePicker.git', :branch => '_rz-will-value-change'
 
-  pod 'CariocaMenu', :git => 'https://github.com/ronanamsterdam/cariocamenu.git', :branch => '_rz-views-state-collision'
+  pod 'CariocaMenu', :git => 'https://github.com/ronanamsterdam/cariocamenu.git', :branch => '_rz-blur-shape'
 
   pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift'
   pod 'RxCocoa', :git => 'https://github.com/ReactiveX/RxSwift'

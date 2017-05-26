@@ -66,13 +66,6 @@
 			remoteGlobalIDString = EFA73D18A5F00CBA25C69F04F6AD467D;
 			remoteInfo = BRYXBanner;
 		};
-		371C33991D5AD82900E20BA5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 58E6BA3B801775D9031C3B9ED0F71920;
-			remoteInfo = "BRYXBanner-BRYXBanner";
-		};
 		3749F3C71E399D4B00A39DFA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
@@ -234,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				371C33981D5AD82900E20BA5 /* BRYXBanner.framework */,
-				371C339A1D5AD82900E20BA5 /* BRYXBanner.bundle */,
 				3749F3C81E399D4B00A39DFA /* CariocaMenu.framework */,
 				377937851D45A335004C86A4 /* ElasticTransition.framework */,
 				37DF9EF21DB4425500BBBF72 /* JQSwiftIcon.framework */,
@@ -496,13 +488,6 @@
 			remoteRef = 371C33971D5AD82900E20BA5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		371C339A1D5AD82900E20BA5 /* BRYXBanner.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = BRYXBanner.bundle;
-			remoteRef = 371C33991D5AD82900E20BA5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		3749F3C81E399D4B00A39DFA /* CariocaMenu.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -623,7 +608,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5B93830BF9FAD84497C56FA7 /* [CP] Embed Pods Frameworks */ = {
@@ -653,7 +638,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9A219E4D1515A70968F6852D /* [CP] Embed Pods Frameworks */ = {
@@ -698,7 +683,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C7E44A153E5FDB7F711506C1 /* [CP] Copy Pods Resources */ = {
