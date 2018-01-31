@@ -1,5 +1,6 @@
 # cap/IO
 Photo/Video iphone app that gives full control over camera back to users
+no bulshit ads, promotions or social integration, just pure camera with extended manual/auto functions
 
 ![Alt text](/capio_ico_ArtWrk150x150.png "app_ico_art")
 
@@ -10,6 +11,11 @@ Photo/Video iphone app that gives full control over camera back to users
   pod init
   pod install --verbose
 ```
+### Current Status:
+  - currently project is on hold due to busy schedule it have with other business.
+  - any contribution is welcomed
+  - app currentlu is crashing on lates ios due to last update to version => 11.0
+  - will get back to it first thing once I'm free from ohter duties
 
 ### Current Features List:
   - manually change at any given point following settings:
