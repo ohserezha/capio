@@ -27,10 +27,10 @@ class MenuHostView: SharedBlurView {
         
         switch activeMenuType {
         case .cameraSliderMenu:
-            addSubview(activeSubview!)
+            self.contentView.addSubview(activeSubview!)
             break
         case .resolutionMenu:
-            addSubview(activeSubview!)
+            self.contentView.addSubview(activeSubview!)
         default:
             break
         }
