@@ -143,6 +143,13 @@
 			remoteGlobalIDString = 37E25FF41D32DB6D00644207;
 			remoteInfo = camTest1;
 		};
+		BB2C50D921D919E900E93634 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3779377C1D45A334004C86A4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A696E53A95209A38CF9CA48C38ED02B;
+			remoteInfo = RxAtomic;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -235,6 +242,7 @@
 				377937891D45A335004C86A4 /* Pods_capio.framework */,
 				3779378B1D45A335004C86A4 /* Pods_capioTests.framework */,
 				3779378D1D45A335004C86A4 /* Pods_capioUITests.framework */,
+				BB2C50DA21D919E900E93634 /* RxAtomic.framework */,
 				370B6D3D1E82B30000B51A1B /* RxBlocking.framework */,
 				370B6D3F1E82B30000B51A1B /* RxCocoa.framework */,
 				370B6D411E82B30000B51A1B /* RxSwift.framework */,
@@ -551,6 +559,13 @@
 			remoteRef = 37DF9EF31DB4425500BBBF72 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BB2C50DA21D919E900E93634 /* RxAtomic.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RxAtomic.framework;
+			remoteRef = BB2C50D921D919E900E93634 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -833,6 +848,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -874,6 +890,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
