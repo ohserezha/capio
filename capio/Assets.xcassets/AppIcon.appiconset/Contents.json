@@ -33,7 +33,7 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Icon-40x40@3x-1.png",
+      "filename" : "Icon-40x40@3x.png",
       "scale" : "3x"
     },
     {
@@ -95,15 +95,14 @@
       "scale" : "2x"
     },
     {
-      "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "Icon-83.5@2x.png",
+      "size" : "83.5x83.5",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "capio_ico1024.png",
+      "filename" : "Icon-marketing-1024x1024.png",
       "scale" : "1x"
     }
   ],
