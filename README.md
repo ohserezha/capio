@@ -12,10 +12,9 @@ no bulshit ads, promotions or social integration, just pure camera with extended
   pod install --verbose
 ```
 ### Current Status:
-  - currently project is on hold due to busy schedule I have with other business.
+  31-12-18
+  - restored app's working state 
   - any contribution is welcomed :)
-  - app currently is crashing on lates ios due to last update to version >= ^11.0
-  - will get back to it first thing once I'm free from other duties
 
 ### Current Features List:
   - manually change at any given point following settings:
