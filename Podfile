@@ -8,7 +8,7 @@ target 'capio' do
   pod 'MotionAnimation', :git => 'https://github.com/lkzhao/MotionAnimation.git', :branch => 'swift3'
   pod 'ElasticTransition', :git => 'https://github.com/lkzhao/ElasticTransition.git', :branch => 'swift3'
   pod 'JQSwiftIcon', :git => 'https://github.com/ronanamsterdam/JQSwiftIcon.git', :branch => '_rz-to-swift3'
-  pod 'BRYXBanner', :git => 'https://github.com/bryx-inc/BRYXBanner', :branch => 'master'
+  pod 'BRYXBanner'
   pod 'ScalePicker', :git => 'https://github.com/ronanamsterdam/ScalePicker.git', :branch => '_rz-will-value-change'
 
   pod 'CariocaMenu', :git => 'https://github.com/ronanamsterdam/cariocamenu.git', :branch => '_rz-blur-shape'
