@@ -622,7 +622,7 @@ class FirstViewController:
             case "orientationRawState":
                 self.captureSessionManager.onLockUnLockOrientation((self.cameraSecondaryOptions?.orientationState)! as OrientationStates)
             case "gridRawState":
-                switch (self.cameraSecondaryOptions?.gridState)! as GridFactors {
+                switch (self.cameraSecondaryOptions?.gridState)! as GridFactor {
                 case .off:
                     gridManager.gridFactor = .off
                 case .double:

@@ -61,7 +61,7 @@ class RightMenuSetViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    var gridState: GridFactors! {
+    var gridState: GridFactor! {
         didSet {
             gridRawState = gridState.rawValue
         }
@@ -246,18 +246,18 @@ class RightMenuSetViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     func onGridTap(_ recognizer: UIGestureRecognizer) {
-        let newVal = GridFactors(rawValue: gridRawState + 1)
+        let newGridFactor = GridFactor(rawValue: gridRawState + 1)
         //todo: do a better cal for state than <=2
-        gridState = newVal != nil ? newVal! : GridFactors.off
+        gridState = newGridFactor ?? .off
         
-        setGridMode(gridState!)
+        setGridMode(gridState)
     }
     
     func onTimerTap(_ recogniaer: UIGestureRecognizer) {
         if (timerState != .ticking) {
-            let newVal = TimerScales(rawValue: timerScaleRaw + 1)
+            let newTimerScale = TimerScales(rawValue: timerScaleRaw + 1)
             //todo: do a better cal for state than <=2
-            timerScale = newVal != nil ? newVal! : TimerScales.off
+            timerScale = newTimerScale ?? .off
             
             setTimerMode(timerScale!)
         }
@@ -288,7 +288,7 @@ class RightMenuSetViewController: UIViewController, UIPickerViewDelegate, UIPick
         timePicker.selectRow(timePicker.numberOfRows(inComponent: 0) - 1, inComponent: 0, animated: true)
     }
     
-    private func setGridMode(_ gridMode: GridFactors) {
+    private func setGridMode(_ gridMode: GridFactor) {
         var quadAlpha: CGFloat = 0.0
         var doubleAlpha: CGFloat = 0.0
         var offAlpha: CGFloat = 0.0

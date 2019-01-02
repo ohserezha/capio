@@ -8,83 +8,66 @@
 
 import UIKit
 
-enum GridFactors: Int {
-    case off, double, quad
-}
-
-extension UIView
-{
-    func copyView() -> UIView?
-    {
-        return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as? UIView
-    }
+enum GridFactor: Int {
+  case off = 0
+  case double = 2
+  case quad = 4
 }
 
 class GridManager {
-    
-    let gridLineThikness: CGFloat = 1.0
-    
-    var gridFactor: GridFactors {
-        set {
-            switch newValue {
-            case .off:
-                _gridFactor = 0
-            case .double:
-                _gridFactor = 2
-            case .quad:
-                _gridFactor = 4
-            }
-            _gridFactorRaw = newValue
-            calcGrid()
-        }
-        get {
-            return _gridFactorRaw
-        }
+  
+  let gridLineThikness: CGFloat = 1.0
+  
+  var gridFactor: GridFactor {
+    didSet {
+      calcGrid()
     }
-    private var _gridFactorRaw:     GridFactors = .off
-    private var _gridFactor:        Int = 0
-    
-    private let gridView:           UIView!
-    private let viewDimensions:     CGRect!
-    private let storyBoard:         UIStoryboard!
-    
-    
-    init(_gridView: UIView, _storyBoard: UIStoryboard ,_parentViewDimentions: CGRect) {
-        gridView        = _gridView
-        viewDimensions  = _parentViewDimentions
-        storyBoard      = _storyBoard
+  }
+  
+  private let gridView:           UIView!
+  private let viewDimensions:     CGRect!
+  private let storyBoard:         UIStoryboard!
+  
+  
+  init(gridView: UIView, storyBoard: UIStoryboard ,parentViewDimensions: CGRect) {
+    self.gridView = gridView
+    viewDimensions = parentViewDimensions
+    self.storyBoard = storyBoard
+  }
+  
+  func calcGrid() {
+    gridView.subviews.forEach {
+      $0.removeFromSuperview()
     }
     
-    func calcGrid() {
-        gridView.subviews.forEach({ (view) in
-            view.removeFromSuperview()
-        })
+    if (gridFactor != .off) {
+      let deltaH = viewDimensions.height/CGFloat(gridFactor.rawValue + 1)
+      let deltaW = viewDimensions.width/CGFloat(gridFactor.rawValue + 1)
+      
+      let lineViewController = storyBoard?.instantiateViewController(withIdentifier: "GridLineItem")
+      
+      //horizontal
+      for ind in 1...gridFactor.rawValue {
         
-        if (gridFactor != GridFactors.off) {
-            let deltaH = viewDimensions.height/CGFloat(_gridFactor + 1)
-            let deltaW = viewDimensions.width/CGFloat(_gridFactor + 1)
-            
-            let lineViewController = storyBoard?.instantiateViewController(withIdentifier: "GridLineItem")
-            
-            //horizontal
-            for ind in 1..._gridFactor {
-                
-                let view = lineViewController?.view.copyView()
-                
-                gridView.addSubview(view!)
-                
-                view?.frame = CGRect.init(x: 0, y: deltaH*CGFloat(ind), width: gridView.bounds.width, height: gridLineThikness)
-            }
-            
-            //vertical
-            for ind in 1..._gridFactor {
-                
-                let view = lineViewController?.view.copyView()
-                
-                gridView.addSubview(view!)
-                
-                view?.frame = CGRect.init(x: deltaW*CGFloat(ind), y: 0, width: gridLineThikness, height: gridView.bounds.height)
-            }
+        if let verticalView = lineViewController?.view.copy() as? UIView,
+          let horizontalView = lineViewController?.view.copy() as? UIView {
+          
+          horizontalView.frame = CGRect(x: 0,
+                                        y: deltaH*CGFloat(ind),
+                                        width: gridView.bounds.width,
+                                        height: gridLineThikness)
+          
+          verticalView.frame = CGRect(x: deltaW*CGFloat(ind),
+                                      y: 0,
+                                      width: gridLineThikness,
+                                      height: gridView.bounds.height)
+          
+          gridView.addSubview(verticalView)
+          gridView.addSubview(horizontalView)
         }
+        
+      }
+      
     }
+  }
 }
