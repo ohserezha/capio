@@ -4,7 +4,7 @@
 target 'capio' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  platform :ios, '4.2'
+
   pod 'MotionAnimation', :git => 'https://github.com/lkzhao/MotionAnimation.git', :branch => 'swift3'
   pod 'ElasticTransition', :git => 'https://github.com/lkzhao/ElasticTransition.git', :branch => 'swift3'
   pod 'JQSwiftIcon', :git => 'https://github.com/ronanamsterdam/JQSwiftIcon.git', :branch => '_rz-to-swift3'
