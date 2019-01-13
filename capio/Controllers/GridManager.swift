@@ -9,9 +9,16 @@
 import UIKit
 
 enum GridFactor: Int {
-  case off = 0
-  case double = 2
-  case quad = 4
+//    cuz state incement goes as 0,1,2,.. +1
+case off, double, quad
+}
+
+extension UIView
+{
+    func copyView() -> UIView?
+    {
+        return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as? UIView
+    }
 }
 
 class GridManager {
@@ -19,11 +26,27 @@ class GridManager {
   let gridLineThikness: CGFloat = 1.0
   
   var gridFactor: GridFactor = .off {
+    
+    willSet {
+        switch newValue {
+        case .off:
+            _gridFactor = 0
+        case .double:
+            _gridFactor = 2
+        case .quad:
+            _gridFactor = 4
+        }
+    }
+    
     didSet {
-      calcGrid()
+        calcGrid()
     }
   }
   
+// we need this one cuz set is comming in 0,1,2..
+// but calculation must be in 0,2,4..
+  private var _gridFactor:        Int = 0
+    
   private let gridView:           UIView!
   private let viewDimensions:     CGRect!
   private let storyBoard:         UIStoryboard!
@@ -41,16 +64,16 @@ class GridManager {
     }
     
     if (gridFactor != .off) {
-      let deltaH = viewDimensions.height/CGFloat(gridFactor.rawValue + 1)
-      let deltaW = viewDimensions.width/CGFloat(gridFactor.rawValue + 1)
+      let deltaH = viewDimensions.height/CGFloat(_gridFactor + 1)
+      let deltaW = viewDimensions.width/CGFloat(_gridFactor + 1)
       
       let lineViewController = storyBoard?.instantiateViewController(withIdentifier: "GridLineItem")
       
       //horizontal
-      for ind in 1...gridFactor.rawValue {
+      for ind in 1..._gridFactor {
         
-        if let verticalView = lineViewController?.view.copy() as? UIView,
-          let horizontalView = lineViewController?.view.copy() as? UIView {
+        if let verticalView = lineViewController?.view.copyView(),
+          let horizontalView = lineViewController?.view.copyView() {
           
           horizontalView.frame = CGRect(x: 0,
                                         y: deltaH*CGFloat(ind),
@@ -65,9 +88,7 @@ class GridManager {
           gridView.addSubview(verticalView)
           gridView.addSubview(horizontalView)
         }
-        
       }
-      
     }
   }
 }

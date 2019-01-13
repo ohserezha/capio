@@ -122,7 +122,7 @@ class FirstViewController:
             optionsMenu?.showIndicator(.right, position: .bottom, offset: 50)
         }
 
-        gridManager = GridManager.init(_gridView: gridHostView, _storyBoard: self.storyboard!, _parentViewDimentions: gridHostView.bounds)
+        gridManager = GridManager.init(gridView: gridHostView, storyBoard: self.storyboard!, parentViewDimensions: gridHostView.bounds)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
